@@ -5,6 +5,10 @@ from django.conf.urls.defaults import *
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    # XML-RPC
+     (r'^xml_rpc_srv/', 'gme.xmlrpc.rpc_handler'),
+)
+
     # Example:
     # (r'^gme/', include('gme.foo.urls')),
 
@@ -14,4 +18,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
-)
+
