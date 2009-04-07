@@ -1,17 +1,16 @@
 from datetime import datetime
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
 import app_settings, msn
 
-class Entrada(models.Model):
-    ''' Permite almacenar las entradas de los usuarios, podran ser vistas por sus conecciones aceptadas'''
+class Anuncio(models.Model):
+    ''' Permite almacenar los anuncios de los usuarios, podran ser vistas por sus conecciones aceptadas'''
     class Meta:
         ordering = ('-fecha',)
 
-    user = models.ForeignKey(User)
+    usuario = models.ForeignKey(User)
     contenido = models.TextField()
     fecha = models.DateTimeField(default=datetime.now, blank=True)
 
@@ -20,37 +19,39 @@ class Entrada(models.Model):
 
     def __unicode__(self):
         return "%s @ %s"%(self.user.username, self.date)
+    
 
-CONNECTION_WAITING = 'w'
-CONNECTION_ACCEPTED = 'a'
-CONNECTION_BLOCKED = 'b'
+# Constantes para establecer los estados de las conexiones
+CONEXION_ESPERANDO = 'e'
+CONEXION_ACEPTADA = 'a'
+CONEXION_BLOQUEADA = 'b'
 
-CONNECTION_STATUSES = (
-    (CONNECTION_WAITING, _('Waiting')),
-    (CONNECTION_ACCEPTED, _('Accepted')),
-    (CONNECTION_BLOCKED, _('Blocked')),
+CONEXION_ESTADOS = (
+    (CONEXION_ESPERANDO, _('Esperando')),
+    (CONEXION_ACEPTADA, _('Aceptada')),
+    (CONEXION_BLOQUEADA, _('Bloqueada')),
 )
 
 class Conexion(models.Model):
     ''' Permite guardar las relaciones establecidas entre los usuarios, pueden ser en espera, aceptados o bloqueados'''
-    user = models.ForeignKey(User, related_name='connections_from')
-    friend = models.ForeignKey(User, related_name='connections_to')
+    usuario = models.ForeignKey(User, related_name='conexiones_desde')
+    amigo = models.ForeignKey(User, related_name='conexiones_hacia')
     estado = models.CharField(
             max_length=1,
-            default=CONNECTION_WAITING,
+            default=CONEXION_ESPERANDO,
             blank=True,
-            choices=CONNECTION_STATUSES,
+            choices=CONEXION_ESTADOS,
             )
     fecha = models.DateTimeField(default=datetime.now, blank=True)
 
     def __unicode__(self):
-        return "%s -> %s"%(self.user.username, self.friend.username)
+        return "%s -> %s"%(self.usuario.username, self.amigo.username)
 
     def get_absolute_url(self):
         return '%sc/%d/'%(app_settings.MICROBLOG_URL_BASE, self.id)
 
 class MicroblogUserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
+    usuario = models.ForeignKey(User, unique=True)
     msn_id = models.CharField(max_length=50, blank=True)
     gtalk_id = models.CharField(max_length=50, blank=True)
 
