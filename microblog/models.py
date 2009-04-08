@@ -3,22 +3,23 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 
-import app_settings, msn
+#import app_settings, msn
 
 class Anuncio(models.Model):
     ''' Permite almacenar los anuncios de los usuarios, podran ser vistas por sus conecciones aceptadas'''
     class Meta:
         ordering = ('-fecha',)
 
-    usuario = models.ForeignKey(User)
-    contenido = models.TextField()
-    fecha = models.DateTimeField(default=datetime.now, blank=True)
+    usuario     = models.ForeignKey(User)
+    contenido   = models.TextField()
+    recipientes = models.ManyToManyField(User, related_name='anuncios_recibidos')
+    fecha       = models.DateTimeField(default=datetime.now, blank=True)
 
     def get_absolute_url(self):
         return '%se/%d/'%(app_settings.MICROBLOG_URL_BASE, self.id)
 
     def __unicode__(self):
-        return "%s @ %s"%(self.user.username, self.date)
+        return "%s @ %s"%(self.usuario.username, self.fecha)
     
 
 # Constantes para establecer los estados de las conexiones
@@ -58,42 +59,42 @@ class MicroblogUserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
 
-# SEÑALES
+# SENALES
 from django.db.models import signals
 
 # ENTRADAS
 
-def entry_post_save(sender, instance, signal, *args, **kwargs):
+def anuncio_post_save(sender, instance, signal, *args, **kwargs):
     if not kwargs.get('created'):
         return
 
-    # Add user itself to recipients list
-    instance.recipients.add(instance.user)
+    # Se adiciona el usuario a si mismo a la lista de recipientes
+    instance.recipientes.add(instance.usuario)
 
-    # Add user friends to recipients list
-    for connection in instance.user.connections_to.filter(status=CONNECTION_ACCEPTED):
-        instance.recipients.add(connection.user)
+    # Adiciona a sus amigos a la lista de recipientes
+    for conexion in instance.usuario.conexiones_hacia.filter(estado=CONEXION_ACEPTADA):
+        instance.recipientes.add(conexion.usuario)
 
-    # Send to messengers
-    if app_settings.MICROBLOG_MESSENGERS_ENABLED:
-        instance.send_to_messengers()
+    # envion al menssenger, aun no funciona
+    #if app_settings.MICROBLOG_MESSENGERS_ENABLED:
+        #instance.send_to_messengers()
 
-signals.post_save.connect(entry_post_save, sender=Entry)
+signals.post_save.connect(anuncio_post_save, sender=Anuncio)
 
-# Connection
+# Conexiones
 
-def connection_post_save(sender, instance, signal, *args, **kwargs):
+def conexion_post_save(sender, instance, signal, *args, **kwargs):
     if not kwargs.get('created'):
         return
 
-    Connection.objects.get_or_create(friend=instance.user, user=instance.friend)
+    Conexion.objects.get_or_create(amigo=instance.usuario, usuario=instance.amigo)
 
-signals.post_save.connect(connection_post_save, sender=Connection)
+signals.post_save.connect(conexion_post_save, sender=Conexion)
 
 # MicroblogUserProfile
 
-def user_post_save(sender, instance, signal, *args, **kwargs):
-    up = MicroblogUserProfile.objects.get_or_create(user=instance)
+def usuario_post_save(sender, instance, signal, *args, **kwargs):
+    up = MicroblogUserProfile.objects.get_or_create(usuario=instance)
 
-signals.post_save.connect(user_post_save, sender=User)
+signals.post_save.connect(usuario_post_save, sender=User)
 

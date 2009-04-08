@@ -1,12 +1,15 @@
 from django.conf.urls.defaults import *
+from django.contrib import admin
+from microblog.views import logout_page
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # XML-RPC
      (r'^xml_rpc_srv/', 'gme.xmlrpc.rpc_handler'),
+     url(r'^login/$', 'django.contrib.auth.views.login'),
+     url(r'^logout/$',logout_page),
+     url(r'^admin/', include(admin.site.urls)),
 )
 
     # Example:
@@ -17,5 +20,5 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
+    
 
