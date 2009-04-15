@@ -75,12 +75,13 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+    'django.contrib.auth', #adicionado para el control de autentificacion
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'gme.microblog',
+    'gme.microblog',       #adicionado app microblog
+    'gme.repositorio',     #adicionado app repositorio
 )
 
 #configuracion para email
