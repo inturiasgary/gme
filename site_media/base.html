@@ -1,0 +1,45 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>
+            {% if site_name %}{{ site_name }} : {% endif %}{% block head_title %}{% endblock %}
+        </title>
+        <!-- [if IE]><style>
+            div {
+                zoom: 1; /* trigger hasLayout */
+            }
+        </style></[endif] -->
+        <!-- Definicion de los estilos en la pagina -->
+        <link rel="stylesheet" href="/site_media/base.css" />
+        <link rel="stylesheet" href="/site_media/tabs.css" />
+        {% if LANGUAGE_BIDI %}
+        <style type="text/css" media="screen">
+            div.right_panel {
+                float: left;
+            }
+        </style>
+        {% endif %}
+        <!-- para añadir un extra -->
+        {% block extra_head %}
+        {% endblock %}
+    </head>
+    
+    <body>
+    <div id="tabhead">
+        <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
+        <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+        <div class="tabs" {% block tab_id %}{% endblock %}>{% block tabs %}{% endblock %}</div>
+        <div class="rigth_tab" {% block rtab_id %}{% endblock %}>{% block rigth_tab %}{% endblock %}</div>
+    </div>
+    <!-- menu pequeño interactivo -->
+    <div id="subnav" class="clearfix">{ block subnav }&nbsp;{% endblock %}</div>
+        {% block body %}
+        {% endblock %}
+        <div id="footer">{% block footer %}{% endblock %}</div>
+        
+        {% block extra_body %}
+        {% endblock %}
+    </body>
+</html>
