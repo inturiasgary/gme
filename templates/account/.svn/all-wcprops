@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account
+END
+timezone_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/timezone_change.html
+END
+password_reset_message.txt
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/password_reset_message.txt
+END
+password_reset.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/password_reset.html
+END
+signup.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/signup.html
+END
+email.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/email.html
+END
+password_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/password_change.html
+END
+language_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/language_change.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/login.html
+END
+logout.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/logout.html
+END
+password_reset_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/password_reset_done.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/account/base.html
+END

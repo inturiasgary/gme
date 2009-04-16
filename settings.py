@@ -74,6 +74,16 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS =(
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    
+    "account.context_processors.account",
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth', #adicionado para el control de autentificacion
     'django.contrib.contenttypes',
@@ -82,6 +92,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'gme.microblog',       #adicionado app microblog
     'gme.repositorio',     #adicionado app repositorio
+    'gme.account',         #adicionado app account, administrador de cuentas
+    'gme.profiles',        #adicionado app profiles, administrador de perfiles de usuario
+    
 )
 
 #configuracion para email

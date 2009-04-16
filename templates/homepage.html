@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Bienvenido"%}{% endblock %}
+
+{% block tab_id %}id="home_tab"{% endblock %} {% commnet %} para poder verificar que tab mostrar en home page {% endcomment %}
+
+{% block body %}
+    {% blocktrans %} {% comment %} para habilitar la internacionalizacion {% endcomment %}
+        <p><b>GME</b> Bienvenidos al sistema de notificacion de commit de repositorios con git</p>
+    {% endblocktrans %}
+    
+    {% if user.is_authenticated %}
+    {% else %}
+        {% url acct_signup as signup_url %}
+        {% url acct_login as login_url %}
+        <p>{% blocktrans %}Puedes registrarte en <a href="{{ signup_url }}">Registrate</a> y <a href="{{ login_url }}">Ingresa</a> para utilizar este sitio. {% endblocktrans %}</p>
+    {% endif %}
+{% endblock %}
