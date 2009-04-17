@@ -1,0 +1,52 @@
+8
+
+dir
+121
+http://svn.jdub.webfactional.com/pinax/trunk/pinax-0.5.1/apps/external_apps/friends/templates/notification/friends_accept
+http://svn.jdub.webfactional.com
+
+
+
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2fc2e0b3-236a-4663-9028-bc6d907573d5
+
+full.txt
+file
+
+
+
+
+2009-03-04T15:02:11.000000Z
+4d25d529c516da9ea0d84c707c77c078
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+notice.html
+file
+
+
+
+
+2009-03-04T15:02:11.000000Z
+ff3b1fbd17200529a268e4b918d1d95e
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
