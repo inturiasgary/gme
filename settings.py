@@ -94,6 +94,9 @@ INSTALLED_APPS = (
     'gme.repositorio',     #adicionado app repositorio
     'gme.account',         #adicionado app account, administrador de cuentas
     'gme.profiles',        #adicionado app profiles, administrador de perfiles de usuario
+    #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
+    #'gme.timezones',       #adicionado app timezones para personalizar zonas horarias
+    #'gme.friends',
     
 )
 
