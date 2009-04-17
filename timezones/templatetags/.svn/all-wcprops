@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/timezones/templatetags
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/timezones/templatetags/__init__.py
+END
+timezone_filters.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/timezones/templatetags/timezone_filters.py
+END
