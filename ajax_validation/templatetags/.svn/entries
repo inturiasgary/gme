@@ -1,0 +1,52 @@
+8
+
+dir
+121
+http://svn.jdub.webfactional.com/pinax/trunk/pinax-0.5.1/apps/external_apps/ajax_validation/templatetags
+http://svn.jdub.webfactional.com
+
+
+
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2fc2e0b3-236a-4663-9028-bc6d907573d5
+
+jquery_validation.py
+file
+
+
+
+
+2009-03-04T15:02:58.000000Z
+a3b95399de4dae3f286ac665c07d9048
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+__init__.py
+file
+
+
+
+
+2009-03-04T15:02:58.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+

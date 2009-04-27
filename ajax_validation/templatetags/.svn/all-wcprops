@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/ajax_validation/templatetags
+END
+jquery_validation.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/ajax_validation/templatetags/jquery_validation.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/ajax_validation/templatetags/__init__.py
+END

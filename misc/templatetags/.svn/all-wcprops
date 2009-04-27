@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags
+END
+in_filter.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/in_filter.py
+END
+shorttimesince_tag.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/shorttimesince_tag.py
+END
+svn_app_version.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/svn_app_version.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/__init__.py
+END
+comments_tag.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/comments_tag.py
+END
+captureas_tag.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/captureas_tag.py
+END
+var_tag.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/var_tag.py
+END
+order_by.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/order_by.py
+END
+extra_voting_tags.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/misc/templatetags/extra_voting_tags.py
+END

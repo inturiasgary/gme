@@ -1,0 +1,44 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Login" %}{% endblock %}
+
+{% block body %}
+    <div class="clearfix padtop">
+    <div id="basic-form" class="left-form">
+    <fieldset>
+        <legend>{% trans "Log In" %}</legend>
+        
+        {% if user.is_authenticated %}
+            <p><span class="warning">{% trans "Note" %}</span>: {% blocktrans %}ya estas logeado como{{ user }}.{% endblocktrans %}</p>
+        {% else %}
+            {% url cuenta.views.registro as registro_url %}
+            <p>{% blocktrans %}Don't have an account? <a href="{{ registro_url }}">Registrate</a>!{% endblocktrans %}</p>
+        {% endif %}
+        
+        <form class="login" method="POST" action="">
+            <table>
+                <tr><td colspan="2">{{ form.non_field_errors }}</td></tr>
+                {% for field in form %}
+                    {% if field.errors %}<tr><td colspan="2">{{ field.errors }}</td></tr>{% endif %}
+                    <tr><td width="100px">{{ field.label_tag }}</td><td>{{ field }}</td></tr>
+                    {% if field.help_text %}<tr><td colspan="2"><span>{{ field.help_text }}</span></td></tr>{% endif %}
+                {% endfor %}
+                <tr><td></td><td><input type="submit" value="{% trans "Log in &raquo;" %}" class="button" /></td></tr>
+            </table>
+            <a href="{% url cuenta.views.password_reset %}">{% trans "Forgot password?" %}</a>
+        </form>
+        </fieldset>
+    </div>
+    
+    
+    
+    </div>
+{% endblock %}
+
+{% block extra_body %}
+<script>
+    $("#id_username").focus();
+</script>
+{% endblock %}
