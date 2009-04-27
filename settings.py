@@ -37,17 +37,17 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__),"site_media")
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/site_media/'
+ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'qqxw-529(6@57su-f+#lh63kwif9r(&d0m!paa48yv7-n@18y5'
@@ -80,8 +80,11 @@ TEMPLATE_CONTEXT_PROCESSORS =(
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    "cuenta.context_processors.cuenta",
+    "misc.context_processors.contact_email", #para que utilizern los email
+    "misc.context_processors.site_name",
     
-    "account.context_processors.account",
+    
 )
 
 INSTALLED_APPS = (
@@ -90,15 +93,42 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'gme.microblog',       #adicionado app microblog
-    'gme.repositorio',     #adicionado app repositorio
-    'gme.account',         #adicionado app account, administrador de cuentas
-    'gme.profiles',        #adicionado app profiles, administrador de perfiles de usuario
+    'gme.microblog',        #adicionado app microblog
+    'gme.repositorio',      #adicionado app repositorio
+    'gme.cuenta',#adicionado app cuenta, administrador de cuentas
+    'gme.about',
+    'gme.misc',
+    'gme.ajax_validation',
+#    'gme.profiles',         #adicionado app profiles, administrador de perfiles de usuario
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
-    #'gme.timezones',       #adicionado app timezones para personalizar zonas horarias
+    'gme.timezones',       #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
     
 )
+
+ABSOLUTE_URL_OVERRIDES = {
+    "auth.user": lambda o: "/profiles/%s/" % o.username,
+}
+
+AUTH_PROFILE_MODULE = 'profiles.Profile'
+NOTIFICATION_LANGUAGE_MODULE = 'cuenta.Cuenta'
+
+EMAIL_CONFIRMATION_DAYS = 2
+EMAIL_DEBUG = DEBUG
+CONTACT_EMAIL = "inturiasgary@gmail.com"
+SITE_NAME = "Gme"
+LOGIN_URL = "/cuenta/login"
+LOGIN_REDIRECT_URLNAME = "what_next"
+
+#LOGGING_OUTPUT_ENABLED = False
+#LOGGING_SHOW_METRICS = False
+#LOGGING_LOG_SQL = False
+
+#INTERNAL_IPS = (
+#'127.0.0.1',
+#)
+
+
 
 #configuracion para email
 EMAIL_HOST = 'smtp.gmail.com'

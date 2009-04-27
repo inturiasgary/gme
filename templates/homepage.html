@@ -13,8 +13,8 @@
     
     {% if user.is_authenticated %}
     {% else %}
-        {% url acct_signup as signup_url %}
+        {% url acct_registro as registro_url %}
         {% url acct_login as login_url %}
-        <p>{% blocktrans %}Puedes registrarte en <a href="{{ signup_url }}">Registrate</a> y <a href="{{ login_url }}">Ingresa</a> para utilizar este sitio. {% endblocktrans %}</p>
+        <p>{% blocktrans %}Puedes registrarte en <a href="{{ registro_url }}">Registrate</a> y <a href="{{ login_url }}">Ingresa</a> para utilizar este sitio. {% endblocktrans %}</p>
     {% endif %}
 {% endblock %}

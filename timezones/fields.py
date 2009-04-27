@@ -6,7 +6,7 @@ from django.db.models import signals
 
 from timezones import forms
 
-import pytz
+import pytz #libreria para el manejo de zonas horarias en python
 
 MAX_TIMEZONE_LENGTH = getattr(settings, "MAX_TIMEZONE_LENGTH", 100)
 default_tz = pytz.timezone(getattr(settings, "TIME_ZONE", "UTC"))
