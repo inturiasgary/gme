@@ -4,12 +4,11 @@ from django.contrib.auth.models import User, AnonymousUser
 from django.db.models.signals import post_save #para enviar senales depues del guardado de informacion
 from django.utils.translation import get_language_from_request, ugettext_lazy as _ #para la internacionalizacion
 
-from timezones.fields import TimeZoneField
+from timezones.fields import TimeZoneField  #para utilizar campos de zona horaria
 
 class Cuenta(models.Model):
     
     usuario = models.ForeignKey(User, unique=True, verbose_name=_('usuario'))
-    
     timezone = TimeZoneField(_('timezone'))
     lenguaje = models.CharField(_('lenguaje'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
     

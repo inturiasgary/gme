@@ -1,4 +1,5 @@
-import re #importacion de la libreria de expresiones regulares
+
+import re #importacion para el uso de expresiones regulares
 
 from django import forms
 from django.template.loader import render_to_string
@@ -15,36 +16,34 @@ from django.contrib.auth.models import User
 from emailconfirmation.models import EmailAddress
 from cuenta.models import Cuenta
 
-from timezones.forms import TimeZoneField
-
-alnum_re = re.compile(r'^\w+$') #Para verificar si existen caracteres especiales en el campo
+from timezones.forms import TimeZoneField #para hacer el uso de zonas horarias
 
 class LoginForm(forms.Form):
 
-    username = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
-    password = forms.CharField(label=_("Contrasenia"), widget=forms.PasswordInput(render_value=False))
-    remember = forms.BooleanField(label=_("Recordarmelo"), help_text=_("Si usted marca esta opcion, sera recordada por 3 semanas."), required=False)
+    nombreUsuario = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
+    password      = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
+    recordar      = forms.BooleanField(label=_("Recordarmelo"), help_text=_("Si elije la opcion, sera recordada por 3 semanas"), required=False)
 
     user = None
 
     def clean(self):
         if self._errors:
-            return #Si contiene errores el formulario, no hacer nada
-        user = authenticate(username=self.cleaned_data["username"], password=self.cleaned_data["password"]) #Caso contrario autentificar al usuario recien creado
+            return
+        user = authenticate(username=self.cleaned_data["nombreUsuario"], password=self.cleaned_data["password"])
         if user:
             if user.is_active:
                 self.user = user
             else:
                 raise forms.ValidationError(_("Esta cuenta esta actualmente inactiva."))
         else:
-            raise forms.ValidationError(_("El nombre de usuario y/o contrasenia no son correctas."))
-        return self.cleaned_data #retornar los datos actuales
+            raise forms.ValidationError(_("El nombre usuario y/o password son incorrectos."))
+        return self.cleaned_data
 
     def login(self, request):
         if self.is_valid():
             login(request, self.user)
-            request.user.message_set.create(message=ugettext(u"Successfully logged in as %(username)s.") % {'username': self.user.username})
-            if self.cleaned_data['remember']:
+            request.user.message_set.create(message=ugettext(u"Satisfactoriamente logeado como %(username)s.") % {'username': self.user.username})
+            if self.cleaned_data['recordar']:
                 request.session.set_expiry(60 * 60 * 24 * 7 * 3)
             else:
                 request.session.set_expiry(0)
@@ -52,33 +51,32 @@ class LoginForm(forms.Form):
         return False
 
 
+alnum_re = re.compile(r'^\w+$')
 class RegistroForm(forms.Form):
 
-    nombreUsuario = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
-    password1 = forms.CharField(label=_("Contrasenia"), widget=forms.PasswordInput(render_value=False))
-    password2 = forms.CharField(label=_("Contrasenia (repita)"), widget=forms.PasswordInput(render_value=False))
-    email = forms.EmailField(label=_("Email (opcional)"), required=False, widget=forms.TextInput())
+    nombreUsuario    = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
+    password1        = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
+    password2        = forms.CharField(label=_("Password (de nuevo)"), widget=forms.PasswordInput(render_value=False))
+    email            = forms.EmailField(label=_("Email (opcional)"), required=False, widget=forms.TextInput())
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
 
     def clean_nombreUsuario(self):
-        ''' verifica si el nombre de usuario ya ha sido registrado '''
-        if not alnum_re.search(self.cleaned_data["nombreUsuario"]): #verifica si contiene caracteres especiales
-            raise forms.ValidationError(_("Nombre de usuario solo puede contener numeros, letras y underscore."))
+        if not alnum_re.search(self.cleaned_data["nombreUsuario"]):
+            raise forms.ValidationError(_("Nombre de usuario solo puede contener caracteres, numbers and underscores."))
         try:
-            usuario = User.objects.get(username__iexact=self.cleaned_data["nombreUsuario"])
+            user = User.objects.get(username__iexact=self.cleaned_data["nombreUsuario"])
         except User.DoesNotExist:
             return self.cleaned_data["nombreUsuario"]
-        raise forms.ValidationError(_("Nombre de usuario ya registrado, elija otro."))
+        raise forms.ValidationError(_("Nombre de usuario ya en uso. Escoje otro."))
 
     def clean(self):
-        ''' verifica la igualdad de las contrasenias introducidas '''
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
-                raise forms.ValidationError(_("Debes introducir las contrasenias iguales."))
+                raise forms.ValidationError(_("Debes escribir la misma contrasenia."))
         return self.cleaned_data
 
     def save(self):
-        username = self.cleaned_data["username"]
+        username = self.cleaned_data["nombreUsuario"]
         email = self.cleaned_data["email"]
         password = self.cleaned_data["password1"]
         if self.cleaned_data["confirmation_key"]:
@@ -221,21 +219,21 @@ class ChangeLanguageForm(AccountForm):
 
 # @@@ these should somehow be moved out of account or at least out of this module
 
-#from cuenta.models import OtherServiceInfo, other_service, update_other_services
+#from account.models import OtherServiceInfo, other_service, update_other_services
 
 #class TwitterForm(UserForm):
- #   username = forms.CharField(label=_("Username"), required=True)
-  #  password = forms.CharField(label=_("Password"), required=True,
-   #                            widget=forms.PasswordInput(render_value=False))
+    #username = forms.CharField(label=_("Username"), required=True)
+    #password = forms.CharField(label=_("Password"), required=True,
+                               #widget=forms.PasswordInput(render_value=False))
 
     #def __init__(self, *args, **kwargs):
-     #   super(TwitterForm, self).__init__(*args, **kwargs)
-     #   self.initial.update({"username": other_service(self.user, "twitter_user")})
+        #super(TwitterForm, self).__init__(*args, **kwargs)
+        #self.initial.update({"username": other_service(self.user, "twitter_user")})
 
-   # def save(self):
-    #    from zwitschern.utils import get_twitter_password
-    #    update_other_services(self.user,
-     #       twitter_user = self.cleaned_data['username'],
-      #      twitter_password = get_twitter_password(settings.SECRET_KEY, self.cleaned_data['password']),
-       # )
-       # self.user.message_set.create(message=ugettext(u"Successfully authenticated."))
+    #def save(self):
+        #from zwitschern.utils import get_twitter_password
+        #update_other_services(self.user,
+            #twitter_user = self.cleaned_data['username'],
+            #twitter_password = get_twitter_password(settings.SECRET_KEY, self.cleaned_data['password']),
+        #)
+        #self.user.message_set.create(message=ugettext(u"Successfully authenticated."))

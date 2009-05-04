@@ -1,4 +1,3 @@
-# Django settings for gme project.
 import os
 
 DIR_ACTUAL = os.path.dirname(__file__)
@@ -25,14 +24,10 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # system time zone.
 TIME_ZONE = 'America/La_Paz'
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'es-bo'
 
 SITE_ID = 1
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
 USE_I18N = True
 
 # Absolute path to the directory that holds media.
@@ -63,15 +58,17 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'cuenta.middleware.LocaleMiddleware', #posiblemente borrar
+    'django.middleware.doc.XViewMiddleware',
+    'pagination.middleware.PaginationMiddleware', #para la paginacion
+    
 )
 
 ROOT_URLCONF = 'gme.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(DIR_ACTUAL,'templates'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    
 )
 
 TEMPLATE_CONTEXT_PROCESSORS =(
@@ -84,7 +81,7 @@ TEMPLATE_CONTEXT_PROCESSORS =(
     "misc.context_processors.contact_email", #para que utilizern los email
     "misc.context_processors.site_name",
     
-    
+    "notification.context_processors.notification",
 )
 
 INSTALLED_APPS = (
@@ -93,24 +90,28 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.humanize',
+    
+    #aplicaciones secundarias a django
+    'gme.notification',     #adicionado app externa notification para notificaciones en tiempo r
     'gme.microblog',        #adicionado app microblog
     'gme.repositorio',      #adicionado app repositorio
-    'gme.cuenta',#adicionado app cuenta, administrador de cuentas
+    'gme.cuenta',           #adicionado app cuenta, administrador de cuentas
     'gme.about',
     'gme.misc',
     'gme.ajax_validation',
-#    'gme.profiles',         #adicionado app profiles, administrador de perfiles de usuario
+    'gme.emailconfirmation',
+    'gme.perfiles',         #adicionado app perfiles, administrador de perfiles de usuario
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
-    'gme.timezones',       #adicionado app timezones para personalizar zonas horarias
+    'gme.timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
-    
 )
 
 ABSOLUTE_URL_OVERRIDES = {
-    "auth.user": lambda o: "/profiles/%s/" % o.username,
+    "auth.user": lambda o: "/perfiles/%s/" % o.username,
 }
 
-AUTH_PROFILE_MODULE = 'profiles.Profile'
+AUTH_PROFILE_MODULE = 'perfiles.Perfil'
 NOTIFICATION_LANGUAGE_MODULE = 'cuenta.Cuenta'
 
 EMAIL_CONFIRMATION_DAYS = 2
@@ -127,8 +128,6 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 #INTERNAL_IPS = (
 #'127.0.0.1',
 #)
-
-
 
 #configuracion para email
 EMAIL_HOST = 'smtp.gmail.com'

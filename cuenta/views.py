@@ -1,4 +1,3 @@
-
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -20,11 +19,11 @@ def login(request, form_class=LoginForm, template_name="cuenta/login.html"):
         else:
             default_redirect_to = settings.LOGIN_REDIRECT_URL
         redirect_to = request.REQUEST.get("next")
-        # light security check -- make sure redirect_to isn't garabage.
+        # para asegurarnos que en el get no hayga basura
         if not redirect_to or "://" in redirect_to or " " in redirect_to:
             redirect_to = default_redirect_to
         form = form_class(request.POST)
-        if form.login(request):
+        if form.login(request): # creacion del cookie y retorna true en caso que se realize bien la accion de creacion de sesion
             return HttpResponseRedirect(redirect_to)
     else:
         form = form_class()
@@ -32,8 +31,7 @@ def login(request, form_class=LoginForm, template_name="cuenta/login.html"):
         "form": form,
     }, context_instance=RequestContext(request))
 
-def registro(request, form_class=RegistroForm,
-        template_name="cuenta/registro.html", success_url=None):
+def registro(request, form_class=RegistroForm, template_name="cuenta/registro.html", success_url=None):
     if success_url is None:
         success_url = reverse("what_next")
     if request.method == "POST":
@@ -42,7 +40,7 @@ def registro(request, form_class=RegistroForm,
             username, password = form.save()
             user = authenticate(username=username, password=password)
             auth_login(request, user)
-            request.user.message_set.create(message=_("Successfully logged in as %(username)s.") % {'username': user.username})
+            request.user.message_set.create(message=_("Logeado satisfactoriamente como %(username)s.") % {'username': user.username})
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
@@ -50,8 +48,7 @@ def registro(request, form_class=RegistroForm,
         "form": form,
     }, context_instance=RequestContext(request))
 
-def email(request, form_class=AddEmailForm,
-        template_name="cuenta/email.html"):
+def email(request, form_class=AddEmailForm, template_name="cuenta/email.html"):
     if request.method == "POST" and request.user.is_authenticated():
         if request.POST["action"] == "add":
             add_email_form = form_class(request.user, request.POST)
