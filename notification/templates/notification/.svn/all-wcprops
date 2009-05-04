@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification
+END
+full.txt
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/full.txt
+END
+email_body.txt
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/email_body.txt
+END
+email_subject.txt
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/email_subject.txt
+END
+notice.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/notice.html
+END
+full.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/full.html
+END
+short.txt
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/notification/templates/notification/short.txt
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/urls.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/local_apps/basic_profiles/forms.py
+END
