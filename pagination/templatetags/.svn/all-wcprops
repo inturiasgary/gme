@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/pagination/templatetags
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/pagination/templatetags/__init__.py
+END
+pagination_tags.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/!svn/ver/93/pinax/trunk/pinax-0.5.1/apps/external_apps/pagination/templatetags/pagination_tags.py
+END
