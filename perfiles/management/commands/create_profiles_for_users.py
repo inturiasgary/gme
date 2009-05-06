@@ -1,5 +1,5 @@
 from django.core.management.base import NoArgsCommand
-from basic_profiles.models import Profile
+from perfiles.models import Perfil
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -8,5 +8,5 @@ class Command(NoArgsCommand):
 
     def handle_noargs(self, **options):
         for usr in User.objects.all():
-            profile, is_new = Profile.objects.get_or_create(user=usr)
-            if is_new: profile.save()
+            profile, is_new = Perfil.objects.get_or_create(user=usr)
+            if is_new: perfil.save()

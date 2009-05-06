@@ -76,15 +76,15 @@ def perfil(request, username, template_name="perfiles/perfil.html"):
     if is_me:
         if request.method == "POST":
             if request.POST["action"] == "actualizar":
-                perfil_form = PerfilForm(request.POST, instance=other_user.get_perfil())
+                perfil_form = PerfilForm(request.POST, instance=other_user.get_profile())
                 if perfil_form.is_valid():
                     perfil = perfil_form.save(commit=False)
                     perfil.user = other_user
                     perfil.save()
             else:
-                perfil_form = PerfilForm(instance=other_user.get_perfil())
+                perfil_form = PerfilForm(instance=other_user.get_profile())
         else:
-            perfil_form = PerfilForm(instance=other_user.get_perfil())
+            perfil_form = PerfilForm(instance=other_user.get_profile())
     else:
         perfil_form = None
 

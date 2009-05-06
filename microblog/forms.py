@@ -1,3 +1,4 @@
+#coding: utf-8
 from django import forms
 import re
 from django.contrib.auth.models import User
@@ -10,10 +11,10 @@ class RegistracionForm(forms.Form):
     apellido      = forms.CharField(label=_("Apellido(s)"), max_length=100, required=False)
     nombreusuario = forms.CharField(label=_("Nombre de usuario"), max_length=30, required=True)
     email         = forms.EmailField(label="Email")
-    contrasena1   = forms.CharField(label=_("Contrasena"),
+    contrasena1   = forms.CharField(label=_(u"Contraseña"),
                                     widget=forms.PasswordInput()
                                     )
-    contrasena2   = forms.CharField(label=_("Contrasena(escriba de nuevo)"),
+    contrasena2   = forms.CharField(label=_(u"Contraseña(escriba de nuevo)"),
                                     widget=forms.PasswordInput()
                                     )
     def clean_contrasena2(self):
