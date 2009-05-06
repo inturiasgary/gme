@@ -105,13 +105,14 @@ INSTALLED_APPS = (
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
     'gme.timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
+    'gme.pagination',       #adicionado app para la paginacion
 )
 
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/perfiles/%s/" % o.username,
 }
 
-AUTH_PROFILE_MODULE = 'perfiles.Perfil'
+AUTH_PROFILE_MODULE = 'perfiles.Perfil' #configuracion para los perfiles de usuario
 NOTIFICATION_LANGUAGE_MODULE = 'cuenta.Cuenta'
 
 EMAIL_CONFIRMATION_DAYS = 2
