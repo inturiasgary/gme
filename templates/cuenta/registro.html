@@ -13,7 +13,7 @@
             {% if user.is_authenticated %}
                 <p>{% trans "You are already logged in." %}</p>
             {% else %}
-                <p>{% trans "Already have an account?" %} <a href="{% url acct_login %}">{% trans "Log In" %}</a>!</p>
+                <p>{% trans "¿ Ya tienes una cuenta ?" %} <a href="{% url acct_login %}">{% trans "Ingresa" %}</a>!</p>
                 
                 <form class="signupform" id="signup_form" method="post" action="{% url acct_registro %}">
                     <table width="300px">

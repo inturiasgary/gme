@@ -8,13 +8,13 @@
     <div class="clearfix padtop">
     <div id="basic-form" class="left-form">
     <fieldset>
-        <legend>{% trans "Log In" %}</legend>
+        <legend>{% trans "Iniciar Sesión" %}</legend>
         
         {% if user.is_authenticated %}
-            <p><span class="warning">{% trans "Note" %}</span>: {% blocktrans %}ya estas logeado como{{ user }}.{% endblocktrans %}</p>
+            <p><span class="warning">{% trans "Aviso" %}</span>: {% blocktrans %}ya estas logeado como {{ user }}.{% endblocktrans %}</p>
         {% else %}
             {% url cuenta.views.registro as registro_url %}
-            <p>{% blocktrans %}Don't have an account? <a href="{{ registro_url }}">Registrate</a>!{% endblocktrans %}</p>
+            <p>{% blocktrans %}¿Aun no tienes una cuenta? <a href="{{ registro_url }}">Registrate</a>!{% endblocktrans %}</p>
         {% endif %}
         
         <form class="login" method="POST" action="">
@@ -27,8 +27,11 @@
                 {% endfor %}
                 <tr><td></td><td><input type="submit" value="{% trans "Log in &raquo;" %}" class="button" /></td></tr>
             </table>
-            <a href="{% url cuenta.views.password_reset %}">{% trans "Forgot password?" %}</a>
+            <a href="{% url cuenta.views.password_reset %}">{% trans "¿Olvidaste tu contraseña ?" %}</a>
         </form>
+        </fieldset>
+        <fieldset>
+        <legend>Pruebita</legend>
         </fieldset>
     </div>
     

@@ -3,10 +3,10 @@
 {% load i18n %}
 
 {% block login %}
-    {% if user.is_athenticated %}
-        <b>{{ user.username }}</b> | <a href="{% url acct_email %}">{% trans "Cuenta" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Administrador" %}</a> | {% endif %} | <a href="{% url acct_logout %}">{% trans "Cerrar Sesion" %}</a>
+    {% if user.is_authenticated %}
+        Logeado como <b>{{ user.username }}</b> | <a href="{% url acct_email %}">{% trans "Cuenta" %}</a> | {% if user.is_staff %}<a href="/admin/">{% trans "Administrador" %}</a> | {% endif %}  <a href="{% url acct_logout %}">{% trans "Cerrar Sesion" %}</a>
     {% else %}
-        <a href="{% url acct_login %}">{% trans "Ingresar" %}</a> {% trans "or" %} <a href="{% url acct_registro %}"><b>{% trans "Registrarse" %}</b></a>
+        <a href="{% url acct_login %}">{% trans "Ingresar" %}</a> {% trans "or" %} <a href="{% url acct_registro %}"><b>{% trans "Registrarse" %}</b></a>   
     {% endif %}
 {% endblock %}
 
