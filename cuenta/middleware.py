@@ -15,7 +15,7 @@ class LocaleMiddleware(object):
         if request.user.is_authenticated():
             try:
                 cuenta = Cuenta.objects.get(user=request.user)
-                return cuenta.language
+                return cuenta.lenguaje
             except Cuenta.DoesNotExist:
                 pass
         return translation.get_language_from_request(request)

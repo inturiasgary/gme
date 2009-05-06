@@ -1,4 +1,4 @@
-
+#coding: utf-8
 import re #importacion para el uso de expresiones regulares
 
 from django import forms
@@ -20,23 +20,23 @@ from timezones.forms import TimeZoneField #para hacer el uso de zonas horarias
 
 class LoginForm(forms.Form):
 
-    nombreUsuario = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
-    password      = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
-    recordar      = forms.BooleanField(label=_("Recordarmelo"), help_text=_("Si elije la opcion, sera recordada por 3 semanas"), required=False)
+    username      = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
+    password      = forms.CharField(label=_(u"Contraseña"), widget=forms.PasswordInput(render_value=False))
+    recordar      = forms.BooleanField(label=_(u"Recordármelo"), help_text=_(u"Si elije la opción, sera recordada por 3 semanas"), required=False)
 
     user = None
 
     def clean(self):
         if self._errors:
             return
-        user = authenticate(username=self.cleaned_data["nombreUsuario"], password=self.cleaned_data["password"])
+        user = authenticate(username=self.cleaned_data["username"], password=self.cleaned_data["password"])
         if user:
             if user.is_active:
                 self.user = user
             else:
                 raise forms.ValidationError(_("Esta cuenta esta actualmente inactiva."))
         else:
-            raise forms.ValidationError(_("El nombre usuario y/o password son incorrectos."))
+            raise forms.ValidationError(_(u"El nombre usuario y/o contraseña son incorrectos."))
         return self.cleaned_data
 
     def login(self, request):
@@ -56,7 +56,7 @@ class RegistroForm(forms.Form):
 
     nombreUsuario    = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
     password1        = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
-    password2        = forms.CharField(label=_("Password (de nuevo)"), widget=forms.PasswordInput(render_value=False))
+    password2        = forms.CharField(label=_("Password(de nuevo)"), widget=forms.PasswordInput(render_value=False))
     email            = forms.EmailField(label=_("Email (opcional)"), required=False, widget=forms.TextInput())
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
 
@@ -119,10 +119,10 @@ class UserForm(forms.Form):
         self.user = user
         super(UserForm, self).__init__(*args, **kwargs)
 
-class AccountForm(UserForm):
+class CuentaForm(UserForm):
 
     def __init__(self, *args, **kwargs):
-        super(AccountForm, self).__init__(*args, **kwargs)
+        super(CuentaForm, self).__init__(*args, **kwargs)
         try:
             self.cuenta = Cuenta.objects.get(user=self.user)
         except Cuenta.DoesNotExist:
@@ -147,9 +147,9 @@ class AddEmailForm(UserForm):
 
 class ChangePasswordForm(UserForm):
 
-    oldpassword = forms.CharField(label=_("Current Password"), widget=forms.PasswordInput(render_value=False))
-    password1 = forms.CharField(label=_("New Password"), widget=forms.PasswordInput(render_value=False))
-    password2 = forms.CharField(label=_("New Password (again)"), widget=forms.PasswordInput(render_value=False))
+    oldpassword = forms.CharField(label=_(u"Contraseña actual"), widget=forms.PasswordInput(render_value=False))
+    password1 = forms.CharField(label=_(u"Nueva contraseña"), widget=forms.PasswordInput(render_value=False))
+    password2 = forms.CharField(label=_(u"Nueva Contraseña (nuevamente)"), widget=forms.PasswordInput(render_value=False))
 
     def clean_oldpassword(self):
         if not self.user.check_password(self.cleaned_data.get("oldpassword")):
@@ -183,27 +183,27 @@ class ResetPasswordForm(forms.Form):
             user.set_password(new_password)
             user.save()
             subject = _("Password reset")
-            message = render_to_string("account/password_reset_message.txt", {
+            message = render_to_string("cuenta/password_reset_message.txt", {
                 "user": user,
                 "new_password": new_password,
             })
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email], priority="high")
         return self.cleaned_data["email"]
 
-class ChangeTimezoneForm(AccountForm):
+class ChangeTimezoneForm(CuentaForm):
 
     timezone = TimeZoneField(label=_("Timezone"), required=True)
 
     def __init__(self, *args, **kwargs):
         super(ChangeTimezoneForm, self).__init__(*args, **kwargs)
-        self.initial.update({"timezone": self.account.timezone})
+        self.initial.update({"timezone": self.cuenta.timezone})
 
     def save(self):
-        self.account.timezone = self.cleaned_data["timezone"]
-        self.account.save()
-        self.user.message_set.create(message=ugettext(u"Timezone successfully updated."))
+        self.cuenta.timezone = self.cleaned_data["timezone"]
+        self.cuenta.save()
+        self.user.message_set.create(message=ugettext(u"Huso Horario  actualizado."))
 
-class ChangeLanguageForm(AccountForm):
+class ChangeLanguageForm(CuentaForm):
 
     language = forms.ChoiceField(label=_("Language"), required=True, choices=settings.LANGUAGES)
 
