@@ -93,19 +93,19 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     
     #aplicaciones secundarias a django
-    'gme.notification',     #adicionado app externa notification para notificaciones en tiempo r
-    'gme.microblog',        #adicionado app microblog
-    'gme.repositorio',      #adicionado app repositorio
-    'gme.cuenta',           #adicionado app cuenta, administrador de cuentas
-    'gme.about',
-    'gme.misc',
-    'gme.ajax_validation',
-    'gme.emailconfirmation',
-    'gme.perfiles',         #adicionado app perfiles, administrador de perfiles de usuario
+    'notification',     #adicionado app externa notification para notificaciones en tiempo r
+    'microblog',        #adicionado app microblog
+    'repositorio',      #adicionado app repositorio
+    'cuenta',           #adicionado app cuenta, administrador de cuentas
+    'about',
+    'misc',
+    'ajax_validation',
+    'emailconfirmation',
+    'perfiles',         #adicionado app perfiles, administrador de perfiles de usuario
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
-    'gme.timezones',        #adicionado app timezones para personalizar zonas horarias
+    'timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
-    'gme.pagination',       #adicionado app para la paginacion
+    'pagination',       #adicionado app para la paginacion
 )
 
 ABSOLUTE_URL_OVERRIDES = {

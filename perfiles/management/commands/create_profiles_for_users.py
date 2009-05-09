@@ -8,5 +8,5 @@ class Command(NoArgsCommand):
 
     def handle_noargs(self, **options):
         for usr in User.objects.all():
-            profile, is_new = Perfil.objects.get_or_create(user=usr)
+            perfil, is_new = Perfil.objects.get_or_create(user=usr)
             if is_new: perfil.save()

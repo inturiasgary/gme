@@ -13,18 +13,19 @@
     <h1>{% blocktrans %}Perfil de {{ other_user }}{% endblocktrans %}</h1>
     
     <div class="profile_info">
-        {% if other_user.get_perfil.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_perfil.nombre }}</p>{% endif %}
-        {% if other_user.get_perfil.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_perfil.comentario }}</p>{% endif %}
-        {% if other_user.get_perfil.ubicacion%}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_perfil.ubicacion }}</p>{% endif %}
-        {% if other_user.get_perfil.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_perfil.sitioWeb }}">{{ other_user.get_perfil.sitioWeb }}</a></p>{% endif %}
+    hola como estas
+        {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}
+        {% if other_user.get_profile.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_profile.comentario }}</p>{% endif %}
+        {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}
+        {% if other_user.get_profile.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_profile.sitioWeb }}">{{ other_user.get_profile.sitioWeb }}</a></p>{% endif %}
     </div>
     
     
     {% if user.is_authenticated %}
         {% if is_me %}
-            <p><a href="#" onclick="$('#perfil_form').toggle(); return false;">{% trans "Editar Perfil" %}</a></p>
+            <p><a href="#" onclick="$('#profile_form').toggle(); return false;">{% trans "Editar Perfil" %}</a></p>
             
-            <form id="perfil_form" method="POST" action="" style="display: none;">
+            <form id="profile_form" method="POST" action="" style="display: none;">
                 <table>
                     {{ perfil_form }}
                     <tr><td></td><td><input type="hidden" name="action" value="actualizar" /><input type="submit" value="{% trans "actualizar" %}"/></td></tr>
@@ -44,4 +45,3 @@
         });
     </script>
 {% endblock %}
-
