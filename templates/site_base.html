@@ -18,11 +18,11 @@
 {% endblock %}
 
 {% block rigth_tab %}
-    {% if user.is_athenticated %}
+    {% if user.is_authenticated %}
         <table>
             <tr>
                 <td class="tab rtab_profile"><div><a href="{% url detalle_perfil user %}">{% trans "Perfil" %}</a></div></td>
-                <td class="tab rtab_notices"><div><a href="{% url notification_notices %}">{% trans "Noticias" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></div></td>
+                
             </tr>
         </table>
     {% endif %}
