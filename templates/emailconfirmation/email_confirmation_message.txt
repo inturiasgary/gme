@@ -1,0 +1,4 @@
+{% load i18n %}{% blocktrans with current_site.name as site_name %}Usuario '{{ user }}' en {{ site_name }} Ha ingresado esta direccion email.
+
+Para confirmar que esto es correcto, vaya a {{ activate_url }}
+{% endblocktrans %}

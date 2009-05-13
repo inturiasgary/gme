@@ -102,15 +102,15 @@ class RegistroForm(forms.Form):
                 new_user = User.objects.create_user(username, "", password)
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
                 if email:
-                    new_user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': email})
+                    new_user.message_set.create(message=ugettext(u"Email de confirmacion enviado a %(email)s") % {'email': email})
                     EmailAddress.objects.add_email(new_user, email)
-            return username, password # required for authenticate()
+            return username, password # requerido para la autentificacion
         else:
             new_user = User.objects.create_user(username, "", password)
             if email:
-                new_user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': email})
+                new_user.message_set.create(message=ugettext(u"Email de confirmacion enviado a %(email)s") % {'email': email})
                 EmailAddress.objects.add_email(new_user, email)
-            return username, password # required for authenticate()
+            return username, password # requerido para la autentificacion
 
 
 class UserForm(forms.Form):
@@ -215,25 +215,3 @@ class ChangeLanguageForm(CuentaForm):
         self.account.language = self.cleaned_data["language"]
         self.account.save()
         self.user.message_set.create(message=ugettext(u"Language successfully updated."))
-
-
-# @@@ these should somehow be moved out of account or at least out of this module
-
-#from account.models import OtherServiceInfo, other_service, update_other_services
-
-#class TwitterForm(UserForm):
-    #username = forms.CharField(label=_("Username"), required=True)
-    #password = forms.CharField(label=_("Password"), required=True,
-                               #widget=forms.PasswordInput(render_value=False))
-
-    #def __init__(self, *args, **kwargs):
-        #super(TwitterForm, self).__init__(*args, **kwargs)
-        #self.initial.update({"username": other_service(self.user, "twitter_user")})
-
-    #def save(self):
-        #from zwitschern.utils import get_twitter_password
-        #update_other_services(self.user,
-            #twitter_user = self.cleaned_data['username'],
-            #twitter_password = get_twitter_password(settings.SECRET_KEY, self.cleaned_data['password']),
-        #)
-        #self.user.message_set.create(message=ugettext(u"Successfully authenticated."))

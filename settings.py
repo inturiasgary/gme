@@ -133,7 +133,7 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 #configuracion para email
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'inturiasgary@gmail.com'
-EMAIL_HOST_PASSWORD = 'contrasena'
+EMAIL_HOST_PASSWORD = 'iomegasys123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

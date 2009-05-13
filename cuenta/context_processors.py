@@ -1,8 +1,4 @@
-
 from cuenta.models import Cuenta, AnonymousAccount
-
-def openid(request):
-    return {'openid': request.openid}
 
 def cuenta(request):
     if request.user.is_authenticated():
