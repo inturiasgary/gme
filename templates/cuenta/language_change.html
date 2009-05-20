@@ -1,18 +1,18 @@
-{% extends "account/base.html" %}
+{% extends "cuenta/base.html" %}
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Language" %}{% endblock %}
+{% block head_title %}{% trans "Lenguaje" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Language" %}</h1>
+    <h1>{% trans "Lenguaje" %}</h1>
     
-    <p>{% trans "Pinax can be used in your preferred language." %}</p>
+    <p>{% trans "Puedes usar tu lenguaje preferido." %}</p>
     
     <form method="POST" action="">
         <table>
             {{ form }}
-            <tr><td></td><td><input type="submit" value="{% trans "Change my language" %}" /></td></tr>
+            <tr><td></td><td><input type="submit" value="{% trans "Cambiar Lenguaje" %}" /></td></tr>
         </table>
     </form>
 {% endblock %}

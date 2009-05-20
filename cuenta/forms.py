@@ -205,13 +205,13 @@ class ChangeTimezoneForm(CuentaForm):
 
 class ChangeLanguageForm(CuentaForm):
 
-    language = forms.ChoiceField(label=_("Language"), required=True, choices=settings.LANGUAGES)
+    lenguaje = forms.ChoiceField(label=_("Lenguaje"), required=True, choices=settings.LANGUAGES)
 
     def __init__(self, *args, **kwargs):
         super(ChangeLanguageForm, self).__init__(*args, **kwargs)
-        self.initial.update({"language": self.account.language})
+        self.initial.update({"lenguaje": self.cuenta.lenguaje})
 
     def save(self):
-        self.account.language = self.cleaned_data["language"]
-        self.account.save()
-        self.user.message_set.create(message=ugettext(u"Language successfully updated."))
+        self.cuenta.lenguaje = self.cleaned_data["lenguaje"]
+        self.cuenta.save()
+        self.user.message_set.create(message=ugettext(u"Lenguaje satisfactoriamente cambiado."))

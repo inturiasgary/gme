@@ -4,6 +4,13 @@ from cuenta.models import Cuenta
 
 class LocaleMiddleware(object):
     """
+    Este es un simple middleware que pasa un request y decide
+    que objeton traducido va a instalar en el actual hilo context
+    dependiendo de la cuenta de usuario. esto permite
+    a las paginas traducirse de forma dinamica al lenguaje 
+    seleccionado por el usuario
+    """
+    """
     This is a very simple middleware that parses a request
     and decides what translation object to install in the current
     thread context depending on the user's account. This allows pages
@@ -22,9 +29,9 @@ class LocaleMiddleware(object):
 
     def process_request(self, request):
         translation.activate(self.get_language_for_user(request))
-        request.LANGUAGE_CODE = translation.get_language()
+        request.LANGUAGE_CODE = translation.get_language()  #establece el lenguaje
 
-    def process_response(self, request, response):
+    def process_response(self, request, response): #estable el lenguaje a ser traducido
         patch_vary_headers(response, ('Accept-Language',))
         response['Content-Language'] = translation.get_language()
         translation.deactivate()

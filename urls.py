@@ -15,6 +15,7 @@ urlpatterns = patterns('',
      url(r'^cuenta/', include('cuenta.urls')), # adicciona la aplicacion cuenta
      url(r'^about/', include('about.urls')),
      url(r'^perfiles/', include('perfiles.urls')),
+     url(r'^microblog/', include('microblog.urls')), #adicionado aplicacion microblog
      
 )
 
