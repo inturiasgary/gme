@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<h2>{% trans "Find a friend" %}</h2>
+
+<form action="{{ MICROBLOG_URL_BASE }}c/find/">
+    {% trans "Name" %}: {{ form_connect.name }}
+    {% trans "E-mail" %}: {{ form_connect.email }}
+
+    <input type="submit" value="{% trans "Find" %}"/>
+</form>
+

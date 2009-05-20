@@ -1,0 +1,65 @@
+{% extends "microblog/base.html" %}
+
+{% load i18n %}
+
+{% block meta %}{{ block.super }}
+
+{% if user.is_authenticated %}
+<link rel="alternate" type="application/rss+xml" title="RSS Feeds" href="{{ user.get_absolute_url }}feeds/rss/"/>
+<link rel="alternate" type="application/rss+xml" title="Atom Feeds" href="{{ user.get_absolute_url }}feeds/atom/"/>
+{% endif %}
+{% endblock meta %}
+
+{% block content %}{{ block.super }}
+{% if user.is_authenticated %}
+<div class="send_message">
+    {% include "microblog/add_entry_form.html" %}
+</div>
+
+<div class="entries">
+    {% if entries.count %}
+    <h2>{% trans "Last messages" %}</h2>
+
+    <div>
+        {% for entry in entries %}
+        <div class="entry" id="entry_{{ entry.id }}">
+            <a href="{{ entry.user.get_absolute_url }}">{{ entry.user }}</a>
+            @
+            <a href="{{ entry.get_absolute_url }}">{{ entry.date|timesince }}</a>
+            :
+
+            <p>
+            {{ entry.content|linebreaksbr|urlize }}
+            </p>
+
+            <a class="show_recipients" href="#entry_{{ entry.id }}">[{% trans "recipients" %}]</a>
+            <ul class="recipients">
+                {% for recipient in entry.recipients.all %}
+                <li><a href="{{ recipient.get_absolute_url }}">{{ recipient }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "You have no messages" %}</p>
+    {% endif %}
+</div>
+
+<div class="connections">
+    {% if connections.count %}
+    <h2>Connections</h2>
+
+    {% include "microblog/connections_list.html" %}
+    {% else %}
+    <p>{% trans "You have no connections" %}</p>
+    {% endif %}
+
+    {% include "microblog/connect_friend_form.html" %}
+</div>
+
+{% else %}
+{% trans "You are not authenticated" %}
+{% endif %}
+{% endblock content %}
+

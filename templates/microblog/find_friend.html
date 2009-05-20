@@ -1,0 +1,33 @@
+{% extends "microblog/base.html" %}
+
+{% load i18n %}
+
+{% block content %}{{ block.super }}
+<h1>{% trans "Find users" %}</h1>
+
+<div class="box">
+    <h2>{% trans "Find other" %}</h2>
+    <form>
+        <table class="form">
+            {{ form }}
+
+            <tr><th>&nbsp;</th><td><input type="submit" value="{% trans "Find" %}"/></td></tr>
+        </table>
+    </form>
+</div>
+
+{% if found_users.count %}
+<div class="users">
+    <h2>{% trans "Found other" %}</h2>
+
+    {% with found_users as users %}
+    {% include "microblog/users_list.html" %}
+    {% endwith %}
+</div>
+{% else %}
+<p>
+{% trans "User not found" %}
+</p>
+{% endif %}
+
+{% endblock content %}
