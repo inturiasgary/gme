@@ -12,5 +12,5 @@ urlpatterns = patterns('',
                        url(r'^c/(?P<conexion_id>\d+)/bloquear/$', 'microblog.views.conexion_bloquear',name="mic_bloquear"),
                        url(r'^c/(?P<conexion_id>\d+)/eliminar/$', 'microblog.views.conexion_eliminar', name="mic_eliminar"),
                        #detalle de usuarios
-                       url(r'^u(?P<username>[\w_-]+)/$', 'microblog.views.user_detalle', name="user_detalle"),
+                       url(r'^u(?P<username>[\w_-]+)/$', 'microblog.views.detalle_usuario', name="detalle_usuario"),
 )

@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
+import app_settings
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template.loader  import get_template
@@ -12,26 +13,26 @@ from django.contrib.auth.decorators import login_required
 from forms import FormEntrada, FormEncontrarAmigo, FormConexion
 
 def index(request):
-    MICROBLOG_URL_BASE = settings.MICROBLOG_URL_BASE
+    MICROBLOG_URL_BASE = app_settings.MICROBLOG_URL_BASE
     
-    form_entrada  = FormEntrada
-    form_conectar = FormEncontrarAmigo
+    form_entrada  = FormEntrada()
+    form_conectar = FormEncontrarAmigo()
     
     if request.user.is_authenticated():
-        entradas   = request.usuario.entradas_recibidos.all()[:settings.MICROBLOG_ENTRIES_LIMIT]
-        conexiones = request.usuario.conexiones_desde.all()
+        entradas   = request.user.entradas_recibidos.all()[:app_settings.MICROBLOG_ENTRIES_LIMIT]
+        conexiones = request.user.conexiones_desde.all()
         conexiones_mostrar_acciones = True
         
-        return render_to_response(
-                "microblog/index.html",
-                locals(),
-                context_instanceRequestContext(request),
+    return render_to_response(
+        "microblog/index.html",
+        locals(),
+        context_instance=RequestContext(request),
         )
 
 
 @login_required
 def editar_entrada(request, entrada_id=None):
-    MICROBLOG_URL_BASE = settings.MIBROBLOG_URL_BASE
+    MICROBLOG_URL_BASE = app_settings.MICROBLOG_URL_BASE
     
     if entrada_id:
         entrada = get_object_or_404(Entrada, id=entrada_id) #para editar
@@ -47,7 +48,7 @@ def editar_entrada(request, entrada_id=None):
             entrada.save() #salvamos la entrada
             
             if entrada:
-                return HttpResponseRedirect(settings.MICROBLOG_URL_BASE)
+                return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
     else:
         form = FormEntrada(instance=entrada)
             
@@ -58,7 +59,7 @@ def editar_entrada(request, entrada_id=None):
         )
 
 def buscar_amigo(request):
-    MICROBLOG_URL_BASE = settings.MICROBLOG_URL_BASE
+    MICROBLOG_URL_BASE = app_settings.MICROBLOG_URL_BASE
     
     if request.GET:
         form = FormEncontrarAmigo(request.GET)
@@ -72,9 +73,9 @@ def buscar_amigo(request):
         form = FormEncontrarAmigo()
         
     return render_to_response(
-        'microblog/encontrar_usuario.html',
+        'microblog/encontrar_amigo.html',
         locals(),
-        contex_instance = RequestContext(request),
+        context_instance = RequestContext(request),
         )
 
 @login_required
@@ -103,7 +104,7 @@ def conexion_aceptar(request, conexion_id):
     request.user.message_set.create(message=_('Conexion aceptada!'))
     
     return HttpResponseRedirect(
-        request.META.get('HTTP_REFERER', settings.MICROBLOG_URL_BASE)
+        request.META.get('HTTP_REFERER', app_settings.MICROBLOG_URL_BASE)
         )
 
 @login_required
@@ -115,7 +116,7 @@ def conexion_bloquear(request, conexion_id):
     request.user.message_set.create(message=_('Conexion bloqueada!'))
     
     return HttpResponseRedirect(
-        request.META.get('HTTP_REFERER', settings.MICROBLOG_URL_BASE)
+        request.META.get('HTTP_REFERER', app_settings.MICROBLOG_URL_BASE)
         )
 
 @login_required
@@ -126,17 +127,17 @@ def conexion_eliminar(request, conexion_id):
     request.user.message_set.create(message=_('Conexion Eliminida!'))
     
     return HttpResponseRedirect(
-        request.META.get('HTTP_REFERER', settings.MICROBLO_URL_BASE)
+        request.META.get('HTTP_REFERER', app_settings.MICROBLOG_URL_BASE)
         )
 
 def detalle_usuario(request, username):
-    MICROBLOG_URL_BASE =settings.MICROBLOG_URL_BASE
+    MICROBLOG_URL_BASE =app_settings.MICROBLOG_URL_BASE
     
     usuario_actual = get_object_or_404(User, username=username)
     conexiones = usuario_actual.conexiones_desde.filter(status=CONEXION_ACEPTADA)
     
     return render_to_response(
-        'microblog/detalle_usuario',
+        'microblog/detalles_usuario',
         locals(),
         context_instance=RequestContext(request),
         )

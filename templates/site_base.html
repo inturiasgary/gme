@@ -21,8 +21,8 @@
     {% if user.is_authenticated %}
         <table>
             <tr>
+                <td class="tab rtab_profile"><div><a href="{% url mic_index %}">{% trans "Microblog "%}</a></div></td>
                 <td class="tab rtab_profile"><div><a href="{% url detalle_perfil user %}">{% trans "Perfil" %}</a></div></td>
-                
             </tr>
         </table>
     {% endif %}

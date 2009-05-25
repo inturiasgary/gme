@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+import app_settings
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 

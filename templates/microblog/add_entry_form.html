@@ -1,9 +1,0 @@
-{% load i18n %}
-
-<h2>{% trans "Send a message" %}</h2>
-
-<form action="{{ MICROBLOG_URL_BASE }}e/add/" method="post">
-    {{ form_entry.content }}
-
-    <br/><input type="submit" value="{% trans "Send" %}"/>
-</form>

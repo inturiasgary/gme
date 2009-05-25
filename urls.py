@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
-from microblog.views import logout_page
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 import os 

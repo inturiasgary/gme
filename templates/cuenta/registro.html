@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Registrarse" %}{% endblock %}
 
 {% block body %}
     <div class="clearfix padtop">
@@ -11,7 +11,7 @@
             <legend>{% trans "Registro" %}</legend>
             
             {% if user.is_authenticated %}
-                <p>{% trans "You are already logged in." %}</p>
+                <p>{% trans "Tu ya estas logeado." %}</p>
             {% else %}
                 <p>{% trans "¿ Ya tienes una cuenta ?" %} <a href="{% url acct_login %}">{% trans "Ingresa" %}</a>!</p>
                 
