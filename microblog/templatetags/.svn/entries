@@ -1,0 +1,52 @@
+9
+
+dir
+6
+http://django-microblog2.googlecode.com/svn/trunk/microblog/templatetags
+http://django-microblog2.googlecode.com/svn
+
+
+
+2008-08-11T10:26:51.300258Z
+6
+marinho
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e1aed94f-4e53-0410-85c9-159baed554fb
+
+microblog_utils.py
+file
+
+
+
+
+2009-03-19T18:07:25.000000Z
+080666929f5af14d7e6bc8a4d364709a
+2008-08-11T10:26:51.300258Z
+6
+marinho
+
+__init__.py
+file
+
+
+
+
+2009-03-19T18:07:25.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-07-31T09:19:39.493879Z
+2
+marinho
+
