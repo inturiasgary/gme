@@ -44,20 +44,23 @@
 
 #home_tab .tab_home,
 #profile_tab .rtab_profile,
-#notices_tab .rtab_notices
+#notices_tab .rtab_notices,
+#microblog_tab .rtab_microblog
 {
     bottom: -1px !important;
     padding-bottom: 0 !important;
 }
 #home_tab .tab_home a,
 #profile_tab .rtab_profile a,
-#notices_tab .rtab_notices a
+#notices_tab .rtab_notices a,
+#microblog_tab .rtab_microblog a
 {
     color: #000 !important; /* selected tab text colour */
 }
 #home_tab .tab_home div,
 #profile_tab .rtab_profile div,
-#notices_tab .rtab_notices div
+#notices_tab .rtab_notices div,
+#microblog_tab .rtab_microblog div
 {
     margin: 0;
     background-color: #DEF !important; /* selected tab colour */

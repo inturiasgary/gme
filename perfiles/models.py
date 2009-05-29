@@ -24,6 +24,7 @@ class Perfil(models.Model):
         verbose_name_plural = _('perfiles')
 
 def create_perfil(sender, instance=None, **kwargs):
+    ''' Para cada usuario creado, se crea un perfil '''
     if instance is None:
         return
     perfil, created = Perfil.objects.get_or_create(user=instance)

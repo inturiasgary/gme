@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
+from templatetags import microblog_utils
 import app_settings
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, Http404
@@ -93,12 +94,12 @@ def conexion_adicionar(request, username):
     if not new:
         
         request.user.message_set.create(meesage=_('Tu ya estas conectado con el usuario!'))
-    return HttpResponseRedirect()
+    return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
 
 @login_required
 def conexion_aceptar(request, conexion_id):
     conexion = get_object_or_404(Conexion, id=conexion_id)
-    conexion.status = CONEXION_ACEPTADA
+    conexion.estado = CONEXION_ACEPTADA
     conexion.save()
     
     request.user.message_set.create(message=_('Conexion aceptada!'))
@@ -110,7 +111,7 @@ def conexion_aceptar(request, conexion_id):
 @login_required
 def conexion_bloquear(request, conexion_id):
     conexion = get_object_or_404(Conexion, id=conexion_id)
-    conexion.status = CONEXION_BLOQUEADA
+    conexion.estado = CONEXION_BLOQUEADA
     conexion.save()
     
     request.user.message_set.create(message=_('Conexion bloqueada!'))
@@ -134,10 +135,10 @@ def detalle_usuario(request, username):
     MICROBLOG_URL_BASE =app_settings.MICROBLOG_URL_BASE
     
     usuario_actual = get_object_or_404(User, username=username)
-    conexiones = usuario_actual.conexiones_desde.filter(status=CONEXION_ACEPTADA)
+    conexiones = usuario_actual.conexiones_desde.filter(estado=CONEXION_ACEPTADA)
     
     return render_to_response(
-        'microblog/detalles_usuario',
+        'microblog/detalles_usuario.html',
         locals(),
         context_instance=RequestContext(request),
         )

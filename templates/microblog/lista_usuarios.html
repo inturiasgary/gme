@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<ul class="lista_usuarios">
+    {% for user_item in usuarios %}
+    <li><a href="{{ user_item.get_absolute_url }}">{{ user_item }}</a></li>
+    {% endfor %}
+</ul>

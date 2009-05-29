@@ -108,8 +108,12 @@ INSTALLED_APPS = (
     'pagination',       #adicionado app para la paginacion
 )
 
+#ABSOLUTE_URL_OVERRIDES = {
+    #"auth.user": lambda o: "/perfiles/%s/" % o.username,
+#}
+
 ABSOLUTE_URL_OVERRIDES = {
-    "auth.user": lambda o: "/perfiles/%s/" % o.username,
+    "auth.user": lambda o: "/microblog/u/%s/" % o.username,
 }
 
 AUTH_PROFILE_MODULE = 'perfiles.Perfil' #configuracion para los perfiles de usuario

@@ -7,7 +7,7 @@ class AdminRepositorio(ModelAdmin):
     list_display = ('creador', 'nombre', 'fecha', 'borrado')
 
 class AdminMiembro(ModelAdmin):
-    list_display = ('usuario', 'bloqueado', 'repositorio')
+    list_display = ('usuario', 'activo', 'repositorio')
     
 class AdminTopico(ModelAdmin):
     list_display = ('repositorio', 'titulo')

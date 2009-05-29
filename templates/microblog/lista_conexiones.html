@@ -1,0 +1,31 @@
+{% load i18n %}
+<script laguage="JavaScript">
+            var a = Math.round(Math.random()*(3-1))+1;
+            a = a * 10000;
+            var myTimer = setTimeout("location.href= document.URL",a);
+        </script> 
+
+<ul>
+    {% for conexion in conexiones %}
+    <li>
+    <a href="{{ conexion.amigo.get_absolute_url }}">{{ conexion.amigo }}</a>
+
+    {% if conexiones_mostrar_acciones %}
+    <br/>
+
+    {{ conexion.get_estado_display }}
+
+    {% ifnotequal conexion.estado "a" %}
+        <a href="{{ conexion.get_absolute_url }}aceptar/">{% trans "Aceptar" %}</a>
+    {% endifnotequal %}
+
+    {% ifnotequal conexion.estado "b" %}
+        <a href="{{ conexion.get_absolute_url }}bloquear/">{% trans "Bloquear" %}</a>
+    {% endifnotequal %}
+
+    <a href="{{ conexion.get_absolute_url }}eliminar/">{% trans "Eliminar" %}</a>
+    {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+

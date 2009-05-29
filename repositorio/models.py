@@ -26,7 +26,7 @@ class Miembro(models.Model):
     fecha_ingreso   = models.DateTimeField(default=datetime.now)
     usuario         = models.ForeignKey(User)
     repositorio     = models.ForeignKey(Repositorio)
-    bloqueado       = models.BooleanField(_("bloqueado"), default=False) #El creador del repositorio decidira a quien bloquear
+    activo       = models.BooleanField(_("activo"), default=False) #El creador del repositorio decidira a quien bloquear
     
     #class Meta:
         #ordering = ('-fecha_ingreso')

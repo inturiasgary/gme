@@ -16,6 +16,7 @@ class Cuenta(models.Model):
         return self.user.username
 
 def create_Cuenta(sender, instance=None, **kwargs): #asocia al usuario creado con la cuenta
+    ''' Creamos una cuenta automaticamente para cada usuario creado '''
     if instance is None:
         return
     cuenta, created = Cuenta.objects.get_or_create(user=instance)

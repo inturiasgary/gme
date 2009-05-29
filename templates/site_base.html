@@ -21,7 +21,7 @@
     {% if user.is_authenticated %}
         <table>
             <tr>
-                <td class="tab rtab_profile"><div><a href="{% url mic_index %}">{% trans "Microblog "%}</a></div></td>
+                <td class="tab rtab_microblog"><div><a href="{% url mic_index %}">{% trans "Microblog "%}</a></div></td>
                 <td class="tab rtab_profile"><div><a href="{% url detalle_perfil user %}">{% trans "Perfil" %}</a></div></td>
             </tr>
         </table>
@@ -30,7 +30,7 @@
 
 {% block footer %}
 <div class="legal">
-    {% trans "&copy; 2008 &lt; gme software;"%}
+    {% trans "&copy; 2009 &lt; gme software;"%}
     - <a href="{% url about %}">{% trans "Acerca de gme" %}</a>
 </div>
 
