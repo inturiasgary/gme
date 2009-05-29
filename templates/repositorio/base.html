@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block rtab_id %}id="microblog_tab"{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url detalle_perfil user.username %} ">{% trans "Global" %}</a></li>
+            <li><a href="{% url lista_perfil %} ">{% trans "Repositorios" %}</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
+
+{% block body%}{{ block.super }}
+
+{% endblock body %}

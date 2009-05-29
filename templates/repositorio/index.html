@@ -1,0 +1,64 @@
+{% extends "repositorio/base.html" %}
+
+{% load i18n %}
+
+{% block meta %}{{ block.super }}
+
+{% endblock meta %}
+
+{% block body %}{{ block.super }}
+{% if user.is_authenticated %}
+<h1>Repositorios</h1>
+<div class="entradas">
+    {% if repositorios_mios.count %}
+    <h2>{% trans "Mis Repositorios." %}</h2>
+
+    <div>
+        {% for repositorio_mio in repositorios_mios %}
+        <div class="entrada" id="entrada_{{ entrada.id }}">
+            <a href="{{ repositorio_mio.nombre }}">{{ repositorio_mio.nombre }}</a>
+            @
+            <a href="{{ repositorio_mio.fecha }}">{{ repositorio_mio.fecha }}</a>
+            :
+
+            <p>
+            {{ repositorio_mio.descripcion|linebreaksbr|urlize }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "Aun no creaste ningun repositorio." %}</p>
+    {% endif %}
+</div>
+
+<h1>Repositorios donde participo</h1>
+<div class="entradas">
+    {% if repositorios_participo.count %}
+    <h2>{% trans "Los repos." %}</h2>
+
+    <div>
+        {% for repositorio_participo in repositorios_participo %}
+        <div class="entrada" id="entrada_{{ entrada.id }}">
+            <a href="{{ repositorio_participo.nombre }}">{{ repositorio_participo.nombre }}</a>
+            @
+            <a href="{{ repositorio_participo.fecha }}">{{ repositorio_participo.fecha }}</a>
+            :
+
+            <p>
+            {{ repositorio_participo.descripcion|linebreaksbr|urlize }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
+    {% endif %}
+</div>
+
+
+{% else %}
+{% trans "No estas logeado" %}
+{% endif %}
+{% endblock body %}
+
