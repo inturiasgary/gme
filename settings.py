@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     
     #aplicaciones secundarias a django
     'notification',     #adicionado app externa notification para notificaciones en tiempo r
-    'microblog',        #adicionado app microblog
+	'microblog',        #adicionado app microblog
     'repositorio',      #adicionado app repositorio
     'cuenta',           #adicionado app cuenta, administrador de cuentas
     'about',

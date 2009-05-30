@@ -4,10 +4,10 @@ from django.contrib import admin
 from models import Repositorio, Miembro, Topico, Commit
 
 class AdminRepositorio(ModelAdmin):
-    list_display = ('creador', 'nombre', 'fecha', 'borrado')
+    list_display = ('nombre', 'fecha', 'borrado')
 
 class AdminMiembro(ModelAdmin):
-    list_display = ('usuario', 'activo', 'repositorio')
+    list_display = ('usuario', 'creador','activo', 'repositorio')
     
 class AdminTopico(ModelAdmin):
     list_display = ('repositorio', 'titulo')

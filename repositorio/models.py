@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class Repositorio(models.Model):
     
-    creador     = models.ForeignKey(User, related_name="repositorios_creados", verbose_name=_("creador"))
+    #creador     = models.ForeignKey(User, related_name="repositorios_creados", verbose_name=_("creador"))
     nombre      = models.CharField(max_length=100, unique=True)
     descripcion = models.CharField(max_length=100)
     fecha       = models.DateTimeField(default=datetime.now, blank=True)
@@ -13,20 +13,24 @@ class Repositorio(models.Model):
     borrado     = models.BooleanField(_("borrado"), default=False)
     
     #class Meta:
-        #ordering = ('-fecha',)
+        #verbose_name = _('repositorio')
+        #verbose_name_plural = _('repositorios')
+        #ordering = '-fecha'
     
     def get_absolute_url(self):
-        return "%sdfsdf"
+        return ('detalle_repo',None,{'nombre_repo':self.nombre})
+    get_absolute_url = models.permalink(get_absolute_url)
     
     def __unicode__(self):
-        return "%s creado por %s"%(self.nombre, self.creador.username)
+        return "%s creado"%(self.nombre)
         
 class Miembro(models.Model):
     
     fecha_ingreso   = models.DateTimeField(default=datetime.now)
     usuario         = models.ForeignKey(User)
     repositorio     = models.ForeignKey(Repositorio)
-    activo       = models.BooleanField(_("activo"), default=False) #El creador del repositorio decidira a quien bloquear
+    creador         = models.BooleanField(_("Es creador?"), default=False)
+    activo          = models.BooleanField(_("activo"), default=False) #El creador del repositorio decidira a quien bloquear
     
     #class Meta:
         #ordering = ('-fecha_ingreso')
