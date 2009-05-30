@@ -1,0 +1,52 @@
+9
+
+dir
+148
+http://svn.jdub.webfactional.com/pinax/trunk/pinax-0.5.1/projects/basic_project/templates/announcements
+http://svn.jdub.webfactional.com
+
+
+
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+2fc2e0b3-236a-4663-9028-bc6d907573d5
+
+announcement_detail.html
+file
+
+
+
+
+2009-03-04T16:01:42.000000Z
+aeccb77c54b844acc9f61ad4e657ed16
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
+announcement_list.html
+file
+
+
+
+
+2009-03-04T16:01:42.000000Z
+ecc4647e719855ffc4a15412ca54fdf5
+2009-02-21T04:49:38.246627Z
+93
+dherbst
+
