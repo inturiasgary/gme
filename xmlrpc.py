@@ -10,7 +10,8 @@
 
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 from django.http import HttpResponse
-
+from django.contrib.auth.models import User
+from repositorio.models import *
 # Create a Dispatcher; this handles the calls and translates info to function maps
 #dispatcher = SimpleXMLRPCDispatcher() # Python 2.4
 dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5
@@ -30,9 +31,9 @@ def rpc_handler(request):
 	if len(request.POST):
 		response.write(dispatcher._marshaled_dispatch(request.raw_post_data))
 	else:
-		response.write("<b>Servicio XML-RPC ofrecido por el sistema web.</b><br>")
-		response.write("You need to invoke it using an XML-RPC Client!<br>")
-		response.write("The following methods are available:<ul>")
+		response.write("<b>Servicio XML-RPC ofrecido por el sistema web GME.</b><br>")
+		response.write("Metodos disponibles mediante XML-RPC!<br>")
+		response.write("Los siguientes metodos estan disponibles:<ul>")
 		methods = dispatcher.system_listMethods()
 
 		for method in methods:
@@ -52,13 +53,14 @@ def rpc_handler(request):
 	response['Content-length'] = str(len(response.content))
 	return response
 
-def multiply(a, b):
-	"""
-	Multiplication is fun!
-	Takes two arguments, which are multiplied together.
-	Returns the result of the multiplication!
-	"""
-	return a*b
+def crearRepositorio(usuario, nombre,descripcion,direccionWeb,emailAdmin):
+	usuario = User.objects.get(username=usuario)
+	repositorio = Repositorio(nombre=nombre,descripcion=descripcion,direccionWeb=direccionWeb,emailAdmin=emailAdmin)
+	repositorio.save()
+	miembro = Miembro(usuario=usuario,repositorio=repositorio, creador=True, activo=True)
+	miembro.save()
+	return True
+	
 
 def oracion(a):
 	print "Palabra recibida %s"%a
@@ -68,5 +70,5 @@ def oracion(a):
 # you have to manually register all functions that are xml-rpc-able with the dispatcher
 # the dispatcher then maps the args down.
 # The first argument is the actual method, the second is what to call it from the XML-RPC side...
-dispatcher.register_function(multiply, 'multiply')
 dispatcher.register_function(oracion, 'oracion')
+dispatcher.register_function(crearRepositorio,'crearRepositorio')
