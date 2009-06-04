@@ -1,0 +1,19 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block rtab_id %}id="account_tab"{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url acct_email %}">{% trans "Direcciones E-mail" %}</a></li>
+            {% comment %}<li><a href="{% url openid_assoc %}">{% trans "OpenID Associations" %}</a></li>{% endcomment %}
+            <li><a href="{% url acct_passwd %}">{% trans "Cambiar Contraseña" %}</a></li>
+            <li><a href="{% url acct_language_change %}">{% trans "Lenguaje" %}</a></li>
+            <li><a href="{% url acct_timezone_change %}">{% trans "Huso Horario" %}</a></li>
+        </ul>
+    {% else %}
+        &nbsp; {# necesitado para dar una altura al subnav #}
+    {% endif %}
+{% endblock %}
