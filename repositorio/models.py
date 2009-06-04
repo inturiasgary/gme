@@ -6,16 +6,18 @@ from django.utils.translation import ugettext_lazy as _
 class Repositorio(models.Model):
     
     #creador     = models.ForeignKey(User, related_name="repositorios_creados", verbose_name=_("creador"))
-    nombre      = models.CharField(max_length=100, unique=True)
-    descripcion = models.CharField(max_length=100)
-    fecha       = models.DateTimeField(default=datetime.now, blank=True)
-    miembros    = models.ManyToManyField(User, through="Miembro")
-    borrado     = models.BooleanField(_("borrado"), default=False)
+    nombre       = models.CharField(max_length=100, unique=True)
+    descripcion  = models.CharField(max_length=100)
+    fecha        = models.DateTimeField(default=datetime.now, blank=True)
+    direccionWeb = models.URLField()
+    emailAdmin   = models.EmailField()
+    miembros     = models.ManyToManyField(User, through="Miembro")
+    borrado      = models.BooleanField(_("borrado"), default=False)
     
     #class Meta:
         #verbose_name = _('repositorio')
         #verbose_name_plural = _('repositorios')
-        #ordering = '-fecha'
+        #ordering = [-fecha]
     
     def get_absolute_url(self):
         return ('detalle_repo',None,{'nombre_repo':self.nombre})
@@ -23,6 +25,14 @@ class Repositorio(models.Model):
     
     def __unicode__(self):
         return "%s creado"%(self.nombre)
+    
+    #def create_miembro(sender, instance=None, **kwargs):
+        #''' Para cada repositorio creado, Se realiza automaticamente la asociacion del miembro creador '''
+        #if instance is None:
+            #return
+        #perfil, created = Miembro.objects.get_or_create(repositorio=instance)
+    
+    #post_save.connect(create_miembro, sender=Repositorio)
         
 class Miembro(models.Model):
     

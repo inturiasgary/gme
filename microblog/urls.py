@@ -3,7 +3,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('',
                        url(r'^$','microblog.views.index', name="mic_index"),
                        #adicionar entradas
-                       url(r'^e/adicionar/$', 'microblog.views.editar_entrada', name="mic_eadicionar"),
+                       url(r'^e/adicionar/$', 'microblog.views.editar_entrada', name="mic_adicionar"),
                        #conecciones
                        url(r'^c/buscar/$', 'microblog.views.buscar_amigo', name="mic_buscaramigo"),
                        url(r'^c/adicionar/(?P<username>[\w_-]+)/$', 'microblog.views.conexion_adicionar', name="mic_cadicionar"),

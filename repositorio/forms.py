@@ -20,7 +20,7 @@ import re
             #return nombre
         #raise forms.ValidationError(_('Nombre de repositorio ya registrado, favor elige otro.'))
             
-class FormRepo(forms.ModelForm):
+class FormRepositorio(forms.ModelForm):
     class Meta:
         model = Repositorio
         fields = ('nombre','descripcion','direccionWeb','emailAdmin',)
