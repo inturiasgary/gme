@@ -24,7 +24,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # system time zone.
 TIME_ZONE = 'America/La_Paz'
 
-LANGUAGE_CODE = 'es-bo'
+LANGUAGE_CODE = 'es'
 
 SITE_ID = 1
 
@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     
     #aplicaciones secundarias a django
     'notification',     #adicionado app externa notification para notificaciones en tiempo r
-	'microblog',        #adicionado app microblog
+    'microblog',        #adicionado app microblog
     'repositorio',      #adicionado app repositorio
     'cuenta',           #adicionado app cuenta, administrador de cuentas
     'about',
@@ -105,7 +105,7 @@ INSTALLED_APPS = (
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
     'timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
-    'pagination',       #adicionado app para la paginacion
+    'pagination',#adicionado app para la paginacion
 )
 
 #ABSOLUTE_URL_OVERRIDES = {

@@ -1,6 +1,5 @@
 #coding: utf-8
 import re #importacion para el uso de expresiones regulares
-
 from django import forms
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -20,9 +19,9 @@ from timezones.forms import TimeZoneField #para hacer el uso de zonas horarias
 
 class LoginForm(forms.Form):
 
-    username      = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
-    password      = forms.CharField(label=_(u"Contraseña"), widget=forms.PasswordInput(render_value=False))
-    recordar      = forms.BooleanField(label=_(u"Recordármelo"), help_text=_(u"Si elije la opción, sera recordada por 3 semanas"), required=False)
+    username      = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
+    password      = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
+    recordar      = forms.BooleanField(label=_("Remember"), help_text=_(u"Si elije la opción, sera recordada por 3 semanas"), required=False)
 
     user = None
 
@@ -54,10 +53,10 @@ class LoginForm(forms.Form):
 alnum_re = re.compile(r'^\w+$')
 class RegistroForm(forms.Form):
 
-    nombreUsuario    = forms.CharField(label=_("Nombre de usuario"), max_length=30, widget=forms.TextInput())
+    nombreUsuario    = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
     password1        = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
-    password2        = forms.CharField(label=_("Password(de nuevo)"), widget=forms.PasswordInput(render_value=False))
-    email            = forms.EmailField(label=_("Email (opcional)"), required=False, widget=forms.TextInput())
+    password2        = forms.CharField(label=_("Password(Again)"), widget=forms.PasswordInput(render_value=False))
+    email            = forms.EmailField(label=_("Email (optional)"), required=False, widget=forms.TextInput())
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
 
     def clean_nombreUsuario(self):

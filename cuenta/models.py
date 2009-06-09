@@ -10,7 +10,7 @@ class Cuenta(models.Model):
     
     user = models.ForeignKey(User, unique=True, verbose_name=_('usuario'))
     timezone = TimeZoneField(_('timezone'))
-    lenguaje = models.CharField(_('lenguaje'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    lenguaje = models.CharField(_('language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
     
     def __unicode__(self):
         return self.user.username
