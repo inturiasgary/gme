@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-08 17:54-0400\n"
+"POT-Creation-Date: 2009-06-09 11:38-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr ""
 msgid "template to load for the plugin."
 msgstr ""
 
-#: cuenta/forms.py:22 cuenta/forms.py:56
+#: cuenta/forms.py:22 cuenta/forms.py:56 cuenta/models.py:11
 msgid "Username"
 msgstr ""
 
@@ -102,8 +102,8 @@ msgid "Remember"
 msgstr "Recordar:"
 
 #: cuenta/forms.py:24
-msgid "Si elije la opción, sera recordada por 3 semanas"
-msgstr ""
+msgid "If you check this option, password was remember by 3 weeks"
+msgstr "Si usted selecciona, sera recordado por tres semanas"
 
 #: cuenta/forms.py:36
 msgid "Esta cuenta esta actualmente inactiva."
@@ -193,7 +193,7 @@ msgstr ""
 msgid "Password reset"
 msgstr ""
 
-#: cuenta/forms.py:194
+#: cuenta/forms.py:194 cuenta/models.py:12
 msgid "Timezone"
 msgstr ""
 
@@ -201,26 +201,12 @@ msgstr ""
 msgid "Huso Horario  actualizado."
 msgstr ""
 
-#: cuenta/forms.py:207 templates/cuenta/base.html:12
-#: templates/cuenta/language_change.html:5
-#: templates/cuenta/language_change.html:8
-msgid "Lenguaje"
-msgstr ""
+#: cuenta/forms.py:207 cuenta/models.py:13
+msgid "Language"
+msgstr "Lenguaje"
 
 #: cuenta/forms.py:216
-msgid "Lenguaje satisfactoriamente cambiado."
-msgstr ""
-
-#: cuenta/models.py:11
-msgid "usuario"
-msgstr ""
-
-#: cuenta/models.py:12
-msgid "timezone"
-msgstr ""
-
-#: cuenta/models.py:13
-msgid "language"
+msgid "Language changed satisfactory."
 msgstr ""
 
 #: cuenta/views.py:43
@@ -701,6 +687,11 @@ msgstr ""
 
 #: templates/cuenta/base.html:11
 msgid "Cambiar Contraseña"
+msgstr ""
+
+#: templates/cuenta/base.html:12 templates/cuenta/language_change.html:5
+#: templates/cuenta/language_change.html:8
+msgid "Lenguaje"
 msgstr ""
 
 #: templates/cuenta/base.html:13 templates/cuenta/timezone_change.html:5

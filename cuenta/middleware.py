@@ -22,7 +22,7 @@ class LocaleMiddleware(object):
         if request.user.is_authenticated():
             try:
                 cuenta = Cuenta.objects.get(user=request.user)
-                return cuenta.lenguaje
+                return cuenta.language
             except Cuenta.DoesNotExist:
                 pass
         return translation.get_language_from_request(request)
@@ -31,7 +31,7 @@ class LocaleMiddleware(object):
         translation.activate(self.get_language_for_user(request))
         request.LANGUAGE_CODE = translation.get_language()  #establece el lenguaje
 
-    def process_response(self, request, response): #estable el lenguaje a ser traducido
+    def process_response(self, request, response): #establece el lenguaje a ser traducido
         patch_vary_headers(response, ('Accept-Language',))
         response['Content-Language'] = translation.get_language()
         translation.deactivate()

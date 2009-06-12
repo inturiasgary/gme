@@ -7,11 +7,15 @@
 {% endblock meta %}
 
 {% block body %}{{ block.super }}
+
 {% if user.is_authenticated %}
-<h1>Repositorios</h1>
+
+<p><h1>{% trans "Repositories" %}</h1></p>
+
 <div class="entradas">
     {% if repositorios_mios.count %}
-    <h2>{% trans "Mis Repositorios." %}</h2>
+    <p><h1>{% trans "My Repositories." %}</h1></p>
+    <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
 
     <div>
         {% for repositorio_mio in repositorios_mios %}
@@ -28,7 +32,7 @@
         {% endfor %}
     </div>
     {% else %}
-    <p>{% trans "Aun no creaste ningun repositorio." %}</p>
+    <p>{% trans "Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
     {% endif %}
 </div>
 

@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
 
     username      = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
     password      = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
-    recordar      = forms.BooleanField(label=_("Remember"), help_text=_(u"Si elije la opción, sera recordada por 3 semanas"), required=False)
+    recordar      = forms.BooleanField(label=_("Remember"), help_text=_("If you check this option, password was remember by 3 weeks"), required=False)
 
     user = None
 
@@ -35,7 +35,7 @@ class LoginForm(forms.Form):
             else:
                 raise forms.ValidationError(_("Esta cuenta esta actualmente inactiva."))
         else:
-            raise forms.ValidationError(_(u"El nombre usuario y/o contraseña son incorrectos."))
+            raise forms.ValidationError(_("El nombre usuario y/o contraseña son incorrectos."))
         return self.cleaned_data
 
     def login(self, request):
@@ -56,7 +56,7 @@ class RegistroForm(forms.Form):
     nombreUsuario    = forms.CharField(label=_("Username"), max_length=30, widget=forms.TextInput())
     password1        = forms.CharField(label=_("Password"), widget=forms.PasswordInput(render_value=False))
     password2        = forms.CharField(label=_("Password(Again)"), widget=forms.PasswordInput(render_value=False))
-    email            = forms.EmailField(label=_("Email (optional)"), required=False, widget=forms.TextInput())
+    email            = forms.EmailField(label=_("Email(optional)"), required=False, widget=forms.TextInput())
     confirmation_key = forms.CharField(max_length=40, required=False, widget=forms.HiddenInput())
 
     def clean_nombreUsuario(self):
@@ -204,13 +204,13 @@ class ChangeTimezoneForm(CuentaForm):
 
 class ChangeLanguageForm(CuentaForm):
 
-    lenguaje = forms.ChoiceField(label=_("Lenguaje"), required=True, choices=settings.LANGUAGES)
+    language = forms.ChoiceField(label=_("Language"), required=True, choices=settings.LANGUAGES)
 
     def __init__(self, *args, **kwargs):
         super(ChangeLanguageForm, self).__init__(*args, **kwargs)
-        self.initial.update({"lenguaje": self.cuenta.lenguaje})
+        self.initial.update({"language": self.cuenta.language})
 
     def save(self):
-        self.cuenta.lenguaje = self.cleaned_data["lenguaje"]
+        self.cuenta.language = self.cleaned_data["language"]
         self.cuenta.save()
-        self.user.message_set.create(message=ugettext(u"Lenguaje satisfactoriamente cambiado."))
+        self.user.message_set.create(message=ugettext("Language changed satisfactory."))

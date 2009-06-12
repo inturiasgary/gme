@@ -8,9 +8,9 @@ from timezones.fields import TimeZoneField  #para utilizar campos de zona horari
 
 class Cuenta(models.Model):
     
-    user = models.ForeignKey(User, unique=True, verbose_name=_('usuario'))
-    timezone = TimeZoneField(_('timezone'))
-    lenguaje = models.CharField(_('language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    user = models.ForeignKey(User, unique=True, verbose_name=_('Username'))
+    timezone = TimeZoneField(_('Timezone'))
+    language = models.CharField(_('Language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
     
     def __unicode__(self):
         return self.user.username
@@ -23,7 +23,7 @@ def create_Cuenta(sender, instance=None, **kwargs): #asocia al usuario creado co
 
 post_save.connect(create_Cuenta, sender=User)
 
-class AnonymousAccount(object):
+class CuentaAnonima(object):
     def __init__(self, request=None):
         self.user = AnonymousUser()
         self.timezone = settings.TIME_ZONE
@@ -33,4 +33,4 @@ class AnonymousAccount(object):
             self.language = settings.LANGUAGE_CODE
 
     def __unicode__(self):
-        return "AnonymousAccount"
+        return "CuentaAnonima"

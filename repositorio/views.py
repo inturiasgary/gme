@@ -38,5 +38,23 @@ def editar_repositorio(request, repositorio_id=None):
         'repositorio/editar_repositorio.html',
         locals(),
         context_instance=RequestContext(request),
-        )
+    )
+
+@login_required
+def repo(request, nombre=None):
+    if nombre:
+        repositorio       = get_object_or_404(Repositorio, nombre=nombre)
+        miembro           = Miembro.objects.get(usuario=request.user, repositorio=repositorio)
+        if (miembro.creador == True and miembro.activo == True):
+            estado = "Es creador y esta activo"
+        if (miembro.activo == True ):
+            estado = "No es creador y esta activo"
+        if (miembro.activo == False):
+            estado = "No esta activo"
+    return render_to_response(
+        'repositorio/detalle_repositorio.html',
+        locals(),
+        context_instance=RequestContext(request),
+    )
+        
 

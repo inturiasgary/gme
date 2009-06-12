@@ -13,7 +13,6 @@
     <h1>{% blocktrans %}Perfil de {{ other_user }}{% endblocktrans %}</h1>
     
     <div class="profile_info">
-    hola como estas
         {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}
         {% if other_user.get_profile.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_profile.comentario }}</p>{% endif %}
         {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}
