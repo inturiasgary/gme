@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}lock title{% endblock %}
+
+{% block body %}
+<h1>Repositorio {{ repositorio.name }}</h1>
+
+<div class="repositorio_info">
+    <h2>{% trans "Repository information" %}</h2>
+    <table>
+        <tr>
+            <td>{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
+        </tr>
+        <tr>
+            <td>{% trans "Administrator email:" %}</td> <td>{{ repositorios.emailAdmin }}
+        </tr>
+    </table>
+</div>
+
+{% if user.is_authenticated %}
+    {% if is_me %}
+        <p><a href="#" onclick="$('#repositorio_form').toggle(); return false;">{% trans "Editar Repositorio"%}</a></p>
+        
+        <form id="repositorio_form" method="POST" action="" style="display: none;">
+            <table> 
+                {{ repositorio_form }}
+                <tr><td></td><td><input type="hidden" name="action" value="actualizar" /><input type="submit" value="{% trans "Update" %}"</td></tr>
+            </table>    
+        </form>
+    {% endif %}
+{% endif %}
+{% endblock %}
+{% block extra_body %}
+    <script type="text/javascript">
+        $().ready(function() {
+            {% if repositorio_form.errors %}
+                $('#repositorio_form').show();
+            {% endif %}
+        });
+    </script>
+{% endblock %}
