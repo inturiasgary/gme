@@ -33,9 +33,9 @@ class LoginForm(forms.Form):
             if user.is_active:
                 self.user = user
             else:
-                raise forms.ValidationError(_("Esta cuenta esta actualmente inactiva."))
+                raise forms.ValidationError(_("Account is disabled"))
         else:
-            raise forms.ValidationError(_("El nombre usuario y/o contraseña son incorrectos."))
+            raise forms.ValidationError(_("Username or password wrong"))
         return self.cleaned_data
 
     def login(self, request):
@@ -146,9 +146,9 @@ class AddEmailForm(UserForm):
 
 class ChangePasswordForm(UserForm):
 
-    oldpassword = forms.CharField(label=_(u"Contraseña actual"), widget=forms.PasswordInput(render_value=False))
-    password1 = forms.CharField(label=_(u"Nueva contraseña"), widget=forms.PasswordInput(render_value=False))
-    password2 = forms.CharField(label=_(u"Nueva Contraseña (nuevamente)"), widget=forms.PasswordInput(render_value=False))
+    oldpassword = forms.CharField(label=_("Current Password"), widget=forms.PasswordInput(render_value=False))
+    password1   = forms.CharField(label=_("New Password"), widget=forms.PasswordInput(render_value=False))
+    password2   = forms.CharField(label=_("New Password (again)"), widget=forms.PasswordInput(render_value=False))
 
     def clean_oldpassword(self):
         if not self.user.check_password(self.cleaned_data.get("oldpassword")):

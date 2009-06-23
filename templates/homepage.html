@@ -7,6 +7,7 @@
 {% block tab_id %}id="home_tab"{% endblock %} {% comment %} para poder verificar que tab mostrar en home page {% endcomment %}
 
 {% block body %}
+<div class="left-form">
     {% blocktrans %}
         <p><b>GME</b> Bienvenidos al sistema de notificacion de commit de repositorios con git</p>
     {% endblocktrans %}
@@ -17,4 +18,9 @@
         {% url acct_login as login_url %}
         <p>{% blocktrans %}Puedes registrarte en <a href="{{ registro_url }}">Registrate</a> y <a href="{{ login_url }}">Ingresa</a> para utilizar este sitio. {% endblocktrans %}</p>
     {% endif %}
+</div>
+
+<div class="right-form">
+    <h1>Ultimos Repositorios creados </h1>
+</div>
 {% endblock %}

@@ -93,7 +93,7 @@ def conexion_adicionar(request, username):
     
     if not new:
         
-        request.user.message_set.create(meesage=_('Tu ya estas conectado con el usuario!'))
+        request.user.message_set.create(message=_('Tu ya estas conectado con el usuario!'))
     return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
 
 @login_required

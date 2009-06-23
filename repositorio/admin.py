@@ -4,7 +4,7 @@ from django.contrib import admin
 from models import Repositorio, Miembro, Topico, Commit
 
 class AdminRepositorio(ModelAdmin):
-    list_display = ('nombre', 'fecha', 'borrado')
+    list_display = ('nombre', 'fecha', 'activo')
 
 class AdminMiembro(ModelAdmin):
     list_display = ('usuario', 'creador','activo', 'repositorio')

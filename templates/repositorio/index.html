@@ -10,83 +10,20 @@
 
 {% if user.is_authenticated %}
 
-<p><h1>{% trans "Repositories" %}</h1></p>
-
-<div class="entradas">
-    {% if repositorios_mios.count %}
-    <p><h1>{% trans "My Repositories." %}</h1></p>
-    <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
-
-    <div>
-        {% for repositorio_mio in repositorios_mios %}
-        <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_mio.nombre }}">{{ repositorio_mio.nombre }}</a>
-            @
-            <a href="{{ repositorio_mio.fecha }}">{{ repositorio_mio.fecha }}</a>
-            :
-
-            <p>
-            {{ repositorio_mio.descripcion|linebreaksbr|urlize }}
-            </p>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p>{% trans "Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
-    {% endif %}
-</div>
-
-<h1>Repositorios donde participo</h1>
-<div class="entradas">
-    {% if repositorios_participo.count %}
-    <h2>{% trans "Los repos." %}</h2>
-
-    <div>
-        {% for repositorio_participo in repositorios_participo %}
-        <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_participo.nombre }}">{{ repositorio_participo.nombre }}</a>
-            @
-            <a href="{{ repositorio_participo.fecha }}">{{ repositorio_participo.fecha }}</a>
-            :
-
-            <p>
-            {{ repositorio_participo.descripcion|linebreaksbr|urlize }}
-            </p>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
-    {% endif %}
-</div>
-
-<h1>Repositorios por participar(Pendientes)</h1>
-<div class="entradas">
-    {% if repositorios_pendiente.count %}
-    <h2>{% trans "Los repos." %}</h2>
-
-    <div>
-        {% for repositorio_pendiente in repositorios_pendiente %}
-        <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_participo.nombre }}">{{ repositorio_pendiente.nombre }}</a>
-            @
-            <a href="{{ repositorio_participo.fecha }}">{{ repositorio_pendiente.fecha }}</a>
-            :
-
-            <p>
-            {{ repositorio_pendiente.descripcion|linebreaksbr|urlize }}
-            </p>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
-    {% endif %}
-</div>
-
+    <p><h1>{% trans "Repositories" %}</h1></p>
+    
+    {% include "repositorio/repositorios_mios.html" %}
+    
+    <h1>Repositorios donde participo</h1>
+    
+    {% include "repositorio/repositorios_participo.html" %}
+    
+    <h1>Repositorios por participar(Pendientes)</h1>
+    
+    {% include "repositorio/repositorios_participar.html" %}
 
 {% else %}
-{% trans "No estas logeado" %}
+    {% trans "No estas logeado" %}
 {% endif %}
 {% endblock body %}
 

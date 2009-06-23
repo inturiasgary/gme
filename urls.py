@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic.simple import direct_to_template
 import os 
-
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,7 +14,7 @@ urlpatterns = patterns('',
      url(r'^about/', include('about.urls')),
      url(r'^perfiles/', include('perfiles.urls')),
      url(r'^microblog/', include('microblog.urls')), #adicionado aplicacion microblog
-     url(r'^repositorio/', include('repositorio.urls')), #adicionado aplicacion microblog
+     url(r'^repositorio/', include('repositorio.urls')), #adicionado aplicacion repositorio
      
 )
 
