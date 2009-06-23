@@ -1,0 +1,24 @@
+{% load i18n %}
+<div class="entradas">
+    {% if repositorios_mios.count %}
+    <p><h1>{% trans "My Repositories." %}</h1></p>
+    <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
+
+    <div>
+        {% for repositorio_mio in repositorios_mios %}
+        <div class="entrada" id="entrada_{{ entrada.id }}">
+            <a href="{{ repositorio_mio.get_absolute_url }}">{{ repositorio_mio.nombre }}</a>
+            @
+            <a href="{{ repositorio_mio.fecha }}">{{ repositorio_mio.fecha }}</a>
+            :
+
+            <p>
+            {{ repositorio_mio.descripcion|linebreaksbr|urlize }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
+    {% endif %}
+</div>

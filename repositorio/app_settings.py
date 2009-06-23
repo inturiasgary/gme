@@ -1,0 +1,18 @@
+from django.conf import settings
+
+REPOSITORY_URL_BASE = getattr(settings, 'REPOSITORY_URL_BASE', '/repositorio/detalle/')
+REPOSITORY_ENTRIES_LIMIT = getattr(settings, 'REPOSITORY_ENTRIES_LIMIT', 10)
+MICROBLOG_FEEDS_MAX_ITEMS = getattr(settings, 'MICROBLOG_FEEDS_MAX_ITEMS', 20)
+
+MICROBLOG_MESSENGERS_ENABLED = getattr(settings, 'MICROBLOG_MESSENGERS_ENABLED', False)
+
+MICROBLOG_GTALK_ENABLED = getattr(settings, 'MICROBLOG_XMPP_ENABLED', True)
+MICROBLOG_GTALK_CLIENT = getattr(settings, 'MICROBLOG_GTALK_CLIENT', 'gmail.com')
+MICROBLOG_GTALK_HOST = getattr(settings, 'MICROBLOG_GTALK_HOST', 'talk.google.com')
+MICROBLOG_GTALK_PORT = getattr(settings, 'MICROBLOG_GTALK_PORT', 5223)
+MICROBLOG_GTALK_ID = getattr(settings, 'MICROBLOG_GTALK_ID', None)
+MICROBLOG_GTALK_PASSWORD = getattr(settings, 'MICROBLOG_GTALK_PASSWORD', None)
+
+MICROBLOG_MSN_ENABLED = getattr(settings, 'MICROBLOG_MSN_ENABLED', False)
+MICROBLOG_MSN_ID = getattr(settings, 'MICROBLOG_MSN_ID', None)
+MICROBLOG_MSN_PASSWORD = getattr(settings, 'MICROBLOG_MSN_PASSWORD', None)

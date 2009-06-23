@@ -1,0 +1,23 @@
+{% load i18n %}
+<div class="entradas">
+    {% if repositorios_pendiente.count %}
+    <h2>{% trans "Los repos." %}</h2>
+
+    <div>
+        {% for repositorio_pendiente in repositorios_pendiente %}
+        <div class="entrada" id="entrada_{{ entrada.id }}">
+            <a href="{{ repositorio_participo.nombre }}">{{ repositorio_pendiente.nombre }}</a>
+            @
+            <a href="{{ repositorio_participo.fecha }}">{{ repositorio_pendiente.fecha }}</a>
+            :
+
+            <p>
+            {{ repositorio_pendiente.descripcion|linebreaksbr|urlize }}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
+    {% endif %}
+</div>
