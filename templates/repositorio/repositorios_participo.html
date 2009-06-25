@@ -6,7 +6,7 @@
     <div>
         {% for repositorio_participo in repositorios_participo %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_participo.nombre }}">{{ repositorio_participo.nombre }}</a>
+            <a href="{{ repositorio_participo.get_absolute_url }}">{{ repositorio_participo.nombre }}</a>
             @
             <a href="{{ repositorio_participo.fecha }}">{{ repositorio_participo.fecha }}</a>
             :

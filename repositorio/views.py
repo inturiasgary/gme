@@ -18,13 +18,13 @@ def index(request):
                            )
 
 @login_required
-def editar_repositorio(request, repositorio_id=None):
-    repositorio = None
-        
+def editar_repositorio(request):
+    
     if request.POST:
-        form = FormRepositorio(request.POST, instance=repositorio)
+        form = FormRepositorio(data=request.POST)
     
         if form.is_valid():
+            print "entra a valid"
             repositorio      = form.save(False)
             repositorio.user = request.user
             repositorio.save()
@@ -32,8 +32,15 @@ def editar_repositorio(request, repositorio_id=None):
             miembro.save()
             #request.user.message_set.create(message=_("Repositorio creado exitosamente"))
             return HttpResponseRedirect('/repositorio/repo/')
+        else:
+            print "entra despues"
+            #form = FormRepositorio(data=request.POST)
+            context = RequestContext(request)
+            return render_to_response('repositorio/editar_repositorio.html',
+                                    locals(),
+                                    context_instance=context)
     else:
-        form = FormRepositorio(instance=repositorio)
+        form = FormRepositorio()
     return render_to_response(
         'repositorio/editar_repositorio.html',
         locals(),
@@ -89,20 +96,26 @@ def delete_repositorio(request):
 def edit_repositorio(request):
     if request.method == "POST":
         repositorio_id = request.POST['repositorio']
-        repositorio       = get_object_or_404(Repositorio, pk=repositorio_id)
+        repo       = get_object_or_404(Repositorio, pk=repositorio_id)
         if request.POST['do']=='edit':
-            form = FormRepositorio(instance=repositorio)
+            form = FormRepositorio(instance=repo, update=None)
             context = RequestContext(request)
             return render_to_response('repositorio/repositorio_edit_form.html',
-                                      {'form':form, 'value':'update','repositorio':repositorio.id},
+                                      {'form':form, 'value':'update','repositorio':repo.id},
                                       context_instance=context)
         if request.POST['do']=='update':
-            form = FormRepositorio(instance=repo, data=request.POST)
+            form = FormRepositorio(instance=repo, data=request.POST, update=True)
             if form.is_valid():
+                form.save()
                 request.user.message_set.create(message="The repository was update succesfully!.")
                 repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
                 repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
                 repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
+            else:
+                context = RequestContext(request)
+                return render_to_response('repositorio/repositorio_edit_form.html',
+                                          {'form':form, 'value':'update', 'repositorio':repo.id},
+                                          context_instance=context)
     
         return render_to_response("repositorio/index.html",
                                   locals(),

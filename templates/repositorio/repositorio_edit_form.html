@@ -4,7 +4,7 @@
 <form action="{% url edit_repositorio %}" method="post">
 <ul>
 {{ form.as_ul }}
-<li><input type="hidden" name="repositorio_id" value={{ repositorio_id }}"/><input type="submit" name="do" value="{{ value }}" class="button"/></li>
+<input type="hidden" name="repositorio" value="{{ repositorio }}"/><input type="submit" value="{{ value }}" name="do"/> 
 </ul>
 </form>
 {% endblock %}
