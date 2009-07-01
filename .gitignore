@@ -1,3 +1,9 @@
 *.pyc
 *.py~
-database.db
+*.db
+*.aux
+*.tex
+*.tex~
+*.log
+*.tex.backup
+*.pdf
