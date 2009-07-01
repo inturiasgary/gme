@@ -2,7 +2,6 @@
 *.py~
 *.db
 *.aux
-*.tex
 *.tex~
 *.log
 *.tex.backup
