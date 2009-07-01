@@ -7,8 +7,8 @@
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="{% url detalle_perfil user.username %} ">{% trans "Global" %}</a></li>
-            <li><a href="{% url lista_perfil %} ">{% trans "Repositorios" %}</a></li>
+            <li><a href="{% url mic_index %} ">{% trans "Global" %}</a></li>
+            <li><a href="{% url repo_index %} ">{% trans "Repositorios" %}</a></li>
         </ul>
     {% else %}
         &nbsp;
@@ -18,3 +18,6 @@
 {% block body%}{{ block.super }}
 
 {% endblock body %}
+
+{% block busqueda %}
+{% endblock %}

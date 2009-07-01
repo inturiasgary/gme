@@ -1,35 +1,39 @@
-{% extends "base.html" %}
+{% extends "repositorio/base.html" %}
 
 {% load i18n %}
 
-{% block head_title %}lock title{% endblock %}
+{% block head_title %}Informacion Repositorio{% endblock %}
 
 {% block body %}
 <h1>Repositorio: {{ repositorio.nombre }}</h1>
 <p><a href="#" onclick="$('#repositorio_info').toggle(); return false;">{% trans "Information" %}</a></p>
 
-<div class="repositorio_info">
-<fieldset id="repositorio_info" style="display: none;">
-    <legend>{% trans "Repository information" %}</legend>
-    <table>
-        <tr>
-            <td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
-        </tr>
-        <tr>
-            <td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
-        </tr>
-        <tr>
-            <td width="100px">{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
-        </tr>
-        <tr>
-            <td width="100px">{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
-        </tr>
-        <tr>
-            <td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
-        </tr>
-    </table>
-</fieldset>
+{% if repositorio %}
+    <div class="repositorio_info">
+    <fieldset id="repositorio_info" style="display: none;">
+        <legend>{% trans "Repository information" %}</legend>
+        <table>
+            <tr>
+                <td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
+            </tr>
+            <tr>
+                <td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
+            </tr>
+            <tr>
+                <td width="100px">{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
+            </tr>
+            <tr>
+                <td width="100px">{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
+            </tr>
+            <tr>
+                <td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
+            </tr>
+        </table>
+    </fieldset>
 </div>
+{% else %}
+{% endif %}
+
 {{ estado }}
 {{ repositorio.id }}
     {% if is_me %}
@@ -37,7 +41,23 @@
         <tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
         </table>    
     {% endif %}
+    
+<h1>Commits Realizados:</h1>    
+{% if commits %}
+    {% for commit in commits %}
+        <p><li>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}
+            <ul>
+                {{ commit.descripcion }}
+            </ul>
+        </li></p>
+    {% endfor %}
+{% else %}
+<h3>No se encontraron acciones realizadas.</h3>
+{% endif %}
+    
 {% endblock %}
+
+
 
 {% block extra_body %}
     <script type="text/javascript">

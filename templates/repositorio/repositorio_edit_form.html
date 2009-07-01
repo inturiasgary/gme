@@ -2,9 +2,9 @@
 {% block body %}
 <h2> Edit Repository </h2>
 <form action="{% url edit_repositorio %}" method="post">
-<ul>
-{{ form.as_ul }}
-<input type="hidden" name="repositorio" value="{{ repositorio }}"/><input type="submit" value="{{ value }}" name="do"/> 
-</ul>
+<table>
+{{ form }}
+<tr><th><input type="hidden" name="repositorio" value="{{ repositorio }}"/><input type="submit" value="{{ value }}" name="do"/> </th></tr>
+</table>
 </form>
 {% endblock %}

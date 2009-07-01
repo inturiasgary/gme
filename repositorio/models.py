@@ -57,7 +57,6 @@ class Commit(models.Model):
     repositorio = models.ForeignKey(Repositorio)
     fecha       = models.DateTimeField(default=datetime.now)
     descripcion = models.CharField(max_length=100)
-    recipientes = models.ManyToManyField(User, related_name='commits_recibidos')
     
     def __unicode__(self):
         return "%s en %s"%(self.usuario.username, self.repositorio.nombre)

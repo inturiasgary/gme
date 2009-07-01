@@ -53,6 +53,8 @@ def repo(request, nombre=None):
         repositorio       = get_object_or_404(Repositorio, nombre=nombre)
         repositorio_form  = FormRepositorio(instance=repositorio)
         miembro           = Miembro.objects.get(usuario=request.user, repositorio=repositorio)
+        #commits           = repositorio.commit_set.all()
+        commits           = Commit.objects.order_by('-fecha').filter(repositorio=repositorio)
         if (miembro.creador == True and miembro.activo == True):
             estado = "Es creador y esta activo"
             is_me = True
@@ -121,3 +123,26 @@ def edit_repositorio(request):
                                   locals(),
                                   context_instance=RequestContext(request),
                                   )
+
+def search_page(request): #Trabaja con ajax
+    form = SearchForm()
+    repositorios_encontrados = []
+    mostrar_resultados = False
+    
+    if request.GET.has_key('query'):
+        mostrar_resultados = True
+        query = request.GET['query'].strip() #para poder quitar los espacios
+        if query:
+            form=SearchForm({'query':query})
+            repositorios_encontrados = Repositorio.objects.filter(nombre__icontains=query)[:10] #Filtracion solo de los 10 repositorios que tienen similar nombre
+    variable = RequestContext(request, {'form':form,
+                                        'repositorios_encontrados':repositorios_encontrados,
+                                        'show_tags':True,
+                                        'show_creador':True})
+    if request.GET.has_key('ajax'):
+        print 'Entro cargado de datos'
+        return render_to_response('repositorio/repositorios_encontrados.html', variables)
+    else:
+        print 'Sin Datos'
+        return render_to_response('')
+            
