@@ -1,18 +1,22 @@
 %Tamaño y tipo de documento que queremos escribir.
-\documentclass[12pt,graphicx,caption,rotating]{report}
+\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{book}
 
 %Paquetes para el idioma, las tildes, etc.
 \usepackage{longtable}
 \usepackage[activeacute,spanish]{babel}
-\usepackage[a4paper,left=3cm,right=2.0cm]{geometry}
+\usepackage[letterpaper,left=3cm,right=2.0cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{multicol}
+\usepackage{parskip}
+\renewcommand{\baselinestretch}{1.5}
 
+\parskip  0.5cm
 %Abrimos el bloque para escribir el documento.
 \begin{document}
 \begin{titlepage}
 \begin{center}
+
 
 UNIVERSIDAD MAYOR DE SAN SIMÓN\\
 FACULTAD DE CIENCIAS Y TECNOLOGÍA\\
@@ -53,6 +57,7 @@ A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaro
 \begin{center}
  {\Large FICHA RESUMEN}\\
 \end{center}\noindent
+\baselinestretch{2.0} 
 El desarrollo de proyecto de software en la actualidad se encuentra a cargo de un equipo de desarrolladores, como así también los administradores del proyecto.
 La comunicación entre los integrantes es esencial para el cumplimiento de los objetivos a alcanzar, para la coordinación eficaz del equipo de trabajo y la determinación de tiempos para las respectivas tareas designadas.
 La dificultad de tratar con cada uno de los integrantes de forma personal aumenta según el numero que estos integran y aun mas si realizan sus trabajos a distancia, esto causa mala comprensión de las tareas a cumplir dentro del desarrollo de software. Provocando perdidas de tiempo que en el transcurso son esenciales para la culminación del proyecto.
