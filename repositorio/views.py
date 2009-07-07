@@ -128,6 +128,9 @@ def search_page(request): #Trabaja con ajax
     form = SearchForm()
     repositorios_encontrados = []
     mostrar_resultados = False
+    context = RequestContext(request)
+    context['search-results'] = 'id_query'
+    context['repositorio/repositorio_encontrados.html'] = reverse('search_page',args=[])
     
     if request.GET.has_key('query'):
         mostrar_resultados = True
@@ -135,7 +138,7 @@ def search_page(request): #Trabaja con ajax
         if query:
             form=SearchForm({'query':query})
             repositorios_encontrados = Repositorio.objects.filter(nombre__icontains=query)[:10] #Filtracion solo de los 10 repositorios que tienen similar nombre
-    variable = RequestContext(request, {'form':form,
+    variables = RequestContext(request, {'form':form,
                                         'repositorios_encontrados':repositorios_encontrados,
                                         'show_tags':True,
                                         'show_creador':True})
@@ -144,5 +147,5 @@ def search_page(request): #Trabaja con ajax
         return render_to_response('repositorio/repositorios_encontrados.html', variables)
     else:
         print 'Sin Datos'
-        return render_to_response('')
+        return render_to_response('repositorio/search.html',variables, context_instance=context)
             
