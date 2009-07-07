@@ -1,3 +1,6 @@
+
+
+
 %Tamaño y tipo de documento que queremos escribir.
 \documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{book}
 
@@ -15,14 +18,15 @@
 %Abrimos el bloque para escribir el documento.
 \begin{document}
 \begin{titlepage}
+\newpage
 \begin{center}
 
 
 UNIVERSIDAD MAYOR DE SAN SIMÓN\\
 FACULTAD DE CIENCIAS Y TECNOLOGÍA\\
-CARRERA: INGENIERÍA DE SISTEMAS\\[4cm]
- {\Large Sistema Web microblog para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT.}\\[4cm]
- {\Large Proyecto de Grado, Presentado Para Optar al Diploma Académico de Licenciatura de Ingeniería de Sistemas}\\[3cm]
+CARRERA: INGENIERÍA DE SISTEMAS\\[3cm]
+ {\Large Sistema Web microblog para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT.}\\[2cm]
+ {\Large Proyecto de Grado, Presentado Para Optar al Diploma Académico de Licenciatura de Ingeniería de Sistemas}\\[2cm]
 
  {\Large Presentado por: Gary Inturias Rojas}\\[1cm]
  {\Large Tutor: Lic. Boris Marcelo Calancha Navia }\\[2cm]
@@ -45,7 +49,7 @@ A mis padres Juan Carlos Inturias y Celida Rojas por el apoyo incondicional que 
 A mis hermanos Sonia y Ruddy por el apoyo que me dieron.\\
 A la Universidad\\
 Al Lic. Boris M. Calancha por sus conocimientos impartidos y las sugerencias realizadas a lo largo de mi enseñanza universitaria y el apoyo en la realización de este proyecto de grado.\\
-A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaron para poder enfrentar los retos de la vida.\\[7cm]
+A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaron para poder enfrentar los retos de la vida.\\[3cm]
 \par}
 \textbf{\textit{¡Muchas Gracias!}}
 
@@ -63,13 +67,10 @@ La comunicación entre los integrantes es esencial para el cumplimiento de los o
 La dificultad de tratar con cada uno de los integrantes de forma personal aumenta según el numero que estos integran y aun mas si realizan sus trabajos a distancia, esto causa mala comprensión de las tareas a cumplir dentro del desarrollo de software. Provocando perdidas de tiempo que en el transcurso son esenciales para la culminación del proyecto.
 La mayoría de sistemas de control de versiones no se encuentran integrados a un sistema microblog, el cual facilitaría las notificaciones de las acciones que efectúan en tiempo real a los ficheros de los repositorios de trabajo. Así provocando una de-sincronización causando conflictos a la hora de realizar actualizaciones en los repositorios.
 GIT no es una excepción a estos posibles problemas, debido a que cada integrante del grupo de desarrollo obtiene una copia idéntica del repositorio, es una de las cualidades de los sistemas de control de versiones distribuidas.
-
-\newpage
+\tableofcontents
 \end{titlepage}
 
 %Generamos un indice de los contenidos
-\tableofcontents
-\newpage\noindent
 
 \include{cap1}
 \include{cap4}

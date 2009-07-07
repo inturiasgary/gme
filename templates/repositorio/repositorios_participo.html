@@ -1,9 +1,11 @@
 {% load i18n %}
+{% load pagination_tags %}
 <div class="entradas">
     {% if repositorios_participo.count %}
     <h2>{% trans "Los repos." %}</h2>
 
     <div>
+        {% autopaginate repositorios_participo 10 %}
         {% for repositorio_participo in repositorios_participo %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
             <a href="{{ repositorio_participo.get_absolute_url }}">{{ repositorio_participo.nombre }}</a>
@@ -16,6 +18,7 @@
             </p>
         </div>
         {% endfor %}
+        {% paginate %}
     </div>
     {% else %}
     <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
