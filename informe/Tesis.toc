@@ -1,18 +1,27 @@
 \select@language {spanish}
-\contentsline {chapter}{\numberline {1}Presentaci\IeC {\'o}n}{7}
-\contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n}{7}
-\contentsline {section}{\numberline {1.2}Planteamiento del problema}{8}
-\contentsline {section}{\numberline {1.3}Objetivos}{9}
-\contentsline {subsection}{\numberline {1.3.1}Objetivo General}{9}
-\contentsline {subsection}{\numberline {1.3.2}Objetivos Espec\IeC {\'\i }ficos}{10}
-\contentsline {section}{\numberline {1.4}Justificaci\IeC {\'o}n}{10}
-\contentsline {section}{\numberline {1.5}Metodolog\IeC {\'\i }a}{11}
-\contentsline {chapter}{\numberline {2}Desarrollo del proyecto}{13}
-\contentsline {section}{\numberline {2.1}Metodolog\IeC {\'\i }a de desarrollo}{13}
-\contentsline {section}{\numberline {2.2}Antecedentes}{15}
-\contentsline {section}{\numberline {2.3}Definici\IeC {\'o}n del problema}{15}
-\contentsline {section}{\numberline {2.4}GIT}{16}
-\contentsline {subsection}{\numberline {2.4.1}Modelo de objetos GIT}{16}
-\contentsline {subsection}{\numberline {2.4.2}Tipos de objetos}{16}
-\contentsline {section}{\numberline {2.5}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{17}
-\contentsline {section}{\numberline {2.6}Cronograma}{17}
+\contentsline {section}{\numberline {1}PRESENTACION}{3}
+\contentsline {subsection}{\numberline {1.1}INTRODUCCION}{3}
+\contentsline {subsection}{\numberline {1.2}PLANTEAMIENTO DEL PROBLEMA}{4}
+\contentsline {subsection}{\numberline {1.3}OBJETIVOS}{5}
+\contentsline {subsubsection}{\numberline {1.3.1}OBJETIVO GENERAL}{5}
+\contentsline {subsubsection}{\numberline {1.3.2}OBJETIVOS ESPECIFICOS}{5}
+\contentsline {subsection}{\numberline {1.4}JUSTIFICACION}{6}
+\contentsline {subsection}{\numberline {1.5}METODOLOGIA}{6}
+\contentsline {section}{\numberline {2}DEFINICIONES BASICAS}{7}
+\contentsline {subsection}{\numberline {2.1}EL PROCESO DE DESARROLLO DE SOFTWARE}{7}
+\contentsline {subsection}{\numberline {2.2}GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}{8}
+\contentsline {subsection}{\numberline {2.3}SISTEMA DE CONTROL DE VERSIONES}{9}
+\contentsline {subsubsection}{\numberline {2.3.1}CLASIFICACION}{9}
+\contentsline {subsection}{\numberline {2.4}MICROBLOG}{11}
+\contentsline {subsection}{\numberline {2.5}FRAMEWORK DJANGO}{11}
+\contentsline {subsection}{\numberline {2.6}Objetivos Espec\IeC {\'\i }ficos}{11}
+\contentsline {subsection}{\numberline {2.7}Justificaci\IeC {\'o}n}{11}
+\contentsline {section}{\numberline {3}Metodolog\IeC {\'\i }a}{12}
+\contentsline {section}{\numberline {4}Metodolog\IeC {\'\i }a de desarrollo}{13}
+\contentsline {section}{\numberline {5}Antecedentes}{15}
+\contentsline {section}{\numberline {6}Definici\IeC {\'o}n del problema}{15}
+\contentsline {section}{\numberline {7}GIT}{16}
+\contentsline {subsection}{\numberline {7.1}Modelo de objetos GIT}{16}
+\contentsline {subsection}{\numberline {7.2}Tipos de objetos}{16}
+\contentsline {section}{\numberline {8}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{17}
+\contentsline {section}{\numberline {9}Cronograma}{17}

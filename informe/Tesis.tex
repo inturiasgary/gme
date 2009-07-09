@@ -2,7 +2,8 @@
 
 
 %Tamaño y tipo de documento que queremos escribir.
-\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{book}
+\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{article}
+\setcounter{secnumdepth}{3}
 
 %Paquetes para el idioma, las tildes, etc.
 \usepackage{longtable}
@@ -61,18 +62,20 @@ A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaro
 \begin{center}
  {\Large FICHA RESUMEN}\\
 \end{center}\noindent
-\baselinestretch{2.0} 
+
 El desarrollo de proyecto de software en la actualidad se encuentra a cargo de un equipo de desarrolladores, como así también los administradores del proyecto.
 La comunicación entre los integrantes es esencial para el cumplimiento de los objetivos a alcanzar, para la coordinación eficaz del equipo de trabajo y la determinación de tiempos para las respectivas tareas designadas.
 La dificultad de tratar con cada uno de los integrantes de forma personal aumenta según el numero que estos integran y aun mas si realizan sus trabajos a distancia, esto causa mala comprensión de las tareas a cumplir dentro del desarrollo de software. Provocando perdidas de tiempo que en el transcurso son esenciales para la culminación del proyecto.
 La mayoría de sistemas de control de versiones no se encuentran integrados a un sistema microblog, el cual facilitaría las notificaciones de las acciones que efectúan en tiempo real a los ficheros de los repositorios de trabajo. Así provocando una de-sincronización causando conflictos a la hora de realizar actualizaciones en los repositorios.
 GIT no es una excepción a estos posibles problemas, debido a que cada integrante del grupo de desarrollo obtiene una copia idéntica del repositorio, es una de las cualidades de los sistemas de control de versiones distribuidas.
-\tableofcontents
-\end{titlepage}
 
+\end{titlepage}
+\newpage
+\tableofcontents
 %Generamos un indice de los contenidos
 
 \include{cap1}
+\include{cap2}
 \include{cap4}
 
 \section{Antecedentes}
