@@ -9,6 +9,7 @@
 {% block body %}{{ block.super }}
 
 {% if user.is_authenticated %}
+    {{ form_buscar.as_p  }}
 
     <p><h1>{% trans "Repositories" %}</h1></p>
     

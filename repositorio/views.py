@@ -4,10 +4,11 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponseRedirect
-from forms import FormRepositorio
+from forms import FormRepositorio, SearchForm
 
 @login_required
 def index(request):
+    form_buscar            = SearchForm()
     repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
     repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
     repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
