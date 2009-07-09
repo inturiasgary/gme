@@ -1,0 +1,83 @@
+% Todas las disertaciones deber�an contener una introducci�n. Todav�a no ha sido realizada, % pero la introducci�n deber�a contener los conceptos, background, y el objetivo de la disertacion.
+
+% Autor : Patricia E. Romero Rodriguez
+% Fecha de ultima modificacion: 09 - agosto - 2007
+
+%\documentclass[12pt]{article}
+%\usepackage[latin1]{inputenc}
+%\usepackage[spanish]{babel}
+%\usepackage{latexsym}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+
+%\setlength{\textwidth}{15cm}
+
+%\newtheorem{ejem}{Ejemplo}
+%\newtheorem{teor}{Teorema}
+%\begin{document}
+
+\chapter{MARCO TEORICO}
+\section{DEFINICIONES BASICAS}
+\subsection{EL PROCESO DE DESARROLLO DE SOFTWARE}
+En una actividad en el cual el proceso es inherentemente social y creativo,  y como tal tenemos que hacernos de la idea de que la mayoria de los problemas que acarrea son de esta indole.
+En aspectos generales sin enfocarnos al concepto de cada metodologia utilizada para realizar esta labor, podemos ver que nos enfocamos en la evolucion del codigo.
+Ya sea que trabajemos en grupo o de forma individual, esta actividad se comienza con una hoja en blanco y una idea en la cabeza, que a medida que progresamos, va tomando forma.
+Enfocandonos desde el punto de vista del sodigo realizado durante este proceso, al principoo arrancamos con un direcotorio vacio, en el cual vamos escribiendo, construyendo nuestro software
+de forma incremental e iterativa, corrigiendo nuestros propios errores a medida que aparecen, y agregando cosas nuevas cuando se nos place.
+Nuestro codigo va evolucionando, cambiando con iteraciones pequeñas que nosotros vamos introduciendo por diversos motivos como, correciones o caracteristicas nuevas en el software.
+Estos cambios realizados en el codigo son de manera organizada y ordenada, debido a que correspen a alguna contruccion mental nuestra, porque cuando nosotros pensamos en implementar algo o corregir un bug, lo tenemos en mente como una unidad, como un objetivo bastante independiente de como se representa en el código fuente; y nosotros 
+pensamos en que cambios le tenemos que realizar para lograr ese objetivo propuesto.
+
+\subsection{GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}
+En la actividad de desarrollo de software con frecuencia los desarrolladores son organizados en grupo, independientemente de que metodologia empleen. Surgiendo la suma necesidad de coordinar el trabajo, no solo por una cuestion natural sino tambien como mecanismo para optimizar los recursos.
+Por eso, para desarrollar en grupo es imprescindible la buena comunicacion y el entendimiento entre los pares, Esto implica que, en general, los desarrollos se dan de forma coordinada (ya sea de manera horizontal o vertical, independientemente del mecanismo que se elija explícita o implícitamente para ello) al menos en un nivel social, las tareas se reparten y los cambios se discuten donde afectan al grupo para facilitar el trabajo.
+
+Claro que el desarrollar en grupo, por más que uno se lleve maravillosamente bien con la gente involucrada, acarrea ciertas incomodidades que sí son más técnicas. Al haber más de una persona modificando el código fuente de forma simultanea, existe una complejidad, y nada menor, en lo que refiere al hecho de sincronizarlo y mantenerlo coherente entre todos los miembros del grupo.
+
+También se dan en un grupo de trabajo relaciones asimétricas respecto del código, debido a que cada grupo tiene una forma y un flujo de trabajo particular, en el cual, por ejemplo, se pueden dar relaciones jerárquicas, revisión de código entre pares, subgrupos, etc.
+
+Esto va a reflejarse en el código fuente con el surgimiento de una nueva necesidad, que va a ser la de la integración de múltiples trabajos individuales, la distribución del mismo en distintas maquinas y la coordinación para que todos puedan trabajar sobre la misma base de código.
+
+\subsection{SISTEMA DE CONTROL DE VERSIONES}
+
+El desarrollo de proyecto de software en la actualidad se encuentra a cargo de un equipo de desarrolladores, como así también los administradores del proyecto.
+
+La comunicación entre los integrantes es esencial para el cumplimiento de los objetivos a alcanzar, para la coordinación eficaz del equipo de trabajo y la determinación de tiempos para las respectivas tareas designadas.
+
+La dificultad de tratar con cada uno de los integrantes de forma personal aumenta según el numero que estos integran y aun mas si realizan sus trabajos a distancia, esto causa mala comprensión de las tareas a cumplir dentro del desarrollo de software. Provocando perdidas de tiempo que en el transcurso son esenciales para la culminación del proyecto.
+
+La mayoría de sistemas de control de versiones no se encuentran integrados a un sistema microblog, el cual facilitaría las notificaciones de las acciones que efectúan en tiempo real a los ficheros de los repositorios de trabajo. Así provocando una de-sincronización causando conflictos a la hora de realizar actualizaciones en los repositorios.
+
+GIT no es una excepción a estos posibles problemas, debido a que cada integrante del grupo de desarrollo obtiene una copia idéntica del repositorio, es una de las cualidades de los sistemas de control de versiones distribuidas.
+\subsubsection{CLASIFICACION}
+
+\begin{itemize}
+\item \textbf{CENTRALIZADOS :}Se basan en un repositorio unico central con toda la informacion de cambios realizados el cual es accesible por todos los desarrolladores.\\
+al haber un solo repositorio, este es el encargado del manejo de las ramas, quedando todos dentro de este. Estan basados en una linea de tiempo, necesitan un servidor con funcionamiento de tiempo completo y con conexion permanente
+configurado con algun sistema de autentificacion y permisos, por tal motivo la configuracion suele ser mas compleja, segun la necesidad. 
+una de las desventajas mayores que representa es la dependencia de conexion con el servidor, ya que toda la informacion es manejada por el repositorio. 
+Generalmente hay dos tipos el Lock-Modify-Unlock y los que usan el modelo Copy-Modify-Merge. el primero es el mas simple y limitado, y consiste en que cada vez que un usuario quiere editar un archivo, este se bloquea y por lo tanto no puede ser
+modificado por nadie mas, hasta que el usuario lo desbloquee. El segundo modelo propone lo siguiente: se hace una copia del estado actual del repositorio, se modifica y se aplica el conjunto de cambios al repositorio central haciendo un merge. El cual es una forma de trabajo mas conveniente.
+\item \textbf{DISTRIBUIDOS :}Carece de un punto central de desarrollo por tanto los repositorios estan distribuidos y descentralizados en diferentes maquinas que pueden o no ser independientes entre si, y 
+tecnicamente no hay ninguno mas importante que otro. Esto trae bastante beneficios al desarrollar, dado que cada desarrollador tenga su repositorio propio sobre el cual trabaje de una forma independiente, y periodicamente se pongan en comun los trabajos de todos en algun repositorio convenido a tal efecto.
+
+\end{itemize}
+
+\subsection{MICROBLOG}
+
+\subsection{FRAMEWORK DJANGO}
+Desarrollar un sistema Web microblog\footnote{Microblog es un servicio que permite a sus usuarios enviar y publicar mensajes breves.
+} para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT\footnote{GIT software de sistema de control de versiones distribuido.
+}.
+
+\subsection{Objetivos Específicos}
+
+\subsection{Justificación}
+El sistema web que se desea desarrollar ayudara  a los integrantes del grupo de trabajo encargados en la realización del proyecto, facilitando hacer un seguimiento de las tareas a realizar, el reporte de avances que se realizan durante el transcurso del día, así también poder compartir información y reportar errores entre el grupo.
+Los proyectos gestionados con el sistema de control de versiones GIT se podrán integrar con el sistema web microblog, debido a que se hará uso de algunos ganchos(hooks) que enlazarán con el sistema y así poder notificar a los integrantes del grupo de desarrollo en tiempo real sobre las acciones(commit) realizadas en cada uno de sus repositorios locales.
+\section{Metodología}
+SCRUM es una metodología ágiles, toma en cuenta la situación cambiante de los requisitos del cliente, así también minimiza la necesidad de la documentación.
+Organizando el desarrollo de software de un manera evolutiva en los denominados sprints(periodos que duran de 15 a 30 días).
+
+
+%\end{document}
