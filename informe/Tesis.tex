@@ -1,10 +1,7 @@
-
-
-
 %Tamaño y tipo de documento que queremos escribir.
-\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{article}
-\setcounter{secnumdepth}{3}
-
+\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{report}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 %Paquetes para el idioma, las tildes, etc.
 \usepackage{longtable}
 \usepackage[activeacute,spanish]{babel}
@@ -12,37 +9,39 @@
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{multicol}
-\usepackage{parskip}
 \renewcommand{\baselinestretch}{1.5}
 
-\parskip  0.5cm
+\newtheorem{proc}{Procedimiento}
+
+% Salto de línea tras título de secciones \paragraph
+\makeatletter % necesario para que reconozca a '@' como carácter normal
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{-3.25ex \@plus
+-1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}}
+\makeatother % necesario para que restablezca '@' como carácter especial
+
+
 %Abrimos el bloque para escribir el documento.
 \begin{document}
 \begin{titlepage}
 \newpage
 \begin{center}
-
-
 UNIVERSIDAD MAYOR DE SAN SIMÓN\\
 FACULTAD DE CIENCIAS Y TECNOLOGÍA\\
 CARRERA: INGENIERÍA DE SISTEMAS\\[3cm]
- {\Large Sistema Web microblog para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT.}\\[2cm]
- {\Large Proyecto de Grado, Presentado Para Optar al Diploma Académico de Licenciatura de Ingeniería de Sistemas}\\[2cm]
-
- {\Large Presentado por: Gary Inturias Rojas}\\[1cm]
- {\Large Tutor: Lic. Boris Marcelo Calancha Navia }\\[2cm]
- COCHABAMBA - BOLIVIA\\
- Agosto, 2009
+{\Large Sistema Web microblog para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT.}\\[2cm]
+{\Large Proyecto de Grado, Presentado Para Optar al Diploma Académico de Licenciatura de Ingeniería de Sistemas}\\[2cm]
+{\Large Presentado por: Gary Inturias Rojas}\\[1cm]
+{\Large Tutor: Lic. Boris Marcelo Calancha Navia }\\[2PT]
+COCHABAMBA - BOLIVIA\\
+Agosto, 2009
 \end{center}
 \newpage
-\vfill\par\noindent
+
 \begin{flushright}
     {\Large \textbf{Dedicatoria}}\\[1cm]
     A mis padres y hermanos por\\ brindarme su apoyo incondicional. \\
 \end{flushright}
 \newpage
-
-
 \begin{center}
 {\Large \textbf{Agradecimientos}}\\[2cm]
 {\leftskip=8cm
@@ -61,7 +60,7 @@ A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaro
 \newpage
 \begin{center}
  {\Large FICHA RESUMEN}\\
-\end{center}\noindent
+\end{center}
 
 El desarrollo de proyecto de software en la actualidad se encuentra a cargo de un equipo de desarrolladores, como así también los administradores del proyecto.
 La comunicación entre los integrantes es esencial para el cumplimiento de los objetivos a alcanzar, para la coordinación eficaz del equipo de trabajo y la determinación de tiempos para las respectivas tareas designadas.
@@ -77,6 +76,7 @@ GIT no es una excepción a estos posibles problemas, debido a que cada integrant
 \include{cap1}
 \include{cap2}
 \include{cap4}
+\include{cap6}
 
 \section{Antecedentes}
 Los sistemas de control de versiones en la actualidad son utilizados mayormente en la industria informática. Estos también son aplicados a otros ámbitos como documentos, imágenes, sitios web, etc.
