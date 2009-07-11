@@ -1,13 +1,7 @@
-{% extends "repositorio/base.html" %}
 {% block external %}
     <script type="text/javascript" src="/site_media/search.js"></script>
 {% endblock %}
 <form id="search-form" method="get" action=".">
-    {{ form.as_p }}
+    {{ form_buscar.as_p }}
     <input type="submit" value="search"/>
 </form>
-<div id="search-results">
-    {% if mostrar_resultados %}
-        {% include 'repositorio/repositorios_list.html' %}
-    {% endif %}
-</div>
