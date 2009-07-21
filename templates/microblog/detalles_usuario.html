@@ -14,12 +14,12 @@
 {% if user.is_authenticated %}
 
 {% ifequal user usuario_actual %}
-    {% trans "Ese eres tu" %}
+    {% trans "Invalido. No puedes conectarte contigo mismo." %}
 {% else %}
     {% if user|tiene_conexion:usuario_actual %}
         {% trans "Tu ya estas conectado con este usuario" %}
     {% else %}
-        <a href="{{ MICROBLOG_URL_BASE }}c/adicionar/{{ usuario_actual.username }}/">{% trans "Conectar como amigo" %}</a>
+        {{ usuario_actual.username}} <a href="{{ MICROBLOG_URL_BASE }}c/adicionar/{{ usuario_actual.username }}/">{% trans "Conectar como amigo" %}</a>
     {% endif %}
 {% endifequal %}
 

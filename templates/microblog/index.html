@@ -21,7 +21,7 @@
         {% for entrada in entradas %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
             <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
-            @
+            hace
             <a href="{{ entrada.get_absolute_url }}">{{ entrada.fecha|timesince }}</a>
             :
 

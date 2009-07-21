@@ -16,7 +16,7 @@ class Repositorio(models.Model):
     activo       = models.BooleanField(_("activo"), default=True)
     
     def get_absolute_url(self):
-        return '%s%s/'%(app_settings.REPOSITORY_URL_BASE, self.nombre)
+        return '%sdetalle/%s/'%(app_settings.REPOSITORY_URL_BASE, self.nombre)
         
     def __unicode__(self):
         return "%s"%(self.nombre)

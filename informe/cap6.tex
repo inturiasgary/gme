@@ -22,20 +22,43 @@ El presente documento pretende explicar la operativa a seguir para la correcta u
 , tanto como la preparación del ambiente de trabajo básico tanto en el lado cliente como en el lado servidor.
 \subsubsection{PREPARACIÓN DEL SISTEMA DE CONTROL DE VERSIONES}
 
-En esta primera etapa de la documentación se detallará la preparación del ambiente de trabajo y la configuración respectivo de GIT, todos los procedimientos se dará énfasis en base al sistema operativo linux  'distribución UBUNTU', de forma similar los procedimientos se pueden realizar en otros sistemas basados en Mac OS X o Solaris, con algunas variaciones no muy significativas.
+En esta primera etapa de la documentación se detallará la preparación del ambiente de trabajo y la configuración respectivo de GIT, todos los procedimientos se dará énfasis en base al sistema operativo Linux  'distribución UBUNTU', de forma similar los procedimientos se pueden realizar en otros sistemas basados en Mac OS X o Solaris, con algunas variaciones no muy significativas.
 
 \paragraph{INSTALACIÓN DE GIT}
 
-En este apartado, se facilitará al usuario una guía para la instalación del sistema de control de versiones GIT debido que en la actualidad no se encuentra instalado en ningún sistema operativo por defecto. Los pasos para instalar GIT, dependen mucho del sistema operativo que usted tiene, como un requisito previo se requiere tener conocimiento del uso de linea de comandos de sistema en sistemas linux de preferencia en las distribuciones basadas en Debian.
-
-Git es ofertada como una colección de paquetes, donde cada paquete puede ser instalada independientemente según cada necesidad. El paquete principal se llama \textit{git-core}, la documentación esta disponible en \textit{git-doc}, y otros paquetes a considerar como ser:
+En este apartado, se facilitará al usuario una guía para la instalación del sistema de control de versiones GIT debido que en la actualidad no se encuentra instalado en ningún sistema operativo por defecto. Los pasos para instalar GIT, dependen mucho del sistema operativo que usted tiene, como un requisito previo se requiere tener conocimiento del uso de linea de comandos de sistema en Linux de preferencia en las distribuciones basadas en Debian.
+\subparagraph{Debian/Ubuntu}
+Git es ofertada como una colección de paquetes, donde cada paquete puede ser instalado independientemente según cada necesidad. El paquete principal se llama \textit{git-core}, la documentación esta disponible en \textit{git-doc}, y otros paquetes a considerar como ser:
 
 \begin{itemize}
  \item \textit{git-arch, git-cvs, git-svn}
 Para transferir proyectos desde otros sistemas de versiones como Arch, CVS, o Subversion a Git o viceversa,
 instale uno o mas de estos paquetes.
 
+\item \textit{git-gui, gitk, gitweb}
+git-gui es una interfaz gráfica de usuario basado en Tcl/Tk , gitk es otra similar herramienta también basado en Tcl/Tk pero en enfocado al historial del repositorio.
+gitweb esta escrito en Perl y muestra el repositorio Git en un navegador web.
+
+\item \textit{git-cmail}
+Es un componente esencial si quieres enviar parches Git a través de correo electrónico, esto es una practica común en algunos proyectos.
+
+\item \textit{git-dacmon-run}
+Para compartir tu repositorio, instala este paquete. crea un servicio demonio que te permitirá compartir tu repositorio a través de peticiones anónimas de descargas.
 \end{itemize}
+Para la instalacion en el sistema operativo Ubuntu,tenemos que ejecutar la siguiente instruccion en el interprete de comandos:
+\begin{verbatim}
+ $ sudo aptitude install git-core git-doc gitweb git-gui gitk git-email
+\end{verbatim}
+
+\subparagraph{Windows}
+Hay dos paquetes Git competidores para Windows: Cygwin y msysGit, funcionan de igual forma a excepcion que \textit{git-svn} no tiene soporte apropiado en msysGit,
+asi que si tu necesitas alguna interoperabilidad entre Git y Subversion deberias usar la version Cygwin.
+
+El paquete Git Cygwin se encuentra disponible en su pagina web \textit{http://cygwin.com}, hay que descargar y ejecutar \textit{setup.exe}, y configurar preferencialmente
+con las opciones por defecto.
+
+El paquete msysGit es facil de instalar en Windows ya que contiene todos las dependencias necesarias para su ejecucion. msysGit a sido diseñado para una completa integracion 
+con el estilo nativo de aplicaciones Windows. Para su instalacion hay que descargar la ultima version del instalador de su pagina web \textit{http://code.google.com/p/msysgit}
 
 
 \begin{proc}
@@ -43,5 +66,21 @@ instale uno o mas de estos paquetes.
  		$ sudo aptitude install git-core
 	\end{verbatim}
 \end{proc}
+\paragraph{CONFIGURACION DE GIT}
+Vamos a hacer uso del nombre juan perez, para explicar la configuracion de Git, haciendo enfoque en el sistema operativo ubuntu.
+la siguientes instrucciones deben ejecutarse en el interprete de comandos:
+
+Configuracion global de Git.
+\begin{verbatim}
+ $ git config --global user.name "Juan Perez"
+ $ git config --gloabl user.email "juanperez@gmail.com"
+\end{verbatim}
+Configuracion personalizada en cada repositorio, esto crea el archivo \textit{config} dentro de nuestra carpeta \textit{.git} en nuestro repositorio actual, esta forma es
+estrictamente recomendada para realizar la interaccion con el sistema Web Microblog ya que usuarios multiples podrian trabajar en el mismo computador.
+\begin{verbatim}
+ $ git config user.name "Juan Perez"
+ $ git config user.email "juanperez@gmail.com"
+\end{verbatim}
+
 \subsection{hola}
 %\end{document}

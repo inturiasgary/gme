@@ -23,7 +23,7 @@ class Entrada(models.Model):
         ordering = ('-fecha',)
 
     user        = models.ForeignKey(User)
-    contenido   = models.TextField()
+    contenido   = models.TextField(max_length=140)
     recipientes = models.ManyToManyField(User, related_name='entradas_recibidos')
     fecha       = models.DateTimeField(default=datetime.now, blank=True)
 

@@ -33,15 +33,21 @@
 </div>
 {% else %}
 {% endif %}
-
-{{ estado }}
-{{ repositorio.id }}
-    {% if is_me %}
+Identificacion del repositorio:{{ repositorio.id }}
+    {% ifequal is_me 1 %}
         <table>
         <tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
         </table>    
-    {% endif %}
+    {% endifequal %}
     
+    {% ifequal miembro_activo "peticion" %}
+        Se encuentra en peticion.
+    {% else %}
+        {% ifequal miembro_activo 0 %}
+            <table><tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="activarme"></form></td></tr></table>
+        {% endifequal %}
+    {% endifequal %}
+
 <h1>Commits Realizados:</h1>    
 {% if commits %}
     {% for commit in commits %}

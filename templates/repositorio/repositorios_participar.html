@@ -8,14 +8,15 @@
         {% autopaginate repositorios_pendiente 10 %}
         {% for repositorio_pendiente in repositorios_pendiente %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_participo.get_absolute_url }}">{{ repositorio_pendiente.nombre }}</a>
+            <a href="{{ repositorio_pendiente.get_absolute_url }}">{{ repositorio_pendiente.nombre }}</a>
             @
-            <a href="{{ repositorio_participo.fecha }}">{{ repositorio_pendiente.fecha }}</a>
+            <a href="{{ repositorio_pendiente.fecha }}">{{ repositorio_pendiente.fecha }}</a>
             :
 
             <p>
             {{ repositorio_pendiente.descripcion|linebreaksbr|urlize }}
             </p>
+            <table><tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio_pendiente.id }}"><input type="submit" name="do" value="eliminar participacion"></form></td></tr></table>
         </div>
         {% endfor %}
         {% paginate %}
