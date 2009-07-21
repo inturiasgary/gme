@@ -1,0 +1,23 @@
+{% load i18n %}
+{% block body %}
+{% load pagination_tags %}
+<div class="entradas">
+    {% if repositorios_encontrados.count %}
+    <p><h1>{% trans "Resultados de Busqueda." %}</h1></p>
+
+    <div>
+        {% autopaginate repositorios_encontrados 10 %}
+        {% for repositorio_encontrado in repositorios_encontrados %}
+        <div class="entrada" id="entrada_{{ entrada.id }}">
+            <a href="{{ repositorio_encontrado.get_absolute_url }}">{{ repositorio_encontrado.nombre }}</a>
+            @
+            <a href="{{ repositorio_encontrado.fecha }}">{{ repositorio_encontrado.fecha }}</a>
+        </div>
+        {% endfor %}
+        {% paginate %}
+    </div>
+    {% else %}
+        No se encontraron repositorios.
+    {% endif %}
+</div>
+{% endblock body %}
