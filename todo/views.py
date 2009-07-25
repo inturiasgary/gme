@@ -25,7 +25,7 @@ def list_lists(request):
     """
     
     # Make sure belongs to at least one group.
-    group_count = request.user.groups.all().count()
+    group_count = request.user.repositorio_set.all().count()
     if group_count == 0:
         request.user.message_set.create(message="You do not yet belong to any groups. Ask your administrator to add you to one.")
         
@@ -35,7 +35,7 @@ def list_lists(request):
     if request.user.is_staff:
         list_list = List.objects.all().order_by('name')
     else:
-        list_list = List.objects.filter(group__in=request.user.groups.all).order_by('name')
+        list_list = List.objects.filter(group__in=request.user.repositorio_set.all).order_by('name')
     
     # Count everything
     list_count = list_list.count()
@@ -44,7 +44,7 @@ def list_lists(request):
     if request.user.is_staff :
         item_count = Item.objects.filter(completed=0).count()        
     else:
-        item_count = Item.objects.filter(completed=0).filter(list__group__in=request.user.groups.all()).count()
+        item_count = Item.objects.filter(completed=0).filter(list__group__in=request.user.repositorio_set.all()).count()
 
     
     if request.POST:    
@@ -116,7 +116,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
         listid = list.id    
         
         # Check whether current user is a member of the group this list belongs to.
-        if list.group in request.user.groups.all() or request.user.is_staff or list_slug == "mine" :
+        if list.group in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
             auth_ok = 1   # User is authorized for this view
         else: # User does not belong to the group this list is attached to
             request.user.message_set.create(message="You do not have permission to view/edit this list.")
@@ -231,26 +231,26 @@ def view_task(request,task_id):
     # Determine the group this task belongs to, and check whether current user is a member of that group.
     # Admins can edit all tasks.
 
-    if task.list.group in request.user.groups.all() or request.user.is_staff:
+    if task.list.group in request.user.repositorio_set.all() or request.user.is_staff:
         
         auth_ok = 1
         # Distinguish between POSTs from the two forms on the page (edit task and add comment) by detecting a field name
         if request.POST:
-             form = EditItemForm(request.POST,instance=task)
-             if form.is_valid():
-                 form.save()
+	    form = EditItemForm(request.POST,instance=task)
+	    if form.is_valid():
+		form.save()
                  
                  # Also save submitted comment, if non-empty
-                 if request.POST['comment-body']:
-                     c = Comment(
-                         author=request.user, 
-                         task=task,
-                         body=request.POST['comment-body'],
+		if request.POST['comment-body']:
+		    c = Comment(
+			author=request.user, 
+			task=task,
+			body=request.POST['comment-body'],
                      )
-                     c.save()
+		    c.save()
                  
-                 request.user.message_set.create(message="The task has been edited.")
-                 return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
+		request.user.message_set.create(message="The task has been edited.")
+		return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
                  
         else:
             form = EditItemForm(instance=task)

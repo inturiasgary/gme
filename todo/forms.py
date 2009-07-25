@@ -1,7 +1,8 @@
 from django.db import models
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User,Group
+from django.contrib.auth.models import User#Group
+from repositorio.models import Repositorio
 from todo.models import Item, List
 
 class AddListForm(ModelForm):
@@ -13,7 +14,9 @@ class AddListForm(ModelForm):
     # to derive that list.
     def __init__(self, user, *args, **kwargs):
         super(AddListForm, self).__init__(*args, **kwargs)
-        self.fields['group'].queryset = Group.objects.filter(user=user)
+        #self.fields['group'].queryset = Group.objects.filter(user=user)
+	#Aun no condicionamos que sea un repositorio activo
+	self.fields['group'].queryset = Repositorio.objects.filter(miembros=user, miembro__creador=True, miembro__activo=True)
 
     class Meta:
         model = List
@@ -36,8 +39,11 @@ class AddItemForm(ModelForm):
         super(AddItemForm, self).__init__(*args, **kwargs)
         # print dir(self.fields['list'])
         # print self.fields['list'].initial
-        self.fields['assigned_to'].queryset = User.objects.filter(groups__in=[task_list.group])
-        
+        # self.fields['assigned_to'].queryset = User.objects.filter(groups__in=[task_list.group])
+        repositorio = Repositorio.objects.filter(nombre=task_list.group.nombre)
+	print repositorio
+	self.fields['assigned_to'].queryset = User.objects.filter(repositorio=repositorio)
+
     class Meta:
         model = Item
         

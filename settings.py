@@ -19,7 +19,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 
 TIME_ZONE = 'America/La_Paz'
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -94,6 +94,7 @@ INSTALLED_APPS = (
     'timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
     'pagination',#adicionado app para la paginacion
+	'todo',
 )
 
 #ABSOLUTE_URL_OVERRIDES = {

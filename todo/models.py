@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms.models import ModelForm
 from django import forms
+from repositorio.models import Repositorio
 from django.contrib import admin
 from django.contrib.auth.models import User,Group
 import string, datetime
@@ -10,7 +11,7 @@ import string, datetime
 class List(models.Model):
     name = models.CharField(max_length=60)
     slug = models.SlugField(max_length=60,editable=False)
-    group = models.ForeignKey(Group)
+    group = models.ForeignKey(Repositorio)
     
     def save(self):
         if not self.id:

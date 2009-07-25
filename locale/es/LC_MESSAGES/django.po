@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 11:38-0400\n"
+"POT-Creation-Date: 2009-07-22 13:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,18 +99,18 @@ msgstr ""
 
 #: cuenta/forms.py:24
 msgid "Remember"
-msgstr "Recordar:"
+msgstr ""
 
 #: cuenta/forms.py:24
 msgid "If you check this option, password was remember by 3 weeks"
-msgstr "Si usted selecciona, sera recordado por tres semanas"
+msgstr ""
 
 #: cuenta/forms.py:36
-msgid "Esta cuenta esta actualmente inactiva."
+msgid "Account is disabled"
 msgstr ""
 
 #: cuenta/forms.py:38
-msgid "El nombre usuario y/o contraseña son incorrectos."
+msgid "Username or password wrong"
 msgstr ""
 
 #: cuenta/forms.py:44
@@ -123,7 +123,7 @@ msgid "Password(Again)"
 msgstr ""
 
 #: cuenta/forms.py:59
-msgid "Email (optional)"
+msgid "Email(optional)"
 msgstr ""
 
 #: cuenta/forms.py:64
@@ -162,15 +162,15 @@ msgid "Confirmation email sent to %(email)s"
 msgstr ""
 
 #: cuenta/forms.py:149
-msgid "Contraseña actual"
+msgid "Current Password"
 msgstr ""
 
 #: cuenta/forms.py:150
-msgid "Nueva contraseña"
+msgid "New Password"
 msgstr ""
 
 #: cuenta/forms.py:151
-msgid "Nueva Contraseña (nuevamente)"
+msgid "New Password (again)"
 msgstr ""
 
 #: cuenta/forms.py:155
@@ -203,11 +203,11 @@ msgstr ""
 
 #: cuenta/forms.py:207 cuenta/models.py:13
 msgid "Language"
-msgstr "Lenguaje"
+msgstr ""
 
 #: cuenta/forms.py:216
 msgid "Language changed satisfactory."
-msgstr ""
+msgstr "Lenguaje cambiado"
 
 #: cuenta/views.py:43
 #, python-format
@@ -516,39 +516,35 @@ msgstr ""
 msgid "perfiles"
 msgstr ""
 
-#: repositorio/forms.py:30
+#: repositorio/forms.py:20
 msgid "Nombre de repositorio solo puede contener caracteres."
 msgstr ""
 
-#: repositorio/forms.py:35
+#: repositorio/forms.py:28
 msgid "Nombre de repositorio ya registrado, favor elige otro."
 msgstr ""
 
-#: repositorio/models.py:15
-msgid "borrado"
-msgstr ""
-
-#: repositorio/models.py:42
-msgid "Es creador?"
-msgstr ""
-
-#: repositorio/models.py:43
+#: repositorio/models.py:16 repositorio/models.py:30
 msgid "activo"
 msgstr ""
 
-#: repositorio/models.py:58
+#: repositorio/models.py:29
+msgid "Es creador?"
+msgstr ""
+
+#: repositorio/models.py:45
 msgid "titulo"
 msgstr ""
 
-#: repositorio/models.py:59
+#: repositorio/models.py:46
 msgid "creador"
 msgstr ""
 
-#: repositorio/models.py:60
+#: repositorio/models.py:47
 msgid "modificado"
 msgstr ""
 
-#: repositorio/models.py:61
+#: repositorio/models.py:48
 msgid "cuerpo"
 msgstr ""
 
@@ -560,7 +556,7 @@ msgstr ""
 msgid "Bienvenido"
 msgstr ""
 
-#: templates/homepage.html:10
+#: templates/homepage.html:11
 msgid ""
 "\n"
 "        <p><b>GME</b> Bienvenidos al sistema de notificacion de commit de "
@@ -568,7 +564,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: templates/homepage.html:18
+#: templates/homepage.html:19
 #, python-format
 msgid ""
 "Puedes registrarte en <a href=\"%(registro_url)s\">Registrate</a> y <a href="
@@ -947,7 +943,7 @@ msgid "Encontrar un amigo"
 msgstr ""
 
 #: templates/microblog/conectar_amigo_form.html:6
-#: templates/perfiles/perfil.html:17
+#: templates/perfiles/perfil.html:16
 msgid "Nombre"
 msgstr ""
 
@@ -960,7 +956,7 @@ msgid "Encontrar"
 msgstr ""
 
 #: templates/microblog/detalles_usuario.html:17
-msgid "Ese eres tu"
+msgid "Invalido. No puedes conectarte contigo mismo."
 msgstr ""
 
 #: templates/microblog/detalles_usuario.html:20
@@ -987,15 +983,15 @@ msgstr ""
 msgid "Encontrar otros"
 msgstr ""
 
-#: templates/microblog/encontrar_amigo.html:14
+#: templates/microblog/encontrar_amigo.html:13
 msgid "Find"
 msgstr ""
 
-#: templates/microblog/encontrar_amigo.html:21
+#: templates/microblog/encontrar_amigo.html:20
 msgid "Found other"
 msgstr ""
 
-#: templates/microblog/encontrar_amigo.html:29
+#: templates/microblog/encontrar_amigo.html:28
 msgid "User not found"
 msgstr ""
 
@@ -1015,19 +1011,19 @@ msgstr ""
 msgid "Aun no tienes conectados"
 msgstr ""
 
-#: templates/microblog/index.html:59 templates/repositorio/index.html:85
+#: templates/microblog/index.html:59 templates/repositorio/index.html:27
 msgid "No estas logeado"
 msgstr ""
 
-#: templates/microblog/lista_conexiones.html:19
+#: templates/microblog/lista_conexiones.html:20
 msgid "Aceptar"
 msgstr ""
 
-#: templates/microblog/lista_conexiones.html:23
+#: templates/microblog/lista_conexiones.html:24
 msgid "Bloquear"
 msgstr ""
 
-#: templates/microblog/lista_conexiones.html:26
+#: templates/microblog/lista_conexiones.html:27
 msgid "Eliminar"
 msgstr ""
 
@@ -1089,23 +1085,23 @@ msgstr ""
 msgid "Perfil de %(other_user)s"
 msgstr ""
 
-#: templates/perfiles/perfil.html:18
+#: templates/perfiles/perfil.html:17
 msgid "Comentario"
 msgstr ""
 
-#: templates/perfiles/perfil.html:19
+#: templates/perfiles/perfil.html:18
 msgid "Ubicacion"
 msgstr ""
 
-#: templates/perfiles/perfil.html:20
+#: templates/perfiles/perfil.html:19
 msgid "sitioWeb"
 msgstr ""
 
-#: templates/perfiles/perfil.html:26
+#: templates/perfiles/perfil.html:25
 msgid "Editar Perfil"
 msgstr ""
 
-#: templates/perfiles/perfil.html:31
+#: templates/perfiles/perfil.html:30
 msgid "actualizar"
 msgstr ""
 
@@ -1113,25 +1109,73 @@ msgstr ""
 msgid "Perfiles"
 msgstr ""
 
-#: templates/repositorio/editar_repositorio.html:9
+#: templates/repositorio/detalle_repositorio.html:9
+msgid "Information"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:14
+msgid "Repository information"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:17
+msgid "Name:"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:20
+msgid "Description:"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:23
+msgid "Created:"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:26
+msgid "Web Link:"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:29
+msgid "Administrator email:"
+msgstr ""
+
+#: templates/repositorio/editar_repositorio.html:6
+msgid "Edit Repository"
+msgstr ""
+
+#: templates/repositorio/editar_repositorio.html:6
+msgid "Create Repository"
+msgstr ""
+
+#: templates/repositorio/editar_repositorio.html:10
 msgid "Guardar"
 msgstr ""
 
 #: templates/repositorio/index.html:14
-msgid "Mis Repositorios."
+msgid "Repositories"
 msgstr ""
 
-#: templates/repositorio/index.html:31
-msgid "Aun no creaste ningun repositorio."
+#: templates/repositorio/repositorios_list.html:6
+msgid "Resultados de Busqueda."
 msgstr ""
 
-#: templates/repositorio/index.html:38 templates/repositorio/index.html:62
+#: templates/repositorio/repositorios_mios.html:5
+msgid "My Repositories."
+msgstr ""
+
+#: templates/repositorio/repositorios_mios.html:6
+#: templates/repositorio/repositorios_mios.html:23
+msgid "Crear Repositorio "
+msgstr ""
+
+#: templates/repositorio/repositorios_mios.html:23
+msgid "Aun no creaste ningun repositorio. "
+msgstr ""
+
+#: templates/repositorio/repositorios_participar.html:5
+#: templates/repositorio/repositorios_participo.html:5
 msgid "Los repos."
 msgstr ""
 
-#: templates/repositorio/index.html:55 templates/repositorio/index.html:79
+#: templates/repositorio/repositorios_participar.html:25
+#: templates/repositorio/repositorios_participo.html:26
 msgid "Aun no ingresaste a ningun repo."
 msgstr ""
-
-#~ msgid "Go"
-#~ msgstr "Ir oi wa"
