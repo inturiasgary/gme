@@ -110,7 +110,27 @@ def delete_repositorio(request):
                            )
 
 def edit_repositorio(request):
-    if request.method == "POST":
+    
+    if request.POST.getlist('del_miembro'):
+        deleted_items = request.POST.getlist('del_miembro')
+        repositorio_nombre = request.POST['repositorio_nombre']
+        for thisitem in deleted_items:
+            p = Miembro.objects.get(id=thisitem)
+            p.delete()
+            request.user.message_set.create(message="Borrado la participacion de \"%s\"."  % p.usuario.username)
+        return HttpResponseRedirect('/repositorio/detalle/%s/miembros/'%repositorio_nombre)
+            
+    if request.POST.getlist('add_miembro'):
+        deleted_items = request.POST.getlist('add_miembro')
+        repositorio_nombre = request.POST['repositorio_nombre']
+        for thisitem in deleted_items:
+            p = Miembro.objects.get(id=thisitem)
+            p.activo = 1
+            p.save()
+            request.user.message_set.create(message="adicionada la participacion de \"%s\"."  % p.usuario.username)
+        return HttpResponseRedirect('/repositorio/detalle/%s/miembros/'%repositorio_nombre)
+
+    if request.POST.get('repositorio'):
         repositorio_id = request.POST['repositorio']
         print "entro aqui en edit_repositorio"
         repo           = get_object_or_404(Repositorio, pk=repositorio_id)
@@ -152,6 +172,11 @@ def edit_repositorio(request):
                                   locals(),
                                   context_instance=RequestContext(request),
                                   )
+    try:
+        repositorio_nombre = request.POST['repositorio_nombre']
+        return HttpResponseRedirect('/repositorio/detalle/%s/miembros/'%repositorio_nombre)
+    except:
+        pass
                 
 def search_repositorio(request): #Trabaja con ajax
     REPOSITORY_URL_BASE = app_settings.REPOSITORY_URL_BASE
@@ -174,3 +199,20 @@ def search_repositorio(request): #Trabaja con ajax
         return render_to_response('repositorio/repositorios_encontrados.html', variables)
     else:
         return render_to_response('repositorio/search.html',variables)
+    
+def repo_miembros(request, repositorio_nombre):
+    repositorio_nombre = repositorio_nombre
+    miembros = Miembro.objects.filter(repositorio__nombre=repositorio_nombre) 
+    try:
+        miembro_creador = Miembro.objects.get(usuario=request.user, repositorio__nombre=repositorio_nombre)
+        if miembro_creador.creador == True:
+            is_me = True
+        else:
+            is_me = False
+    except:
+        is_me = False
+    return render_to_response('repositorio/miembros_list.html',
+                              locals(),
+                              context_instance = RequestContext(request),
+                              )
+    

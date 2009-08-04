@@ -4,6 +4,18 @@
 
 {% block head_title %}Informacion Repositorio{% endblock %}
 
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url mic_index %}">{% trans "Estadistica" %}</a></li>
+            <li><a href="{% url todo-mine %}">{% trans "ToDo" %}</a></li>
+            <li><a href="{% url repo_miembros repositorio.nombre %}">{% trans "Miembros"%}</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
+
 {% block body %}
 <h1>Repositorio: {{ repositorio.nombre }}</h1>
 <p><a href="#" onclick="$('#repositorio_info').toggle(); return false;">{% trans "Information" %}</a></p>
@@ -41,7 +53,7 @@ Identificacion del repositorio:{{ repositorio.id }}
     {% endifequal %}
     
     {% ifequal miembro_activo "peticion" %}
-        Se encuentra en peticion.
+        <p>nota: Se encuentra en peticion, Aun no puedes publicar commits.</p>
     {% else %}
         {% ifequal miembro_activo 0 %}
             <table><tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="activarme"></form></td></tr></table>
@@ -62,9 +74,6 @@ Identificacion del repositorio:{{ repositorio.id }}
 {% endif %}
     
 {% endblock %}
-
-
-
 {% block extra_body %}
     <script type="text/javascript">
         $().ready(function() {

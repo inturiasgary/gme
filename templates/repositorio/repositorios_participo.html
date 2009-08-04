@@ -16,6 +16,7 @@
             <p>
             {{ repositorio_participo.descripcion|linebreaksbr|urlize }}
             </p>
+            <table><tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio_participo.id }}"><input type="submit" name="do" value="eliminar participacion"></form></td></tr></table>
         </div>
             
 
