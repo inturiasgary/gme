@@ -1,0 +1,33 @@
+{% ifequal is_me  1 %}
+    <form action="{% url edit_repositorio %}" method="POST">
+        <table>
+            <tr>
+                <th>Usuarios</th>
+                <th>Eliminar participacion</th>
+            </tr>
+            {% for miembro in miembros %}
+                    {% ifequal miembro.activo 1 %}
+                        <tr>    
+                            <td><a href="{% url detalle_perfil miembro.usuario.username %}">{{ miembro.usuario.username }}</a></td>
+                            <td>{% ifequal miembro.creador 1 %}Creador{%else%}<input type="checkbox" name="del_miembro" value="{{ miembro.id }}" id="del_miembro_{{ miembro.id }}">{% endifequal %}</td>
+                        </tr>
+                    {% endifequal %}
+            {% endfor %}
+            <tr><td><input type="hidden" name="repositorio_nombre" value="{{ repositorio_nombre }}"><input type="submit" name="deldonetasks" value="Realizar accion"  class="todo-button"></td></tr>
+            </table>
+    </form>
+    
+{% else %}
+    <table>
+        <tr>
+            <th>Usuarios</th>
+        </tr>
+            {% for miembro in miembros %}
+                {% ifequal miembro.activo 1 %}
+                    <tr>
+                        <td><a href="{% url detalle_perfil miembro.usuario.username %}">{{ miembro.usuario.username }}</a></td>
+                    </tr>
+                {% endifequal %}
+            {% endfor %}
+    </table>
+{% endifequal %}
