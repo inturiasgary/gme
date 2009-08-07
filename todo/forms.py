@@ -16,12 +16,10 @@ class AddListForm(ModelForm):
         super(AddListForm, self).__init__(*args, **kwargs)
         #self.fields['group'].queryset = Group.objects.filter(user=user)
 	#Aun no condicionamos que sea un repositorio activo
-	self.fields['group'].queryset = Repositorio.objects.filter(miembros=user, miembro__creador=True, miembro__activo=True)
+	self.fields['grupo'].queryset = Repositorio.objects.filter(miembros=user, miembro__creador=True, miembro__activo=True)
 
     class Meta:
         model = List
-        
- 
         
 class AddItemForm(ModelForm):
     due_date = forms.DateField(
@@ -40,15 +38,13 @@ class AddItemForm(ModelForm):
         # print dir(self.fields['list'])
         # print self.fields['list'].initial
         # self.fields['assigned_to'].queryset = User.objects.filter(groups__in=[task_list.group])
-        repositorio = Repositorio.objects.filter(nombre=task_list.group.nombre)
+        repositorio = Repositorio.objects.filter(nombre=task_list.grupo.nombre)
 	print repositorio
 	self.fields['assigned_to'].queryset = User.objects.filter(repositorio=repositorio)
 
     class Meta:
         model = Item
         
-
-
 class EditItemForm(ModelForm):
 
     class Meta:

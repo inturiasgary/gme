@@ -15,54 +15,49 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 import datetime
 
-
-
 @login_required
 def list_lists(request):
 
     """
-    Homepage view - list of lists a user can view, and ability to add a list.
+    vista principal - muestra la lista y se pueden adicionar.
     """
-    
-    # Make sure belongs to at least one group.
-    group_count = request.user.repositorio_set.all().count()
+    # El concepto de repositorios es lo mismo que grupos.
+    group_count = request.user.repositorio_set.filter(miembro__activo=True).count()
     if group_count == 0:
-        request.user.message_set.create(message="You do not yet belong to any groups. Ask your administrator to add you to one.")
-        
+        request.user.message_set.create(message="Aun no ingresaste a ningun repositorio. Ingresa a alguno.")
 
+    # Muestra la lista de repositorios donde el usuario es miembro
     # Only show lists to the user that belong to groups they are members of.
     # Staff users see all lists
     if request.user.is_staff:
         list_list = List.objects.all().order_by('name')
     else:
-        list_list = List.objects.filter(group__in=request.user.repositorio_set.all).order_by('name')
-    
+        list_list = List.objects.filter(grupo__in=request.user.repositorio_set.filter(miembro__activo=True)).order_by('name')
+
     # Count everything
     list_count = list_list.count()
-    
+
     # Note admin users see all lists, so count shouldn't filter by just lists the admin belongs to
     if request.user.is_staff :
         item_count = Item.objects.filter(completed=0).count()        
     else:
-        item_count = Item.objects.filter(completed=0).filter(list__group__in=request.user.repositorio_set.all()).count()
+        item_count = Item.objects.filter(completed=0).filter(list__grupo__in=request.user.repositorio_set.filter(miembro__activo=True)).count()
 
-    
+
     if request.POST:    
         form = AddListForm(request.user,request.POST)
         if form.is_valid():
             try:
                 form.save()
-                request.user.message_set.create(message="A new list has been added.")
+                request.user.message_set.create(message="Una nueva lista a sido creada.")
                 return HttpResponseRedirect(request.path)
             except IntegrityError:
                 request.user.message_set.create(message="There was a problem saving the new list. Most likely a list with the same name in the same group already exists.")
-            
+
     else:
         form = AddListForm(request.user)
-            
-    
+        
     return render_to_response('todo/list_lists.html', locals(), context_instance=RequestContext(request))  
-    
 
 @login_required
 def del_list(request,list_id,list_slug):
@@ -70,7 +65,7 @@ def del_list(request,list_id,list_slug):
     """
     Delete an entire list. Danger Will Robinson! Only staff members should be allowed to access this view.
     """
-    
+
     if request.user.is_staff:
         can_del = 1
 
@@ -83,11 +78,11 @@ def del_list(request,list_id,list_slug):
         del_items = Item.objects.filter(list=list.id)
         for del_item in del_items:
             del_item.delete()
-        
+
         # Kill the list
         del_list = List.objects.get(id=list.id)
         del_list.delete()
-        
+
         # A var to send to the template so we can show the right thing
         list_killed = 1
 
@@ -95,17 +90,17 @@ def del_list(request,list_id,list_slug):
         item_count_done = Item.objects.filter(list=list.id,completed=1).count()
         item_count_undone = Item.objects.filter(list=list.id,completed=0).count()
         item_count_total = Item.objects.filter(list=list.id).count()    
-    
+
     return render_to_response('todo/del_list.html', locals(), context_instance=RequestContext(request))
 
 
 @login_required
 def view_list(request,list_id=0,list_slug='',view_completed=0):
-    
+
     """
     Display and manage items in a task list
     """
-    
+
     # Make sure the accessing user has permission to view this list.
     # Always authorize the "mine" view. Admins can view/edit all lists.
 
@@ -114,52 +109,52 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
     else: 
         list = get_object_or_404(List, slug=list_slug)
         listid = list.id    
-        
+
         # Check whether current user is a member of the group this list belongs to.
-        if list.group in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
+        if list.grupo in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
             auth_ok = 1   # User is authorized for this view
         else: # User does not belong to the group this list is attached to
             request.user.message_set.create(message="You do not have permission to view/edit this list.")
 
-        
+
     # First check for items in the mark_done POST array. If present, change
     # their status to complete.
     if request.POST.getlist('mark_done'):
         done_items = request.POST.getlist('mark_done')
         # Iterate through array of done items and update its representation in the model
         for thisitem in done_items:
-        	p = Item.objects.get(id=thisitem)
-        	p.completed = 1
-        	p.completed_date = datetime.datetime.now()
-        	p.save()
-	        request.user.message_set.create(message="Item \"%s\" marked complete." % p.title )
+            p = Item.objects.get(id=thisitem)
+            p.completed = 1
+            p.completed_date = datetime.datetime.now()
+            p.save()
+            request.user.message_set.create(message="Item \"%s\" marked complete." % p.title )
 
 
-	# Undo: Set completed items back to incomplete
+        # Undo: Set completed items back to incomplete
     if request.POST.getlist('undo_completed_task'):
         undone_items = request.POST.getlist('undo_completed_task')
         for thisitem in undone_items:
-        	p = Item.objects.get(id=thisitem)
-        	p.completed = 0
-        	p.save()
-	        request.user.message_set.create(message="Previously completed task \"%s\" marked incomplete." % p.title)	        
+            p = Item.objects.get(id=thisitem)
+            p.completed = 0
+            p.save()
+            request.user.message_set.create(message="Previously completed task \"%s\" marked incomplete." % p.title)	        
 
 
     # And delete any requested items
     if request.POST.getlist('del_task'):
         deleted_items = request.POST.getlist('del_task')
         for thisitem in deleted_items:
-        	p = Item.objects.get(id=thisitem)
-        	p.delete()
-	        request.user.message_set.create(message="Item \"%s\" deleted." % p.title )
+            p = Item.objects.get(id=thisitem)
+            p.delete()
+            request.user.message_set.create(message="Item \"%s\" deleted." % p.title )
 
     # And delete any *already completed* items
     if request.POST.getlist('del_completed_task'):
         deleted_items = request.POST.getlist('del_completed_task')
         for thisitem in deleted_items:
-        	p = Item.objects.get(id=thisitem)
-        	p.delete()
-	        request.user.message_set.create(message="Deleted previously completed item \"%s\"."  % p.title)
+            p = Item.objects.get(id=thisitem)
+            p.delete()
+            request.user.message_set.create(message="Deleted previously completed item \"%s\"."  % p.title)
 
 
     thedate = datetime.datetime.now()
@@ -170,8 +165,6 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
     if list_slug == "mine":
         task_list = Item.objects.filter(assigned_to=request.user, completed=0)
         completed_list = Item.objects.filter(assigned_to=request.user, completed=1)
-
-
     else:
         task_list = Item.objects.filter(list=list.id, completed=0)
         completed_list = Item.objects.filter(list=list.id, completed=1)
@@ -179,10 +172,10 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
 
     if request.POST.getlist('add_task') :
         form = AddItemForm(list, request.POST,initial={
-        'assigned_to':request.user.id,
-        'priority':999,
+            'assigned_to':request.user.id,
+            'priority':999,
         })
-        
+
         if form.is_valid():
             # Save task first so we have a db object to play with
             new_task = form.save()
@@ -192,7 +185,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             if "notify" in request.POST :
                 if new_task.assigned_to != request.user :
                     current_site = Site.objects.get_current() # Need this for link in email template
-                    
+
                     # Send email
                     email_subject = render_to_string("todo/email/assigned_subject.txt", { 'task': new_task })                    
                     email_body = render_to_string("todo/email/assigned_body.txt", { 'task': new_task, 'site': current_site, })
@@ -209,7 +202,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             form = AddItemForm(list, initial={
                 'assigned_to':request.user.id,
                 'priority':999,
-                } )
+            } )
 
     if request.user.is_staff:
         can_del = 1
@@ -226,37 +219,35 @@ def view_task(request,task_id):
 
     task = get_object_or_404(Item, pk=task_id)
     comment_list = Comment.objects.filter(task=task_id)
-        
+
     # Before doing anything, make sure the accessing user has permission to view this item.
     # Determine the group this task belongs to, and check whether current user is a member of that group.
     # Admins can edit all tasks.
 
-    if task.list.group in request.user.repositorio_set.all() or request.user.is_staff:
-        
+    if task.list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
+
         auth_ok = 1
         # Distinguish between POSTs from the two forms on the page (edit task and add comment) by detecting a field name
         if request.POST:
-	    form = EditItemForm(request.POST,instance=task)
-	    if form.is_valid():
-		form.save()
-                 
-                 # Also save submitted comment, if non-empty
-		if request.POST['comment-body']:
-		    c = Comment(
-			author=request.user, 
-			task=task,
-			body=request.POST['comment-body'],
-                     )
-		    c.save()
-                 
-		request.user.message_set.create(message="The task has been edited.")
-		return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
-                 
+            form = EditItemForm(request.POST,instance=task)
+            if form.is_valid():
+                form.save()
+
+                    # Also save submitted comment, if non-empty
+                if request.POST['comment-body']:
+                    c = Comment(
+                        author=request.user, 
+                        task=task,
+                        body=request.POST['comment-body'],
+                    )
+                    c.save()
+
+                request.user.message_set.create(message="The task has been edited.")
+                return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
+
         else:
             form = EditItemForm(instance=task)
             thedate = task.due_date
-            
-
     else:
         request.user.message_set.create(message="You do not have permission to view/edit this task.")
 
@@ -273,7 +264,7 @@ def reorder_tasks(request):
     newtasklist = request.POST.getlist('tasktable[]')
     # First item in received list is always empty - remove it
     del newtasklist[0]
-    
+
     # Items arrive in order, so all we need to do is increment up from one, saving
     # "i" as the new priority for the current object.
     i = 1
@@ -282,10 +273,9 @@ def reorder_tasks(request):
         newitem.priority = i
         newitem.save()
         i = i + 1
-    
+
     # All views must return an httpresponse of some kind ... without this we get 
     # error 500s in the log even though things look peachy in the browser.    
     return HttpResponse(status=201)
-        
-    
-    
+
+

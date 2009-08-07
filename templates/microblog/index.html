@@ -22,19 +22,20 @@
         <div class="entrada" id="entrada_{{ entrada.id }}">
             <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
             hace
-            <a href="{{ entrada.get_absolute_url }}">{{ entrada.fecha|timesince }}</a>
+            {{ entrada.fecha|timesince }}
             :
 
             <p>
             {{ entrada.contenido|linebreaksbr|urlize }}
             </p>
-
-            <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>
+            {% comment %}
+            <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
             <ul class="recipientes">
                 {% for recipiente in entrada.recipientes.all %}
                 <li><a href="{{ recipiente.get_absolute_url }}">{{ recipiente }}</a></li>
                 {% endfor %}
             </ul>
+            {% endcomment %}
         </div>
         {% endfor %}
     </div>

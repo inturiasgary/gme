@@ -3,15 +3,13 @@ from django.forms.models import ModelForm
 from django import forms
 from repositorio.models import Repositorio
 from django.contrib import admin
-from django.contrib.auth.models import User,Group
+from django.contrib.auth.models import User
 import string, datetime
 
-
-
 class List(models.Model):
-    name = models.CharField(max_length=60)
-    slug = models.SlugField(max_length=60,editable=False)
-    group = models.ForeignKey(Repositorio)
+    name        = models.CharField(max_length=60)
+    slug        = models.SlugField(max_length=60,editable=False)
+    grupo       = models.ForeignKey(Repositorio)
     
     def save(self):
         if not self.id:
@@ -32,10 +30,8 @@ class List(models.Model):
         ordering = ["name"]        
         verbose_name_plural = "Lists"
         
-        # Prevents (at the database level) creation of two lists with the same name in the same group
-        unique_together = ("group", "slug")
-        
-        
+        # Prevee que se creen en un repositorio dos listas o mas con el mismo nombre
+        unique_together = ("grupo", "slug")
         
 class Item(models.Model):
     title = models.CharField(max_length=140)
@@ -51,7 +47,7 @@ class Item(models.Model):
     
     # Model method: Has due date for an instance of this object passed?
     def overdue_status(self):
-        "Returns whether the item's due date has passed or not."
+        "Retorna True si la fecha actual excede de la fecha esperada."
         if datetime.date.today() > self.due_date :
             return 1
 
@@ -68,7 +64,6 @@ class Item(models.Model):
 
     class Meta:
         ordering = ["priority"]        
-        
 
 class Comment(models.Model):    
     """

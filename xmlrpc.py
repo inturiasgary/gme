@@ -12,11 +12,11 @@ from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from repositorio.models import *
-# Create a Dispatcher; this handles the calls and translates info to function maps
+from microblog.models import *
+from django.utils.translation import ugettext_lazy as _
+# Crea un Dispatcher; escucha las llamadas y traduce la informacion a funciones maps
 #dispatcher = SimpleXMLRPCDispatcher() # Python 2.4
-dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5
-
- 
+dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5 o mayor
 
 def rpc_handler(request):
 	"""
@@ -60,15 +60,48 @@ def crearRepositorio(usuario, nombre,descripcion,direccionWeb,emailAdmin):
 	miembro = Miembro(usuario=usuario,repositorio=repositorio, creador=True, activo=True)
 	miembro.save()
 	return True
+
+def publicarEntrada(usuario, password, contenido):
+	try:
+		usuario = User.objects.get(username=usuario)
+		if usuario.check_password(password):
+			si = True
+		else:
+			si = False
+		if si:
+			e = Entrada(user=usuario, contenido=contenido)
+			e.save()
+			return "Operacion efectuada correctamente."
+		else:
+			return "Nombre de usuario o password incorrecto."
+	except:
+		return "Nombre de usuario no registrado."
+
+def publicarCommit(nombre_repo, usuario, password, descripcion):
+	try:
+		usuario = User.objects.get(username=usuario)
+		repo = Repositorio.objects.get(nombre=nombre_repo)
+		if usuario.check_password(password):
+			si = True
+		else:
+			si = False
+		if si:
+			try:
+				miembro = Miembro.objects.get(usuario=usuario, repositorio=repo, activo = True)
+				if miembro:
+					e = Commit(usuario=usuario, repositorio=repo, descripcion=descripcion)
+					e.save()
+			except:
+				return "Error en la creacion del commit"
+			return "Operacion efectuada correctamente."
+		else:
+			return "Nombre de usuario o password incorrecto."
+	except:
+		return "Nombre de usuario no registrado."
 	
-
-def oracion(a):
-	print "Palabra recibida %s"%a
-	return a
-
-
 # you have to manually register all functions that are xml-rpc-able with the dispatcher
 # the dispatcher then maps the args down.
 # The first argument is the actual method, the second is what to call it from the XML-RPC side...
-dispatcher.register_function(oracion, 'oracion')
 dispatcher.register_function(crearRepositorio,'crearRepositorio')
+dispatcher.register_function(publicarEntrada,'publicarEntrada')
+dispatcher.register_function(publicarCommit,'publicarCommit')
