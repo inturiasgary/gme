@@ -14,6 +14,16 @@
 \section{INTRODUCCION}
 \section{HERRAMIENTAS COLABORATIVAS}
 \subsection{GIT}
+\subsubsection{Modelo de objetos GIT}
+Toda la información necesitada para representar la historia de un proyecto es almacenada en archivos referenciados por 40 dígitos.también denominado ``Object Name''
+\paragraph{Tipos de objetos}
+\begin{itemize}
+ \item \textbf{Blob} Usado para almacenar datos de archivos, generalmente archivos.
+ \item \textbf{Tree} Básicamente igual a un directorio, hace referencia a otras ramas, arboles o blobs.
+ \item \textbf{Commit} Apunta a un árbol simple, timestamp, autor de los cambios del anterior commit realizado.
+ \item \textbf{Tag} Forma especifica para marcar un Commit. como por ejemplo una versión ralease especifico.
+\end{itemize}
+
 \subsubsection{HOOKS(GANCHOS)}
 No son copiados durante la ejecucion del comando \textit{git clone}.En otras palabras, los hooks configurados en nuestro repositorio privado no son propagados ni alteran el 
 comportamiento del nuevo clon.

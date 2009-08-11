@@ -5,10 +5,12 @@
 %Paquetes para el idioma, las tildes, etc.
 \usepackage{longtable}
 \usepackage[activeacute,spanish]{babel}
-\usepackage[letterpaper,left=3cm,right=2.0cm]{geometry}
+\usepackage[letterpaper]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{multirow}
 \usepackage{multicol}
+\usepackage{anysize}
+\marginsize{3.1cm}{2cm}{1.7cm}{1.5cm}
 \renewcommand{\baselinestretch}{1.5}
 
 \newtheorem{proc}{Procedimiento}
@@ -18,7 +20,6 @@
 \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{-3.25ex \@plus
 -1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}}
 \makeatother % necesario para que restablezca '@' como carácter especial
-
 
 %Abrimos el bloque para escribir el documento.
 \begin{document}
@@ -52,21 +53,20 @@ Al Lic. Boris M. Calancha por sus conocimientos impartidos y las sugerencias rea
 A todas las personas que de algún modo sus criticas y sus enseñanza me ayudaron para poder enfrentar los retos de la vida.\\[3cm]
 \par}
 \textbf{\textit{¡Muchas Gracias!}}
-
-
-
 \end{center}
-
 \newpage
 \begin{center}
  {\Large FICHA RESUMEN}\\
 \end{center}
-
 El desarrollo de proyecto de software en la actualidad se encuentra a cargo de un equipo de desarrolladores, como así también los administradores del proyecto.
 La comunicación entre los integrantes es esencial para el cumplimiento de los objetivos a alcanzar, para la coordinación eficaz del equipo de trabajo y la determinación de tiempos para las respectivas tareas designadas.
+
 La dificultad de tratar con cada uno de los integrantes de forma personal aumenta según el numero que estos integran y aun mas si realizan sus trabajos a distancia, esto causa mala comprensión de las tareas a cumplir dentro del desarrollo de software. Provocando perdidas de tiempo que en el transcurso son esenciales para la culminación del proyecto.
-La mayoría de sistemas de control de versiones no se encuentran integrados a un sistema microblog, el cual facilitaría las notificaciones de las acciones que efectúan en tiempo real a los ficheros de los repositorios de trabajo. Así provocando una de-sincronización causando conflictos a la hora de realizar actualizaciones en los repositorios.
-GIT no es una excepción a estos posibles problemas, debido a que cada integrante del grupo de desarrollo obtiene una copia idéntica del repositorio, es una de las cualidades de los sistemas de control de versiones distribuidas.
+
+La mayoría de sistemas de control de versiones no se encuentran integrados a un sistema que de a conocer las actividades que se realizan en cada uno de los repositorios que modifican cada integrante desarrollador, Así provocando una de-sincronización causando conflictos a la hora de realizar actualizaciones en los repositorios.
+GIT no es una excepción a estos posibles problemas, debido a que cada integrante del grupo de desarrollo obtiene una copia idéntica del repositorio, el cual es una de las cualidades de los sistemas de control de versiones distribuidas.
+
+Es por esto que surge la idea de aportar con una herramienta que facilitara las notificaciones de las acciones que se efectúan en los repositorios de trabajo en tiempo real mediante un sistema web microblog y así poder reducir los conflictos de inconsistencias debido a las modificaciones de ficheros por varias personas no coordinadas.
 
 \end{titlepage}
 \newpage
@@ -81,9 +81,9 @@ GIT no es una excepción a estos posibles problemas, debido a que cada integrant
 \include{cap6}
 
 \section{Antecedentes}
-Los sistemas de control de versiones en la actualidad son utilizados mayormente en la industria informática. Estos también son aplicados a otros ámbitos como documentos, imágenes, sitios web, etc.
+Los sistemas de control de versiones en la actualidad son utilizados mayormente en la industria informática. Estos también son aplicados a otros ámbitos como documentos, imágenes, sitios web, etc.\\
 
-Aunque un sistema de control de versiones puede realizarse de forma manual, es muy aconsejable disponer de herramientas que faciliten esta gestión, entre las cuales tenemos (CVS, Subversion, Mercurial, Git, etc.). Todos estos sistemas de control de versiones se basan en disponer de un repositorio, que es el conjunto de información gestionada por el sistema.
+Aunque un sistema de control de versiones puede realizarse de forma manual, es muy aconsejable disponer de herramientas que faciliten esta gestión, entre las cuales tenemos (CVS, Subversion, Mercurial, Git, etc.). Todos estos sistemas de control de versiones se basan en disponer de un repositorio, que es el conjunto de información gestionada por el sistema.\\
 
 Git es un software de sistema de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y confiabilidad de mantenimiento de versiones de aplicaciones con una enorme cantidad de archivos de código fuente.
 
@@ -93,23 +93,9 @@ El diseño de Git se basó en BitKeeper y en Monotone. En principio, Git se pens
 ¿ Es posible la reducción de conflictos de inconsistencias debido a las modificaciones de ficheros por varias personas no coordinadas,  causadas por falta de comunicación de las personas del grupo de trabajo en el desarrollo de software que emplean el sistema de control de versiones distribuidas con GIT ?
 
 \section{GIT}
-\subsection{Modelo de objetos GIT}
-Toda la información necesitada para representar la historia de un proyecto es almacenada en archivos referenciados por 40 dígitos.también denominado ``Object Name''
-\subsection{Tipos de objetos}
-\begin{itemize}
- \item \textbf{Blob} Usado para almacenar datos de archivos, generalmente archivos.
- \item \textbf{Tree} Básicamente igual a un directorio, hace referencia a otras ramas, arboles o blobs.
- \item \textbf{Commit} Apunta a un árbol simple, timestamp, autor de los cambios del anterior commit realizado.
- \item \textbf{Tag} Forma especifica para marcar un Commit. como por ejemplo una versión ralease especifico.
-\end{itemize}
-
 
 \section{Innovación Tecnológica}
 En la actualidad la mayoría de los sistemas microblog mas usados, son de uso genérico utilizados para compartir información acerca del estado de acciones realizadas por los usuarios. Se realizara sistema web microblog que aporte a la comunicación enfocada a los integrantes de grupos de desarrollos de software, el cual permitirá realizar un mayor control en la sincronización en los repositorios subversionados con GIT.
-
-\section{Cronograma}
-%adicionamos el cronograma
-\include{cronograma}
 %adicionamos la bibliografia
 \include{bibliografia}
 \end{document}

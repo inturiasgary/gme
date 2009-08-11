@@ -67,14 +67,45 @@ Desarrollar un sistema Web microblog\footnote{Microblog es un servicio que permi
 } para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT\footnote{GIT software de sistema de control de versiones distribuido.
 }.
 
-\subsubsection{Objetivos Específicos}
+\subsection{WEB API}
+Una API es una interfaz de programación de aplicaciones (del inglés API: Application Programming Interface). Es un conjunto de rutinas que provee acceso a funciones de un determinado software.
 
-\subsection{Justificación}
-El sistema web que se desea desarrollar ayudara  a los integrantes del grupo de trabajo encargados en la realización del proyecto, facilitando hacer un seguimiento de las tareas a realizar, el reporte de avances que se realizan durante el transcurso del día, así también poder compartir información y reportar errores entre el grupo.
-Los proyectos gestionados con el sistema de control de versiones GIT se podrán integrar con el sistema web microblog, debido a que se hará uso de algunos ganchos(hooks) que enlazarán con el sistema y así poder notificar a los integrantes del grupo de desarrollo en tiempo real sobre las acciones(commit) realizadas en cada uno de sus repositorios locales.
-\section{Metodología}
-SCRUM es una metodología ágiles, toma en cuenta la situación cambiante de los requisitos del cliente, así también minimiza la necesidad de la documentación.
-Organizando el desarrollo de software de un manera evolutiva en los denominados sprints(periodos que duran de 15 a 30 días).
+Son publicadas por los constructores de software para permitir acceso a características de bajo nivel o propietarias, detallando solamente la forma en que cada rutina debe ser llevada a cabo y la funcionalidad que brinda, sin otorgar información a cerca de como se lleva a cabo la tarea. Son utilizadas por los programadores para construir sus aplicaciones sin necesidad de volver a programar funciones ya hechas por otros, reutilizando código que se sabe que está probado y que funciona correctamente.
 
+En la web las API's tambien son sinonimos de Web Service, las API's son publicadas por sitios para brindar la posibilidad de realizar alguna acción o acceder a alguna característica o contenido que el sitio provee. 
+
+Una API puede ser:
+
+\begin{itemize}
+ \item \textbf{DEPENDIENTE DEL LENGUAJE:} Que es disponible solo por un lengiaje de programacion dado, usando la sintaxis y elementos de ese lenguaje para hacer conveniente el uso del API en esa peticion.
+ \item \textbf{INDEPENDIENTE DEL LENGUAJE:} Que puede ser llamado por un gran numero de de lenguajes de programacion. Esta es una característica de un servicio al estilo de la API que no está vinculada a un determinado proceso o sistema y está disponible como una llamada a procedimiento remoto(RPC Remote ).
+\end{itemize}
+
+\subsubsection{XML RPC}
+Es un protocolo de llamada a procedimiento remoto, que utiliza HTTP como el transporte y XML para la codificacion de datos. XML-RPC esta diseñado para ser lo mas sencillo posible, permitiendo al mismo tiempo las estructuras mas complejas de datos que deben ser transmitidos, procesados y devueltos.
+
+XML-RPC contra. Otros protocolos
+
+XML-RPC no es la única manera de hacer llamadas de procedimiento remotos. Otros protocolos populares incluyen CORBA, DCOM y el SOAP. Cada uno de estos protocolos tiene ventajas y desventajas.
+
+XML-RPC contra CORBA
+
+CORBA es un protocolo popular para la escritura distribuida, usos orientados a objetos. Se utiliza típicamente en usos de varias filas de empresas. Recientemente, también es adoptado por el proyecto del gnome para la comunicación de interaplicacion.
+
+CORBA es muy apoyado por muchos vendedores y varios proyectos de software libre. CORBA trabaja bien con Java y C++, y está disponible para muchos otras idiomas. CORBA también proporciona una lengua excelente de la definición de interfaz (IDL), permitiendo que usted defina APIs legibles, orientados al objeto.
+
+Desafortunadamente, CORBA es muy complejo. Tiene una curva de aprendizaje escarpada, requiere esfuerzo significativo para ejecutar, y requiere a clientes bastante sofisticados.
+
+XML-RPC contra DCOM
+
+DCOM es respuesta de Microsoft a CORBA. Es grande si usted está utilizando ya componentes de COM, y usted no necesita hablar con los sistemas que no son de Microsoft. entonces, no le ayudará mucho.
+
+XML-RPC contra SOAP
+
+SOAP es muy similar a XML-RPC. , Trabaja también formando llamadas de procedimiento sobre el protocolo HTTP con documentos de XML. Desafortunadamente, el SOAP parece sufrir de arrastramiento de la especificación.
+
+SOAP fue creado originalmente como colaboración entre UserLand, DevelopMentor y Microsoft. El lanzamiento público inicial era básicamente XML-RPC con los namespaces \footnote{En programación, un espacio de nombres (del inglés namespace), en su acepción más simple, es un conjunto de nombres en el cual todos los nombres son únicos.} y nombres de elemento más largos. Desde entonces, sin embargo, SOAP se ha volcado un grupo de trabajo de W3C.
+
+Desafortunadamente, el grupo de trabajo ha estado agregando una lista de características extrañas al SOAP. En fecha la escritura actual, el SOAP apoya esquemas de XML, enumeraciones, híbridos extraños de structs y de órdenes, y tipos de encargo. Al mismo tiempo, varios aspectos SOAP son puesta en práctica definida.
 
 %\end{document}

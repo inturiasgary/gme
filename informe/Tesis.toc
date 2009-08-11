@@ -5,50 +5,47 @@
 \contentsline {section}{\numberline {1.3}OBJETIVOS}{6}
 \contentsline {subsection}{\numberline {1.3.1}OBJETIVO GENERAL}{6}
 \contentsline {subsection}{\numberline {1.3.2}OBJETIVOS ESPECIFICOS}{6}
-\contentsline {section}{\numberline {1.4}JUSTIFICACION}{7}
-\contentsline {section}{\numberline {1.5}METODOLOGIA}{7}
+\contentsline {section}{\numberline {1.4}JUSTIFICACION}{6}
+\contentsline {section}{\numberline {1.5}METODOLOG\IeC {\'I}A}{7}
 \contentsline {section}{\numberline {1.6}CRONOGRAMA DEL DESARROLLO}{7}
-\contentsline {subsection}{\numberline {1.6.1}PLANIFICACION POR FASES}{7}
-\contentsline {subsection}{\numberline {1.6.2}CALENDARIO DEL PROYECTO}{7}
-\contentsline {subsubsection}{\numberline {1.6.2.1}CUADRO DE ACTIVIDADES}{7}
-\contentsline {chapter}{\numberline {2}MARCO TEORICO}{8}
-\contentsline {section}{\numberline {2.1}DEFINICIONES B\IeC {\'A}SICAS}{8}
-\contentsline {subsection}{\numberline {2.1.1}EL PROCESO DE DESARROLLO DE SOFTWARE}{8}
-\contentsline {subsection}{\numberline {2.1.2}GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}{9}
-\contentsline {subsection}{\numberline {2.1.3}SISTEMA DE CONTROL DE VERSIONES}{10}
-\contentsline {subsubsection}{\numberline {2.1.3.1}CLASIFICACI\IeC {\'O}N}{10}
-\contentsline {subsection}{\numberline {2.1.4}MICROBLOG}{12}
-\contentsline {subsection}{\numberline {2.1.5}FRAMEWORK DJANGO}{12}
-\contentsline {subsubsection}{\numberline {2.1.5.1}Objetivos Espec\IeC {\'\i }ficos}{12}
-\contentsline {subsection}{\numberline {2.1.6}Justificaci\IeC {\'o}n}{12}
-\contentsline {section}{\numberline {2.2}Metodolog\IeC {\'\i }a}{12}
-\contentsline {chapter}{\numberline {3}HERRAMIENTAS PARA EL DESARROLLO DE SOFTWARE}{13}
-\contentsline {section}{\numberline {3.1}INTRODUCCION}{13}
-\contentsline {section}{\numberline {3.2}HERRAMIENTAS COLABORATIVAS}{13}
-\contentsline {subsection}{\numberline {3.2.1}GIT}{13}
-\contentsline {subsubsection}{\numberline {3.2.1.1}HOOKS(GANCHOS)}{13}
-\contentsline {chapter}{\numberline {4}DESARROLLO DEL PROYECTO}{15}
-\contentsline {section}{\numberline {4.1}METODOLOGIA DE DESARROLLO}{15}
-\contentsline {section}{\numberline {4.2}DESCRIPCION DEL PROBLEMA}{16}
-\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{17}
-\contentsline {section}{\numberline {5.1}CONCLUSIONES}{17}
-\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{17}
-\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{18}
-\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{18}
-\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{18}
-\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{19}
-\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{19}
-\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{19}
-\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{19}
-\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{19}
-\contentsline {subparagraph}{Debian/Ubuntu}{19}
-\contentsline {subparagraph}{Windows}{20}
-\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACION DE GIT}{21}
-\contentsline {subsection}{\numberline {6.1.3}hola}{21}
-\contentsline {section}{\numberline {6.2}Antecedentes}{22}
-\contentsline {section}{\numberline {6.3}Definici\IeC {\'o}n del problema}{22}
-\contentsline {section}{\numberline {6.4}GIT}{23}
-\contentsline {subsection}{\numberline {6.4.1}Modelo de objetos GIT}{23}
-\contentsline {subsection}{\numberline {6.4.2}Tipos de objetos}{23}
-\contentsline {section}{\numberline {6.5}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{23}
-\contentsline {section}{\numberline {6.6}Cronograma}{23}
+\contentsline {subsection}{\numberline {1.6.1}PLANIFICACION POR FASES}{10}
+\contentsline {subsection}{\numberline {1.6.2}CALENDARIO DEL PROYECTO}{10}
+\contentsline {subsubsection}{\numberline {1.6.2.1}CUADRO DE ACTIVIDADES}{10}
+\contentsline {chapter}{\numberline {2}MARCO TEORICO}{11}
+\contentsline {section}{\numberline {2.1}DEFINICIONES B\IeC {\'A}SICAS}{11}
+\contentsline {subsection}{\numberline {2.1.1}EL PROCESO DE DESARROLLO DE SOFTWARE}{11}
+\contentsline {subsection}{\numberline {2.1.2}GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}{12}
+\contentsline {subsection}{\numberline {2.1.3}SISTEMA DE CONTROL DE VERSIONES}{13}
+\contentsline {subsubsection}{\numberline {2.1.3.1}CLASIFICACI\IeC {\'O}N}{13}
+\contentsline {subsection}{\numberline {2.1.4}MICROBLOG}{14}
+\contentsline {subsection}{\numberline {2.1.5}FRAMEWORK DJANGO}{14}
+\contentsline {subsection}{\numberline {2.1.6}WEB API}{14}
+\contentsline {subsubsection}{\numberline {2.1.6.1}XML RPC}{15}
+\contentsline {chapter}{\numberline {3}HERRAMIENTAS PARA EL DESARROLLO DE SOFTWARE}{17}
+\contentsline {section}{\numberline {3.1}INTRODUCCION}{17}
+\contentsline {section}{\numberline {3.2}HERRAMIENTAS COLABORATIVAS}{17}
+\contentsline {subsection}{\numberline {3.2.1}GIT}{17}
+\contentsline {subsubsection}{\numberline {3.2.1.1}Modelo de objetos GIT}{17}
+\contentsline {paragraph}{\numberline {3.2.1.1.1}Tipos de objetos}{17}
+\contentsline {subsubsection}{\numberline {3.2.1.2}HOOKS(GANCHOS)}{18}
+\contentsline {chapter}{\numberline {4}DESARROLLO DEL PROYECTO}{19}
+\contentsline {section}{\numberline {4.1}METODOLOGIA DE DESARROLLO}{19}
+\contentsline {section}{\numberline {4.2}DESCRIPCION DEL PROBLEMA}{20}
+\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{21}
+\contentsline {section}{\numberline {5.1}CONCLUSIONES}{21}
+\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{21}
+\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{22}
+\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{22}
+\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{22}
+\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{22}
+\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{22}
+\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{22}
+\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{23}
+\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{23}
+\contentsline {subparagraph}{Debian/Ubuntu}{23}
+\contentsline {subparagraph}{Windows}{24}
+\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACION DE GIT}{24}
+\contentsline {section}{\numberline {6.2}Antecedentes}{26}
+\contentsline {section}{\numberline {6.3}Definici\IeC {\'o}n del problema}{26}
+\contentsline {section}{\numberline {6.4}GIT}{27}
+\contentsline {section}{\numberline {6.5}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{27}

@@ -66,7 +66,7 @@ con el estilo nativo de aplicaciones Windows. Para su instalacion hay que descar
 	\end{verbatim}
 \end{proc}
 \paragraph{CONFIGURACION DE GIT}
-Vamos a hacer uso del nombre juan perez, para explicar la configuracion de Git, haciendo enfoque en el sistema operativo ubuntu.
+Una vez realizada la instalacion de Git en las maquinas clientes vamos a realizar la configuracion basica, vamos a hacer uso del nombre juan perez, para explicar la configuracion de Git, haciendo enfoque en el sistema operativo ubuntu.
 la siguientes instrucciones deben ejecutarse en el interprete de comandos:
 
 Configuracion global de Git.
@@ -80,18 +80,29 @@ estrictamente recomendada para realizar la interaccion con el sistema Web Microb
  $ git config user.name "Juan Perez"
  $ git config user.email "juanperez@gmail.com"
 \end{verbatim}
+\paragraph{INSTALACIÓN DE LA LIBRERIA GITPYTHON}
+GitPython es una libreria para el lenguaje de programacion Python que nos servira para interactuar con
+los repositorios creados por Git.
 
-\subsection{hola}
-%\end{document}
+para la instalacion se deben realizar los siguientes pasos:
+realizar la siguiente instruccion en el interprete de linea de codigos
+\begin{verbatim}
+ $ easy_install GitPython
+\end{verbatim}
 
-Contenido general
+Este comando bajara la version mas reciente de GitPython y lo instalara en el sistema.
 
-Cada proyecto suelen tener una o varias listas de
-distribución donde se discute la dirección que toma el
-proyecto, se plantean posibles soluciones a problemas
-complejos, y se toman decisiones sobre el proceso de
-desarrollo del software. También es usual disponer de
-canales de chat que son mucho más inmediatos y
-tienen mayor interactividad que el correo electrónico y
-suelen utilizarse para resolver problemas muy
-concretos de forma rápida.
+Alternativamente se puede instalar desde la distribucion, el repositorio git de GitPython esta disponible en Gitorious, ubicado en:
+
+http://gitorious.org/projects/git-python/
+
+y podemos conseguir un clon del repo desde:
+
+git://gitorious.org/git-python/mainline.git
+
+Una ves adquirido el repositorio, ingresamos en el directorio donde esta ubicado y ejecutamos la siguiente instruccion:
+\begin{verbatim}
+ $ python setup.py install
+\end{verbatim}
+
+con esto tendremos instalado la libreria para que nuestro cliente pueda enviar informacion remota hacia el sistema web microblog.

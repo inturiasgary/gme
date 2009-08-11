@@ -1,22 +1,15 @@
-# Patchless XMLRPC Service for Django
-# Kind of hacky, and stolen from Crast on irc.freenode.net:#django
-# Self documents as well, so if you call it from outside of an XML-RPC Client
-# it tells you about itself and its methods
-#
-# Brendan W. McAdams <brendan.mcadams@thewintergrp.com>
-
-# SimpleXMLRPCDispatcher lets us register xml-rpc calls w/o
-# running a full XMLRPC Server.  It's up to us to dispatch data
-
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from repositorio.models import *
 from microblog.models import *
+import sys
 from django.utils.translation import ugettext_lazy as _
-# Crea un Dispatcher; escucha las llamadas y traduce la informacion a funciones maps
-#dispatcher = SimpleXMLRPCDispatcher() # Python 2.4
-dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5 o mayor
+#Verificamos la version de python instalada para la creacion del dispatcher
+if sys.version_info[:3] >= (2,5,):
+	dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5 o mayor
+else:
+	dispatcher = SimpleXMLRPCDispatcher()
 
 def rpc_handler(request):
 	"""
@@ -37,12 +30,7 @@ def rpc_handler(request):
 		methods = dispatcher.system_listMethods()
 
 		for method in methods:
-			# right now, my version of SimpleXMLRPCDispatcher always
-			# returns "signatures not supported"... :(
-			# but, in an ideal world it will tell users what args are expected
 			sig = dispatcher.system_methodSignature(method)
-
-			# this just reads your docblock, so fill it in!
 			help =  dispatcher.system_methodHelp(method)
 
 			response.write("<li><b>%s</b>: [%s] %s" % (method, sig, help))
@@ -98,10 +86,7 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
 			return "Nombre de usuario o password incorrecto."
 	except:
 		return "Nombre de usuario no registrado."
-	
-# you have to manually register all functions that are xml-rpc-able with the dispatcher
-# the dispatcher then maps the args down.
-# The first argument is the actual method, the second is what to call it from the XML-RPC side...
-dispatcher.register_function(crearRepositorio,'crearRepositorio')
+#registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC	
+dispatcher.register_function(crearRepositorio,'crearRepositorio args')
 dispatcher.register_function(publicarEntrada,'publicarEntrada')
 dispatcher.register_function(publicarCommit,'publicarCommit')
