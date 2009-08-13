@@ -1,0 +1,34 @@
+9
+
+dir
+18
+http://django-todo.googlecode.com/svn/trunk/todo/media/todo
+http://django-todo.googlecode.com/svn
+
+
+
+2009-04-21T08:20:20.660102Z
+17
+shacker@birdhouse.org
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+3d9fd24e-8237-11dd-ac5a-f353d88c4ef8
+
+css
+dir
+
+js
+dir
+
