@@ -25,12 +25,11 @@ SITE_ID = 1
 
 USE_I18N = True
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__),"site_media")
-
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'site_media/')
 MEDIA_URL = '/site_media/'
 
-
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_ROOT = os.path.join(os.path.dirname(__file__),'admin_media/')
+ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'qqxw-529(6@57su-f+#lh63kwif9r(&d0m!paa48yv7-n@18y5'
@@ -94,7 +93,7 @@ INSTALLED_APPS = (
     'timezones',        #adicionado app timezones para personalizar zonas horarias
     #'gme.friends',
     'pagination',#adicionado app para la paginacion
-	'todo',
+    'todo',
 )
 
 #ABSOLUTE_URL_OVERRIDES = {

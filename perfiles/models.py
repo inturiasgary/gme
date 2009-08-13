@@ -3,11 +3,14 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+from utils.stdimage import fields
+import datetime
+from utils import uploads
 
 class Perfil(models.Model):
 
     user       = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    imagen     = models.FileField(help_text=_('Imagen png o jpg.'), upload_to='photos')
+    imagen     = fields.StdImageField(_('picture'), upload_to=uploads.get_path, size=(100, 100, True), help_text=_("imagen oi"))
     nombre     = models.CharField(_('nombre'), max_length=50, null=True, blank=True)
     comentario = models.TextField(_('comentario'), null=True, blank=True)
     ubicacion  = models.CharField(_('ubicacion'), max_length=40, null=True, blank=True)
