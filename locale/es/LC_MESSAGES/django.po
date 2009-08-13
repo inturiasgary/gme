@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-22 13:06-0400\n"
+"POT-Creation-Date: 2009-08-12 18:32-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,146 +89,155 @@ msgstr ""
 msgid "template to load for the plugin."
 msgstr ""
 
-#: cuenta/forms.py:22 cuenta/forms.py:56 cuenta/models.py:11
+#: cuenta/forms.py:21 cuenta/forms.py:55 cuenta/models.py:11
 msgid "Username"
-msgstr ""
+msgstr "Nombre de usuario"
 
-#: cuenta/forms.py:23 cuenta/forms.py:57
+#: cuenta/forms.py:22 cuenta/forms.py:56
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
-#: cuenta/forms.py:24
+#: cuenta/forms.py:23
 msgid "Remember"
-msgstr ""
+msgstr "Recordar"
 
-#: cuenta/forms.py:24
+#: cuenta/forms.py:23
 msgid "If you check this option, password was remember by 3 weeks"
-msgstr ""
+msgstr "Si selecciona esta opcion, su contraseña sera recordad por 3 semanas"
 
-#: cuenta/forms.py:36
+#: cuenta/forms.py:35
 msgid "Account is disabled"
-msgstr ""
+msgstr "La cuenta esta deshabilitada"
 
-#: cuenta/forms.py:38
+#: cuenta/forms.py:37
 msgid "Username or password wrong"
-msgstr ""
+msgstr "Nombre de usuario o contraseña incorrectas"
 
-#: cuenta/forms.py:44
+#: cuenta/forms.py:43
 #, python-format
-msgid "Satisfactoriamente logeado como %(username)s."
-msgstr ""
+msgid "Succesfully log as %(username)s."
+msgstr "Logeado satisfactoriamente como %(username)s."
+
+#: cuenta/forms.py:57
+msgid "Password(Again)"
+msgstr "Contraseña(Nuevamente)"
 
 #: cuenta/forms.py:58
-msgid "Password(Again)"
-msgstr ""
-
-#: cuenta/forms.py:59
 msgid "Email(optional)"
-msgstr ""
+msgstr "Correo electronico(Opcional)"
 
-#: cuenta/forms.py:64
-msgid ""
-"Nombre de usuario solo puede contener caracteres, numbers and underscores."
-msgstr ""
+#: cuenta/forms.py:63
+msgid "Username only can contain letters, numbers and underscores."
+msgstr "Nombre de usuario solo puede contener letras, numeros y guion."
 
-#: cuenta/forms.py:69
-msgid "Nombre de usuario ya en uso. Escoje otro."
-msgstr ""
+#: cuenta/forms.py:68
+msgid "Username is already in use. Please change."
+msgstr "Nombre de usuario no disponible. Utilice otro."
 
-#: cuenta/forms.py:74
-msgid "Debes escribir la misma contrasenia."
-msgstr ""
+#: cuenta/forms.py:73
+msgid "Write the same password please."
+msgstr "Escribe la misma contraseña."
 
-#: cuenta/forms.py:97
+#: cuenta/forms.py:96
 msgid "Your email address has already been verified"
-msgstr ""
+msgstr "Tu direccion de correo electronico ha sido verificado"
 
-#: cuenta/forms.py:104 cuenta/forms.py:110
+#: cuenta/forms.py:103 cuenta/forms.py:109
 #, python-format
-msgid "Email de confirmacion enviado a %(email)s"
-msgstr ""
+msgid "Email confirmation sent to %(email)s"
+msgstr "Email de confirmacion enviado a %(email)s"
 
-#: cuenta/forms.py:133 cuenta/forms.py:172 notification/models.py:57
+#: cuenta/forms.py:132 cuenta/forms.py:171 notification/models.py:57
 msgid "Email"
-msgstr ""
+msgstr "Correo electronico"
 
-#: cuenta/forms.py:140
+#: cuenta/forms.py:139
 msgid "This email address already associated with this account."
-msgstr ""
+msgstr "Correo electronico ha sido asociado con esta cuenta"
 
-#: cuenta/forms.py:143
+#: cuenta/forms.py:142
 #, python-format
 msgid "Confirmation email sent to %(email)s"
-msgstr ""
+msgstr "Correo electronico de confirmacion enviado a %(email)s"
+
+#: cuenta/forms.py:148
+msgid "Current Password"
+msgstr "Contraseña Actual"
 
 #: cuenta/forms.py:149
-msgid "Current Password"
-msgstr ""
+msgid "New Password"
+msgstr "Nueva contraseña"
 
 #: cuenta/forms.py:150
-msgid "New Password"
-msgstr ""
-
-#: cuenta/forms.py:151
 msgid "New Password (again)"
-msgstr ""
+msgstr "Nueva contraseña (nuevamente)"
 
-#: cuenta/forms.py:155
+#: cuenta/forms.py:154
 msgid "Please type your current password."
-msgstr ""
+msgstr "Ingrese su contraseña actual"
 
-#: cuenta/forms.py:161
+#: cuenta/forms.py:160
 msgid "You must type the same password each time."
-msgstr ""
+msgstr "Debes escribir la misma contraseña."
 
-#: cuenta/forms.py:167
+#: cuenta/forms.py:166
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Contraseña satisfactoriamente cambiada."
 
-#: cuenta/forms.py:176
+#: cuenta/forms.py:175
 msgid "Email address not verified for any user account"
-msgstr ""
+msgstr "Correo electronico no verificado por ninguna cuenta de usuario"
 
-#: cuenta/forms.py:184
+#: cuenta/forms.py:183
 msgid "Password reset"
-msgstr ""
+msgstr "Reinicio de contraseña"
 
-#: cuenta/forms.py:194 cuenta/models.py:12
+#: cuenta/forms.py:193 cuenta/models.py:12
 msgid "Timezone"
-msgstr ""
+msgstr "ZonaHoraria"
 
-#: cuenta/forms.py:203
-msgid "Huso Horario  actualizado."
-msgstr ""
+#: cuenta/forms.py:202
+msgid "Time zone updated."
+msgstr "Zona horaria cambiada correctamente."
 
-#: cuenta/forms.py:207 cuenta/models.py:13
+#: cuenta/forms.py:206 cuenta/models.py:13
 msgid "Language"
-msgstr ""
+msgstr "Lenguaje"
 
-#: cuenta/forms.py:216
+#: cuenta/forms.py:215
 msgid "Language changed satisfactory."
-msgstr "Lenguaje cambiado"
+msgstr "Lenguaje cambiado Satisfactoriamente."
 
 #: cuenta/views.py:43
 #, python-format
 msgid "Logeado satisfactoriamente como %(username)s."
 msgstr ""
 
+#: cuenta/views.py:64
+#, python-format
+msgid "Confirmation email sent to %s"
+msgstr "Correo electronico de confirmacion enviado a %s"
+
+#: cuenta/views.py:73
+#, python-format
+msgid "Removed email address %s"
+msgstr "Direccion de correo electronico eliminado %s"
+
 #: friends/management.py:9
 msgid "Invitation Received"
-msgstr ""
+msgstr "Invitacion recivida"
 
 #: friends/management.py:9
 msgid "you have received an invitation"
-msgstr ""
+msgstr "Tu reciviste una invitacion"
 
 #: friends/management.py:10
 msgid "Invitation Sent"
-msgstr ""
+msgstr "Invitacion enviada"
 
 #: friends/management.py:10
 msgid "you have sent an invitation"
-msgstr ""
+msgstr "Has enviado una invitacion"
 
 #: friends/management.py:11
 msgid "Acceptance Received"
@@ -493,26 +502,30 @@ msgid "next"
 msgstr ""
 
 #: perfiles/models.py:10
-msgid "nombre"
+msgid "Imagen png o jpg."
 msgstr ""
 
 #: perfiles/models.py:11
-msgid "comentario"
+msgid "nombre"
 msgstr ""
 
 #: perfiles/models.py:12
-msgid "ubicacion"
+msgid "comentario"
 msgstr ""
 
 #: perfiles/models.py:13
+msgid "ubicacion"
+msgstr ""
+
+#: perfiles/models.py:14
 msgid "sitio web"
 msgstr ""
 
-#: perfiles/models.py:23
+#: perfiles/models.py:24
 msgid "perfil"
 msgstr ""
 
-#: perfiles/models.py:24
+#: perfiles/models.py:25
 msgid "perfiles"
 msgstr ""
 
@@ -548,7 +561,7 @@ msgstr ""
 msgid "cuerpo"
 msgstr ""
 
-#: templates/base.html:43
+#: templates/base.html:45
 msgid "ocultar"
 msgstr ""
 
@@ -838,7 +851,8 @@ msgid "Password Reset"
 msgstr ""
 
 #: templates/cuenta/password_reset_done.html:11
-#: templates/notification/notices.html:60
+#: templates/notification/notices.html:60 templates/todo/view_list.html:110
+#: templates/todo/view_list.html.py:157
 msgid "Note"
 msgstr ""
 
@@ -1003,15 +1017,15 @@ msgstr ""
 msgid "recipientes"
 msgstr ""
 
-#: templates/microblog/index.html:42
+#: templates/microblog/index.html:43
 msgid "Aun no tienes ningun mensaje."
 msgstr ""
 
-#: templates/microblog/index.html:52
+#: templates/microblog/index.html:53
 msgid "Aun no tienes conectados"
 msgstr ""
 
-#: templates/microblog/index.html:59 templates/repositorio/index.html:27
+#: templates/microblog/index.html:60 templates/repositorio/index.html:27
 msgid "No estas logeado"
 msgstr ""
 
@@ -1042,7 +1056,7 @@ msgstr ""
 
 #: templates/notification/notices.html:44
 msgid "No notices."
-msgstr ""
+msgstr "Sin noticias"
 
 #: templates/notification/notices.html:49
 msgid "Settings"
@@ -1066,11 +1080,11 @@ msgstr ""
 
 #: templates/notification/notices.html:68
 msgid "Notification Type"
-msgstr ""
+msgstr "Tipo de notificacion"
 
 #: templates/notification/notices.html:86
 msgid "Change"
-msgstr ""
+msgstr "Cambia"
 
 #: templates/perfiles/base.html:10
 msgid "Tu Perfil"
@@ -1109,41 +1123,53 @@ msgstr ""
 msgid "Perfiles"
 msgstr ""
 
-#: templates/repositorio/detalle_repositorio.html:9
+#: templates/repositorio/detalle_repositorio.html:10
+msgid "Estadistica"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:11
+msgid "ToDo"
+msgstr "Para Hacer"
+
+#: templates/repositorio/detalle_repositorio.html:12
+msgid "Miembros"
+msgstr ""
+
+#: templates/repositorio/detalle_repositorio.html:21
 msgid "Information"
-msgstr ""
-
-#: templates/repositorio/detalle_repositorio.html:14
-msgid "Repository information"
-msgstr ""
-
-#: templates/repositorio/detalle_repositorio.html:17
-msgid "Name:"
-msgstr ""
-
-#: templates/repositorio/detalle_repositorio.html:20
-msgid "Description:"
-msgstr ""
-
-#: templates/repositorio/detalle_repositorio.html:23
-msgid "Created:"
-msgstr ""
+msgstr "Información"
 
 #: templates/repositorio/detalle_repositorio.html:26
-msgid "Web Link:"
-msgstr ""
+msgid "Repository information"
+msgstr "Información del repositorio"
 
 #: templates/repositorio/detalle_repositorio.html:29
+msgid "Name:"
+msgstr "Nombre:"
+
+#: templates/repositorio/detalle_repositorio.html:32
+msgid "Description:"
+msgstr "Descripcion:"
+
+#: templates/repositorio/detalle_repositorio.html:35
+msgid "Created:"
+msgstr "Creado:"
+
+#: templates/repositorio/detalle_repositorio.html:38
+msgid "Web Link:"
+msgstr "Enlace Web:"
+
+#: templates/repositorio/detalle_repositorio.html:41
 msgid "Administrator email:"
 msgstr ""
 
 #: templates/repositorio/editar_repositorio.html:6
 msgid "Edit Repository"
-msgstr ""
+msgstr "Editar Repositorio"
 
 #: templates/repositorio/editar_repositorio.html:6
 msgid "Create Repository"
-msgstr ""
+msgstr "Crear Repositorio"
 
 #: templates/repositorio/editar_repositorio.html:10
 msgid "Guardar"
@@ -1151,7 +1177,7 @@ msgstr ""
 
 #: templates/repositorio/index.html:14
 msgid "Repositories"
-msgstr ""
+msgstr "Repositorios"
 
 #: templates/repositorio/repositorios_list.html:6
 msgid "Resultados de Busqueda."
@@ -1159,7 +1185,7 @@ msgstr ""
 
 #: templates/repositorio/repositorios_mios.html:5
 msgid "My Repositories."
-msgstr ""
+msgstr "Mis repositorios"
 
 #: templates/repositorio/repositorios_mios.html:6
 #: templates/repositorio/repositorios_mios.html:23
@@ -1176,6 +1202,276 @@ msgid "Los repos."
 msgstr ""
 
 #: templates/repositorio/repositorios_participar.html:25
-#: templates/repositorio/repositorios_participo.html:26
+#: templates/repositorio/repositorios_participo.html:27
 msgid "Aun no ingresaste a ningun repo."
 msgstr ""
+
+#: templates/todo/del_list.html:5
+#, fuzzy
+msgid "to-do items"
+msgstr "Lista para hacer"
+
+#: templates/todo/del_list.html:17
+msgid "Return to lists"
+msgstr ""
+
+#: templates/todo/del_list.html:21
+msgid "Delete entire list"
+msgstr ""
+
+#: templates/todo/del_list.html:26
+msgid "Incomplete"
+msgstr ""
+
+#: templates/todo/del_list.html:27
+#, fuzzy
+msgid "Complete"
+msgstr "Fecha realizada"
+
+#: templates/todo/del_list.html:28
+#, fuzzy
+msgid "Total"
+msgstr "Titulo"
+
+#: templates/todo/del_list.html:31
+msgid ""
+" all of which will be irretrievably <strong>blown away</strong>. Are you "
+"sure you want to do that? "
+msgstr ""
+
+#: templates/todo/del_list.html:40
+msgid "Return to list"
+msgstr ""
+
+#: templates/todo/del_list.html:47
+msgid ""
+"Sorry, you don't have permission to delete lists. Please contact your group "
+"administrator"
+msgstr ""
+
+#: templates/todo/list_lists.html:5
+msgid "Todo Lists"
+msgstr "Lista para hacer"
+
+#: templates/todo/list_lists.html:18
+msgid "To-do Lists"
+msgstr "Lista para hacer"
+
+#: templates/todo/list_lists.html:20
+msgid "items in"
+msgstr "Tareas en"
+
+#: templates/todo/list_lists.html:20
+msgid "lists"
+msgstr "Listas"
+
+#: templates/todo/list_lists.html:32
+msgid "Add a list"
+msgstr "Adicionar una lista"
+
+#: templates/todo/list_lists.html:36
+msgid "Submit"
+msgstr "Realizar"
+
+#: templates/todo/view_list.html:5
+#, fuzzy
+msgid "Todo List"
+msgstr "Lista para hacer"
+
+#: templates/todo/view_list.html:43
+#, fuzzy
+msgid "Tasks assigned to"
+msgstr "Tarea asignada a"
+
+#: templates/todo/view_list.html:46
+msgid "Tasks filed under"
+msgstr ""
+
+#: templates/todo/view_list.html:47
+msgid "This list belongs to repository"
+msgstr "Esta lista pertenece al repositorio"
+
+#: templates/todo/view_list.html:75 templates/todo/view_list.html.py:105
+#: templates/todo/view_list.html:154 templates/todo/view_task.html:5
+msgid "Task"
+msgstr "Tarea"
+
+#: templates/todo/view_list.html:76 templates/todo/view_task.html:45
+#: todo/models.py:41
+msgid "Due date"
+msgstr "Fecha a cumplir"
+
+#: templates/todo/view_list.html:77
+msgid "Assign to"
+msgstr "Asignado a"
+
+#: templates/todo/view_list.html:78
+msgid "Notify*"
+msgstr "Notificar*"
+
+#: templates/todo/view_list.html:81
+#, fuzzy
+msgid "Note:"
+msgstr "Nombre:"
+
+#: templates/todo/view_list.html:82
+msgid ""
+"Email notifications will only be sent if task is assigned to someone besides "
+"yourself."
+msgstr ""
+
+#: templates/todo/view_list.html:100
+msgid "Incomplete tasks :: Drag rows to set priorities"
+msgstr "Tareas imcompletas :: Arrastre filas para determinar prioridades "
+
+#: templates/todo/view_list.html:104
+msgid "Done"
+msgstr "Hecho"
+
+#: templates/todo/view_list.html:106 templates/todo/view_list.html.py:155
+#, fuzzy
+msgid "Created"
+msgstr "Creado:"
+
+#: templates/todo/view_list.html:107
+msgid "Due on"
+msgstr "Hacer hasta"
+
+#: templates/todo/view_list.html:108
+msgid "Owner"
+msgstr "Dueño"
+
+#: templates/todo/view_list.html:109
+msgid "Assigned"
+msgstr "Asignado"
+
+#: templates/todo/view_list.html:111 templates/todo/view_list.html.py:158
+msgid "Comm"
+msgstr ""
+
+#: templates/todo/view_list.html:114 todo/models.py:39
+#, fuzzy
+msgid "List"
+msgstr "Listas"
+
+#: templates/todo/view_list.html:117 templates/todo/view_list.html.py:162
+msgid "Del"
+msgstr "Eliminar"
+
+#: templates/todo/view_list.html:143
+msgid "Continue..."
+msgstr "Continuar..."
+
+#: templates/todo/view_list.html:145
+msgid "View completed tasks"
+msgstr "Ver tareas completadas"
+
+#: templates/todo/view_list.html:153
+msgid "Undo"
+msgstr "Deshacer"
+
+#: templates/todo/view_list.html:156
+#, fuzzy
+msgid "Completed on"
+msgstr "Fecha realizada"
+
+#: templates/todo/view_list.html:182
+msgid "View incomplete tasks"
+msgstr "Ver tareas incompletas"
+
+#: templates/todo/view_list.html:187
+msgid "Delete this list"
+msgstr "Borrar esta lista"
+
+#: templates/todo/view_task.html:43
+#, fuzzy
+msgid "Assigned to"
+msgstr "Tarea asignada a"
+
+#: templates/todo/view_task.html:44 todo/models.py:44
+msgid "Created by"
+msgstr "Creado por"
+
+#: templates/todo/view_task.html:46
+#, fuzzy
+msgid "Completed"
+msgstr "Fecha realizada"
+
+#: templates/todo/view_task.html:112
+msgid "Add comment"
+msgstr "Adicionar comentario"
+
+#: templates/todo/view_task.html:119
+msgid "Comments on this task"
+msgstr "Comentarios en esta tarea"
+
+#: todo/models.py:11
+msgid "Name"
+msgstr "Nombre"
+
+#: todo/models.py:38
+msgid "Title"
+msgstr "Titulo"
+
+#: todo/models.py:43
+msgid "Completed date"
+msgstr "Fecha realizada"
+
+#: todo/models.py:45
+msgid "Todo asigned to"
+msgstr "Tarea asignada a"
+
+#: todo/views.py:28
+msgid "You don't appear belong to any repository. Enter at least to one."
+msgstr "No parece ser que perteneces a ningun repositorio. Ingresa a uno para continuar."
+
+#: todo/views.py:53
+msgid "A new list has been created."
+msgstr "Una nueva lista ha sido creada."
+
+#: todo/views.py:56
+msgid ""
+"There was a problem saving the new list. Most likely a list with the same "
+"name in the same group already exists."
+msgstr ""
+
+#: todo/views.py:118
+msgid "You do not have permission to view/edit this list."
+msgstr "No tienes permiso para ver/editar esta lista."
+
+#: todo/views.py:131
+#, python-format
+msgid "Item \"%s\" marked complete."
+msgstr "Item \"%s\" marcado como completo."
+
+#: todo/views.py:141
+#, python-format
+msgid "Previously completed task \"%s\" marked incomplete."
+msgstr ""
+
+#: todo/views.py:150
+#, python-format
+msgid "Item \"%s\" deleted."
+msgstr "Item \"%s\" emiliminado."
+
+#: todo/views.py:158
+#, python-format
+msgid "Deleted previously completed item \"%s\"."
+msgstr "Borrado item previamente completado \"%s\"."
+
+#: todo/views.py:196
+msgid "Task saved but mail not sent. Contact your administrator."
+msgstr "Tarea guardada pero el email no fue mandado. Contacta con el administrador"
+
+#: todo/views.py:198
+#, python-format
+msgid "New task \"%s\" has been added."
+msgstr "Nueva tarea \"%s\" ha sido adicionada."
+
+#: todo/views.py:246
+msgid "The task has been edited."
+msgstr "La tarea ha sido editada."
+
+#: todo/views.py:253
+msgid "You do not have permission to view/edit this task."
+msgstr "No tienes permiso para editar esta tarea."

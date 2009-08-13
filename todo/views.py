@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
+from django.utils.translation import ugettext_lazy as _
 import datetime
 
 @login_required
@@ -24,7 +25,7 @@ def list_lists(request):
     # El concepto de repositorios es lo mismo que grupos.
     group_count = request.user.repositorio_set.filter(miembro__activo=True).count()
     if group_count == 0:
-        request.user.message_set.create(message="Aun no ingresaste a ningun repositorio. Ingresa a alguno.")
+        request.user.message_set.create(message=_("You don't appear belong to any repository. Enter at least to one."))
 
     # Muestra la lista de repositorios donde el usuario es miembro
     # Only show lists to the user that belong to groups they are members of.
@@ -49,10 +50,10 @@ def list_lists(request):
         if form.is_valid():
             try:
                 form.save()
-                request.user.message_set.create(message="Una nueva lista a sido creada.")
+                request.user.message_set.create(message=_("A new list has been created."))
                 return HttpResponseRedirect(request.path)
             except IntegrityError:
-                request.user.message_set.create(message="There was a problem saving the new list. Most likely a list with the same name in the same group already exists.")
+                request.user.message_set.create(message=_("There was a problem saving the new list. Most likely a list with the same name in the same group already exists."))
 
     else:
         form = AddListForm(request.user)
@@ -114,7 +115,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
         if list.grupo in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
             auth_ok = 1   # User is authorized for this view
         else: # User does not belong to the group this list is attached to
-            request.user.message_set.create(message="You do not have permission to view/edit this list.")
+            request.user.message_set.create(message=_("You do not have permission to view/edit this list."))
 
 
     # First check for items in the mark_done POST array. If present, change
@@ -127,7 +128,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             p.completed = 1
             p.completed_date = datetime.datetime.now()
             p.save()
-            request.user.message_set.create(message="Item \"%s\" marked complete." % p.title )
+            request.user.message_set.create(message=_("Item \"%s\" marked complete.") % p.title )
 
 
         # Undo: Set completed items back to incomplete
@@ -137,7 +138,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             p = Item.objects.get(id=thisitem)
             p.completed = 0
             p.save()
-            request.user.message_set.create(message="Previously completed task \"%s\" marked incomplete." % p.title)	        
+            request.user.message_set.create(message=_("Previously completed task \"%s\" marked incomplete.") % p.title)	        
 
 
     # And delete any requested items
@@ -146,7 +147,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
         for thisitem in deleted_items:
             p = Item.objects.get(id=thisitem)
             p.delete()
-            request.user.message_set.create(message="Item \"%s\" deleted." % p.title )
+            request.user.message_set.create(message=_("Item \"%s\" deleted.") % p.title )
 
     # And delete any *already completed* items
     if request.POST.getlist('del_completed_task'):
@@ -154,7 +155,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
         for thisitem in deleted_items:
             p = Item.objects.get(id=thisitem)
             p.delete()
-            request.user.message_set.create(message="Deleted previously completed item \"%s\"."  % p.title)
+            request.user.message_set.create(message=_("Deleted previously completed item \"%s\".")  % p.title)
 
 
     thedate = datetime.datetime.now()
@@ -192,9 +193,9 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
                     try:
                         send_mail(email_subject, email_body, new_task.created_by.email, [new_task.assigned_to.email], fail_silently=False)
                     except:
-                        request.user.message_set.create(message="Task saved but mail not sent. Contact your administrator." )
+                        request.user.message_set.create(message=_("Task saved but mail not sent. Contact your administrator.") )
 
-            request.user.message_set.create(message="New task \"%s\" has been added." % new_task.title )
+            request.user.message_set.create(message=_("New task \"%s\" has been added.") % new_task.title )
             return HttpResponseRedirect(request.path)
 
     else:
@@ -242,14 +243,14 @@ def view_task(request,task_id):
                     )
                     c.save()
 
-                request.user.message_set.create(message="The task has been edited.")
+                request.user.message_set.create(message=_("The task has been edited."))
                 return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
 
         else:
             form = EditItemForm(instance=task)
             thedate = task.due_date
     else:
-        request.user.message_set.create(message="You do not have permission to view/edit this task.")
+        request.user.message_set.create(message=_("You do not have permission to view/edit this task."))
 
     return render_to_response('todo/view_task.html', locals(), context_instance=RequestContext(request))
 

@@ -5,9 +5,10 @@ from repositorio.models import Repositorio
 from django.contrib import admin
 from django.contrib.auth.models import User
 import string, datetime
+from django.utils.translation import get_language_from_request, ugettext_lazy as _
 
 class List(models.Model):
-    name        = models.CharField(max_length=60)
+    name        = models.CharField(max_length=60, verbose_name=_("Name"))
     slug        = models.SlugField(max_length=60,editable=False)
     grupo       = models.ForeignKey(Repositorio)
     
@@ -34,14 +35,14 @@ class List(models.Model):
         unique_together = ("grupo", "slug")
         
 class Item(models.Model):
-    title = models.CharField(max_length=140)
-    list = models.ForeignKey(List)
+    title = models.CharField(max_length=140, verbose_name=_("Title"))
+    list = models.ForeignKey(List, verbose_name=_("List"))
     created_date = models.DateField()    
-    due_date = models.DateField(blank=True,null=True,)
-    completed = models.BooleanField()
-    completed_date = models.DateField(blank=True,null=True)
-    created_by = models.ForeignKey(User, related_name='created_by')
-    assigned_to = models.ForeignKey(User, related_name='todo_assigned_to')
+    due_date = models.DateField(blank=True,null=True,verbose_name=_("Due date"))
+    completed = models.BooleanField(verbose_name=("Completed"))
+    completed_date = models.DateField(blank=True,null=True,verbose_name=_("Completed date"))
+    created_by = models.ForeignKey(User, related_name='created_by', verbose_name=_("Created by"))
+    assigned_to = models.ForeignKey(User, related_name='todo_assigned_to', verbose_name=_("Todo asigned to"))
     note = models.TextField(blank=True)
     priority = models.PositiveIntegerField(max_length=3)
     

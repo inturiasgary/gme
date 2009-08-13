@@ -61,7 +61,7 @@ def email(request, form_class=AddEmailForm, template_name="cuenta/email.html"):
                 email = request.POST["email"]
                 try:
                     email_address = EmailAddress.objects.get(user=request.user, email=email)
-                    request.user.message_set.create(message="Confirmation email sent to %s" % email)
+                    request.user.message_set.create(message=_("Confirmation email sent to %s") % email)
                     EmailConfirmation.objects.send_confirmation(email_address)
                 except EmailAddress.DoesNotExist:
                     pass
@@ -70,7 +70,7 @@ def email(request, form_class=AddEmailForm, template_name="cuenta/email.html"):
                 try:
                     email_address = EmailAddress.objects.get(user=request.user, email=email)
                     email_address.delete()
-                    request.user.message_set.create(message="Removed email address %s" % email)
+                    request.user.message_set.create(message=_("Removed email address %s") % email)
                 except EmailAddress.DoesNotExist:
                     pass
             elif request.POST["action"] == "primary":

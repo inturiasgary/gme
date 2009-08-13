@@ -1,23 +1,19 @@
-"""
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
+import unittest
+from repositorio.models import *
+from django.contrib.auth.models import User
+from datetime import time, timedelta
 
-Replace these with more appropriate tests for your application.
-"""
-
-from django.test import TestCase
-
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.failUnlessEqual(1 + 1, 2)
-
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+class RepositorioTestCase(unittest.TestCase):
+	def SetUp(self):
+		self.repositorio1 = Repositorio.objects.create(nombre="repositorio1", descripcion="descripcion de repositorio",
+							       direccionWeb="www.repositorio1.com", emailAdmin="repositorio1@hotmail.com",
+							       )
+	def testUpdateRepositorio(self):
+		self.repositorio1 = Repositorio.objects.create(nombre="repositorio1", descripcion="descripcion de repositorio",
+							       direccionWeb="www.repositorio1.com", emailAdmin="repositorio1@hotmail.com",
+							       )
+		self.repositorio1.save()
+		self.repositorioPrueba = Repositorio.objects.get(nombre="repositorio1")
+		self.repositorioPrueba.emailAdmin="repo@hotmail.com"
+		self.repositorioPrueba.save()
+		self.assertEquals( self.assertEqual(self.repositorioPrueba.emailAdmin, "repo@hotmail.com"))

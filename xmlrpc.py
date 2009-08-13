@@ -87,6 +87,6 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
 	except:
 		return "Nombre de usuario no registrado."
 #registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC	
-dispatcher.register_function(crearRepositorio,'crearRepositorio args')
+dispatcher.register_function(crearRepositorio,'crearRepositorio')
 dispatcher.register_function(publicarEntrada,'publicarEntrada')
 dispatcher.register_function(publicarCommit,'publicarCommit')

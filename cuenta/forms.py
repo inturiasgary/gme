@@ -1,4 +1,3 @@
-#coding: utf-8
 import re #importacion para el uso de expresiones regulares
 from django import forms
 from django.template.loader import render_to_string
@@ -41,7 +40,7 @@ class LoginForm(forms.Form):
     def login(self, request):
         if self.is_valid():
             login(request, self.user)
-            request.user.message_set.create(message=ugettext(u"Satisfactoriamente logeado como %(username)s.") % {'username': self.user.username})
+            request.user.message_set.create(message=ugettext("Succesfully log as %(username)s.") % {'username': self.user.username})
             if self.cleaned_data['recordar']:
                 request.session.set_expiry(60 * 60 * 24 * 7 * 3)
             else:
@@ -61,17 +60,17 @@ class RegistroForm(forms.Form):
 
     def clean_nombreUsuario(self):
         if not alnum_re.search(self.cleaned_data["nombreUsuario"]):
-            raise forms.ValidationError(_("Nombre de usuario solo puede contener caracteres, numbers and underscores."))
+            raise forms.ValidationError(_("Username only can contain letters, numbers and underscores."))
         try:
             user = User.objects.get(username__iexact=self.cleaned_data["nombreUsuario"])
         except User.DoesNotExist:
             return self.cleaned_data["nombreUsuario"]
-        raise forms.ValidationError(_("Nombre de usuario ya en uso. Escoje otro."))
+        raise forms.ValidationError(_("Username is already in use. Please change."))
 
     def clean(self):
         if "password1" in self.cleaned_data and "password2" in self.cleaned_data:
             if self.cleaned_data["password1"] != self.cleaned_data["password2"]:
-                raise forms.ValidationError(_("Debes escribir la misma contrasenia."))
+                raise forms.ValidationError(_("Write the same password please."))
         return self.cleaned_data
 
     def save(self):
@@ -79,7 +78,7 @@ class RegistroForm(forms.Form):
         email = self.cleaned_data["email"]
         password = self.cleaned_data["password1"]
         if self.cleaned_data["confirmation_key"]:
-            from friends.models import JoinInvitation # @@@ temporary fix for issue 93
+            from friends.models import JoinInvitation
             try:
                 join_invitation = JoinInvitation.objects.get(confirmation_key = self.cleaned_data["confirmation_key"])
                 confirmed = True
@@ -94,20 +93,20 @@ class RegistroForm(forms.Form):
             if email == join_invitation.contact.email:
                 new_user = User.objects.create_user(username, email, password)
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
-                new_user.message_set.create(message=ugettext(u"Your email address has already been verified"))
+                new_user.message_set.create(message=ugettext("Your email address has already been verified"))
                 # already verified so can just create
                 EmailAddress(user=new_user, email=email, verified=True, primary=True).save()
             else:
                 new_user = User.objects.create_user(username, "", password)
                 join_invitation.accept(new_user) # should go before creation of EmailAddress below
                 if email:
-                    new_user.message_set.create(message=ugettext(u"Email de confirmacion enviado a %(email)s") % {'email': email})
+                    new_user.message_set.create(message=ugettext("Email confirmation sent to %(email)s") % {'email': email})
                     EmailAddress.objects.add_email(new_user, email)
             return username, password # requerido para la autentificacion
         else:
             new_user = User.objects.create_user(username, "", password)
             if email:
-                new_user.message_set.create(message=ugettext(u"Email de confirmacion enviado a %(email)s") % {'email': email})
+                new_user.message_set.create(message=ugettext("Email confirmation sent to %(email)s") % {'email': email})
                 EmailAddress.objects.add_email(new_user, email)
             return username, password # requerido para la autentificacion
 
@@ -140,7 +139,7 @@ class AddEmailForm(UserForm):
         raise forms.ValidationError(_("This email address already associated with this account."))
 
     def save(self):
-        self.user.message_set.create(message=ugettext(u"Confirmation email sent to %(email)s") % {'email': self.cleaned_data["email"]})
+        self.user.message_set.create(message=ugettext("Confirmation email sent to %(email)s") % {'email': self.cleaned_data["email"]})
         return EmailAddress.objects.add_email(self.user, self.cleaned_data["email"])
 
 
@@ -164,7 +163,7 @@ class ChangePasswordForm(UserForm):
     def save(self):
         self.user.set_password(self.cleaned_data['password1'])
         self.user.save()
-        self.user.message_set.create(message=ugettext(u"Password successfully changed."))
+        self.user.message_set.create(message=ugettext("Password successfully changed."))
 
 
 class ResetPasswordForm(forms.Form):
@@ -200,7 +199,7 @@ class ChangeTimezoneForm(CuentaForm):
     def save(self):
         self.cuenta.timezone = self.cleaned_data["timezone"]
         self.cuenta.save()
-        self.user.message_set.create(message=ugettext(u"Huso Horario  actualizado."))
+        self.user.message_set.create(message=ugettext("Time zone updated."))
 
 class ChangeLanguageForm(CuentaForm):
 

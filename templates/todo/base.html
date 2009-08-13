@@ -2,19 +2,46 @@
 
 {% block extra_head %}
 <!-- CSS and JavaScript for django-todo -->
-<link rel="stylesheet" type="text/css" href="/site_media/todo/css/styles.css" />   
+<link type="text/css" href="/site_media/todo/css/styles.css" rel="stylesheet" />
+<script src="/site_media/js/ui.datepicker.js" type="text/javascript"></script>
+<script src="/site_media/todo/js/jquery.tablednd_0_5.js" type="text/javascript"></script>
+<link type="text/css" href="/site_media/js/jquery-ui-1.7.1.custom.css" rel="stylesheet" />
 
-<script src="/site_media/jquery/js/ui.datepicker.js" type="text/javascript"></script>
-<script src="/site_media/todo/js/jquery.tablednd_0_5.js" type="text/javascript"></script> 
-<link type="text/css" href="/site_media/js/jquery-ui-1.7.1.custom.css" rel="Stylesheet" />
+{% comment %}
+<script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.datepicker.js"></script>
+
+<script type="text/javascript" src="/site_media/js/ui.core.js"></script>
+
+
+
+ {% block extrahead %}
+  4 <!-- CSS and JavaScript for django-todo -->
+  5 <link rel="stylesheet" type="text/css" href="/media/todo/css/styles.css" />
+  6 
+  7 <script src="/media/js/ui.datepicker.js" type="text/javascript"></script>
+  8 <script src="/media/todo/js/jquery.tablednd_0_5.js" type="text/javascript"></script>
+  9 <link type="text/css" href="/media/js/jquery-ui-1.7.1.custom.css" rel="Stylesheet" />
+ 10 
+ 11 
+ 12 <script type="text/javascript" charset="utf-8">
+ 13     // jhthedate.x comes from the edit_task view. If this is a new entry, 
+ 14     // thedate won't be present and datepicker will fall back on the default (today).
+ 15     $(document).ready(function(){
+ 16         $('#id_due_date').datepicker({defaultDate: new Date({{thedate.year}}, {{thedate.month}} - 1, {{thedate.day}}),});
+ 17      });
+ 18 </script>
+ 19 
+ 20 {% endblock %}
+
+ {% endcomment %}
+
 
 
 <script type="text/javascript" charset="utf-8">
     // thedate.x comes from the edit_task view. If this is a new entry, 
     // thedate won't be present and datepicker will fall back on the default (today).
     $(document).ready(function(){
-        $('#id_due_date').datepicker({defaultDate: new Date({{thedate.year}}, {{thedate.month}} - 1, {{thedate.day}}),});
+        $('#id_due_date').datepicker();
      });
 </script>
-   
 {% endblock %}

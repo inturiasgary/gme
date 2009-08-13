@@ -1,6 +1,8 @@
 {% extends "todo/base.html" %}
 
-{% block title %}{{ list_title }} Todo Lists{% endblock %}
+{% load i18n %}
+
+{% block title %}{{ list_title }} {% trans "Todo Lists" %}{% endblock %}
 
 {% block body %}
 
@@ -13,9 +15,9 @@
     </ul>
     {% endif %}
 
-   <h1>To-do Lists</h1>
+   <h1>{% trans "To-do Lists" %}</h1>
    
-   <p>{{ item_count }} items in {{ list_count }} lists</p>
+   <p>{{ item_count }} {% trans "items in" %} {{ list_count }} {% trans "lists" %}</p>
 
    	<ul class="mainlist">
    		{% for list in list_list %}
@@ -27,11 +29,11 @@
     &nbsp;
     </div>
 
-    <h2>Add a list:</h2>
+    <h2>{% trans "Add a list" %}:</h2>
     
 	<form action="." method="POST">	
 	<table>{{ form }}</table>
-	<p><input type="submit" value="Submit" class="todo-button"></p>
+	<p><input type="submit" value={% trans "Submit" %} class="todo-button"></p>
 	</form>
 	
 {% endblock %}

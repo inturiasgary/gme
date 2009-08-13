@@ -1,6 +1,8 @@
 {% extends "todo/base.html" %}
 
-{% block title %}Todo List: {{ list.name }}{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Todo List" %}: {{ list.name }}{% endblock %}
 
 {% block body %}
 
@@ -38,11 +40,11 @@ $(document).ready(function() {
 
 
     {% ifequal list_slug "mine" %}
-        <h1>Tasks assigned to {{ request.user }}</h1>    
+        <h1>{% trans "Tasks assigned to" %} {{ request.user }}</h1>    
     {% else %}
     {% ifequal auth_ok 1 %}
-       <h1>Tasks filed under "{{ list.name }}"</h1>
-       <p>This list belongs to group {{ list.group }}</p>
+       <h1>{% trans "Tasks filed under" %}"{{ list.name }}"</h1>
+       <p>{% trans "This list belongs to repository" %} {{ list.group }}</p>
     {% endifequal %}
     {% endifequal %}
 
@@ -70,14 +72,14 @@ $(document).ready(function() {
 	           <td>{{ form.due_date.errors }}</td>
 	       </tr>
 	       <tr>
-	           <td><label for="id_title">Task:</label> {{ form.title }}</td>
-	           <td><label for="id_due_date">Due date:</label> {{ form.due_date }}</td>
-	           <td><label for="id_assigned">Assign to:</label> {{ form.assigned_to }}</td>
-	           <td><label for="id_notify">Notify*:</label> <input type="checkbox" checked="checked" name="notify" value="1" id="notify"></td>
+	           <td><label for="id_title">{% trans "Task" %}:</label> {{ form.title }}</td>
+	           <td><label for="id_due_date">{% trans "Due date" %}:</label> {{ form.due_date }}</td>
+	           <td><label for="id_assigned">{% trans "Assign to" %}:</label> {{ form.assigned_to }}</td>
+	           <td><label for="id_notify">{% trans "Notify*" %}:</label> <input type="checkbox" checked="checked" name="notify" value="1" id="notify"></td>
  	       </tr>
 	       <tr>
-	           <td colspan="5"><label for="id_note">Note:</label> {{ form.note }}
-	               <p class="minor">*Email notifications will only be sent if task is assigned to someone besides yourself.</p>
+	           <td colspan="5"><label for="id_note">{% trans "Note:" %}</label> {{ form.note }}
+	               <p class="minor">*{% trans "Email notifications will only be sent if task is assigned to someone besides yourself." %}</p>
 	           </td>
  	       </tr> 	       
 	    </table>
@@ -95,24 +97,24 @@ $(document).ready(function() {
         
     {% ifequal view_completed 0  %}
 
-	<h3>Incomplete tasks :: Drag rows to set priorities</h3>
+	<h3>{% trans "Incomplete tasks :: Drag rows to set priorities" %}</h3>
 	   
 	<table border="0" id="tasktable">	
         <tr>
-            <th>Done</th>             
-            <th>Task</th> 
-            <th>Created</th> 
-            <th>Due on</th>                         
-            <th>Owner</th> 
-            <th>Assigned</th>   
-            <th>Note</th>   
-            <th>Comm</th>                            
+            <th>{% trans "Done" %}</th>             
+            <th>{% trans "Task" %}</th> 
+            <th>{% trans "Created" %}</th> 
+            <th>{% trans "Due on" %}</th>                         
+            <th>{% trans "Owner" %}</th> 
+            <th>{% trans "Assigned" %}</th>   
+            <th>{% trans "Note" %}</th>   
+            <th>{% trans "Comm" %}</th>                            
  
             {% ifequal list_slug "mine" %}
-            <th>List</th>   
+            <th>{% trans "List" %}</th>   
              {% endifequal %}            
                                  
-            <th>Del</th>             
+            <th>{% trans "Del" %}</th>             
         </tr>
 		{% for task in task_list %}
 	        <tr class="{% cycle 'row1' 'row2' %}" id="{{ task.id }}">
@@ -138,9 +140,9 @@ $(document).ready(function() {
             </tr>
 	    {% endfor %}
 	</table>   
-    <p><input type="submit" name="mark_tasks_done" value="Continue..."  class="todo-button"></p>
+    <p><input type="submit" name="mark_tasks_done" value={% trans "Continue..." %}  class="todo-button"></p>
     
-    <p><a  class="todo" href="{% url todo-completed_tasks list_id list_slug %}">View completed tasks</a></p>
+    <p><a  class="todo" href="{% url todo-completed_tasks list_id list_slug %}">{% trans "View completed tasks" %}</a></p>
     {% endifequal %}    
 
     {% ifequal view_completed 1 %}
@@ -148,16 +150,16 @@ $(document).ready(function() {
 
 	<table border="0"  id="tasktable">	
         <tr>
-            <th>Undo</th> 
-            <th>Task</th> 
-            <th>Created</th> 
-            <th>Completed on</th>   
-            <th>Note</th>   
-            <th>Comm</th>            
+            <th>{% trans "Undo" %}</th> 
+            <th>{% trans "Task" %}</th> 
+            <th>{% trans "Created" %}</th> 
+            <th>{% trans "Completed on" %}</th>   
+            <th>{% trans "Note" %}</th>   
+            <th>{% trans "Comm" %}</th>            
             {% ifequal list_slug "mine" %}
             <th>List</th>   
              {% endifequal %}                       
-            <th>Del</th>                
+            <th>{% trans "Del" %}</th>                
         </tr>
 
         
@@ -177,12 +179,12 @@ $(document).ready(function() {
 	</table>
 	<p><input type="submit" name="deldonetasks" value="Continue..."  class="todo-button"></p>
 	</form> 
-    <p><a  class="todo" href="{% url todo-incomplete_tasks list_id list_slug %}">View incomplete tasks</a></p>
+    <p><a  class="todo" href="{% url todo-incomplete_tasks list_id list_slug %}">{% trans "View incomplete tasks" %}</a></p>
     {% endifequal %}    
 	
 	{% ifequal can_del 1 %}
 	{% ifnotequal list_slug "mine" %}    
-	   <p><a class="todo" href="{% url todo-del_list list_id list_slug %}">Delete this list</a></p>
+	   <p><a class="todo" href="{% url todo-del_list list_id list_slug %}">{% trans "Delete this list" %}</a></p>
 	{% endifnotequal %}
 	{% endifequal %}
 	
