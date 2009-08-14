@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-12 18:32-0400\n"
+"POT-Creation-Date: 2009-08-14 10:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,6 +312,30 @@ msgid ""
 "<a href=\"%(user_url)s\">%(new_user)s</a> has joined and is now a friend."
 msgstr ""
 
+#: imagekit/models.py:20
+msgid "left"
+msgstr ""
+
+#: imagekit/models.py:21 imagekit/models.py:27
+msgid "center"
+msgstr ""
+
+#: imagekit/models.py:22
+msgid "right"
+msgstr ""
+
+#: imagekit/models.py:26
+msgid "top"
+msgstr ""
+
+#: imagekit/models.py:28
+msgid "bottom"
+msgstr ""
+
+#: imagekit/models.py:89
+msgid "Thumbnail"
+msgstr ""
+
 #: microblog/models.py:13
 msgid "Esperando"
 msgstr ""
@@ -502,30 +526,26 @@ msgid "next"
 msgstr ""
 
 #: perfiles/models.py:10
-msgid "Imagen png o jpg."
-msgstr ""
-
-#: perfiles/models.py:11
 msgid "nombre"
 msgstr ""
 
-#: perfiles/models.py:12
+#: perfiles/models.py:11
 msgid "comentario"
 msgstr ""
 
-#: perfiles/models.py:13
+#: perfiles/models.py:12
 msgid "ubicacion"
 msgstr ""
 
-#: perfiles/models.py:14
+#: perfiles/models.py:13
 msgid "sitio web"
 msgstr ""
 
-#: perfiles/models.py:24
+#: perfiles/models.py:23
 msgid "perfil"
 msgstr ""
 
-#: perfiles/models.py:25
+#: perfiles/models.py:24
 msgid "perfiles"
 msgstr ""
 
@@ -536,6 +556,10 @@ msgstr ""
 #: repositorio/forms.py:28
 msgid "Nombre de repositorio ya registrado, favor elige otro."
 msgstr ""
+
+#: repositorio/forms.py:38
+msgid "Enter a keyword to search for"
+msgstr "Introduzca el nombre de repositorio a buscar"
 
 #: repositorio/models.py:16 repositorio/models.py:30
 msgid "activo"
@@ -1423,7 +1447,9 @@ msgstr "Tarea asignada a"
 
 #: todo/views.py:28
 msgid "You don't appear belong to any repository. Enter at least to one."
-msgstr "No parece ser que perteneces a ningun repositorio. Ingresa a uno para continuar."
+msgstr ""
+"No parece ser que perteneces a ningun repositorio. Ingresa a uno para "
+"continuar."
 
 #: todo/views.py:53
 msgid "A new list has been created."
@@ -1461,7 +1487,8 @@ msgstr "Borrado item previamente completado \"%s\"."
 
 #: todo/views.py:196
 msgid "Task saved but mail not sent. Contact your administrator."
-msgstr "Tarea guardada pero el email no fue mandado. Contacta con el administrador"
+msgstr ""
+"Tarea guardada pero el email no fue mandado. Contacta con el administrador"
 
 #: todo/views.py:198
 #, python-format

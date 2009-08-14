@@ -35,6 +35,6 @@ class RepoSaveForm(forms.ModelForm):
         fields = ('descripcion','direccionWeb','emailAdmin','activo',)
 
 class SearchForm(forms.Form):
-    query = forms.CharField(label="Enter a keyword to search for",
+    query = forms.CharField(label=_("Enter a keyword to search for"),
                             widget=forms.TextInput(attrs={'size':32}))
     

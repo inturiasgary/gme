@@ -7,7 +7,6 @@ from django.utils.translation import ugettext_lazy as _
 class Perfil(models.Model):
 
     user       = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    imagen     = models.FileField(help_text=_('Imagen png o jpg.'), upload_to='photos')
     nombre     = models.CharField(_('nombre'), max_length=50, null=True, blank=True)
     comentario = models.TextField(_('comentario'), null=True, blank=True)
     ubicacion  = models.CharField(_('ubicacion'), max_length=40, null=True, blank=True)
