@@ -63,3 +63,7 @@ class Commit(models.Model):
     def get_absolute_url(self):
         return "asdfsadf"
     
+class Imagen(models.Model):
+    imagen =models.ImageField(upload_to="/photos/")
+    def __unicode__(self):
+        return self.imagen
