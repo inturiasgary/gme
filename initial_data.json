@@ -1,0 +1,1301 @@
+[
+  {
+    "pk": 22, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_logentry", 
+      "name": "Can add log entry", 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_logentry", 
+      "name": "Can change log entry", 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_logentry", 
+      "name": "Can delete log entry", 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_group", 
+      "name": "Can add group", 
+      "content_type": 2
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_message", 
+      "name": "Can add message", 
+      "content_type": 4
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_permission", 
+      "name": "Can add permission", 
+      "content_type": 1
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_user", 
+      "name": "Can add user", 
+      "content_type": 3
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_group", 
+      "name": "Can change group", 
+      "content_type": 2
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_message", 
+      "name": "Can change message", 
+      "content_type": 4
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_permission", 
+      "name": "Can change permission", 
+      "content_type": 1
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_user", 
+      "name": "Can change user", 
+      "content_type": 3
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_group", 
+      "name": "Can delete group", 
+      "content_type": 2
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_message", 
+      "name": "Can delete message", 
+      "content_type": 4
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_permission", 
+      "name": "Can delete permission", 
+      "content_type": 1
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_user", 
+      "name": "Can delete user", 
+      "content_type": 3
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_contenttype", 
+      "name": "Can add content type", 
+      "content_type": 5
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_contenttype", 
+      "name": "Can change content type", 
+      "content_type": 5
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_contenttype", 
+      "name": "Can delete content type", 
+      "content_type": 5
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_cuenta", 
+      "name": "Can add cuenta", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_cuenta", 
+      "name": "Can change cuenta", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_cuenta", 
+      "name": "Can delete cuenta", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_emailaddress", 
+      "name": "Can add email address", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_emailconfirmation", 
+      "name": "Can add email confirmation", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_emailaddress", 
+      "name": "Can change email address", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_emailconfirmation", 
+      "name": "Can change email confirmation", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_emailaddress", 
+      "name": "Can delete email address", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_emailconfirmation", 
+      "name": "Can delete email confirmation", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_conexion", 
+      "name": "Can add conexion", 
+      "content_type": 15
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_entrada", 
+      "name": "Can add entrada", 
+      "content_type": 14
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_microbloguserprofile", 
+      "name": "Can add microblog user profile", 
+      "content_type": 16
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_conexion", 
+      "name": "Can change conexion", 
+      "content_type": 15
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_entrada", 
+      "name": "Can change entrada", 
+      "content_type": 14
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_microbloguserprofile", 
+      "name": "Can change microblog user profile", 
+      "content_type": 16
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_conexion", 
+      "name": "Can delete conexion", 
+      "content_type": 15
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_entrada", 
+      "name": "Can delete entrada", 
+      "content_type": 14
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_microbloguserprofile", 
+      "name": "Can delete microblog user profile", 
+      "content_type": 16
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_notice", 
+      "name": "Can add notice", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_noticequeuebatch", 
+      "name": "Can add notice queue batch", 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_noticesetting", 
+      "name": "Can add notice setting", 
+      "content_type": 10
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_noticetype", 
+      "name": "Can add notice type", 
+      "content_type": 9
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_observeditem", 
+      "name": "Can add observed item", 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_notice", 
+      "name": "Can change notice", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_noticequeuebatch", 
+      "name": "Can change notice queue batch", 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_noticesetting", 
+      "name": "Can change notice setting", 
+      "content_type": 10
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_noticetype", 
+      "name": "Can change notice type", 
+      "content_type": 9
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_observeditem", 
+      "name": "Can change observed item", 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_notice", 
+      "name": "Can delete notice", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_noticequeuebatch", 
+      "name": "Can delete notice queue batch", 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_noticesetting", 
+      "name": "Can delete notice setting", 
+      "content_type": 10
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_noticetype", 
+      "name": "Can delete notice type", 
+      "content_type": 9
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_observeditem", 
+      "name": "Can delete observed item", 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_perfil", 
+      "name": "Can add profile", 
+      "content_type": 25
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_perfil", 
+      "name": "Can change profile", 
+      "content_type": 25
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_perfil", 
+      "name": "Can delete profile", 
+      "content_type": 25
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_commit", 
+      "name": "Can add commit", 
+      "content_type": 20
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_imagen", 
+      "name": "Can add imagen", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_miembro", 
+      "name": "Can add miembro", 
+      "content_type": 18
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_repositorio", 
+      "name": "Can add repositorio", 
+      "content_type": 17
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_topico", 
+      "name": "Can add topico", 
+      "content_type": 19
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_commit", 
+      "name": "Can change commit", 
+      "content_type": 20
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_imagen", 
+      "name": "Can change imagen", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_miembro", 
+      "name": "Can change miembro", 
+      "content_type": 18
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_repositorio", 
+      "name": "Can change repositorio", 
+      "content_type": 17
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_topico", 
+      "name": "Can change topico", 
+      "content_type": 19
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_commit", 
+      "name": "Can delete commit", 
+      "content_type": 20
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_imagen", 
+      "name": "Can delete imagen", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_miembro", 
+      "name": "Can delete miembro", 
+      "content_type": 18
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_repositorio", 
+      "name": "Can delete repositorio", 
+      "content_type": 17
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_topico", 
+      "name": "Can delete topico", 
+      "content_type": 19
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_session", 
+      "name": "Can add session", 
+      "content_type": 6
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_session", 
+      "name": "Can change session", 
+      "content_type": 6
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_session", 
+      "name": "Can delete session", 
+      "content_type": 6
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_site", 
+      "name": "Can add site", 
+      "content_type": 7
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_site", 
+      "name": "Can change site", 
+      "content_type": 7
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_site", 
+      "name": "Can delete site", 
+      "content_type": 7
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_comment", 
+      "name": "Can add comment", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_item", 
+      "name": "Can add item", 
+      "content_type": 27
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_list", 
+      "name": "Can add list", 
+      "content_type": 26
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_comment", 
+      "name": "Can change comment", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_item", 
+      "name": "Can change item", 
+      "content_type": 27
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_list", 
+      "name": "Can change list", 
+      "content_type": 26
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_comment", 
+      "name": "Can delete comment", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_item", 
+      "name": "Can delete item", 
+      "content_type": 27
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_list", 
+      "name": "Can delete list", 
+      "content_type": 26
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "admin", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2009-08-17 18:56:52", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$3578e$d4f8f92f6a9d2d8f147d8406a56dd687da5acc14", 
+      "email": "a@a.com", 
+      "date_joined": "2009-08-17 18:56:52"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "usuario1", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2009-08-17 19:03:40", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$36022$c258547c818c90ff714f89512f8aa78298774ff2", 
+      "email": "", 
+      "date_joined": "2009-08-17 18:57:25"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "auth.user", 
+    "fields": {
+      "username": "usuario2", 
+      "first_name": "", 
+      "last_name": "", 
+      "is_active": true, 
+      "is_superuser": false, 
+      "is_staff": false, 
+      "last_login": "2009-08-17 19:04:12", 
+      "groups": [], 
+      "user_permissions": [], 
+      "password": "sha1$5a583$2826ef0a33f3aa0bbf6b24aec4288ed74e956f77", 
+      "email": "", 
+      "date_joined": "2009-08-17 18:57:44"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "comment", 
+      "name": "comment", 
+      "app_label": "todo"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "commit", 
+      "name": "commit", 
+      "app_label": "repositorio"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "conexion", 
+      "name": "conexion", 
+      "app_label": "microblog"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "contenttype", 
+      "name": "content type", 
+      "app_label": "contenttypes"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "cuenta", 
+      "name": "cuenta", 
+      "app_label": "cuenta"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "emailaddress", 
+      "name": "email address", 
+      "app_label": "emailconfirmation"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "emailconfirmation", 
+      "name": "email confirmation", 
+      "app_label": "emailconfirmation"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "entrada", 
+      "name": "entrada", 
+      "app_label": "microblog"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "group", 
+      "name": "group", 
+      "app_label": "auth"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "imagen", 
+      "name": "imagen", 
+      "app_label": "repositorio"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "item", 
+      "name": "item", 
+      "app_label": "todo"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "list", 
+      "name": "list", 
+      "app_label": "todo"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "logentry", 
+      "name": "log entry", 
+      "app_label": "admin"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "message", 
+      "name": "message", 
+      "app_label": "auth"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "microbloguserprofile", 
+      "name": "microblog user profile", 
+      "app_label": "microblog"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "miembro", 
+      "name": "miembro", 
+      "app_label": "repositorio"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "notice", 
+      "name": "notice", 
+      "app_label": "notification"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "noticequeuebatch", 
+      "name": "notice queue batch", 
+      "app_label": "notification"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "noticesetting", 
+      "name": "notice setting", 
+      "app_label": "notification"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "noticetype", 
+      "name": "notice type", 
+      "app_label": "notification"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "observeditem", 
+      "name": "observed item", 
+      "app_label": "notification"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "permission", 
+      "name": "permission", 
+      "app_label": "auth"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "perfil", 
+      "name": "profile", 
+      "app_label": "perfiles"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "repositorio", 
+      "name": "repositorio", 
+      "app_label": "repositorio"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "session", 
+      "name": "session", 
+      "app_label": "sessions"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "site", 
+      "name": "site", 
+      "app_label": "sites"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "topico", 
+      "name": "topico", 
+      "app_label": "repositorio"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "user", 
+      "name": "user", 
+      "app_label": "auth"
+    }
+  }, 
+  {
+    "pk": "2ecbe4b80fcc13a49ba034edd963e697", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2009-08-31 19:04:12", 
+      "session_data": "gAJ9cQEoVQ9fc2Vzc2lvbl9leHBpcnlxAksAVRJfYXV0aF91c2VyX2JhY2tlbmRxA1UpZGphbmdv\nLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmRxBFUNX2F1dGhfdXNlcl9pZHEFSwN1\nLjc1YmY3Zjk4YWI2ZWM5Yzk3NjAwNmE5MGE3YmZjYzUz\n"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "sites.site", 
+    "fields": {
+      "domain": "example.com", 
+      "name": "example.com"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "microblog.entrada", 
+    "fields": {
+      "contenido": "segundo mensaje usuario2", 
+      "fecha": "2009-08-17 19:02:30", 
+      "user": 2, 
+      "recipientes": [
+        2, 
+        3
+      ]
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "microblog.entrada", 
+    "fields": {
+      "contenido": "primer mensaje usuario1", 
+      "fecha": "2009-08-17 19:02:11", 
+      "user": 2, 
+      "recipientes": [
+        2, 
+        3
+      ]
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "microblog.entrada", 
+    "fields": {
+      "contenido": "segundo mensaje", 
+      "fecha": "2009-08-17 19:00:47", 
+      "user": 3, 
+      "recipientes": [
+        3
+      ]
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "microblog.entrada", 
+    "fields": {
+      "contenido": "Hola a todos, primer mensaje", 
+      "fecha": "2009-08-17 19:00:11", 
+      "user": 3, 
+      "recipientes": [
+        3
+      ]
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "microblog.conexion", 
+    "fields": {
+      "amigo": 2, 
+      "fecha": "2009-08-17 19:00:33", 
+      "estado": "a", 
+      "user": 3
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "microblog.conexion", 
+    "fields": {
+      "amigo": 3, 
+      "fecha": "2009-08-17 19:00:33", 
+      "estado": "a", 
+      "user": 2
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "repositorio.repositorio", 
+    "fields": {
+      "fecha": "2009-08-17 18:58:32", 
+      "emailAdmin": "ProyectoUsur2@hotmail.com", 
+      "direccionWeb": "http://www.repositorioUsuario2.com/", 
+      "activo": true, 
+      "descripcion": "Descripcion repositorioUsuario2", 
+      "nombre": "repositorioUsuario2"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "repositorio.repositorio", 
+    "fields": {
+      "fecha": "2009-08-17 18:59:11", 
+      "emailAdmin": "Proyecto2Usur2@hotmail.com", 
+      "direccionWeb": "http://www.repositorio2Usuario2.com/", 
+      "activo": true, 
+      "descripcion": "Descripcion repositorio2Usuario2", 
+      "nombre": "repositorio2Usuario2"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "repositorio.repositorio", 
+    "fields": {
+      "fecha": "2009-08-17 18:59:46", 
+      "emailAdmin": "Proyecto3Usur2@hotmail.com", 
+      "direccionWeb": "http://www.repo3.com/", 
+      "activo": true, 
+      "descripcion": "Descripcion repositorio3Usuario2", 
+      "nombre": "repositorio3Usuario2"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "repositorio.miembro", 
+    "fields": {
+      "repositorio": 1, 
+      "activo": true, 
+      "creador": true, 
+      "fecha_ingreso": "2009-08-17 18:58:32", 
+      "usuario": 3
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "repositorio.miembro", 
+    "fields": {
+      "repositorio": 2, 
+      "activo": true, 
+      "creador": true, 
+      "fecha_ingreso": "2009-08-17 18:59:11", 
+      "usuario": 3
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "repositorio.miembro", 
+    "fields": {
+      "repositorio": 3, 
+      "activo": true, 
+      "creador": true, 
+      "fecha_ingreso": "2009-08-17 18:59:46", 
+      "usuario": 3
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "repositorio.miembro", 
+    "fields": {
+      "repositorio": 3, 
+      "activo": true, 
+      "creador": false, 
+      "fecha_ingreso": "2009-08-17 19:02:59", 
+      "usuario": 2
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "repositorio.miembro", 
+    "fields": {
+      "repositorio": 1, 
+      "activo": false, 
+      "creador": false, 
+      "fecha_ingreso": "2009-08-17 19:03:14", 
+      "usuario": 2
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "cuenta.cuenta", 
+    "fields": {
+      "timezone": "America/La_Paz", 
+      "user": 1, 
+      "language": "en-us"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "cuenta.cuenta", 
+    "fields": {
+      "timezone": "America/La_Paz", 
+      "user": 2, 
+      "language": "en-us"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "cuenta.cuenta", 
+    "fields": {
+      "timezone": "America/La_Paz", 
+      "user": 3, 
+      "language": "en-us"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "perfiles.perfil", 
+    "fields": {
+      "ubicacion": null, 
+      "nombre": null, 
+      "sitioWeb": null, 
+      "user": 1, 
+      "comentario": null
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "perfiles.perfil", 
+    "fields": {
+      "ubicacion": null, 
+      "nombre": null, 
+      "sitioWeb": null, 
+      "user": 2, 
+      "comentario": null
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "perfiles.perfil", 
+    "fields": {
+      "ubicacion": null, 
+      "nombre": null, 
+      "sitioWeb": null, 
+      "user": 3, 
+      "comentario": null
+    }
+  }
+]
