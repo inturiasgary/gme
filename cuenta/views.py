@@ -40,7 +40,7 @@ def registro(request, form_class=RegistroForm, template_name="cuenta/registro.ht
             username, password = form.save()
             user = authenticate(username=username, password=password)
             auth_login(request, user)
-            request.user.message_set.create(message=_("Logeado satisfactoriamente como %(username)s.") % {'username': user.username})
+            request.user.message_set.create(message=_("login succesfully as %(username)s.") % {'username': user.username})
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
@@ -142,30 +142,3 @@ def language_change(request, form_class=ChangeLanguageForm,
         "form": form,
     }, context_instance=RequestContext(request))
 language_change = login_required(language_change)
-
-#def other_services(request, template_name="cuenta/other_services.html"):
-    #from zwitschern.utils import twitter_verify_credentials
-    #twitter_form = TwitterForm(request.user)
-    #twitter_authorized = False
-    #if request.method == "POST":
-        #twitter_form = TwitterForm(request.user, request.POST)
-
-        #if request.POST['actionType'] == 'saveTwitter':
-            #if twitter_form.is_valid():
-                #from zwitschern.utils import twitter_account_raw
-                #twitter_account = twitter_account_raw(request.POST['username'], request.POST['password'])
-                #twitter_authorized = twitter_verify_credentials(twitter_account)
-                #if not twitter_authorized:
-                    #request.user.message_set.create(message="Twitter authentication failed")
-                #else:
-                    #twitter_form.save()
-    #else:
-        #from zwitschern.utils import twitter_account_for_user
-        #twitter_account = twitter_account_for_user(request.user)
-        #twitter_authorized = twitter_verify_credentials(twitter_account)
-        #twitter_form = TwitterForm(request.user)
-    #return render_to_response(template_name, {
-        #"twitter_form": twitter_form,
-        #"twitter_authorized": twitter_authorized,
-    #}, context_instance=RequestContext(request))
-#other_services = login_required(other_services)

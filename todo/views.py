@@ -13,8 +13,10 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 import datetime
+
+from repositorio.models import Miembro
 
 @login_required
 def list_lists(request):
@@ -28,17 +30,17 @@ def list_lists(request):
         request.user.message_set.create(message=_("You don't appear belong to any repository. Enter at least to one."))
 
     # Muestra la lista de repositorios donde el usuario es miembro
-    # Only show lists to the user that belong to groups they are members of.
-    # Staff users see all lists
+    # Solo muestra la lista de usuarios que son miembros del repositorio.
+    # el administrador puede ver todos los usuarios
     if request.user.is_staff:
         list_list = List.objects.all().order_by('name')
     else:
         list_list = List.objects.filter(grupo__in=request.user.repositorio_set.filter(miembro__activo=True)).order_by('name')
 
-    # Count everything
+    # Cuenta todos
     list_count = list_list.count()
 
-    # Note admin users see all lists, so count shouldn't filter by just lists the admin belongs to
+    # el administrador puede ver todas las listas
     if request.user.is_staff :
         item_count = Item.objects.filter(completed=0).count()        
     else:
@@ -64,27 +66,25 @@ def list_lists(request):
 def del_list(request,list_id,list_slug):
 
     """
-    Delete an entire list. Danger Will Robinson! Only staff members should be allowed to access this view.
+    Elminia una lista.
     """
 
     if request.user.is_staff:
         can_del = 1
 
-    # Get this list's object (to derive list.name, list.id, etc.)
     list = get_object_or_404(List, slug=list_slug)
 
-    # If delete confirmation is in the POST, delete all items in the list, then kill the list itself
+    # Si la confirmacion se da, se elimina todos los items de la lista y la lista
     if request.method == 'POST':
-        # Can the items
         del_items = Item.objects.filter(list=list.id)
         for del_item in del_items:
             del_item.delete()
 
-        # Kill the list
+        # elimina la lista
         del_list = List.objects.get(id=list.id)
         del_list.delete()
 
-        # A var to send to the template so we can show the right thing
+        # cantidad de listas eliminadas
         list_killed = 1
 
     else:
@@ -99,30 +99,26 @@ def del_list(request,list_id,list_slug):
 def view_list(request,list_id=0,list_slug='',view_completed=0):
 
     """
-    Display and manage items in a task list
+    Muestra y administra los items de una lista
     """
 
-    # Make sure the accessing user has permission to view this list.
-    # Always authorize the "mine" view. Admins can view/edit all lists.
-
+    # Para verificar la seguridad de ingreso a una lista.
     if list_slug == "mine" :
         auth_ok =1
     else: 
         list = get_object_or_404(List, slug=list_slug)
         listid = list.id    
 
-        # Check whether current user is a member of the group this list belongs to.
+        # verifica si el usuario actual es miembro del repositorio
         if list.grupo in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
-            auth_ok = 1   # User is authorized for this view
-        else: # User does not belong to the group this list is attached to
+            auth_ok = 1   # El usuario es autorizado para el ingreso a  la lista
+        else: # no se autoriza su ingreso
             request.user.message_set.create(message=_("You do not have permission to view/edit this list."))
+        
 
-
-    # First check for items in the mark_done POST array. If present, change
-    # their status to complete.
     if request.POST.getlist('mark_done'):
         done_items = request.POST.getlist('mark_done')
-        # Iterate through array of done items and update its representation in the model
+        # Iteracion a traves del arreglo de utems realizados y actualiza en el modelo
         for thisitem in done_items:
             p = Item.objects.get(id=thisitem)
             p.completed = 1
@@ -131,7 +127,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             request.user.message_set.create(message=_("Item \"%s\" marked complete.") % p.title )
 
 
-        # Undo: Set completed items back to incomplete
+        # establece de nuevo como item no realizado
     if request.POST.getlist('undo_completed_task'):
         undone_items = request.POST.getlist('undo_completed_task')
         for thisitem in undone_items:
@@ -141,7 +137,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             request.user.message_set.create(message=_("Previously completed task \"%s\" marked incomplete.") % p.title)	        
 
 
-    # And delete any requested items
+    # elimina cualquier item
     if request.POST.getlist('del_task'):
         deleted_items = request.POST.getlist('del_task')
         for thisitem in deleted_items:
@@ -149,7 +145,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             p.delete()
             request.user.message_set.create(message=_("Item \"%s\" deleted.") % p.title )
 
-    # And delete any *already completed* items
+    # elimina items completados
     if request.POST.getlist('del_completed_task'):
         deleted_items = request.POST.getlist('del_completed_task')
         for thisitem in deleted_items:
@@ -162,7 +158,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
     created_date = "%s-%s-%s" % (thedate.year, thedate.month, thedate.day)
 
 
-    # Get list of items with this list ID, or filter on items assigned to me
+    # Obtiene la lista de items de la lista dado el ID, filtra los items asignados al usuario
     if list_slug == "mine":
         task_list = Item.objects.filter(assigned_to=request.user, completed=0)
         completed_list = Item.objects.filter(assigned_to=request.user, completed=1)
@@ -178,16 +174,15 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
         })
 
         if form.is_valid():
-            # Save task first so we have a db object to play with
+            # primero se graba la tarea para luego editarla
             new_task = form.save()
 
-            # Send email alert only if the Notify checkbox is checked AND the assignee is not the same as the submittor
-            # Email subect and body format are handled by templates
+            # Envio de email alerta solo si el checkbos es seleccionado y el asignado no es el mismo que el que esta creando        
             if "notify" in request.POST :
                 if new_task.assigned_to != request.user :
-                    current_site = Site.objects.get_current() # Need this for link in email template
+                    current_site = Site.objects.get_current() # Necesario para acoplamiento de la plantilla en el email
 
-                    # Send email
+                    # enviar email
                     email_subject = render_to_string("todo/email/assigned_subject.txt", { 'task': new_task })                    
                     email_body = render_to_string("todo/email/assigned_body.txt", { 'task': new_task, 'site': current_site, })
                     try:
@@ -199,7 +194,7 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
             return HttpResponseRedirect(request.path)
 
     else:
-        if list_slug != "mine" : # We don't allow adding a task on the "mine" view
+        if list_slug != "mine" : # No permitimos el agregar de una tarea en la vista mia
             form = AddItemForm(list, initial={
                 'assigned_to':request.user.id,
                 'priority':999,
@@ -207,7 +202,13 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
 
     if request.user.is_staff:
         can_del = 1
-
+    #solo adicionado el try
+    try:
+        #Controlamos que el usario sea el administrador del repositorio, caso contrario no podra borrar la tarea
+        miembro_creador   = Miembro.objects.get(repositorio__nombre="repositorioUsuario2", usuario__username=request.user.username,creador=True)
+        list_slug = "mine"
+    except:
+        list_slug = "notmine"
     return render_to_response('todo/view_list.html', locals(), context_instance=RequestContext(request))
 
 
@@ -215,20 +216,17 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
 def view_task(request,task_id):
 
     """
-    View task details. Allow task details to be edited.
+    vista para detalles de tareas. Permite la edicion de las tareas.
     """
 
     task = get_object_or_404(Item, pk=task_id)
     comment_list = Comment.objects.filter(task=task_id)
 
-    # Before doing anything, make sure the accessing user has permission to view this item.
-    # Determine the group this task belongs to, and check whether current user is a member of that group.
-    # Admins can edit all tasks.
-
+    # antes de adicionar cualquier cosa, hace seguro el acceso a usuario con permiso para ver estos items.
+    # determina el repositorio al que pertenece esta tarea, verfica si el usuario actual es miembro del repositorio.
     if task.list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
 
         auth_ok = 1
-        # Distinguish between POSTs from the two forms on the page (edit task and add comment) by detecting a field name
         if request.POST:
             form = EditItemForm(request.POST,instance=task)
             if form.is_valid():

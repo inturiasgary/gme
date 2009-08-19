@@ -7,7 +7,6 @@ class ItemAdmin(admin.ModelAdmin):
     ordering = ('priority',)
     search_fields = ('name',)
 
-
 admin.site.register(List)
 admin.site.register(Comment)
 admin.site.register(Item,ItemAdmin)

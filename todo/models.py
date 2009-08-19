@@ -5,7 +5,8 @@ from repositorio.models import Repositorio
 from django.contrib import admin
 from django.contrib.auth.models import User
 import string, datetime
-from django.utils.translation import get_language_from_request, ugettext_lazy as _
+from django.utils.translation import get_language_from_request
+from django.utils.translation import ugettext_lazy as _
 
 class List(models.Model):
     name        = models.CharField(max_length=60, verbose_name=_("Name"))
@@ -14,11 +15,11 @@ class List(models.Model):
     
     def save(self):
         if not self.id:
-            # Replace spaces in slug with hyphens, and lowercase.
+            # remplazo de los espacios por guiones
             self.slug = (self.name).lower().replace(' ','-')
             
-            # Regex to remove non-alphanumeric chars, using re (regular experession module)
-            # If we end up with double hyphens, remove those too.
+            # para remover caracteres no alfanumericos, usando re (modulo de expresiones regulares)
+            # si termina con doble guien, corta.
             import re
             self.slug = re.sub(r"[^A-Za-z0-9\-]", "", self.slug).replace('--','-')
 
@@ -46,7 +47,6 @@ class Item(models.Model):
     note = models.TextField(blank=True)
     priority = models.PositiveIntegerField(max_length=3)
     
-    # Model method: Has due date for an instance of this object passed?
     def overdue_status(self):
         "Retorna True si la fecha actual excede de la fecha esperada."
         if datetime.date.today() > self.due_date :
@@ -55,9 +55,8 @@ class Item(models.Model):
     def __unicode__(self):
         return self.title
         
-    # Auto-set the item creation date
+    # fecha de completado automaticamente.
     def save(self):
-        # Set datetime on initial item save (better than deprecated auto_now_add)
         if not self.id:
             self.created_date = datetime.datetime.now()
         super(Item, self).save()
@@ -68,8 +67,8 @@ class Item(models.Model):
 
 class Comment(models.Model):    
     """
-    Not using Django's built-in comments becase we want to be able to save 
-    a comment and change task details at the same time. Rolling our own since it's easy.
+    No se usa la aplicacion interna de django para hablitar el save de un cometario
+    y cambiar los detalles de tareas al mismo tiempo.
     """
     author = models.ForeignKey(User)
     task = models.ForeignKey(Item)

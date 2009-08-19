@@ -9,9 +9,6 @@ class AddListForm(ModelForm):
     # slug = models.SlugField(widget=HiddenInput)
     # slug = forms.CharField(widget=forms.HiddenInput) 
     
-    # The picklist showing allowable groups to which a new list can be added
-    # determines which groups the user belongs to. This queries the form object
-    # to derive that list.
     def __init__(self, user, *args, **kwargs):
         super(AddListForm, self).__init__(*args, **kwargs)
         #self.fields['group'].queryset = Group.objects.filter(user=user)
@@ -31,8 +28,6 @@ class AddItemForm(ModelForm):
                     widget=forms.widgets.TextInput(attrs={'size':35})
                     ) 
 
-    # The picklist showing the users to which a new task can be assigned
-    # must find other members of the groups the current list belongs to.
     def __init__(self, task_list, *args, **kwargs):
         super(AddItemForm, self).__init__(*args, **kwargs)
         # print dir(self.fields['list'])
@@ -48,4 +43,4 @@ class AddItemForm(ModelForm):
 class EditItemForm(ModelForm):
 
     class Meta:
-        model = Item        
+        model = Item

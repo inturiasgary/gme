@@ -112,9 +112,10 @@ $(document).ready(function() {
  
             {% ifequal list_slug "mine" %}
             <th>{% trans "List" %}</th>   
-             {% endifequal %}            
+                      
                                  
-            <th>{% trans "Del" %}</th>             
+            <th>{% trans "Del" %}</th> 
+            {% endifequal %}   
         </tr>
 		{% for task in task_list %}
 	        <tr class="{% cycle 'row1' 'row2' %}" id="{{ task.id }}">
@@ -134,9 +135,10 @@ $(document).ready(function() {
 	            </td>	            
 	            {% ifequal list_slug "mine" %}
                 <td><a href="{% url todo-incomplete_tasks task.list.id task.list.slug %}">{{ task.list }}</a></td>   
-                {% endifequal %}
+                
                        
 	            <td><input type="checkbox" name="del_task" value="{{ task.id }}" id="del_task_{{ task.id }}">   </td> 	            
+		    {% endifequal %}
             </tr>
 	    {% endfor %}
 	</table>   
@@ -144,7 +146,8 @@ $(document).ready(function() {
     
     <p><a  class="todo" href="{% url todo-completed_tasks list_id list_slug %}">{% trans "View completed tasks" %}</a></p>
     {% endifequal %}    
-
+    {{ list_slug  }}
+    {{ miembro_creador.usuario.username }}
     {% ifequal view_completed 1 %}
 	<h3>Completed tasks</h3> 
 

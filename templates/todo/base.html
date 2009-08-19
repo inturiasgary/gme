@@ -9,7 +9,6 @@
 
 {% comment %}
 <script type="text/javascript" src="http://jqueryui.com/latest/ui/ui.datepicker.js"></script>
-
 <script type="text/javascript" src="/site_media/js/ui.core.js"></script>
 
 
@@ -41,7 +40,7 @@
     // thedate.x comes from the edit_task view. If this is a new entry, 
     // thedate won't be present and datepicker will fall back on the default (today).
     $(document).ready(function(){
-        $('#id_due_date').datepicker();
+        $('#id_due_date').datepicker({defaultDate: new Date({{thedate.year}}, {{thedate.month}} - 1, {{thedate.day}}),});
      });
 </script>
 {% endblock %}

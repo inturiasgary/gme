@@ -56,6 +56,7 @@ def editar_repositorio(request):
 def repo(request, nombre=None):
     if nombre:
         repositorio       = get_object_or_404(Repositorio, nombre=nombre)
+        miembro_creador   = Miembro.objects.get(repositorio=repositorio, creador=True)
         repositorio_form  = FormRepositorio(instance=repositorio)
         try:
             miembro           = Miembro.objects.get(usuario=request.user, repositorio=repositorio)

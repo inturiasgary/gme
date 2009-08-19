@@ -6,15 +6,6 @@
 
 {% block body %}
 
-
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
    <h1>{% trans "To-do Lists" %}</h1>
    
    <p>{{ item_count }} {% trans "items in" %} {{ list_count }} {% trans "lists" %}</p>
@@ -22,7 +13,7 @@
    	<ul class="mainlist">
    		{% for list in list_list %}
    	        <li><a class="todo" href="{% url todo-incomplete_tasks list.id list.slug %}">{{ list.name }} - {{ list.grupo }}</a></li>
-   	    {% endfor %}
+   	        {% endfor %}
    	</ul>
 
     <div class="todo-break">

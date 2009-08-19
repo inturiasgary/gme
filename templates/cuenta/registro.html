@@ -2,23 +2,23 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Registrarse" %}{% endblock %}
+{% block head_title %}{% trans "Register" %}{% endblock %}
 
 {% block body %}
     <div class="clearfix padtop">
         <div id="basic-form">
         <fieldset>
-            <legend>{% trans "Registro" %}</legend>
+            <legend>{% trans "Register" %}</legend>
             
             {% if user.is_authenticated %}
-                <p>{% trans "Tu ya estas logeado." %}</p>
+                <p>{% trans "You already logged." %}</p>
             {% else %}
-                <p>{% trans "¿ Ya tienes una cuenta ?" %} <a href="{% url acct_login %}">{% trans "Ingresa" %}</a>!</p>
+                <p>{% trans "Do you have account?" %} <a href="{% url acct_login %}">{% trans "Sign In" %}</a>!</p>
                 
                 <form class="signupform" id="signup_form" method="post" action="{% url acct_registro %}">
                     <table width="300px">
                         {{ form.as_table }}
-                        <tr><td></td><td><input type="submit" value="{% trans "Registrarse &raquo;" %}" class="button" /></td></tr>
+                        <tr><td></td><td><input type="submit" value="{% trans "Sign Up &raquo;" %}" class="button" /></td></tr>
                     </table>
                 </form>
                 

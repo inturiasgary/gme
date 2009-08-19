@@ -2,17 +2,17 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Huso Horario" %}{% endblock %}
+{% block head_title %}{% trans "TimeZone" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Huso Horario" %}</h1>
+    <h1>{% trans "TimeZone" %}</h1>
     
-    <p>{% trans "Cambie el huso horario abajo." %}</p>
+    <p>{% trans "Change TimeZone now." %}</p>
     
     <form method="POST" action="">
         <table>
             {{ form }}
-            <tr><td></td><td><input type="submit" value="{% trans "Cambiar my uso horario" %}" /></td></tr>
+            <tr><td></td><td><input type="submit" value="{% trans "Change TimeZone" %}" /></td></tr>
         </table>
     </form>
 {% endblock %}

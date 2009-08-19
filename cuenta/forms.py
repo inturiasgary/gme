@@ -86,19 +86,15 @@ class RegistroForm(forms.Form):
                 confirmed = False
         else:
             confirmed = False
-
-        # @@@ clean up some of the repetition below -- DRY!
-
         if confirmed:
             if email == join_invitation.contact.email:
                 new_user = User.objects.create_user(username, email, password)
-                join_invitation.accept(new_user) # should go before creation of EmailAddress below
+                join_invitation.accept(new_user)
                 new_user.message_set.create(message=ugettext("Your email address has already been verified"))
-                # already verified so can just create
                 EmailAddress(user=new_user, email=email, verified=True, primary=True).save()
             else:
                 new_user = User.objects.create_user(username, "", password)
-                join_invitation.accept(new_user) # should go before creation of EmailAddress below
+                join_invitation.accept(new_user)
                 if email:
                     new_user.message_set.create(message=ugettext("Email confirmation sent to %(email)s") % {'email': email})
                     EmailAddress.objects.add_email(new_user, email)
@@ -109,7 +105,6 @@ class RegistroForm(forms.Form):
                 new_user.message_set.create(message=ugettext("Email confirmation sent to %(email)s") % {'email': email})
                 EmailAddress.objects.add_email(new_user, email)
             return username, password # requerido para la autentificacion
-
 
 class UserForm(forms.Form):
 

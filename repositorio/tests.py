@@ -16,4 +16,11 @@ class RepositorioTestCase(unittest.TestCase):
 		self.repositorioPrueba = Repositorio.objects.get(nombre="repositorio1")
 		self.repositorioPrueba.emailAdmin="repo@hotmail.com"
 		self.repositorioPrueba.save()
-		self.assertEquals( self.assertEqual(self.repositorioPrueba.emailAdmin, "repo@hotmail.com"))
+		self.assertEquals(self.repositorioPrueba.emailAdmin, "repo@hotmail.com")
+	
+	def testDeleteRepositorio(self):
+		self.repositorioBorrar = Repositorio.objects.create(nombre="repositorio1", descripcion="descripcion de repositorio",
+							       direccionWeb="www.repositorio1.com", emailAdmin="repositorio1@hotmail.com",
+							       )
+		self.repositorioBorrar.delete()
+		self.assertEquals(self.repositorioBorrar, None)

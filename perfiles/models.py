@@ -10,10 +10,10 @@ from utils import uploads
 class Perfil(models.Model):
 
     user       = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    nombre     = models.CharField(_('nombre'), max_length=50, null=True, blank=True)
-    comentario = models.TextField(_('comentario'), null=True, blank=True)
-    ubicacion  = models.CharField(_('ubicacion'), max_length=40, null=True, blank=True)
-    sitioWeb   = models.URLField(_('sitio web'), null=True, blank=True, verify_exists=False)
+    nombre     = models.CharField(_('Name'), max_length=50, null=True, blank=True)
+    comentario = models.TextField(_('Comment'), null=True, blank=True)
+    ubicacion  = models.CharField(_('Address'), max_length=40, null=True, blank=True)
+    sitioWeb   = models.URLField(_('Web Site'), null=True, blank=True, verify_exists=False)
     
     def __unicode__(self):
         return self.user.username
@@ -23,8 +23,8 @@ class Perfil(models.Model):
     get_absolute_url = models.permalink(get_absolute_url)
     
     class Meta:
-        verbose_name        = _('perfil')
-        verbose_name_plural = _('perfiles')
+        verbose_name        = _('profile')
+        verbose_name_plural = _('profiles')
 
 def create_perfil(sender, instance=None, **kwargs):
     ''' Para cada usuario creado, se crea un perfil '''

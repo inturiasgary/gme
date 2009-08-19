@@ -7,8 +7,8 @@
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="{% url detalle_perfil user.username %} ">{% trans "Tu Perfil" %}</a></li>
-            <li><a href="{% url lista_perfil %} ">{% trans "Todos los perfiles" %}</a></li>
+            <li><a href="{% url detalle_perfil user.username %} ">{% trans "Profile" %}</a></li>
+            <li><a href="{% url lista_perfil %} ">{% trans "All profiles" %}</a></li>
         </ul>
     {% else %}
         &nbsp;

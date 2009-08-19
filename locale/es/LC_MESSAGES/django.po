@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-14 10:01-0400\n"
+"POT-Creation-Date: 2009-08-17 14:36-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,115 +103,118 @@ msgstr "Recordar"
 
 #: cuenta/forms.py:23
 msgid "If you check this option, password was remember by 3 weeks"
-msgstr "Si selecciona esta opcion, su contraseña sera recordad por 3 semanas"
+msgstr "Si seleeciona esta opcion, su cuenta sera recordada por 3 semanas"
 
 #: cuenta/forms.py:35
 msgid "Account is disabled"
-msgstr "La cuenta esta deshabilitada"
+msgstr "Cuenta es desabilitada"
 
 #: cuenta/forms.py:37
 msgid "Username or password wrong"
-msgstr "Nombre de usuario o contraseña incorrectas"
+msgstr "Nombre de usuario o contaseña incorrecta"
 
 #: cuenta/forms.py:43
 #, python-format
 msgid "Succesfully log as %(username)s."
-msgstr "Logeado satisfactoriamente como %(username)s."
+msgstr "Logeado como %(username)s."
 
 #: cuenta/forms.py:57
 msgid "Password(Again)"
-msgstr "Contraseña(Nuevamente)"
+msgstr "Contraseña(nuevamente)"
 
 #: cuenta/forms.py:58
 msgid "Email(optional)"
-msgstr "Correo electronico(Opcional)"
+msgstr "Correo electronico(opcional)"
 
 #: cuenta/forms.py:63
 msgid "Username only can contain letters, numbers and underscores."
-msgstr "Nombre de usuario solo puede contener letras, numeros y guion."
+msgstr "Nombre de usuario solo puede contener letras, numeros y guiones."
 
 #: cuenta/forms.py:68
 msgid "Username is already in use. Please change."
-msgstr "Nombre de usuario no disponible. Utilice otro."
+msgstr "Nombre de usuario ya en uso. Favor cambie."
 
 #: cuenta/forms.py:73
 msgid "Write the same password please."
 msgstr "Escribe la misma contraseña."
 
-#: cuenta/forms.py:96
+#: cuenta/forms.py:93
 msgid "Your email address has already been verified"
 msgstr "Tu direccion de correo electronico ha sido verificado"
 
-#: cuenta/forms.py:103 cuenta/forms.py:109
+#: cuenta/forms.py:99 cuenta/forms.py:105
 #, python-format
 msgid "Email confirmation sent to %(email)s"
-msgstr "Email de confirmacion enviado a %(email)s"
+msgstr "Confirmacion de correo electronico enviado a %(email)s"
 
-#: cuenta/forms.py:132 cuenta/forms.py:171 notification/models.py:57
+#: cuenta/forms.py:127 cuenta/forms.py:166 notification/models.py:57
 msgid "Email"
 msgstr "Correo electronico"
 
-#: cuenta/forms.py:139
+#: cuenta/forms.py:134
 msgid "This email address already associated with this account."
-msgstr "Correo electronico ha sido asociado con esta cuenta"
+msgstr "Esta direccion de correo electronico ha sido asociado a tu cuenta."
 
-#: cuenta/forms.py:142
+#: cuenta/forms.py:137
 #, python-format
 msgid "Confirmation email sent to %(email)s"
 msgstr "Correo electronico de confirmacion enviado a %(email)s"
 
-#: cuenta/forms.py:148
+#: cuenta/forms.py:143
 msgid "Current Password"
-msgstr "Contraseña Actual"
+msgstr "Contraseña actual"
 
-#: cuenta/forms.py:149
+#: cuenta/forms.py:144
 msgid "New Password"
 msgstr "Nueva contraseña"
 
-#: cuenta/forms.py:150
+#: cuenta/forms.py:145
 msgid "New Password (again)"
 msgstr "Nueva contraseña (nuevamente)"
 
-#: cuenta/forms.py:154
+#: cuenta/forms.py:149
 msgid "Please type your current password."
-msgstr "Ingrese su contraseña actual"
+msgstr "Favor ingresa su contraseña actual"
 
-#: cuenta/forms.py:160
+#: cuenta/forms.py:155
 msgid "You must type the same password each time."
-msgstr "Debes escribir la misma contraseña."
+msgstr "Debes ingresar la misma contraseña."
 
-#: cuenta/forms.py:166
+#: cuenta/forms.py:161
 msgid "Password successfully changed."
-msgstr "Contraseña satisfactoriamente cambiada."
+msgstr "Contraseña satisfactoriamente canbiada."
 
-#: cuenta/forms.py:175
+#: cuenta/forms.py:170
 msgid "Email address not verified for any user account"
-msgstr "Correo electronico no verificado por ninguna cuenta de usuario"
+msgstr ""
+"Direccion de correo electronia no verificado por ninguna cuenta de usuario"
 
-#: cuenta/forms.py:183
+#: cuenta/forms.py:178
 msgid "Password reset"
-msgstr "Reinicio de contraseña"
+msgstr "Resetear contraseña"
 
-#: cuenta/forms.py:193 cuenta/models.py:12
+#: cuenta/forms.py:188 cuenta/models.py:12
 msgid "Timezone"
-msgstr "ZonaHoraria"
+msgstr "Zona horaria"
 
-#: cuenta/forms.py:202
+#: cuenta/forms.py:197
 msgid "Time zone updated."
-msgstr "Zona horaria cambiada correctamente."
+msgstr "Zona horaria actualizada."
 
-#: cuenta/forms.py:206 cuenta/models.py:13
+#: cuenta/forms.py:201 cuenta/models.py:13
+#: templates/cuenta/language_change.html:5
+#: templates/cuenta/language_change.html:8
 msgid "Language"
 msgstr "Lenguaje"
 
-#: cuenta/forms.py:215
+#: cuenta/forms.py:210
 msgid "Language changed satisfactory."
-msgstr "Lenguaje cambiado Satisfactoriamente."
+msgstr "Lenguaje cambiado satisfactoriamente."
 
 #: cuenta/views.py:43
 #, python-format
-msgid "Logeado satisfactoriamente como %(username)s."
-msgstr ""
+msgid "login succesfully as %(username)s."
+msgstr "Logeado como %(username)s."
 
 #: cuenta/views.py:64
 #, python-format
@@ -221,23 +224,23 @@ msgstr "Correo electronico de confirmacion enviado a %s"
 #: cuenta/views.py:73
 #, python-format
 msgid "Removed email address %s"
-msgstr "Direccion de correo electronico eliminado %s"
+msgstr "Eliminar direccion de correo electronico %s"
 
 #: friends/management.py:9
 msgid "Invitation Received"
-msgstr "Invitacion recivida"
+msgstr "Invitacion Recivida"
 
 #: friends/management.py:9
 msgid "you have received an invitation"
-msgstr "Tu reciviste una invitacion"
+msgstr ""
 
 #: friends/management.py:10
 msgid "Invitation Sent"
-msgstr "Invitacion enviada"
+msgstr ""
 
 #: friends/management.py:10
 msgid "you have sent an invitation"
-msgstr "Has enviado una invitacion"
+msgstr ""
 
 #: friends/management.py:11
 msgid "Acceptance Received"
@@ -310,30 +313,6 @@ msgstr ""
 #, python-format
 msgid ""
 "<a href=\"%(user_url)s\">%(new_user)s</a> has joined and is now a friend."
-msgstr ""
-
-#: imagekit/models.py:20
-msgid "left"
-msgstr ""
-
-#: imagekit/models.py:21 imagekit/models.py:27
-msgid "center"
-msgstr ""
-
-#: imagekit/models.py:22
-msgid "right"
-msgstr ""
-
-#: imagekit/models.py:26
-msgid "top"
-msgstr ""
-
-#: imagekit/models.py:28
-msgid "bottom"
-msgstr ""
-
-#: imagekit/models.py:89
-msgid "Thumbnail"
 msgstr ""
 
 #: microblog/models.py:13
@@ -449,7 +428,7 @@ msgid "notice types"
 msgstr ""
 
 #: notification/models.py:71 notification/models.py:126
-#: notification/models.py:362 perfiles/models.py:9
+#: notification/models.py:362 perfiles/models.py:12
 msgid "user"
 msgstr ""
 
@@ -518,34 +497,35 @@ msgstr ""
 #: pagination/templates/pagination/pagination.html:5
 #: pagination/templates/pagination/pagination.html:7
 msgid "previous"
-msgstr ""
+msgstr "anterior"
 
 #: pagination/templates/pagination/pagination.html:21
 #: pagination/templates/pagination/pagination.html:23
 msgid "next"
-msgstr ""
+msgstr "siguiente"
 
-#: perfiles/models.py:10
-msgid "nombre"
-msgstr ""
+#: perfiles/models.py:13 todo/models.py:11
+msgid "Name"
+msgstr "Nombre"
 
-#: perfiles/models.py:11
-msgid "comentario"
-msgstr ""
+#: perfiles/models.py:14
+msgid "Comment"
+msgstr "Comentario"
 
-#: perfiles/models.py:12
-msgid "ubicacion"
-msgstr ""
+#: perfiles/models.py:15
+#, fuzzy
+msgid "Address"
+msgstr "Direcciones Email"
 
-#: perfiles/models.py:13
-msgid "sitio web"
-msgstr ""
+#: perfiles/models.py:16
+msgid "Web Site"
+msgstr "Sitio Web"
 
-#: perfiles/models.py:23
+#: perfiles/models.py:26
 msgid "perfil"
 msgstr ""
 
-#: perfiles/models.py:24
+#: perfiles/models.py:27
 msgid "perfiles"
 msgstr ""
 
@@ -559,7 +539,7 @@ msgstr ""
 
 #: repositorio/forms.py:38
 msgid "Enter a keyword to search for"
-msgstr "Introduzca el nombre de repositorio a buscar"
+msgstr ""
 
 #: repositorio/models.py:16 repositorio/models.py:30
 msgid "activo"
@@ -628,7 +608,7 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: templates/site_base.html:9 templates/cuenta/registro.html:5
+#: templates/site_base.html:9
 msgid "Registrarse"
 msgstr ""
 
@@ -715,30 +695,30 @@ msgid "There are no announcements for you."
 msgstr ""
 
 #: templates/cuenta/base.html:10
-msgid "Direcciones E-mail"
+#: templates/microblog/conectar_amigo_form.html:7
+msgid "E-mail"
 msgstr ""
 
 #: templates/cuenta/base.html:11
-msgid "Cambiar Contraseña"
-msgstr ""
+msgid "Change password"
+msgstr "Cambiar contraseña"
 
-#: templates/cuenta/base.html:12 templates/cuenta/language_change.html:5
-#: templates/cuenta/language_change.html:8
-msgid "Lenguaje"
-msgstr ""
+#: templates/cuenta/base.html:12
+msgid "Lenguage"
+msgstr "Lenguaje"
 
 #: templates/cuenta/base.html:13 templates/cuenta/timezone_change.html:5
 #: templates/cuenta/timezone_change.html:8
-msgid "Huso Horario"
-msgstr ""
+msgid "TimeZone"
+msgstr "Zona Horaria"
 
 #: templates/cuenta/email.html:5
 msgid "Account"
-msgstr ""
+msgstr "Cuenta"
 
 #: templates/cuenta/email.html:10
 msgid "Email Addresses"
-msgstr ""
+msgstr "Direcciones Email"
 
 #: templates/cuenta/email.html:19
 msgid "verificar"
@@ -750,140 +730,140 @@ msgstr ""
 
 #: templates/cuenta/email.html:28
 msgid "make primary"
-msgstr ""
+msgstr "hacerlo primario"
 
 #: templates/cuenta/email.html:33
 msgid "unverified"
-msgstr ""
+msgstr "no verificado"
 
 #: templates/cuenta/email.html:39
 msgid "re-send verification email"
-msgstr ""
+msgstr "reenviar email de verificacion"
 
 #: templates/cuenta/email.html:49
 msgid "remove"
-msgstr ""
+msgstr "eliminar"
 
 #: templates/cuenta/email.html:56
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: templates/cuenta/email.html:56
-msgid "Adiciona emails para recibir notificaciones o resetear tu password."
+msgid ""
+"Add your email. you'll can reset your password and will receive "
+"notifications."
 msgstr ""
+"Adiciona tu direccion de correo electronico. podras resetear tu contraseña y "
+"recivirnotificaciones."
 
 #: templates/cuenta/email.html:59
 msgid "Add Email Address"
-msgstr ""
+msgstr "Adiciona direccion de correo electronico"
 
 #: templates/cuenta/email.html:64
 msgid "add"
-msgstr ""
+msgstr "adicionar"
 
 #: templates/cuenta/language_change.html:10
-msgid "Puedes usar tu lenguaje preferido."
-msgstr ""
+msgid "use your prefered language."
+msgstr "Usa tu lenguaje preferido."
 
 #: templates/cuenta/language_change.html:15
-msgid "Cambiar Lenguaje"
-msgstr ""
+msgid "Change language"
+msgstr "Cambiar lenguaje"
 
 #: templates/cuenta/login.html:5
 msgid "Login"
-msgstr ""
+msgstr "Ingresar"
 
 #: templates/cuenta/login.html:11
-msgid "Iniciar Sesión"
-msgstr ""
+msgid "Log In"
+msgstr "Ingresar"
 
-#: templates/cuenta/login.html:14
-msgid "Aviso"
-msgstr ""
+#: templates/cuenta/login.html:14 templates/cuenta/password_reset.html:11
+msgid "Warning"
+msgstr "Aviso"
 
 #: templates/cuenta/login.html:14
 #, python-format
-msgid "ya estas logeado como %(user)s."
-msgstr ""
+msgid "you are logged as %(user)s."
+msgstr "Estas logeado como %(user)s."
 
 #: templates/cuenta/login.html:17
 #, python-format
-msgid "¿Aun no tienes una cuenta? <a href=\"%(registro_url)s\">Registrate</a>!"
+msgid ""
+"You don't have an account?, get it <a href=\"%(registro_url)s\">Sign Up Now</"
+"a>!"
 msgstr ""
+"¿No tienes una cuenta?, consígela <a href=\"%(registro_url)s\">Registrate</"
+"a>!"
 
 #: templates/cuenta/login.html:28
-msgid "Acceder &raquo;"
-msgstr ""
+msgid "Sign In &raquo;"
+msgstr "Ingresar &raquo;"
 
 #: templates/cuenta/login.html:30
-msgid "¿Olvidaste tu contraseña ?"
-msgstr ""
+msgid "Forget the password ?"
+msgstr "Olvidaste tu contraseña ?"
 
 #: templates/cuenta/logout.html:5
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar sesion"
 
 #: templates/cuenta/logout.html:8
-msgid "Que tengas un buen dia, hasta luego."
-msgstr ""
+msgid "Have a good day, see you"
+msgstr "Que tengas un buen dia, hasta luego"
 
 #: templates/cuenta/password_change.html:5
 #: templates/cuenta/password_change.html:8
-msgid "Cambiar contraseña"
-msgstr ""
-
 #: templates/cuenta/password_change.html:13
-msgid "cambiar password"
-msgstr ""
+msgid "Change Password"
+msgstr "Cambiar contraseña"
 
 #: templates/cuenta/password_reset.html:5
-msgid "Resetear Contraseña"
-msgstr ""
-
 #: templates/cuenta/password_reset.html:8
-msgid "Resetear contraseña"
-msgstr ""
-
-#: templates/cuenta/password_reset.html:11
-msgid "Nota"
-msgstr ""
+msgid "Reset Password"
+msgstr "Resetear contraseña"
 
 #: templates/cuenta/password_reset.html:11
 #, python-format
-msgid "Iniciaste sesión como <b>%(user)s</b>."
-msgstr ""
+msgid "Logged as <b>%(user)s</b>."
+msgstr "Logeado como <b>%(user)s</b>."
 
 #: templates/cuenta/password_reset.html:14
-msgid ""
-"¿Olvidaste tu contraseña ? Ingrese su direccion e-mail abajo. enviaremos una "
-"nueva contraseña a tu email."
+msgid "Forget the password ? Write your e-mail. check e-mail inbox."
 msgstr ""
+"¿ Olvidaste tu contraseña ? escribe tu direccion de correo electronico. "
+"revisa tu bandeja de entrada."
 
 #: templates/cuenta/password_reset.html:19
 msgid "Reset my password"
-msgstr ""
+msgstr "Resetear mi contraseña"
 
 #: templates/cuenta/password_reset.html:23
 #, python-format
 msgid ""
-"Si tienes algun problema reseteando la contraseña, contacta a <a href="
-"\"mailto:%(contact_email)s\">%(contact_email)s</a>."
+"If you have problem with reset password, contact to <a href=\"mailto:%"
+"(contact_email)s\">%(contact_email)s</a>."
 msgstr ""
+"Si tienes problemas reseteando tu contraseña, contacta a <a href=\"mailto:%"
+"(contact_email)s\">%(contact_email)s</a>."
 
 #: templates/cuenta/password_reset_done.html:5
 #: templates/cuenta/password_reset_done.html:8
 msgid "Password Reset"
-msgstr ""
+msgstr "Resetear Contraseña"
 
 #: templates/cuenta/password_reset_done.html:11
 #: templates/notification/notices.html:60 templates/todo/view_list.html:110
 #: templates/todo/view_list.html.py:157
 msgid "Note"
-msgstr ""
+msgstr "Nota"
 
 #: templates/cuenta/password_reset_done.html:11
 #, python-format
 msgid "you are already logged in as %(user)s."
-msgstr ""
+msgstr "Estas logeado como %(user)s."
 
 #: templates/cuenta/password_reset_done.html:14
 #, python-format
@@ -892,6 +872,9 @@ msgid ""
 "within a few minutes, contact us at <a href=\"mailto:%(contact_email)s\">%"
 "(contact_email)s</a>."
 msgstr ""
+"Una nueva contraseña a sido enviada a <b>%(email)s</b>. Si no lo recives "
+"dentro de algunos minutos, contacta a <a href=\"mailto:%(contact_email)s\">%"
+"(contact_email)s</a>."
 
 #: templates/cuenta/password_reset_done.html:17
 #, python-format
@@ -899,26 +882,28 @@ msgid ""
 "When you receive the new password, you should <a href=\"%(login_url)s\">log "
 "in</a> and change it as soon as possible."
 msgstr ""
+"Cuando recivas la nueva contraseña, deberias <a href=\"%(login_url)s"
+"\">Ingresa </a> y cambia tu contraseña lo mas pronto posible."
 
-#: templates/cuenta/registro.html:11
-msgid "Registro"
-msgstr ""
+#: templates/cuenta/registro.html:5 templates/cuenta/registro.html.py:11
+msgid "Register"
+msgstr "Registrarse"
 
 #: templates/cuenta/registro.html:14
-msgid "Tu ya estas logeado."
-msgstr ""
+msgid "You already logged."
+msgstr "Ya estas logeado."
 
 #: templates/cuenta/registro.html:16
-msgid "¿ Ya tienes una cuenta ?"
-msgstr ""
+msgid "Do you have account?"
+msgstr "¿Tu tienes cuenta?"
 
 #: templates/cuenta/registro.html:16
-msgid "Ingresa"
-msgstr ""
+msgid "Sign In"
+msgstr "Ingresa"
 
 #: templates/cuenta/registro.html:21
-msgid "Registrarse &raquo;"
-msgstr ""
+msgid "Sign Up &raquo;"
+msgstr "Regístrate &raquo;"
 
 #: templates/cuenta/registro.html:28
 #, python-format
@@ -936,12 +921,12 @@ msgid ""
 msgstr ""
 
 #: templates/cuenta/timezone_change.html:10
-msgid "Cambie el huso horario abajo."
-msgstr ""
+msgid "Change TimeZone now."
+msgstr "Cambiar zona horaria ahora."
 
 #: templates/cuenta/timezone_change.html:15
-msgid "Cambiar my uso horario"
-msgstr ""
+msgid "Change TimeZone"
+msgstr "Cambia zona horaria"
 
 #: templates/emailconfirmation/confirm_email.html:5
 msgid "Confirmacion de Email"
@@ -983,10 +968,6 @@ msgstr ""
 #: templates/microblog/conectar_amigo_form.html:6
 #: templates/perfiles/perfil.html:16
 msgid "Nombre"
-msgstr ""
-
-#: templates/microblog/conectar_amigo_form.html:7
-msgid "E-mail"
 msgstr ""
 
 #: templates/microblog/conectar_amigo_form.html:9
@@ -1080,7 +1061,7 @@ msgstr ""
 
 #: templates/notification/notices.html:44
 msgid "No notices."
-msgstr "Sin noticias"
+msgstr ""
 
 #: templates/notification/notices.html:49
 msgid "Settings"
@@ -1104,18 +1085,18 @@ msgstr ""
 
 #: templates/notification/notices.html:68
 msgid "Notification Type"
-msgstr "Tipo de notificacion"
+msgstr ""
 
 #: templates/notification/notices.html:86
 msgid "Change"
-msgstr "Cambia"
+msgstr ""
 
 #: templates/perfiles/base.html:10
-msgid "Tu Perfil"
+msgid "Profile"
 msgstr ""
 
 #: templates/perfiles/base.html:11 templates/perfiles/perfiles.html:7
-msgid "Todos los perfiles"
+msgid "All profiles"
 msgstr ""
 
 #: templates/perfiles/perfil.html:5 templates/perfiles/perfil.html.py:13
@@ -1144,7 +1125,7 @@ msgid "actualizar"
 msgstr ""
 
 #: templates/perfiles/perfiles.html:10
-msgid "Perfiles"
+msgid "Profiles"
 msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:10
@@ -1161,27 +1142,27 @@ msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:21
 msgid "Information"
-msgstr "Información"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:26
 msgid "Repository information"
-msgstr "Información del repositorio"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:29
 msgid "Name:"
-msgstr "Nombre:"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:32
 msgid "Description:"
-msgstr "Descripcion:"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:35
 msgid "Created:"
-msgstr "Creado:"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:38
 msgid "Web Link:"
-msgstr "Enlace Web:"
+msgstr ""
 
 #: templates/repositorio/detalle_repositorio.html:41
 msgid "Administrator email:"
@@ -1189,11 +1170,11 @@ msgstr ""
 
 #: templates/repositorio/editar_repositorio.html:6
 msgid "Edit Repository"
-msgstr "Editar Repositorio"
+msgstr ""
 
 #: templates/repositorio/editar_repositorio.html:6
 msgid "Create Repository"
-msgstr "Crear Repositorio"
+msgstr ""
 
 #: templates/repositorio/editar_repositorio.html:10
 msgid "Guardar"
@@ -1201,7 +1182,7 @@ msgstr ""
 
 #: templates/repositorio/index.html:14
 msgid "Repositories"
-msgstr "Repositorios"
+msgstr ""
 
 #: templates/repositorio/repositorios_list.html:6
 msgid "Resultados de Busqueda."
@@ -1209,7 +1190,7 @@ msgstr ""
 
 #: templates/repositorio/repositorios_mios.html:5
 msgid "My Repositories."
-msgstr "Mis repositorios"
+msgstr ""
 
 #: templates/repositorio/repositorios_mios.html:6
 #: templates/repositorio/repositorios_mios.html:23
@@ -1231,31 +1212,28 @@ msgid "Aun no ingresaste a ningun repo."
 msgstr ""
 
 #: templates/todo/del_list.html:5
-#, fuzzy
 msgid "to-do items"
-msgstr "Lista para hacer"
+msgstr "Para-Hacer items"
 
 #: templates/todo/del_list.html:17
 msgid "Return to lists"
-msgstr ""
+msgstr "Retornar a listas"
 
 #: templates/todo/del_list.html:21
 msgid "Delete entire list"
-msgstr ""
+msgstr "Eliminar lista entera"
 
 #: templates/todo/del_list.html:26
 msgid "Incomplete"
-msgstr ""
+msgstr "Incompleto"
 
 #: templates/todo/del_list.html:27
-#, fuzzy
 msgid "Complete"
-msgstr "Fecha realizada"
+msgstr "Completo"
 
 #: templates/todo/del_list.html:28
-#, fuzzy
 msgid "Total"
-msgstr "Titulo"
+msgstr "Total"
 
 #: templates/todo/del_list.html:31
 msgid ""
@@ -1265,7 +1243,7 @@ msgstr ""
 
 #: templates/todo/del_list.html:40
 msgid "Return to list"
-msgstr ""
+msgstr "Retornar a lista"
 
 #: templates/todo/del_list.html:47
 msgid ""
@@ -1275,35 +1253,33 @@ msgstr ""
 
 #: templates/todo/list_lists.html:5
 msgid "Todo Lists"
-msgstr "Lista para hacer"
+msgstr "Listas para-hacer"
 
 #: templates/todo/list_lists.html:18
 msgid "To-do Lists"
-msgstr "Lista para hacer"
+msgstr "Para-Hacer listas"
 
 #: templates/todo/list_lists.html:20
 msgid "items in"
-msgstr "Tareas en"
+msgstr "items en"
 
 #: templates/todo/list_lists.html:20
 msgid "lists"
-msgstr "Listas"
+msgstr "listas"
 
 #: templates/todo/list_lists.html:32
 msgid "Add a list"
-msgstr "Adicionar una lista"
+msgstr "Adicionar a lista"
 
 #: templates/todo/list_lists.html:36
 msgid "Submit"
 msgstr "Realizar"
 
 #: templates/todo/view_list.html:5
-#, fuzzy
 msgid "Todo List"
-msgstr "Lista para hacer"
+msgstr "ParaHacer Lista"
 
 #: templates/todo/view_list.html:43
-#, fuzzy
 msgid "Tasks assigned to"
 msgstr "Tarea asignada a"
 
@@ -1323,7 +1299,7 @@ msgstr "Tarea"
 #: templates/todo/view_list.html:76 templates/todo/view_task.html:45
 #: todo/models.py:41
 msgid "Due date"
-msgstr "Fecha a cumplir"
+msgstr "Fecha a realizar"
 
 #: templates/todo/view_list.html:77
 msgid "Assign to"
@@ -1334,9 +1310,8 @@ msgid "Notify*"
 msgstr "Notificar*"
 
 #: templates/todo/view_list.html:81
-#, fuzzy
 msgid "Note:"
-msgstr "Nombre:"
+msgstr "Nota:"
 
 #: templates/todo/view_list.html:82
 msgid ""
@@ -1346,24 +1321,23 @@ msgstr ""
 
 #: templates/todo/view_list.html:100
 msgid "Incomplete tasks :: Drag rows to set priorities"
-msgstr "Tareas imcompletas :: Arrastre filas para determinar prioridades "
+msgstr "Tarea incompleta :: Arraste filas para asignar prioridades"
 
 #: templates/todo/view_list.html:104
 msgid "Done"
-msgstr "Hecho"
+msgstr "Realizado"
 
 #: templates/todo/view_list.html:106 templates/todo/view_list.html.py:155
-#, fuzzy
 msgid "Created"
-msgstr "Creado:"
+msgstr "Creado"
 
 #: templates/todo/view_list.html:107
 msgid "Due on"
-msgstr "Hacer hasta"
+msgstr "Hecho en"
 
 #: templates/todo/view_list.html:108
 msgid "Owner"
-msgstr "Dueño"
+msgstr "Propietario"
 
 #: templates/todo/view_list.html:109
 msgid "Assigned"
@@ -1371,12 +1345,11 @@ msgstr "Asignado"
 
 #: templates/todo/view_list.html:111 templates/todo/view_list.html.py:158
 msgid "Comm"
-msgstr ""
+msgstr "Comentario"
 
 #: templates/todo/view_list.html:114 todo/models.py:39
-#, fuzzy
 msgid "List"
-msgstr "Listas"
+msgstr "Lista"
 
 #: templates/todo/view_list.html:117 templates/todo/view_list.html.py:162
 msgid "Del"
@@ -1395,31 +1368,28 @@ msgid "Undo"
 msgstr "Deshacer"
 
 #: templates/todo/view_list.html:156
-#, fuzzy
 msgid "Completed on"
-msgstr "Fecha realizada"
+msgstr "Completado en"
 
 #: templates/todo/view_list.html:182
 msgid "View incomplete tasks"
-msgstr "Ver tareas incompletas"
+msgstr "Ver tareas cincompletas"
 
 #: templates/todo/view_list.html:187
 msgid "Delete this list"
-msgstr "Borrar esta lista"
+msgstr "Eliminar esta lista"
 
 #: templates/todo/view_task.html:43
-#, fuzzy
 msgid "Assigned to"
-msgstr "Tarea asignada a"
+msgstr "Asignado a"
 
 #: templates/todo/view_task.html:44 todo/models.py:44
 msgid "Created by"
 msgstr "Creado por"
 
 #: templates/todo/view_task.html:46
-#, fuzzy
 msgid "Completed"
-msgstr "Fecha realizada"
+msgstr "Completado"
 
 #: templates/todo/view_task.html:112
 msgid "Add comment"
@@ -1427,11 +1397,7 @@ msgstr "Adicionar comentario"
 
 #: templates/todo/view_task.html:119
 msgid "Comments on this task"
-msgstr "Comentarios en esta tarea"
-
-#: todo/models.py:11
-msgid "Name"
-msgstr "Nombre"
+msgstr "Comentas en esta tarea"
 
 #: todo/models.py:38
 msgid "Title"
@@ -1439,21 +1405,19 @@ msgstr "Titulo"
 
 #: todo/models.py:43
 msgid "Completed date"
-msgstr "Fecha realizada"
+msgstr "Fecha completado"
 
 #: todo/models.py:45
 msgid "Todo asigned to"
-msgstr "Tarea asignada a"
+msgstr "ParaHacer asignado a"
 
 #: todo/views.py:28
 msgid "You don't appear belong to any repository. Enter at least to one."
-msgstr ""
-"No parece ser que perteneces a ningun repositorio. Ingresa a uno para "
-"continuar."
+msgstr "Parace que no perteneces a ningun repositorio. Ingresa a por lo menos uno."
 
 #: todo/views.py:53
 msgid "A new list has been created."
-msgstr "Una nueva lista ha sido creada."
+msgstr "Una nueva lista a sido creada."
 
 #: todo/views.py:56
 msgid ""
@@ -1468,7 +1432,7 @@ msgstr "No tienes permiso para ver/editar esta lista."
 #: todo/views.py:131
 #, python-format
 msgid "Item \"%s\" marked complete."
-msgstr "Item \"%s\" marcado como completo."
+msgstr "Item \"%s\" marcada como completo."
 
 #: todo/views.py:141
 #, python-format
@@ -1478,27 +1442,38 @@ msgstr ""
 #: todo/views.py:150
 #, python-format
 msgid "Item \"%s\" deleted."
-msgstr "Item \"%s\" emiliminado."
+msgstr "Item \"%s\" eliminado."
 
 #: todo/views.py:158
 #, python-format
 msgid "Deleted previously completed item \"%s\"."
-msgstr "Borrado item previamente completado \"%s\"."
+msgstr ""
 
 #: todo/views.py:196
 msgid "Task saved but mail not sent. Contact your administrator."
-msgstr ""
-"Tarea guardada pero el email no fue mandado. Contacta con el administrador"
+msgstr "Tarea salvada pero email no enviado. Contacta al administrador."
 
 #: todo/views.py:198
 #, python-format
 msgid "New task \"%s\" has been added."
-msgstr "Nueva tarea \"%s\" ha sido adicionada."
+msgstr "Nueva tarea \"%s\" a sido adicionada."
 
 #: todo/views.py:246
 msgid "The task has been edited."
-msgstr "La tarea ha sido editada."
+msgstr "La tarea a sido editada."
 
 #: todo/views.py:253
 msgid "You do not have permission to view/edit this task."
-msgstr "No tienes permiso para editar esta tarea."
+msgstr "No tienes permiso para ver/editar esta tarea."
+
+#: utils/stdimage/widgets.py:19
+msgid "Currently:"
+msgstr "Actualmente:"
+
+#: utils/stdimage/widgets.py:20
+msgid "Change:"
+msgstr "Cambio:"
+
+#: utils/stdimage/widgets.py:21
+msgid "Delete"
+msgstr ""

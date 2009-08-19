@@ -29,6 +29,9 @@
                 <td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
             </tr>
             <tr>
+                <td width="100px">{% trans "Admin:" %}</td> <td><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></td>
+            </tr>
+            <tr>
                 <td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
             </tr>
             <tr>

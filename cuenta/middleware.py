@@ -10,14 +10,6 @@ class LocaleMiddleware(object):
     a las paginas traducirse de forma dinamica al lenguaje 
     seleccionado por el usuario
     """
-    """
-    This is a very simple middleware that parses a request
-    and decides what translation object to install in the current
-    thread context depending on the user's account. This allows pages
-    to be dynamically translated to the language the user desires
-    (if the language is available, of course). 
-    """
-
     def get_language_for_user(self, request):
         if request.user.is_authenticated():
             try:

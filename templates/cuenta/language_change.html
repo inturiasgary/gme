@@ -2,17 +2,17 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Lenguaje" %}{% endblock %}
+{% block head_title %}{% trans "Language" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Lenguaje" %}</h1>
+    <h1>{% trans "Language" %}</h1>
     
-    <p>{% trans "Puedes usar tu lenguaje preferido." %}</p>
+    <p>{% trans "use your prefered language." %}</p>
     
     <form method="POST" action="">
         <table>
             {{ form }}
-            <tr><td></td><td><input type="submit" value="{% trans "Cambiar Lenguaje" %}" /></td></tr>
+            <tr><td></td><td><input type="submit" value="{% trans "Change language" %}" /></td></tr>
         </table>
     </form>
 {% endblock %}

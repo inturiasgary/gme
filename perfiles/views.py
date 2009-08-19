@@ -2,18 +2,10 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseForbidden
-
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
-
-#from friends.forms import InviteFriendForm
-#from friends.models import FriendshipInvitation, Friendship
-
 from perfiles.models import Perfil
 from perfiles.forms import PerfilForm
-
-# # used by friend autocompletion
-# from gravatar.templatetags.gravatar import gravatar
 
 try:
     from notification import models as notification
