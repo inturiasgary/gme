@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class List(models.Model):
     name        = models.CharField(max_length=60, verbose_name=_("Name"))
-    slug        = models.SlugField(max_length=60,editable=False)
+    slug        = models.SlugField(max_length=60, editable=False)
     grupo       = models.ForeignKey(Repositorio)
     
     def save(self):

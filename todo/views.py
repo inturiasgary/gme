@@ -16,7 +16,7 @@ from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import datetime
 
-from repositorio.models import Miembro
+from repositorio.models import Miembro, Repositorio
 
 @login_required
 def list_lists(request):
@@ -96,7 +96,7 @@ def del_list(request,list_id,list_slug):
 
 
 @login_required
-def view_list(request,list_id=0,list_slug='',view_completed=0):
+def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
 
     """
     Muestra y administra los items de una lista
@@ -104,14 +104,19 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
 
     # Para verificar la seguridad de ingreso a una lista.
     if list_slug == "mine" :
+        repositorio = get_object_or_404(Repositorio, id=repo_id)
         auth_ok =1
+        if repositorio in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
+            can_del = 1
     else: 
         list = get_object_or_404(List, slug=list_slug)
         listid = list.id    
 
         # verifica si el usuario actual es miembro del repositorio
-        if list.grupo in request.user.repositorio_set.all() or request.user.is_staff or list_slug == "mine" :
+        if list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
             auth_ok = 1   # El usuario es autorizado para el ingreso a  la lista
+            if list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
+                can_del = 1
         else: # no se autoriza su ingreso
             request.user.message_set.create(message=_("You do not have permission to view/edit this list."))
         
@@ -160,11 +165,12 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
 
     # Obtiene la lista de items de la lista dado el ID, filtra los items asignados al usuario
     if list_slug == "mine":
-        task_list = Item.objects.filter(assigned_to=request.user, completed=0)
-        completed_list = Item.objects.filter(assigned_to=request.user, completed=1)
+        task_list = Item.objects.filter(assigned_to=request.user, completed=0, list__grupo__id = repo_id )
+        completed_list = Item.objects.filter(assigned_to=request.user, completed=1, list__grupo__id = repo_id )
     else:
-        task_list = Item.objects.filter(list=list.id, completed=0)
-        completed_list = Item.objects.filter(list=list.id, completed=1)
+        usuario_actual = request.user.username
+        task_list = Item.objects.filter(list=list.id, completed=0, list__grupo__id = repo_id )
+        completed_list = Item.objects.filter(list=list.id, completed=1, list__grupo__id = repo_id)
 
 
     if request.POST.getlist('add_task') :
@@ -200,15 +206,13 @@ def view_list(request,list_id=0,list_slug='',view_completed=0):
                 'priority':999,
             } )
 
-    if request.user.is_staff:
-        can_del = 1
     #solo adicionado el try
-    try:
+    #try:
         #Controlamos que el usario sea el administrador del repositorio, caso contrario no podra borrar la tarea
-        miembro_creador   = Miembro.objects.get(repositorio__nombre="repositorioUsuario2", usuario__username=request.user.username,creador=True)
-        list_slug = "mine"
-    except:
-        list_slug = "notmine"
+        #miembro_creador   = Miembro.objects.get(repositorio__nombre="repositorioUsuario2", usuario__username=request.user.username,creador=True)
+        #list_slug = "mine"
+    #except:
+        #list_slug = "notmine"
     return render_to_response('todo/view_list.html', locals(), context_instance=RequestContext(request))
 
 

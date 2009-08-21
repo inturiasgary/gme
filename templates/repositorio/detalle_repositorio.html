@@ -8,7 +8,7 @@
     {% if user.is_authenticated %}
         <ul>
             <li><a href="{% url mic_index %}">{% trans "Estadistica" %}</a></li>
-            <li><a href="{% url todo-mine %}">{% trans "ToDo" %}</a></li>
+            <li><a href="{% url todo-mine repositorio.id %}">{% trans "ToDo" %}</a></li>
             <li><a href="{% url repo_miembros repositorio.nombre %}">{% trans "Miembros"%}</a></li>
         </ul>
     {% else %}

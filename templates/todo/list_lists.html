@@ -12,7 +12,7 @@
 
    	<ul class="mainlist">
    		{% for list in list_list %}
-   	        <li><a class="todo" href="{% url todo-incomplete_tasks list.id list.slug %}">{{ list.name }} - {{ list.grupo }}</a></li>
+   	        <li><a class="todo" href="{% url todo-incomplete_tasks list.grupo.id list.id list.slug %}">{{ list.name }} - {{ list.grupo }}</a></li>
    	        {% endfor %}
    	</ul>
 

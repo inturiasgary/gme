@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from random import random
-import sha
+import hashlib as sha
 
 from django.conf import settings
 from django.db import models, IntegrityError
