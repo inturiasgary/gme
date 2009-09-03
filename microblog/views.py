@@ -10,6 +10,7 @@ from django.contrib.auth import logout
 from django.utils.translation import ugettext as _
 from models import Entrada, Conexion, CONEXION_ESPERANDO, CONEXION_BLOQUEADA, CONEXION_ACEPTADA
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 from forms import FormEntrada, FormEncontrarAmigo, FormConexion
 
@@ -50,11 +51,16 @@ def editar_entrada(request, entrada_id=None):
             
             if entrada:
                 return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
+        else:
+            
+            return HttpResponseRedirect(reverse('mic_index', request))
+
+            
     else:
         form = FormEntrada(instance=entrada)
             
     return render_to_response(
-        'microblog/editar_entrada.html',
+        'microblog/index.html',
         locals(),
         context_instance=RequestContext(request),
         )
@@ -70,6 +76,9 @@ def buscar_amigo(request):
             
             if usuarios_encontrados.count() == 1:
                 return HttpResponseRedirect(usuarios_encontrados[0].get_absolute_url())
+            else:
+                return HttpResponseRedirect(request.path)
+        
     else:
         form = FormEncontrarAmigo()
         

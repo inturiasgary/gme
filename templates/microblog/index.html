@@ -6,28 +6,44 @@
 
 {% endblock meta %}
 
-{% block body %}{{ block.super }}
+{% block body %}
 {% if user.is_authenticated %}
+
+<div class="derecho-microblog">
+    Comentarios e instrucciones sobre el sistema
+</div>
+
+
+<div class="entradas">
 <h1>Microblog global</h1>
 <div class="enviar_mensaje">
     {% include "microblog/adicionar_entrada_form.html" %}
 </div>
 
-<div class="entradas">
+ 
+
+
     {% if entradas.count %}
     <h2>{% trans "Mensajes recientes." %}</h2>
 
     <div>
         {% for entrada in entradas %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
+	    <cite>
             <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
             hace
             {{ entrada.fecha|timesince }}
-            :
+            :            
+	    </cite>
+            <div class="rbroundbox">
+	    <div class="rbtop"><div></div></div>
+		<div class="rbcontent">
+			<p>{{ entrada.contenido|linebreaksbr|urlize }}</p>
+		</div><!-- /rbcontent -->
+	    <div class="rbbot"><div></div></div>
+	    </div><!-- /rbroundbox -->
 
-            <p>
-            {{ entrada.contenido|linebreaksbr|urlize }}
-            </p>
+
             {% comment %}
             <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
             <ul class="recipientes">
@@ -50,11 +66,15 @@
 
     {% include "microblog/lista_conexiones.html" %}
     {% else %}
+    <h2>Conexiones</h2>
     <p>{% trans "Aun no tienes conectados" %}</p>
     {% endif %}
 
     {% include "microblog/conectar_amigo_form.html" %}
 </div>
+
+
+
 
 {% else %}
 {% trans "No estas logeado" %}

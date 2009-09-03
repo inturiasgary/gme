@@ -9,16 +9,16 @@
 <script type="text/javascript">
 
 function order_tasks(data) {
-    // The JQuery plugin tableDnD provides a serialize() function which provides the re-ordered 
-    // data in a list. We pass that list as an object called "data" to a Django view 
-    // to save the re-ordered data into the database.
+    // The JQuery plugin tableDnD provee una funcion serialize() funcion que provee el reordenador
+    // de datos en una lista. pasamos la lista como un objeto llamado "data" a la vista de Django 
+    // para guardar los datos de reordenados a la base de datos.
 
     $.post("{% url todo-reorder_tasks %}", data, "json");
     return False;
 };
 
 $(document).ready(function() {
-    // Initialise the task table for drag/drop re-ordering
+    // Inicializa la tabla de tareas para el reordenamiento drag/drop
     $("#tasktable").tableDnD();
     
     $('#tasktable').tableDnD({
@@ -27,10 +27,10 @@ $(document).ready(function() {
         }
     });
     
-    // Initially hide the Add Task form
+    // Inicializa escondida el link de adicionar tarea
     $('#AddTask').hide();
     
-    // toggle slide to show the Add Task form when link clicked
+    // despliega el contenido cuando se da click en adicionar tarea
     $('#slideToggle').click(function(){
         $(this).siblings('#AddTask').slideToggle();
     });
@@ -50,11 +50,11 @@ $(document).ready(function() {
 
  
    {% if messages %}
-   <ul class="messages">
-       {% for message in messages %}
-       <li>{{ message }}</li>
-       {% endfor %}
-   </ul>
+    <ul class="messages">
+	{% for message in messages %}
+	<li>{{ message }}</li>
+	{% endfor %}
+    </ul>
    {% endif %}   
 
 
@@ -94,6 +94,7 @@ $(document).ready(function() {
     </div>	    
     {% endifnotequal %}
     {% endifequal %}
+    <a href="{% url todo-lists %}">Listas</a>
         
     repositorio {{ repositorio.nombre }}    
     {% ifequal view_completed 0  %}
@@ -178,9 +179,13 @@ $(document).ready(function() {
 
         
 		{% for task in completed_list %}
-	        <tr class="{% cycle 'row1' 'row2' %}">     
+	        <tr class="{% cycle 'row1' 'row2' %}">   
+		{% ifequal task.assigned_to request.user %}
 	            <td><input type="checkbox" name="undo_completed_task" value="{{ task.id }}" id="id_undo_completed_task{{ task.id }}">   </td> 	            	            	            
-	            <td><a href="{% url todo-task_detail task.id %}">{{ task.title|truncatewords:20 }}</a></td> 
+		{% else %}
+		<td></td>
+		{% endifequal%}	           
+		    <td><a href="{% url todo-task_detail task.id %}">{{ task.title|truncatewords:20 }}</a></td> 
 	            <td>{{ task.created_date|date:"m/d/Y" }}</td> 
 	            <td>{{ task.completed_date|date:"m/d/Y" }}</td>	     
 	            <td style="text-align:center;">{% if task.note %}&asymp;{% endif %} </td>

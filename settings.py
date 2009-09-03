@@ -90,7 +90,7 @@ INSTALLED_APPS = (
     'emailconfirmation',
     'perfiles',         #adicionado app perfiles, administrador de perfiles de usuario
     #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
-    'timezones',        #adicionado app timezones para personalizar zonas horarias
+    #'timezones',        #quitado app timezones para personalizar zonas horarias
     #'gme.friends',
     'pagination',#adicionado app para la paginacion
     'todo',

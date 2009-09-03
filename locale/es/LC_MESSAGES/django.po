@@ -186,8 +186,7 @@ msgstr "Contraseña satisfactoriamente canbiada."
 
 #: cuenta/forms.py:170
 msgid "Email address not verified for any user account"
-msgstr ""
-"Direccion de correo electronia no verificado por ninguna cuenta de usuario"
+msgstr "Direccion de correo electronia no verificado por ninguna cuenta de usuario"
 
 #: cuenta/forms.py:178
 msgid "Password reset"
@@ -539,7 +538,7 @@ msgstr ""
 
 #: repositorio/forms.py:38
 msgid "Enter a keyword to search for"
-msgstr ""
+msgstr "Entre las palabras a buscar"
 
 #: repositorio/models.py:16 repositorio/models.py:30
 msgid "activo"
@@ -630,7 +629,7 @@ msgstr ""
 
 #: templates/about/about.html:5
 msgid "About"
-msgstr ""
+msgstr "Acerca"
 
 #: templates/about/about.html:8
 msgid ""
@@ -651,7 +650,7 @@ msgstr ""
 
 #: templates/about/privacy.html:5
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Politicas de privacidad"
 
 #: templates/about/privacy.html:8
 msgid "<p>Your <b>Privacy Policy</b> would normally go here...</p>"
@@ -659,7 +658,7 @@ msgstr ""
 
 #: templates/about/terms.html:5
 msgid "Terms of Service"
-msgstr ""
+msgstr "Terminos de Servicio"
 
 #: templates/about/terms.html:8
 msgid "<p>Your <b>Terms of Service</b> would normally go here...</p>"
@@ -726,7 +725,7 @@ msgstr ""
 
 #: templates/cuenta/email.html:21
 msgid "primary"
-msgstr ""
+msgstr "primario"
 
 #: templates/cuenta/email.html:28
 msgid "make primary"

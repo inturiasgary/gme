@@ -66,7 +66,10 @@ Identificacion del repositorio:{{ repositorio.id }}
 <h1>Commits Realizados:</h1>    
 {% if commits %}
     {% for commit in commits %}
-        <p><li>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}
+    {% ifequal commit.usuario.username request.user.username %}
+    Resaltar esto
+    {% endifequal %}
+        <p><li><cite>ZCommit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
             <ul>
                 {{ commit.descripcion }}
             </ul>

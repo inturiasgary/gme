@@ -1,7 +1,7 @@
 from django.db import models
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User#Group
+from django.contrib.auth.models import User
 from repositorio.models import Repositorio
 from todo.models import Item, List
 
@@ -39,8 +39,17 @@ class AddItemForm(ModelForm):
 
     class Meta:
         model = Item
+	
+class extendido(ModelForm):
+    def __init__(self, user=None, repo_id = None, *args, **kwargs):
+        self.user = user
+	self.repo_id = repo_id
+        super(extendido, self).__init__(*args, **kwargs)
         
 class EditItemForm(ModelForm):
-
+    
+    #self.fields['assigned_to'].queryset = User.objects.filter(repositorio__id=repo_id)
+    
     class Meta:
         model = Item
+	fields = ('title','list','due_date','completed','assigned_to', 'note')

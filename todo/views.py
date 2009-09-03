@@ -16,7 +16,7 @@ from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import datetime
 
-from repositorio.models import Miembro, Repositorio
+from repositorio.models import Miembro, Repositorio, Commit
 
 @login_required
 def list_lists(request):
@@ -101,10 +101,10 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
     """
     Muestra y administra los items de una lista
     """
-
+    repositorio = get_object_or_404(Repositorio, id=repo_id)
     # Para verificar la seguridad de ingreso a una lista.
     if list_slug == "mine" :
-        repositorio = get_object_or_404(Repositorio, id=repo_id)
+        
         auth_ok =1
         if repositorio in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
             can_del = 1
@@ -182,6 +182,7 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
         if form.is_valid():
             # primero se graba la tarea para luego editarla
             new_task = form.save()
+            commit = Commit.objects.create(usuario=new_task.assigned_to , repositorio=repositorio, descripcion='Nueva Tarea: %s - %s'%(new_task.title, new_task.note))
 
             # Envio de email alerta solo si el checkbos es seleccionado y el asignado no es el mismo que el que esta creando        
             if "notify" in request.POST :
@@ -246,7 +247,7 @@ def view_task(request,task_id):
                     c.save()
 
                 request.user.message_set.create(message=_("The task has been edited."))
-                return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.id, task.list.slug]))
+                return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.grupo.id, task.list.id, task.list.slug]))
 
         else:
             form = EditItemForm(instance=task)
@@ -258,7 +259,7 @@ def view_task(request,task_id):
 
 
 
-# @login_required
+@login_required
 def reorder_tasks(request):
     """
     Handle task re-ordering (priorities) from JQuery drag/drop in view_list.html

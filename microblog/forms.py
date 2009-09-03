@@ -1,12 +1,22 @@
-#coding: utf-8
 from django import forms
 from models import Entrada, Conexion
 from django.contrib.auth.models import User
+from django.utils.translation import gettext_lazy as _
 
 class FormEntrada(forms.ModelForm):
+    contenido = forms.CharField(
+                    widget=forms.widgets.Textarea(attrs={'rows':'2','onKeyUp':"javascript:countChars('counter_number')",'width':"140"})
+                    ) 
     class Meta:
         model  = Entrada
         fields = ('contenido',)
+    
+    #def clean_contenido(self):
+        #contenido = self.cleaned_data['contenido']
+        #if len(contenido)>140:
+            #raise forms.ValidationError(_('Solo puedes escribir hasta 140 caracteres.'))
+        #else:
+            #return contenido
         
 class FormConexion(forms.ModelForm):
     username = forms.CharField(widget=forms.HiddenInput)

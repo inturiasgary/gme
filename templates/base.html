@@ -9,6 +9,40 @@
         <script type="text/javascript" src="/site_media/jquery.js"></script>
         <link rel="stylesheet" href="/site_media/base.css" />
         <link rel="stylesheet" href="/site_media/tabs.css" />
+        
+  <script type="text/javascript">
+	function countChars(idElement){
+		max_chars 		= 140;
+		counter		= document.getElementById(idElement);
+		field		= document.getElementById('id_contenido').value;  
+		field_length	= field.length
+		remaining_chars	= max_chars-field_length;
+			if(remaining_chars<0){
+			    
+
+			    $('#enviar').attr('disabled','-1')
+			}
+			else{
+			    
+
+			    $('#enviar').removeAttr('disabled')
+			    
+			}
+ 
+			if(remaining_chars<=19){
+				counter.style.color="#d40d12";
+			}
+ 
+			else{
+				counter.style.color="#999999";
+			}
+ 
+		// Update the counter on the page
+		counter.innerHTML = remaining_chars;
+	}
+</script>
+        
+        
         {% block extra_head %}
         {% endblock %}
         <!-- [if IE]><style>
