@@ -8,6 +8,7 @@ Comando:
  actualizar    Actualiza tu mensaje de estado en el sistema microblog global
  estados       Muestra todos los 10 estados ultimos publicados de tus amigos
  iniciar       Crea los correspondientes hooks para publicaciones de repositorios automaticos
+ todo          Permite realizar la visualizacion de la lista todo de forma general o de un repositorio indicado
  
 Opciones:
 
@@ -20,6 +21,9 @@ import sys, os
 import getopt
 import xmlrpclib
 from getpass import getpass
+import xml.dom.minidom
+
+
 try:
     from git import *
 except:
@@ -134,6 +138,31 @@ def main(argv,comando):
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
             result  = rpc_srv.publicarEntrada(httpconf['auth']['usuario'],httpconf['auth']['password'],httpconf['mensaje'])
             print result
+            
+        if comando == 'estados':
+            ''' Realizar la visualizacion de estados por repositorio '''
+            if not(httpconf['auth'].get('usuario',None)):
+                httpconf['auth']['usuario']=raw_input('Nombre de usuario:')
+            if not(httpconf['auth'].get('password',None)):
+                httpconf['auth']['password']=getpass('Password:')
+            rpc_srv = xmlrpclib.ServerProxy(POST_URL)
+            result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
+            ''' para analizar el contenido de resultado y recorrido ''' 
+            xmldoc = xml.dom.minidom.parseString(result)
+            for n in  xmldoc.childNodes :
+                print n.tagName
+                for contacto in n.childNodes:
+                    for registro in contacto.childNodes:
+                        if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
+                            print "%s :%s"%(registro.nodeName,registro.firstChild.data)
+            print '---'
+                            
+            if result == None:
+                print 'Problemas con la peticion de acciones al repsoitorio'
+
+        if comando == 'todo':
+            ''' Realizar la visualizacion de todo , en general o por repositorio'''
+
         if  comando == 'iniciar':
             configurar()
     else:
