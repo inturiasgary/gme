@@ -156,7 +156,7 @@ $(document).ready(function() {
     
     <p><a  class="todo" href="{% url todo-completed_tasks repo_id list_id list_slug %}">{% trans "View completed tasks" %}</a></p>
     {% endifequal %}    
-    {{ list_slug  }}
+
     {{ miembro_creador.usuario.username }}
     {% ifequal view_completed 1 %}
 	<h3>Completed tasks</h3> 

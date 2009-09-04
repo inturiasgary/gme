@@ -96,7 +96,7 @@ def estadosRepo(usuario, password, repositorio):
 	if verificar_password(usuario, password):
 		if verificar_pertenece(usuario, repositorio):
 			''' extraemos la lista de publicaciones en el repositorio '''
-			lista_commits = Commit.objects.filter(repositorio__nombre=repositorio)
+			lista_commits = Commit.objects.order_by('-fecha').filter(repositorio__nombre=repositorio)
 			#lista_commits = serializers.serialize("xml", Commit.objects.filter(repositorio__nombre=repositorio), 
 			#				      fields=('usuario','fecha', 'descripcion'))
 			doc = Document()

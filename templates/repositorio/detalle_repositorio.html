@@ -7,7 +7,7 @@
 {% block subnav %}
     {% if user.is_authenticated %}
         <ul>
-            <li><a href="{% url mic_index %}">{% trans "Estadistica" %}</a></li>
+            {% comment %}<li><a href="{% url mic_index %}">{% trans "Estadistica" %}</a></li>{% endcomment %}
             <li><a href="{% url todo-mine repositorio.id %}">{% trans "ToDo" %}</a></li>
             <li><a href="{% url repo_miembros repositorio.nombre %}">{% trans "Miembros"%}</a></li>
         </ul>
@@ -18,7 +18,7 @@
 
 {% block body %}
 <h1>Repositorio: {{ repositorio.nombre }}</h1>
-<p><a href="#" onclick="$('#repositorio_info').toggle(); return false;">{% trans "Information" %}</a></p>
+<p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
 
 {% if repositorio %}
     <div class="repositorio_info">
@@ -44,16 +44,17 @@
                 <td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
             </tr>
         </table>
-    </fieldset>
-</div>
-{% else %}
-{% endif %}
-Identificacion del repositorio:{{ repositorio.id }}
-    {% ifequal is_me 1 %}
+	{% ifequal is_me 1 %}
         <table>
         <tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
         </table>    
     {% endifequal %}
+    </fieldset>
+</div>
+{% else %}
+{% endif %}
+{% comment %}Identificacion del repositorio:{{ repositorio.id }}{% endcomment %}
+    
     
     {% ifequal miembro_activo "peticion" %}
         <p>nota: Se encuentra en peticion, Aun no puedes publicar commits.</p>

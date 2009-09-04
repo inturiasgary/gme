@@ -53,7 +53,7 @@ def editar_entrada(request, entrada_id=None):
                 return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
         else:
             
-            return HttpResponseRedirect(reverse('mic_index', request))
+            return HttpResponseRedirect(app_settings.MICROBLOG_URL_BASE)
 
             
     else:
