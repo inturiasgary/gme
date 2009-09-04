@@ -66,14 +66,27 @@ Identificacion del repositorio:{{ repositorio.id }}
 <h1>Commits Realizados:</h1>    
 {% if commits %}
     {% for commit in commits %}
-    {% ifequal commit.usuario.username request.user.username %}
+    {% comment %}{% ifequal commit.usuario.username request.user.username %}
     Resaltar esto
-    {% endifequal %}
-        <p><li><cite>ZCommit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
+    {% endifequal %}{% endcomment %}
+        <p><li><cite>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
             <ul>
-                {{ commit.descripcion }}
-            </ul>
-        </li></p>
+                
+            
+        
+        
+        <div class="rbroundbox">
+	    <div class="rbtop"><div></div></div>
+		<div class="rbcontent">
+		<p>{{ commit.descripcion }}
+			</p>
+		</div><!-- /rbcontent -->
+	    <div class="rbbot"><div></div></div>
+	    </div><!-- /rbroundbox -->
+	    
+	    </ul>
+	    </li></p>
+	    
     {% endfor %}
 {% else %}
 <h3>No se encontraron acciones realizadas.</h3>

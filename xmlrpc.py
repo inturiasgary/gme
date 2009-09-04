@@ -70,21 +70,27 @@ def publicarEntrada(usuario, password, contenido):
 		return "Nombre de usuario no registrado."
 	
 def verificar_pertenece(usuario, repositorio):
-	miembro = Miembro.objects.filter(repositorio__nombre=repositorio, usuario__username = usuario, activo=True)
-	if miembro:
-		return True
-	else:
-		return False
-	
-def verificar_password(usuario, password):
-	usuario = User.objects.get(username=usuario)
-	if usuario:
-		if usuario.check_password(password):
+	try:
+		miembro = Miembro.objects.filter(repositorio__nombre=repositorio, usuario__username = usuario, activo=True)
+		if miembro:
 			return True
 		else:
 			return False
-	return False
-	
+	except:
+		return False
+		
+def verificar_password(usuario, password):
+	try:
+		usuario = User.objects.get(username=usuario)
+		if usuario:
+			if usuario.check_password(password):
+				return True
+			else:
+				return False
+		return False
+	except:
+		return False
+		
 def estadosRepo(usuario, password, repositorio):
 	''' visualioza los anuncios publicados en un determinado repositorio '''
 	if verificar_password(usuario, password):
@@ -118,7 +124,7 @@ def estadosRepo(usuario, password, repositorio):
 		else:
 			return 'Repositorio no existente o usuario no pertenece.'
 	else:
-		print 'nombre de usuario o contrasenia incorrecta'
+		return 'nombre de usuario o contrasenia incorrecta.'
 
 	
 def todoRepo(usuario, password, repositorio):
