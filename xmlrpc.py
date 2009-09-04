@@ -172,8 +172,9 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
 			try:
 				miembro = Miembro.objects.get(usuario=usuario, repositorio=repo, activo = True)
 				if miembro:
-					e = Commit(usuario=usuario, repositorio=repo, descripcion=descripcion)
-					e.save()
+					#e = Commit(usuario=usuario, repositorio=repo, descripcion=descripcion)
+					Commit.objects.create(usuario=usuario, repositorio= repo, descripcion=descripcion)
+					#e.save()
 			except:
 				return "Error en la creacion del commit"
 			return "Operacion efectuada correctamente."

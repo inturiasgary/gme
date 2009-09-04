@@ -62,20 +62,20 @@ except:
 
 def cargarConfiguracion():
     try:
-         f=open(os.getcwd()+'/.git/hooks/config.gme')
+        f=open(os.getcwd()+'/.git/hooks/config.gme')
     except IOError, e:
-         print >> sys.stderr,"No se encuentra el archivo de configuracion:%s"%e
+        print >> sys.stderr,"No se encuentra el archivo de configuracion:%s"%e
     else:
-         json_lines = f.read()
-         f.close()
-         cfg =simplejson.loads(json_lines)
-         #recuperamos la informacion del archivo de configuracio
-         httpconf['repositorio']=cfg['repositorio']
-         httpconf['username']=cfg['username']
-         httpconf['password']=cfg['password']
-         httpconf['pathrepo']=cfg['pathrepo']
-         commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
-         enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
+        json_lines = f.read()
+        f.close()
+        cfg =simplejson.loads(json_lines)
+        #recuperamos la informacion del archivo de configuracio
+        httpconf['repositorio']=cfg['repositorio']
+        httpconf['username']=cfg['username']
+        httpconf['password']=cfg['password']
+        httpconf['pathrepo']=cfg['pathrepo']
+        commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
+        enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
 
 def recuperarCommit(pathrepo):
 
@@ -87,11 +87,12 @@ def recuperarCommit(pathrepo):
     
 def enviar_commit(repositorio, username, password, commit):
     try:
-       rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-       result  = rpc_srv.publicarCommit(nombre_repo=repositorio, usuario=username, password=password, descripcion=commit)
-       print result
+        rpc_srv = xmlrpclib.ServerProxy(POST_URL)
+        #print "%s %s %s %s"%(repositorio, username, password, commit)
+        result  = rpc_srv.publicarCommit(repositorio, username, password, commit)
+        print result
     except:
-       print "No se notifico al sistema el commit"
+        print "No se notifico al sistema el commit"
 
 if __name__ == '__main__':
     cargarConfiguracion()
@@ -193,7 +194,7 @@ def configurar():
     dio = os.system('chmod +x %s/.git/hooks/post-commit'%DIR_ACTUAL)
     post_commit.close()
     config.close()
-    print 'Se escribio el archivo'
+    print 'Se escribio el archivo de configuracion config.gme'
     
 if __name__ == '__main__':
     if len(sys.argv) == 1:
