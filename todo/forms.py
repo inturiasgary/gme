@@ -52,4 +52,4 @@ class EditItemForm(ModelForm):
     
     class Meta:
         model = Item
-	fields = ('title','list','due_date','completed','assigned_to', 'note')
+	fields = ('title','due_date','completed','note')

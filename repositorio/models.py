@@ -37,7 +37,7 @@ class Miembro(models.Model):
     
     def __unicode__(self):
         return "%s miembro de %s"%(self.usuario.username, self.repositorio.nombre)
-# Create your models here.
+
 
 class Topico(models.Model):
     '''discussion hacerca del repositorio'''

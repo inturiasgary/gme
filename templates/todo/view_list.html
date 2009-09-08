@@ -43,8 +43,8 @@ $(document).ready(function() {
         <h1>{% trans "Tasks assigned to" %} {{ request.user }}</h1>    
     {% else %}
     {% ifequal auth_ok 1 %}
-       <h1>{% trans "Tasks filed under" %}"{{ list.name }}"</h1>
-       <p>{% trans "This list belongs to repository" %} {{ list.group }}</p>
+       <h1>{% trans "Tasks filed under" %} "{{ list.name }}"</h1>
+       <p>{% trans "This list belongs to repository" %} {{ list.grupo }}</p>
     {% endifequal %}
     {% endifequal %}
 
@@ -64,7 +64,7 @@ $(document).ready(function() {
    {# Only show task adder if viewing a proper list #}
    {% ifequal can_del 1 %}
    {% ifnotequal list_slug "mine" %}
-   <h2 style="margin-bottom:0px;" id="slideToggle" >&rarr; Click to add task &larr;</h2>
+   <h2 style="margin-bottom:0px;" id="slideToggle" >&rarr; {% trans "Click to add task" %} &larr;</h2>
    
    <div id="AddTask">	    
 	    <table class="nocolor" border="0" cellspacing="5" cellpadding="5">
@@ -154,7 +154,7 @@ $(document).ready(function() {
 	</table>   
     <p><input type="submit" name="mark_tasks_done" value={% trans "Continue..." %}  class="todo-button"></p>
     
-    <p><a  class="todo" href="{% url todo-completed_tasks repo_id list_id list_slug %}">{% trans "View completed tasks" %}</a></p>
+    <p><a  class="todo" href="{% url todo-completed_tasks repo_id list_id list_slug %}"><img src="/site_media/PNG/Edit_Yes.png" >{% trans "View completed tasks" %}</a></p>
     {% endifequal %}    
 
     {{ miembro_creador.usuario.username }}
@@ -202,12 +202,12 @@ $(document).ready(function() {
 	</table>
 	<p><input type="submit" name="deldonetasks" value="Continue..."  class="todo-button"></p>
 	</form> 
-    <p><a  class="todo" href="{% url todo-incomplete_tasks repo_id list_id list_slug %}">{% trans "View incomplete tasks" %}</a></p>
+    <p><a  class="todo" href="{% url todo-incomplete_tasks repo_id list_id list_slug %}"><img src="/site_media/png/Warning.png" >{% trans "View incomplete tasks" %}</a></p>
     {% endifequal %}    
 	
 	{% ifequal can_del 1 %}
-	{% ifnotequal list_slug "mine" %}    
-	   <p><a class="todo" href="{% url todo-del_list list_id list_slug %}">{% trans "Delete this list" %}</a></p>
+	{% ifnotequal list_slug "mine" %}     
+	   <p><a class="todo" href="{% url todo-del_list repo_id list_id list_slug %}"><img src="/site_media/eliminar.gif" > {% trans "Delete this list" %}</a></p>
 	{% endifnotequal %}
 	{% endifequal %}
 	

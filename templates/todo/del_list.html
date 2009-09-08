@@ -1,18 +1,17 @@
-{% extends "base.html" %}
+{% extends "todo/base.html" %}
 
 {% load i18n %}
 
 {% block title %}{{ list_title }} {% trans "to-do items" %}{% endblock %}
 
-{% block content %}
+{% block body %}
 
-{# Only admins can delete lists. #}
 {% ifequal can_del 1 %}
 
 
     {% if list_killed %}
 
-       <p> {{ list.name }} is gone.</p>
+       <p> {{ list.name }}{% trans " is gone." %}</p>
    
         <a href="{% url todo-lists %}">{% trans "Return to lists" %}</a>   
 
@@ -20,7 +19,7 @@
 
         <h1>{% trans "Delete entire list" %}: {{ list.name }} ?</h1>
 
-        <p>Category tally:</p>
+        <p>{% trans "Category tally"%}:</p>
 
          <ul>   
             <li>{% trans "Incomplete" %}: {{ item_count_undone }} </li>
@@ -33,11 +32,11 @@
         <form action="" method="post" accept-charset="utf-8">
  
             <input type="hidden" name="list" value="{{ list.id }}" id="some_name">
-         <p><input type="submit" name="delete-confirm" value="Do it! &rarr;" class="todo-button"> </p>
+         <p><input type="submit" name="delete-confirm" value="{% trans "Do it!" %} &rarr;" class="todo-button"> </p>
         </form>
 
 
-        <a href="{% url todo-incomplete_tasks list.id list_slug %}">{% trans "Return to list" %}: {{ list.name }}</a>
+        <a href="{% url todo-incomplete_tasks list.grupo.id list.id list_slug %}">{% trans "Return to list" %}: {{ list.name }}</a>
 
     {% endif %}
 
@@ -47,11 +46,5 @@
     <p>{% trans "Sorry, you don't have permission to delete lists. Please contact your group administrator" %}.</p>
 
 {% endifequal %}
-
-
-
-
-   
-   
 	
 {% endblock %}

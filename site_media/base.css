@@ -450,7 +450,7 @@ table#tasktable tr.row2 {
 }
 .entradas{
 width:500px;
-background: #ffffff url(watermark_bg.gif) no-repeat 50px 50px;
+background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
 }
 .derecho-microblog{
 float: right;

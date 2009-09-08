@@ -63,13 +63,14 @@ def list_lists(request):
     return render_to_response('todo/list_lists.html', locals(), context_instance=RequestContext(request))  
 
 @login_required
-def del_list(request,list_id,list_slug):
+def del_list(request,repo_id, list_id,list_slug): #aumentado repo id
 
     """
-    Elminia una lista.
+    Elmina una lista.
     """
+    list = get_object_or_404(List, id=list_id)
+    if list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
 
-    if request.user.is_staff:
         can_del = 1
 
     list = get_object_or_404(List, slug=list_slug)
@@ -230,6 +231,8 @@ def view_task(request,task_id):
     # antes de adicionar cualquier cosa, hace seguro el acceso a usuario con permiso para ver estos items.
     # determina el repositorio al que pertenece esta tarea, verfica si el usuario actual es miembro del repositorio.
     if task.list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
+        if task.list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
+            can_del = 1
 
         auth_ok = 1
         if request.POST:

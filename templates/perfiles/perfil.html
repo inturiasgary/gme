@@ -10,7 +10,7 @@
         {% include "perfiles/perfil_right_panel.html" %}
     </div>
     
-    <h1>{% blocktrans %}Perfil de {{ other_user }}{% endblocktrans %}</h1>
+    <h1>{% blocktrans %}<img src="/site_media/PNG/Tag Add.png" >Perfil de {{ other_user }}{% endblocktrans %}</h1>
     
     <div class="profile_info">
         {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}

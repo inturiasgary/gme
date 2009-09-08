@@ -150,9 +150,9 @@ def main(argv,comando):
             result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
             ''' para analizar el contenido de resultado y recorrido ''' 
             try:
-                print result
+                
                 xmldoc = xml.dom.minidom.parseString(result)
-            
+                print result
                 for n in  xmldoc.childNodes :
                     print n.tagName
                     for contacto in n.childNodes:
