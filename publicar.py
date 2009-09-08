@@ -97,7 +97,7 @@ def enviar_commit(repositorio, username, password, commit):
 if __name__ == '__main__':
     cargarConfiguracion()
 '''
-_comandos = ['actualizar','estados','iniciar']
+_comandos = ['actualizar','estados','iniciar','todo']
 POST_URL = "http://127.0.0.1:8000/xml_rpc_srv/"
 DIR_ACTUAL = os.getcwd()
 
@@ -150,6 +150,7 @@ def main(argv,comando):
             result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
             ''' para analizar el contenido de resultado y recorrido ''' 
             try:
+                print result
                 xmldoc = xml.dom.minidom.parseString(result)
             
                 for n in  xmldoc.childNodes :
@@ -168,6 +169,31 @@ def main(argv,comando):
 
         if comando == 'todo':
             ''' Realizar la visualizacion de todo , en general o por repositorio'''
+            ''' Realizar la visualizacion de estados por repositorio '''
+            if not(httpconf['auth'].get('usuario',None)):
+                httpconf['auth']['usuario']=raw_input('Nombre de usuario:')
+            if not(httpconf['auth'].get('password',None)):
+                httpconf['auth']['password']=getpass('Password:')
+            rpc_srv = xmlrpclib.ServerProxy(POST_URL)
+            result = rpc_srv.todoRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
+            ''' para analizar el contenido de resultado y recorrido ''' 
+            try:
+                xmldoc = xml.dom.minidom.parseString(result)
+            
+                for n in  xmldoc.childNodes :
+                    print n.tagName
+                    for contacto in n.childNodes:
+                        for registro in contacto.childNodes:
+                            if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
+                                print "%s :%s"%(registro.nodeName,registro.firstChild.data)
+                print '---'
+            except:
+                print result
+                print "No se recibieron notificaciones."
+                            
+            if result == None:
+                print 'Problemas con la peticion de acciones al repsoitorio'
+
 
         if  comando == 'iniciar':
             configurar()
