@@ -13,13 +13,13 @@
 \chapter{DESARROLLO DEL PROYECTO}
 El desarrollo del proyecto esta enfocado en dos ambientes, uno en el lado cliente, que se desarrollaron scripts para poder permitir la comunicación de los repositorios en GIT
 el otro lado en el lado servidor para la elaboración del sistema web, que mantendrá informado a los desarrolladores
-\section{METODOLOGIA DE DESARROLLO}
+\section{METODOLOGÍA DE DESARROLLO}
 El desarrollo del proyecto 'Desarrollar un sistema Web microblog para notificación de acciones aplicadas en repositorios locales de desarrollo de proyectos de software versionados con GIT Esta basado en la metodología de desarrollo SCRUM.
 
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.7\textwidth]{imagenes/image-0.png}%ext=pdf,jpg,png
-\caption{... texto ...}
+\caption{ciclos de la metodología}
 \label{contexto:figura}
 \end{figure}
 
@@ -27,21 +27,17 @@ Scrum es un proceso en el que se aplican de manera regular un conjunto de mejore
 
 SCRUM es una metodología propuesta por los japoneses Hirotaka Takeuchi e Ikujijo Nonaka, un modo de desarrollo de carácter adaptable y orientada a las personas antes
 que a los procesos, que controla de forma empírica y adaptable la evolución del proyecto con las siguientes prácticas de la gestión ágil:
-       - Revisión de las iteraciones.
-       - Desarrollo incremental, en el proyecto no se trabaja con diseño o
-        abstracciones.
-       - Desarrollo evolutivo, intenta predecir en las fases iniciales cómo será el
-         resultado final y sobre dicha predicción realizar el diseño, la estructura del
-        - producto no es realista, porque las circunstancias obligaran a remodelarlo
-          muchas veces.
-       - Auto-organización, los equipos son auto-organizados, con margen de decisión
-         suficiente para tomar las decisiones que consideren oportunas.
-       - Y colaboración entre todos según su conocimiento y no según su rol o puesto.
 
-El resultado final en esta metodología se consigue de forma iterativa e incremental. Al comienzo de cada iteración (sprint) se determina qué partes se van a construir,
-tomando como criterios la prioridad para el negocio, y la cantidad de trabajo que se podrá abordar durante la iteración. Dichas iteraciones se presentan en las etapas de
-Especulación, Exploración y Revisión; y debido a que, según este tipo de modelos de desarrollo nunca se termina un producto, se presentan de forma infinita pudiendo
-llegar a la etapa de cierre solo cuando se desee enviar al mercado una versión funcional del producto.
+\begin{itemize}
+ \item Revisión de las iteraciones.
+ \item Desarrollo incremental, en el proyecto no se trabaja con diseño o abstracciones.
+ \item Desarrollo evolutivo, intenta predecir en las fases iniciales cómo será el resultado final y sobre dicha predicción realizar el diseño, la estructura del producto no es realista, porque las circunstancias obligaran a remodelarlo muchas veces.
+ \item Auto-organización, los equipos son auto-organizados, con margen de decisión suficiente para tomar las decisiones que consideren oportunas.
+ \item colaboración entre todos según su conocimiento y no según su rol o puesto.
+
+\end{itemize}
+
+El resultado final en esta metodología se consigue de forma iterativa e incremental. Al comienzo de cada iteración (sprint) se determina qué partes se van a construir, tomando como criterios la prioridad para el negocio, y la cantidad de trabajo que se podrá abordar durante la iteración. Dichas iteraciones se presentan en las etapas de Especulación, Exploración y Revisión; y debido a que, según este tipo de modelos de desarrollo nunca se termina un producto, se presentan de forma infinita pudiendo llegar a la etapa de cierre solo cuando se desee enviar al mercado una versión funcional del producto.
 
 Reglas básicas
 SCRUM tiene un conjunto de reglas muy pequeño y muy simple y está basado en los principios de inspección continua, adaptación, auto-gestión e innovación.
@@ -50,39 +46,34 @@ con los objetivos de negocio de su empresa.
 Por otro lado, los desarrolladores encuentran un ámbito propicio para desarrollar sus capacidades profesionales y esto resulta en un incremento en la motivación de los
 integrantes del equipo.
 Ya hemos dicho que SCRUM es fácil y sencillo pero vamos a la materia, los siguientes son los elementos básicos de SCRUM:
-    
-    •   Una lista con las funcionalidades de la aplicación ordenadas de mayor a menor
-        importancia. Esta lista se llama "Product Backlog". No hace falta que esta lista
-        contenga todas las funcionalidades inicialmente.
-    •   De la lista anterior, se toman las primeras funcionalidades, se descomponen en
-        tareas y son anotadas en una lista que se llama "Sprint Backlog". Estas tareas
-        serán realizadas en el siguiente mes.
+\begin{itemize}
+ \item Una lista con las funcionalidades de la aplicación ordenadas de mayor a menor importancia. Esta lista se llama "Product Backlog". No hace falta que esta lista contenga todas las funcionalidades inicialmente.
+ \item De la lista anterior, se toman las primeras funcionalidades, se descomponen en tareas y son anotadas en una lista que se llama "Sprint Backlog". Estas tareas serán realizadas en el siguiente mes.
+\end{itemize}
 
 Además de estos elementos tenemos unas cuantas reglas básicas y sencillas que
 tenemos que cumplir:
-    •   Una vez que se pasan las tareas más prioritarias del "Product Backlog" al
+\begin{itemize}
+ \item Una vez que se pasan las tareas más prioritarias del "Product Backlog" al
         "Sprint Backlog", estas no se pueden cambiar, esto quiere decir, que el trabajo
         de un mes queda fijado. Esta es la regla más importante de todas.
-    •   Al final del mes, periodo denominado "Sprint", se tiene que tener un ejecutable
+ \item Al final del mes, periodo denominado "Sprint", se tiene que tener un ejecutable
         con las funcionalidades del "Sprint Backlog".
-    •   Todo el equipo puede añadir funcionalidades al "Product Backlog", pero sólo
+ \item Todo el equipo puede añadir funcionalidades al "Product Backlog", pero sólo
         una persona puede ordenarlo. A esta persona se le denomina "Product
         Owner". Es el responsable del producto final.
-    •   Cada día se hace una reunión de menos de 15 minutos, en la que se reúne
+ \item Cada día se hace una reunión de menos de 15 minutos, en la que se reúne
         todo el equipo: ingenieros y gestor (llamado "SCRUM Master") en la que cada
         miembro del equipo expone sólo los siguientes temas:
-             o ¿Qué es lo que se hizo el día anterior?
-             o ¿Qué es lo que se va a hacer hoy?
-             o ¿Qué impedimentos tengo para realizar mi trabajo?
+	\begin{itemize}
+	 \item ¿Qué es lo que se hizo el día anterior?
+	 \item ¿Qué es lo que se va a hacer hoy?
+	 \item ¿Qué impedimentos tengo para realizar mi trabajo?
+	\end{itemize}
 
-
-        Sólo se tratan estos temas para que la reunión sea rápida y no malgastar el
-        tiempo de los demás. Si se tiene que tratar otro tema se hace otra reunión sólo
-        con las personas implicadas. ¿Recordáis la serie de TV "Canción triste de Hill
-        Street" en la que el sargento tenía una reunión matutina con sus agentes y que
-        terminaba con un "Tengan cuidado ahí fuera"? pues viene a ser algo parecido.
-    •   Al final del mes, es decir, al final del Sprint, se presenta el producto y se toman
-        del "Product Backlog" las funcionalidades para cubrir en el siguiente mes.
+        Sólo se tratan estos temas para que la reunión sea rápida y no malgastar el tiempo de los demás. Si se tiene que tratar otro tema se hace otra reunión sólo con las personas implicadas. 
+ \item Al final del mes, es decir, al final del Sprint, se presenta el producto y se toman del "Product Backlog" las funcionalidades para cubrir en el siguiente mes.
+\end{itemize}
 
 La calidad en este caso, se logra y se mantiene de forma continua, pues se involucra
 al cliente durante todo el tiempo que tarde el desarrollo, permitiéndole hacer aportes
@@ -94,17 +85,169 @@ entender, lo que ayuda mucho a su implantación, pero no hay que engañarse, SCR
 es un proceso de cambio, y uno además bastante serio.
 SCRUM es sencillo, pero duro como una piedra, y se encuentra siempre mucha
 resistencia:
-    •   Los jefes de proyecto no querrán comenzar los proyectos sin tenerlo todo
+\begin{itemize}
+ \item Los jefes de proyecto no querrán comenzar los proyectos sin tenerlo todo
         perfectamente identificado, acotado y planificado.
-    •   Los desarrolladores no querrán la               responsabilidad    de  estimar   las
+ \item Los desarrolladores no querrán la               responsabilidad    de  estimar   las
         funcionalidades y demostrar el producto.
-    •   Los gerentes no querrán dejar tranquilo al equipo durante los Sprints.
-    •   Etc.
+ \item Los gerentes no querrán dejar tranquilo al equipo durante los Sprints.
+\end{itemize}
 
-\section{DESCRIPCION DEL PROBLEMA}
+\section{DESCRIPCIÓN DEL PROBLEMA}
+
+\section{SEGURIDAD}
+
+Hoy en día la internet puede ser un lugar de miedo, podemos ver virus expandirse con una velocidad impresionante;enjambres de computadoras comprometidas manejadas como arma; una carrera de armamentos de nunca acabar contra los spammers \footnote{Los spammers (individuos o empresas que envían spam) utilizan diversas técnicas para conseguir las largas listas de direcciones de correo que necesitan para su actividad, generalmente a través de robots o programas automáticos que recorren internet en busca de direcciones.}; y muchos informes de hurtos de identidad diariamente de sitios Web hackeados.\\
+Todo desarrollador Web necesita tratar con la seguridad como un aspecto fundamental de la programación Web.
+desafortunadamente la implementación de la seguridad es un poco costosa, debido a que los atacantes solo necesitan encontrar una simple vulnerabilidad, pero los defensores deben asegurar desde lo mas simple.\\
+El Framework Web Django pretende atenuar esta dificultad, esta diseñado para proteger automáticamente de muchos posibles errores comunes de seguridad que podrían tener los nuevos desarrolladores como también de los ya experimentados.
+En este apartado daremos una pequeña sinopsis de problemas de seguridad que se han implementado en el sistema Web.
+
+\subsection{INYECCIÓN SQL}
+
+Inyección SQL es un común exploit\footnote{Exploit (del inglés to exploit, explotar o aprovechar) es una pieza de software, un fragmento de datos, o una secuencia de comandos con el fin de automatizar el aprovechamiento de un error, fallo o vulnerabilidad, a fin de causar un comportamiento no deseado o imprevisto en los programas informáticos, hardware, o componente electrónico} en el que un atacante altera los parametros de la pagina Web(Como ser datos GET/POST o las direcciones URLs) para insertar arbitrariamente fragmentos SQL que un ingenuo aplicación Web ejecuta en su base de datos directamente. Esto es probablemente lo mas peligroso y desafortunadamente uno de los mas comunes que hay.\\
+Esta vulnerabilidad surge mas comúnmente cuando una instrucción SQL es tipeado por un usuario.
+
+\textbf{Solución}
+
+Aunque este problema es malicioso y difícil de solucionar, la solución es simple: nunca confiar en los datos presentados por los usuarios, y evadirlo siempre al pasarlo en el SQL.
+La API\footnote{Application Programming Interface "Interfaz de Programación de Aplicaciones"} de base de datos de Django hace esto por nosotros. Automáticamente evade todos los parametros especiales SQL según el servidor de base de datos que se este usando.
+
+\textbf{Prueba}
+
+La siguiente prueba se realizo en el sistema microblog:
+
+\begin{verbatim}
+ Repositorio.objects.get(nombre__exact="' OR 1=1")
+\end{verbatim}
+
+Django evadió esta entrada como se había previsto, resultando en una declaración como esta:
+
+\begin{verbatim}
+ SELECT * FROM Repositorio WHERE nombre = '\' OR 1=1'
+\end{verbatim}
+
+un resultado completamente inofensivo 
+
+\subsection{XSS}
+
+XSS, del inglés \textbf{Cross-site scripting} es un tipo de inseguridad informática o agujero de seguridad basado en la explotación de vulnerabilidades del sistema de validación de HTML incrustado. Permitiendo al atacante insertar arbitrariamente código HTML en nuestra pagina web, usualmente en el formulario con etiquetas <script>.
+
+Los atacadores incluso usan este tipo de ataque para robar cookie e información de sesiones.
+
+\textbf{Prueba}
+
+La solución es fácil: siempre evadir cualquier contenido que podría venir de un usuario antes de la inserción en el HTML. 
+El sistema de templates Django automáticamente evade todos los valores de las variables, un ejemplo de un posible problema en el sistema seria:
+
+\begin{verbatim}
+ #En el archivo views.py:
+ 
+ from django.shortcuts import render_to_response
+ 
+ def detalle_repo(request):
+ 	nombre = request.GET('nombre')
+	return = render_to_response('detalle_repo.html', {'nombre':nombre})
+
+ #En el archivo detalle_repo.html:
+
+ <h1>Estas en el repositorio {{ nombre }}</h1>
+
+ #El paso de parametro común a través del GET seria de la siguiente forma: 
+
+ http://localhost:8000/detalle/repositorio/nombre=RepositorioPrueba
+
+ #Si tratamos de la siguiente forma:
+
+ http://localhost:8000/detalle/repositorio/nombre=<i>RepositorioPrueba</i>
+
+ #El resultado seria el siguiente:
+
+ <h1>Estas en el repositorio &lt;i&gt;RepositorioPrueba&lt;/i&gt;!</h1>
+
+ #En el cual django por defecto a evadido 
+
+\end{verbatim}
+
+\subsection{CSRF}
+
+El CSRF (del inglés Cross-site request forgery o falsificación de petición en sitios cruzados) es un tipo de exploit malicioso de un sitio web en el que comandos no autorizados son transmitidos por un usuario en el cual el sitio web confía. Esta vulnerabilidad es conocida también por otros nombres como XSRF.
+
+Django tiene internamente herramientas para este tipo de de ataques.
+
+\subsection{FORZAMIENTO DE SESION/SECUESTRO (HIJACKING)}
+
+No es especificamente un ataque; es una clases general de ataque en los datos de sesion de usuarios. Puede tomar un numero de diferentes formas:
+
+\begin{itemize}
+ \item Ataque un \textit{hombre en el medio}, en el cual el atacador husmea en los datos de sesion a través de los datos que viajan por la red.
+ \item \textit{Forzado de sesion}, en el cual el atacador usa un identificador de sesion para pretender ser otro usuario.
+ \item ataque \textit{forzando cookie}, en el cual el atacador sobreescribe los datos supuestamente de solo lectura almacenados en un cookie
+ \item \textit{Fijación de sesion} en el cual el atacador engaña a un usuario en el ajuste o reajuste en el identificador de la sesion del usuario.
+ \item \textit{Envenenamiento de la sesion}, en el cual el atacador introduce datos peligrosos dentro de la sesion del usuario, usualmente a través de algún formulario que el usuario presenta al conjunto de datos de la sesion.
+\end{itemize}
+
+\textbf{Solución}
+
+Hay una cantidad de principios generales que pueden protegernos de esos ataques:
+
+\begin{itemize}
+ \item Nunca permitir información para sesion a través del contenido en el URL, Django simplemente no permite información para las sesiones a través del contenido URL.
+ \item No almacenar información en los cookies directamente, en Django todas los identificadores de sesion son almacenados en una base de datos.
+ \item Recordar evadir los datos de sesion si estos son mostrados en las plantillas. ya visto en XSS
+ \item Prevenir el engaño de identificadores de sesion cada ves que sea posible. Django tiene construido una protección contra ataques de sesiones por fuerza bruta. los usuario siempre obtienen un nuevo identificador de sesion. 
+\end{itemize}
+
+\subsection{INYECCIÓN DE CABECERAS DE EMAIL}
+
+la inyección por la cabecera de email, Un atacante puede utilizar esta técnica para enviar correos electrónicos masivamente (Spam) vía su mail server. Cualquier formulario que construya cabeceras del email de datos del formulario desde la Web es vulnerable a esta clase de ataque.
+
+\textbf{Solución}
+
+Prevenimos este ataque de la misma forma como la inyección SQL: siempre evadir o validar el contenido entregado por el usuario.
+
+Django no permite nuevas lineas en ningún campo usado para los constructores de cabeceras(el desde: y hasta: , además del asunto:)
+
+\subsection{DIRECTORIO TRAVERSAL}
+
+Un directory traversal (o path traversal) consiste en explotar una vulnerabilidad informática que ocurre cuando no existe suficiente seguridad en cuanto a la validación de un usuario, permitiéndole acceder a cualquier tipo de directorio superior (padre) sin ningún control.\\
+
+La finalidad de este ataque es ordenar a la aplicación a acceder a un archivo al que no debería poder acceder o no debería ser accesible. Este ataque se basa en la falta de seguridad en el código. El software está actuando exactamente como debe actuar y en este caso el atacante no está aprovechando un bug en el código.
+
+\textbf{Solución}
+
+Si el código necesita escribir y leer archivos basados en entradas de usuarios, es necesario restringir la dirección de directorios de manera muy tediosa para que usuarios atacantes no tengan acceso a direcciones peligrosas.
+Django no permite la lectura de archivos, a menos que se usen las funciones de static.server
+
+\subsection{EXPOSICIÓN DE MENSAJES DE ERRORES}
+
+Durante el desarrollo, las notificaciones de errores son de mucha utilidad. Django presenta una útil información detallada acerca de los conflictos que ocurren.
+El cual daría la impresión de que el código o la configuración del sistema esta siendo atacado.
+Además que estos mensajes no son información útil para los usuario finales. La filosofía de Django es que los visitadores del sitio no deberían ver los mensajes relacionados a los errores de aplicación, en ves de esto el usuario debería ver un mensaje amistoso "el sitio no esta disponible" 
+
+\textbf{Solución}
+
+En las aplicaciones desarrolladas en Django, presenta un archivo de configuración en el cual se puede deshabilitar esta cualidad de mostrar los mensajes de errores, la variable a cambiar se llama DEBUG.
 
 \section{PRUEBAS}
-Durante las iteraciones en que se efectua el desarrollo de software segun la planificacion en la metodologia efectuada se realizaron las siguientes pruebas, estas siendo muy importantes ya que nos permiten verificar los posibles problemas causados tanto en las modificaciones como en las nuevas funcionalidades que se dio al sistema.
+Durante las iteraciones en que se efectúa el desarrollo de software según la planificación en la metodología efectuada se realizaron pruebas, siendo muy importantes ya que nos permiten verificar los posibles problemas causados que podría presentar el sistema.
+
+para resolver o evitar problemas en los siguientes casos:
+\begin{itemize}
+ \item Cuando se escribe nuevo código, para asegurar que el nuevo código trabaja como se espera.
+ \item Cuando se realiza una refactorizacion o modificación de código, podemos hacer pruebas para asegurar que los cambios no afecten inesperadamente al comportamiento de la aplicación.
+\end{itemize}
+
+La realización de pruebas a una aplicación Web es una tarea compleja, debido a que las aplicaciones web están realizadas por varias capas lógicas, desde el nivel de peticiones HTTP, validación de formularios y proceso, hasta la presentación de plantillas. Con las herramientas que nos ofrece el framework Django, podemos simular peticiones, insertar datos de pruebas, inspeccionar las respuestas de nuestra aplicación y generalmente verificar si el código esta haciendo lo que realmente esperamos que haga.
+
+\subsection{REALIZANDO PRUEBAS}
+Existen dos formas de escribir pruebas en Django, como también son las mismas formas que se escriben las pruebas en el lenguaje de programación Python.
+
+\begin{itemize}
+ \item \textbf{Doctests} - pruebas que están encajadas dentro de la documentación y escritas de forma que emulan una sesion del interprete interactivo de Python.
+ \item \textbf{Unit test} (Pruebas de unidad) - pruebas que son expresadas como metodos en una clase Python de la subclase unittest.TestCase.
+\end{itemize}
+
 
 Pruebas de unidad usando Unit Test
 
@@ -112,12 +255,6 @@ Pruebas de cliente usando Test Client
 
 Permite que el usuario componga peticiones GET y POST, y obtiene la respuesta que el servidor dio a esas peticiones. Los objetos de la respuesta del servidor se anotan con los detalles de los contextos y de las plantillas que fueron rendidos durante el proceso en que se realiza la petición.
 
-para la realizacion de estas pruebas se hizo el uso se Selenium 
+para la realización de estas pruebas se hizo el uso se Selenium 
 
-\begin{figure}[htb]
-\centering
-\includegraphics[width=1\textwidth]{file.png}%ext=pdf,jpg,png
-\caption{... texto ...}
-\label{contexto:figura}
-\end{figure}
 %\end{document}

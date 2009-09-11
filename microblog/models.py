@@ -18,7 +18,15 @@ CONEXION_ESTADOS = (
 #import app_settings, msn
 
 class Entrada(models.Model):
-    ''' Permite almacenar los anuncios de los usuarios, podran ser vistas por sus conecciones aceptadas'''
+    ''' Permite almacenar los anuncios de los usuarios, podran ser vistas por sus conecciones aceptadas
+    
+    # Creacion de algunas entradas
+    >>> from django.contrib.auth.models import User
+    >>> usuario = User.objects.create(username="gary")
+    >>> entradaPrueba = Entrada.objects.create(user=usuario, contenido="Entrada de prueba")
+    >>> print entradaPrueba.contenido
+    Entrada de prueba
+    '''
     class Meta:
         ordering = ('-fecha',)
 
