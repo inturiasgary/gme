@@ -1287,7 +1287,7 @@ msgstr "listas"
 
 #: templates/todo/list_lists.html:23
 msgid "Add a list"
-msgstr "Adicionar a lista"
+msgstr "Adicionar una lista"
 
 #: templates/todo/list_lists.html:27
 msgid "Submit"

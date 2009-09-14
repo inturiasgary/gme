@@ -10,12 +10,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'database.db'  # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_ENGINE = 'sqlite3'    
+DATABASE_NAME = 'database.db'  
+DATABASE_USER = ''             
+DATABASE_PASSWORD = ''         
+DATABASE_HOST = ''             
+DATABASE_PORT = ''             
 
 TIME_ZONE = 'America/La_Paz'
 
@@ -45,7 +45,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'cuenta.middleware.LocaleMiddleware', #posiblemente borrar
+    'cuenta.middleware.LocaleMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'pagination.middleware.PaginationMiddleware', #para la paginacion
     
@@ -89,16 +89,9 @@ INSTALLED_APPS = (
     'ajax_validation',
     'emailconfirmation',
     'perfiles',         #adicionado app perfiles, administrador de perfiles de usuario
-    #'gme.app_plugins',     #adicioanado app app_plugins para la extension de template
-    #'timezones',        #quitado app timezones para personalizar zonas horarias
-    #'gme.friends',
     'pagination',#adicionado app para la paginacion
     'todo',
 )
-
-#ABSOLUTE_URL_OVERRIDES = {
-    #"auth.user": lambda o: "/perfiles/%s/" % o.username,
-#}
 
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/microblog/u/%s/" % o.username,

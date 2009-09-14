@@ -35,33 +35,34 @@
 \contentsline {subsection}{\numberline {3.2.3}XML RPC}{23}
 \contentsline {subsubsection}{\numberline {3.2.3.1}XML-RPC contra. Otros protocolos}{23}
 \contentsline {chapter}{\numberline {4}DESARROLLO DEL PROYECTO}{26}
-\contentsline {section}{\numberline {4.1}METODOLOGIA DE DESARROLLO}{26}
-\contentsline {section}{\numberline {4.2}DESCRIPCION DEL PROBLEMA}{29}
+\contentsline {section}{\numberline {4.1}METODOLOG\IeC {\'I}A DE DESARROLLO}{26}
+\contentsline {section}{\numberline {4.2}DESCRIPCI\IeC {\'O}N DEL PROBLEMA}{29}
 \contentsline {section}{\numberline {4.3}SEGURIDAD}{29}
-\contentsline {subsection}{\numberline {4.3.1}INYECCION SQL}{30}
+\contentsline {subsection}{\numberline {4.3.1}INYECCI\IeC {\'O}N SQL}{30}
 \contentsline {subsection}{\numberline {4.3.2}XSS}{31}
 \contentsline {subsection}{\numberline {4.3.3}CSRF}{32}
 \contentsline {subsection}{\numberline {4.3.4}FORZAMIENTO DE SESION/SECUESTRO (HIJACKING)}{33}
-\contentsline {subsection}{\numberline {4.3.5}INYECCION DE CABECERAS DE EMAIL}{34}
+\contentsline {subsection}{\numberline {4.3.5}INYECCI\IeC {\'O}N DE CABECERAS DE EMAIL}{34}
 \contentsline {subsection}{\numberline {4.3.6}DIRECTORIO TRAVERSAL}{34}
-\contentsline {subsection}{\numberline {4.3.7}EXPOSICION DE MENSAJES DE ERRORES}{35}
+\contentsline {subsection}{\numberline {4.3.7}EXPOSICI\IeC {\'O}N DE MENSAJES DE ERRORES}{35}
 \contentsline {section}{\numberline {4.4}PRUEBAS}{35}
-\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{36}
-\contentsline {section}{\numberline {5.1}CONCLUSIONES}{36}
-\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{36}
-\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{37}
-\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{37}
-\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{37}
-\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{37}
-\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{37}
-\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{37}
-\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{38}
-\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{38}
-\contentsline {subparagraph}{Debian/Ubuntu}{38}
-\contentsline {subparagraph}{Windows}{39}
-\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACION DE GIT}{39}
-\contentsline {paragraph}{\numberline {6.1.2.1.3}INSTALACI\IeC {\'O}N DE LA LIBRERIA GITPYTHON}{40}
-\contentsline {section}{\numberline {6.2}Antecedentes}{41}
-\contentsline {section}{\numberline {6.3}Definici\IeC {\'o}n del problema}{41}
-\contentsline {section}{\numberline {6.4}GIT}{42}
-\contentsline {section}{\numberline {6.5}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{42}
+\contentsline {subsection}{\numberline {4.4.1}REALIZANDO PRUEBAS}{36}
+\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{37}
+\contentsline {section}{\numberline {5.1}CONCLUSIONES}{37}
+\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{37}
+\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{38}
+\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{38}
+\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{38}
+\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{38}
+\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{38}
+\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{38}
+\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{39}
+\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{39}
+\contentsline {subparagraph}{Debian/Ubuntu}{39}
+\contentsline {subparagraph}{Windows}{40}
+\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACION DE GIT}{40}
+\contentsline {paragraph}{\numberline {6.1.2.1.3}INSTALACI\IeC {\'O}N DE LA LIBRERIA GITPYTHON}{41}
+\contentsline {section}{\numberline {6.2}Antecedentes}{42}
+\contentsline {section}{\numberline {6.3}Definici\IeC {\'o}n del problema}{42}
+\contentsline {section}{\numberline {6.4}GIT}{43}
+\contentsline {section}{\numberline {6.5}Innovaci\IeC {\'o}n Tecnol\IeC {\'o}gica}{43}
