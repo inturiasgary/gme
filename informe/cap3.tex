@@ -12,18 +12,21 @@
 %\begin{document}
 \chapter{HERRAMIENTAS PARA EL DESARROLLO DE SOFTWARE}
 \section{INTRODUCCION}
-
+En esta seccion se dara a conocer las herramientas que sirvieron de apoyo a la realizacion del proyecto, como tambien algunos conceptos importantes.
 
 \section{LENGUAJE DE PROGRAMACION PYTHON}
+Para la implementacion del proyecto se ...
+descripcion , ventajas, desventajas
 
 \subsection{FRAMEWORK WEB DJANGO}
+La implementacion sistema web microblog para el desarrollo del proyecto se realizo utilizando el framework WEB Django. 
 Django es un framework de desarrollo web de código abierto, escrito en Python, que cumple en cierta medida el paradigma del Modelo Vista Controlador. Fue desarrollado en origen para gestionar varias páginas orientadas a noticias de la World Company de Lawrence, Kansas, y fue liberada al público bajo una licencia BSD en julio de 2005. La versión estable (a julio de 2009) es la 1.1.
 
 Otras características de Django son:
 \begin{itemize}
 
 \item Un mapeador objeto-relacional.
-\item Aplicaciones "enchufables" que pueden instalarse en cualquier página gestionada con Django.
+\item Aplicaciones enchufables que pueden instalarse en cualquier página gestionada con Django.
 \item Una API de base de datos robusta.
 \item Un sistema incorporado de "vistas genéricas" que ahorra tener que escribir la lógica de ciertas tareas comunes.
 \item Un sistema extensible de plantillas basado en etiquetas, con herencia de plantillas.
@@ -41,14 +44,15 @@ GIT es un sistema de control de versiones distribuida aunque tambien se puede re
 Toda la información necesitada para representar la historia de un proyecto es almacenada en archivos referenciados por 40 dígitos.también denominado ``Object Name''
 \paragraph{TIPOS DE OBJETOS}
 \begin{itemize}
- \item \textbf{Blob} Usado para almacenar datos de archivos, generalmente archivos.
- \item \textbf{Tree} Básicamente igual a un directorio, hace referencia a otras ramas, arboles o blobs.
- \item \textbf{Commit} Apunta a un árbol simple, timestamp, autor de los cambios del anterior commit realizado.
- \item \textbf{Tag} Forma especifica para marcar un Commit. como por ejemplo una versión ralease especifico.
+ \item \textbf{Blob: } Usado para almacenar datos de archivos, generalmente archivos.
+ \item \textbf{Tree: } Básicamente igual a un directorio, hace referencia a otras ramas, arboles o blobs.
+ \item \textbf{Commit: } Apunta a un árbol simple, timestamp, autor de los cambios del anterior commit realizado.
+ \item \textbf{Tag: } Forma especifica para marcar un Commit. como por ejemplo una versión ralease especifico.
 \end{itemize}
 
 \subsubsection{HOOKS(GANCHOS)}
-No son copiados durante la ejecucion del comando \textit{git clone}.En otras palabras, los hooks configurados en nuestro repositorio privado no son propagados ni alteran el 
+Sirven para poder realizar acciones ya sean internas o externas al sistema GIT.
+No son copiados durante la ejecucion del comando \textit{git clone}. En otras palabras, los hooks configurados en nuestro repositorio privado no son propagados ni alteran el 
 comportamiento del nuevo clon.
 La clasificacion de los hooks son:
 \begin{itemize}
@@ -67,23 +71,23 @@ XML-RPC no es la única manera de hacer llamadas de procedimiento remotos. Otros
 
 \item \textbf{XML-RPC contra CORBA}
 
-CORBA es un protocolo popular para la escritura distribuida, usos orientados a objetos. Se utiliza típicamente en usos de varias filas de empresas. Recientemente, también es adoptado por el proyecto del gnome para la comunicación de interaplicacion.
+CORBA es un protocolo popular para la escritura distribuida, usos orientados a objetos.\\
+Se utiliza típicamente en usos de varias filas de empresas. Recientemente, también es adoptado por el proyecto del gnome para la comunicación de interaplicacion.\\
 
-CORBA es muy apoyado por muchos vendedores y varios proyectos de software libre. CORBA trabaja bien con Java y C++, y está disponible para muchos otras idiomas. CORBA también proporciona una lengua excelente de la definición de interfaz (IDL), permitiendo que usted defina APIs legibles, orientados al objeto.
+CORBA es muy apoyado por muchos vendedores y varios proyectos de software libre. CORBA trabaja bien con Java y C++, y está disponible para muchos otras idiomas. CORBA también proporciona una lengua excelente de la definición de interfaz (IDL), permitiendo que usted defina APIs legibles, orientados al objeto.\\
 
 Desafortunadamente, CORBA es muy complejo. Tiene una curva de aprendizaje escarpada, requiere esfuerzo significativo para ejecutar, y requiere a clientes bastante sofisticados.
 
 \item \textbf{XML-RPC contra DCOM}
 
-DCOM es respuesta de Microsoft a CORBA. Es grande si usted está utilizando ya componentes de COM, y usted no necesita hablar con los sistemas que no son de Microsoft. entonces, no le ayudará mucho.
+DCOM es respuesta de Microsoft a CORBA. Es extenso si ya se está utilizando componentes de COM, y usted no necesita hablar con los sistemas que no son de Microsoft. entonces, no le ayudará mucho.
 
 \item \textbf{XML-RPC contra SOAP}
 \end{itemize}
-SOAP es muy similar a XML-RPC. , Trabaja también formando llamadas de procedimiento sobre el protocolo HTTP con documentos de XML. Desafortunadamente, el SOAP parece sufrir de arrastramiento de la especificación.
+SOAP es muy similar a XML-RPC. , Trabaja también formando llamadas de procedimiento sobre el protocolo HTTP con documentos de XML. Desafortunadamente, el SOAP parece sufrir de arrastramiento de la especificación.\\
 
-SOAP fue creado originalmente como colaboración entre UserLand, DevelopMentor y Microsoft. El lanzamiento público inicial era básicamente XML-RPC con los namespaces \footnote{En programación, un espacio de nombres (del inglés namespace), en su acepción más simple, es un conjunto de nombres en el cual todos los nombres son únicos.} y nombres de elemento más largos. Desde entonces, sin embargo, SOAP se ha volcado un grupo de trabajo de W3C.
+SOAP fue creado originalmente como colaboración entre UserLand, DevelopMentor y Microsoft. El lanzamiento público inicial era básicamente XML-RPC con los namespaces \footnote{En programación, un espacio de nombres (del inglés namespace), en su acepción más simple, es un conjunto de nombres en el cual todos los nombres son únicos.} y nombres de elemento más largos. Desde entonces, sin embargo, SOAP se ha volcado un grupo de trabajo de W3C.\\
 
 Desafortunadamente, el grupo de trabajo ha estado agregando una lista de características extrañas al SOAP. En fecha la escritura actual, el SOAP apoya esquemas de XML, enumeraciones, híbridos extraños de structs y de órdenes, y tipos de encargo. Al mismo tiempo, varios aspectos SOAP son puesta en práctica definida.
-\textbf{poner la imagen de la secuencia de git commit}
 
 %\end{document}

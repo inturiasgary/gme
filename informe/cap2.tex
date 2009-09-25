@@ -28,19 +28,20 @@ Estos cambios realizados en el código son de manera organizada y ordenada, debi
 
 \subsection{GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}
 
-En la actividad de desarrollo de software con frecuencia los desarrolladores son organizados en grupo, independientemente de que metodología empleen. Surgiendo la suma necesidad de coordinar el trabajo, no solo por una cuestión natural sino también como mecanismo para optimizar los recursos.
+En la actividad de desarrollo de software con frecuencia los desarrolladores son organizados en grupo, independientemente de que metodología empleen. Surgiendo la suma necesidad de coordinar el trabajo, no solo por una cuestión natural sino también como mecanismo para optimizar los recursos.\\
 Por eso, para desarrollar en grupo es imprescindible la buena comunicación y el entendimiento entre los pares. Esto implica que, en general los desarrollos se dan de forma coordinada (ya sea de manera horizontal o vertical, independientemente del mecanismo que se elija explícita o implícitamente para ello) al menos en un nivel social, las tareas se reparten y los cambios se discuten donde afectan al grupo para facilitar el trabajo.\\
 
 Claro que el desarrollar en grupo, por más que uno se lleve maravillosamente bien con la gente involucrada, acarrea ciertas incomodidades que sí son más técnicas. Al haber más de una persona modificando el código fuente de forma simultanea, existe una complejidad, y nada menor, en lo que refiere al hecho de sincronizarlo y mantenerlo coherente entre todos los miembros del grupo.\\
 
 También se dan en un grupo de trabajo relaciones asimétricas respecto del código, debido a que cada grupo tiene una forma y un flujo de trabajo particular, en el cual, por ejemplo, se pueden dar relaciones jerárquicas, revisión de código entre pares, subgrupos, etc.\\
 
-Esto va a reflejarse en el código fuente con el surgimiento de una nueva necesidad, que va a ser la de la integración de múltiples trabajos individuales, la distribución del mismo en distintas maquinas y la coordinación para que todos puedan trabajar sobre la misma base de código.
+Esto va a reflejarse en el código fuente con el surgimiento de una nueva necesidad, que va a ser la integración de múltiples trabajos individuales, la distribución del mismo en distintas maquinas y la coordinación para que todos puedan trabajar sobre la misma base de código.
 
 \subsection{FRAMEWORK DE DESARROLLO}
 
 El concepto framework se emplea un muchos ámbitos del desarrollo de sistemas
-software, Podemos encontrar frameworks para el desarrollo de aplicaciones médicas, de visión por computador, para el desarrollo de juegos, y para cualquier ámbito que pueda ocurrírsenos.\\
+software, Podemos encontrar frameworks para el desarrollo de aplicaciones médicas, 
+de visión por computador, para el desarrollo de juegos, y para cualquier ámbito que pueda ocurrírsenos.\\
 
 En general, con el término framework, nos estamos refiriendo a una estructura
 software compuesta de componentes personalizables e intercambiables para el
@@ -54,6 +55,59 @@ reutilizar código ya existente y promover buenas prácticas de desarrollo como 
 
 Fuera de las aplicaciones en la informática, puede ser considerado como el conjunto de procesos y tecnologías usados para resolver un problema complejo. Es el esqueleto sobre el cual varios objetos son integrados para una solución dada.
 
+\subsubsection{VENTAJAS EN LA UTILIZACIÓN DE FRAMEWORKS}
+
+\begin{itemize}
+  \item \textbf{Se logra buen nivel de reuso(no solo a nivel de código), lo que implica:}
+    \begin{itemize}
+      \item Reducción en tiempo de desarrollo de nuevas aplicaciones.
+      \item Reducción del costo de mantenimiento.
+      \item Mayor nivel de confiabilidad(comparado con escribir código nuevo), en la medida que hay reuso y el framework se estabiliza.
+    \end{itemize}
+  \item \textbf{Estandarización y Consistencia}
+    \begin{itemize}
+      \item Es posible encapsular estándares y mejores prácticas de la compañía en un framework, logrando la consistencia y aseguramiento de uso de dicho estándares y mejores prácticas.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{DIFICULTADES CON LOS FRAMEWORKS}
+
+\begin{itemize}
+ \item \textbf{Los frameworks no son reutilizables por si solos, y cuando se diseña e implementan soluciones con la reutilización en mente, el tiempo y los costos en general, son mayores.}
+  \begin{itemize}
+    \item Esto debe ser visto como una inversión, ya que en la medida que el framework se reutilice, aparecerán los beneficios.
+  \end{itemize}
+ \item \textbf{Requieren de programadores más experimentados para su desarrollo, que una aplicación común.}
+ \item \textbf{Requieren de buena documentación y de entrenamiento para los desarrolladores que lo utilizan.}
+\end{itemize}
+
+\subsubsection{FRAMEWORK WEB}
+Un framework Web, por tanto, podemos definirlo como un conjunto de
+componentes (por ejemplo clases en java y descriptores y archivos de configuración en
+XML) que componen un diseño reutilizable que facilita y agiliza el desarrollo de
+sistemas Web.\\
+
+\paragraph{TIPOS DE FRAMEWORK WEB} 
+
+Existen varios tipos de frameworks Web: orientados a la interfaz de usuario, como Java Server Faces (Oracle), orientados a aplicaciones de publicación de documentos, como Coocon, orientados a la parte de control de eventos, como Struts y algunos que incluyen varios elementos como Tapestry.
+
+La mayoría de frameworks Web se encargan de ofrecer una capa de controladores de acuerdo con el patrón MVC o con el modelo 2 de Servlets y JSP, ofreciendo mecanismos para facilitar la integración con otras herramientas para la implementación de las capas de negocio y presentación.
+
+Características.
+
+\begin{itemize}
+  \item A continuación enunciamos una serie de características que podemos encontrar en prácticamente todos los frameworks existentes.
+  \begin{itemize}
+    \item \textbf{Abstracción de URLs y sesiones: }No es necesario manipular directamente las URLs ni las sesiones, el framework ya se encarga de hacerlo.
+    \item \textbf{Acceso a datos: }Incluyen las herramientas e interfaces necesarias para integrarse con herramientas de acceso a datos, en BBDD, XML, etc.
+    \item \textbf{Controladores: }La mayoría de frameworks implementa una serie de controladores para gestionar eventos, como una introducción de datos mediante un formulario o el acceso a una página. Estos controladores suelen ser fácilmente adaptables a las necesidades de un proyecto concreto.
+    \item \textbf{Autenticación y control de acceso: }Incluyen mecanismos para la identificación de usuarios mediante login y password y permiten restringir el acceso a determinas páginas a determinados usuarios.
+    \item \textbf{Internacionalización}
+    \item \textbf{Separación entre diseño y contenido}
+  \end{itemize}
+
+\end{itemize}
+
 \subsubsection{ARQUITECTURA MVC}
 
 Dentro de este aspecto, podemos basarnos en el modelo MVC ya que debemos fragmentar nuestra programación, debido a que la mayoría de los frameworks conocidos adoptan por esta arquitectura o caso contrario similar. Tenemos que contemplar estos aspectos básicos en cuanto a la implementación de nuestro sistema.\\
@@ -66,25 +120,25 @@ Dentro de este aspecto, podemos basarnos en el modelo MVC ya que debemos fragmen
 
 \begin{itemize} 
 
-\item \textbf{Modelo} es el responsable de:\\
+\item \textbf{Modelo} es el responsable de:
 
 \begin{itemize}
  \item Acceder a la capa de almacenamiento de datos. Lo ideal es que el modelo sea independiente del sistema de almacenamiento.
  \item Define las reglas de negocio (la funcionalidad del sistema).
  \item Lleva un registro de las vistas y controladores del sistema.
- \item Si estamos ante un modelo activo, notificará a las vistas los cambios que en los datos pueda producir un agente externo.\\
+ \item Si estamos ante un modelo activo, notificará a las vistas los cambios que en los datos pueda producir un agente externo.
 \end{itemize}
 
-\item \textbf{Vista} es el responsable de:\\
+\item \textbf{Vista} es el responsable de:
 
 \begin{itemize}
  \item Recibir datos del modelo y los muestra al usuario.
- \item Tienen un registro de su controlador asociado.
+ \item Tienen un registro de su controlador asociado.ñ
  \item Pueden dar el servicio de Actualización, para que sea invocado por el controlador o por el modelo cuando es un modelo activo.\\
 \end{itemize}
 
 
-\item \textbf{Controlador:}\\
+\item \textbf{Controlador:}
 
 \begin{itemize}
  \item Recibir los eventos de entrada.
@@ -93,19 +147,21 @@ Dentro de este aspecto, podemos basarnos en el modelo MVC ya que debemos fragmen
 
 \end{itemize}
 
+Aunque se pueden encontrar diferentes implementaciones de MVC, el flujo que sigue el control generalmente es el siguiente:
 
-
-\subsubsection{FRAMEWORK WEB}
-Un framework Web, por tanto, podemos definirlo como un conjunto de
-componentes (por ejemplo clases en java y descriptores y archivos de configuración en
-XML) que componen un diseño reutilizable que facilita y agiliza el desarrollo de
-sistemas Web.\\
-
-
+\begin{itemize}
+  \item El usuario interactúa con la interfaz de usuario de alguna forma (por ejemplo, el usuario pulsa un botón, enlace, etc.)
+  \item El controlador recibe (por parte de los objetos de la interfaz-vista) la notificación de la acción solicitada por el usuario. El controlador gestiona el evento que llega, frecuentemente a través de un gestor de eventos (handler) o callback.
+  \item El controlador accede al modelo, actualizándolo, posiblemente modificándolo de forma adecuada a la acción solicitada por el usuario (por ejemplo, el controlador actualiza el carro de la compra del usuario). Los controladores complejos están a menudo estructurados usando un patrón de comando que encapsula las acciones y simplifica su extensión.
+  \item El controlador delega a los objetos de la vista la tarea de desplegar la interfaz de usuario. La vista obtiene sus datos del modelo para generar la interfaz apropiada para el usuario donde se refleja los cambios en el modelo (por ejemplo, produce un listado del contenido del carro de la compra). El modelo no debe tener conocimiento directo sobre la vista. Sin embargo, el patrón de observador puede ser utilizado para proveer cierta indirección entre el modelo y la vista, permitiendo al modelo notificar a los interesados de cualquier cambio. Un objeto vista puede registrarse con el modelo y esperar a los cambios, pero aun así el modelo en sí mismo sigue sin saber nada de la vista. El controlador no pasa objetos de dominio (el modelo) a la vista aunque puede dar la orden a la vista para que se actualice. Nota: En algunas implementaciones la vista no tiene acceso directo al modelo, dejando que el controlador envíe los datos del modelo a la vista.
+  \item La interfaz de usuario espera nuevas interacciones del usuario, comenzando el ciclo nuevamente.
+\end{itemize}
 
 \subsection{SISTEMA DE CONTROL DE VERSIONES}
 
-Una versión, revisión o edición de un producto, es el estado en el que se encuentra en un momento dado en su desarrollo o modificación. Se llama control de versiones a la gestión de los diversos cambios que se realizan sobre los elementos de algún producto o una configuración del mismo. Los sistemas de control de versiones facilitan la administración de las distintas versiones de cada producto desarrollado, así como las posibles especializaciones realizadas (por ejemplo, para algún cliente específico).\\
+Une definicion basica para entender de versión, revisión o edición de un producto, es el estado en el que se encuentra en un momento dado en su desarrollo o modificación.\\
+
+Por lo tanto se llama control de versiones a la gestión de los diversos cambios que se realizan sobre los elementos de algún producto o una configuración del mismo. Los sistemas de control de versiones facilitan la administración de las distintas versiones de cada producto desarrollado, así como las posibles especializaciones realizadas (por ejemplo, para algún cliente específico).\\
 
 El control de versiones se realiza principalmente en la industria informática para controlar las distintas versiones del código fuente. Sin embargo, los mismos conceptos son aplicables a otros ámbitos como documentos, imágenes, sitios web, etcétera.\\
 
@@ -121,24 +177,44 @@ La facilidad que estos sistemas aportan son:
 \item previene que se sobrescriba trabajo.
 \end{itemize}
 
+Conflicto en la utilizacion de los sitemas de control de versiones:
+\begin{itemize}
+  \item los usuarios X e Y despliegan versiones del archivo A en que las líneas n1 hasta n2 son comunes.
+  \item el usuario X envía cambios entre las líneas n1 y n2 al archivo A
+  \item el usuario Y no actualiza el archivo A tras el envío del usuario X
+  \item el usuario Y realiza cambios entre las líneas n1 y n2
+  \item el usuario Y intenta posteriormente enviar esos cambios al archivo A 
+\end{itemize}
+
+El sistema es incapaz de fusionar los cambios. El usuario Y debe resolver el conflicto combinando los cambios, o eligiendo uno de ellos para descartar el otro.
 
 \subsubsection{CLASIFICACIÓN}
 
 \begin{itemize}
-\item \textbf{CENTRALIZADOS :}\\Se basan en un repositorio único central con toda la información de cambios realizados el cual es accesible por todos los desarrolladores.\\
+\item \textbf{CENTRALIZADOS :}\\
+Se basan en un repositorio único central con toda la información de cambios realizados el cual es accesible por todos los desarrolladores.\\
 al haber un solo repositorio, este es el encargado del manejo de las ramas, quedando todos dentro de este. Están basados en una linea de tiempo, necesitan un servidor con funcionamiento de tiempo completo y con conexión permanente
 configurado con algún sistema de autentificacion y permisos, por tal motivo la configuración suele ser mas compleja, según la necesidad. 
-una de las desventajas mayores que representa es la dependencia de conexión con el servidor, ya que toda la información es manejada por el repositorio. 
+una de las desventajas mayores que representa es la dependencia de conexión con el servidor, ya que toda la información es manejada por el repositorio.\\
 Generalmente hay dos tipos el Lock-Modify-Unlock y los que usan el modelo Copy-Modify-Merge. el primero es el mas simple y limitado, y consiste en que cada vez que un usuario quiere editar un archivo, este se bloquea y por lo tanto no puede ser
-modificado por nadie mas, hasta que el usuario lo desbloquee. El segundo modelo propone lo siguiente: se hace una copia del estado actual del repositorio, se modifica y se aplica el conjunto de cambios al repositorio central haciendo un merge. El cual es una forma de trabajo mas conveniente.
-\item \textbf{DISTRIBUIDOS :}\\Carece de un punto central de desarrollo por tanto los repositorios están distribuidos y descentralizados en diferentes maquinas que pueden o no ser independientes entre si, y 
+modificado por nadie mas, hasta que el usuario lo desbloquee. El segundo modelo propone lo siguiente: se hace una copia del estado actual del repositorio, se modifica y se aplica el conjunto de cambios al repositorio central haciendo un merge\footnote{Accion conocida en todo sistema de control de versiones, que cumple la accion de fusionar codigo.}, El cual es una forma de trabajo mas conveniente.
+\item \textbf{DISTRIBUIDOS :}\\
+Carece de un punto central de desarrollo por tanto los repositorios están distribuidos y descentralizados en diferentes maquinas que pueden o no ser independientes entre si, y 
 técnicamente no hay ninguno mas importante que otro. Esto trae bastante beneficios al desarrollar, dado que cada desarrollador tenga su repositorio propio sobre el cual trabaje de una forma independiente, y periódicamente se pongan en común los trabajos de todos en algún repositorio convenido a tal efecto.
 
+Esto da una serie de ventajas al sistema centralizado, como son:
+  \begin{itemize}
+    \item Disponer de forma distribuida de la información del repositorio al completo, tanto de forma local, como a través de los demás componentes del grupo.
+    \item Cada cambio se va replicando entre los demás equipos distribuidos, a modo de que puedan emplear esos datos y actualizarlos en sus sistemas.
+    \item El sistema de control de versiones distribuido ha sido pensado con la forma de trabajo basada en ramas, unión central en una sola versión (trunk) y liberaciones (o tags). Con lo que cada rama puede identificarse como cada copia distribuida que se use.
+    \item Una máquina servidora puede emplearse, al estar siempre conectada, como otro punto de sincronización, con la ventaja de que, aunque cayera, mientras haya más miembros conectados, el sistema siempre se mantiene activo y con buen ancho de banda.
+  \end{itemize}
+ 
 \end{itemize}
 
 \subsection{MICROBLOG}
 
-Los blogs, como los conocemos actualmente, son espacios diseñados para que los navegantes de Internet puedan escribir libremente temas de cualquier índole, pueden ser aspectos de su vida diaria, pequeños post sobre sucesos extraños, denuncias, etcétera; la capacidad de expresar y escribir se limita al autor del blog.
+Los blogs, como los conocemos actualmente, son espacios diseñados para que los navegantes de Internet puedan escribir libremente temas de cualquier índole, pueden ser aspectos de su vida diaria, pequeños post sobre sucesos extraños, denuncias, etcétera; la capacidad de expresar y escribir se limita al autor del blog.\\
 
 El microblog puede considerarse como el hermano menor de los blogs; a diferencia de éstos, los caracteres son muy limitados, entre 100 y 150. 
 
@@ -151,9 +227,9 @@ Estos servicios proporcionan mecanismos de comunicación estándares entre difer
 
 
 \subsection{WEB API}
-Una API es una interfaz de programación de aplicaciones (del inglés API: Application Programming Interface). Es un conjunto de rutinas que provee acceso a funciones de un determinado software.
+Una API es una interfaz de programación de aplicaciones (del inglés API: Application Programming Interface). Es un conjunto de rutinas que provee acceso a funciones de un determinado software.\\
 
-Son publicadas por los constructores de software para permitir acceso a características de bajo nivel o propietarias, detallando solamente la forma en que cada rutina debe ser llevada a cabo y la funcionalidad que brinda, sin otorgar información a cerca de como se lleva a cabo la tarea. Son utilizadas por los programadores para construir sus aplicaciones sin necesidad de volver a programar funciones ya hechas por otros, reutilizando código que se sabe que está probado y que funciona correctamente.
+Son publicadas por los constructores de software para permitir acceso a características de bajo nivel o propietarias, detallando solamente la forma en que cada rutina debe ser llevada a cabo y la funcionalidad que brinda, sin otorgar información a cerca de como se lleva a cabo la tarea. Son utilizadas por los programadores para construir sus aplicaciones sin necesidad de volver a programar funciones ya hechas por otros, reutilizando código que se sabe que está probado y que funciona correctamente.\\
 
 En la web las API's también son sinónimos de Web Service, las API's son publicadas por sitios para brindar la posibilidad de realizar alguna acción o acceder a alguna característica o contenido que el sitio provee. 
 
@@ -170,7 +246,7 @@ Un intérprete de órdenes, intérprete de línea de órdenes, intérprete de co
 
 Por extensión, también se llama intérprete de comandos a algunas interfaces de programas (mayores) que comunican al usuario con el software o al cliente de un servidor como, por ejemplo, bancos de datos (MySQL, Oracle) u otros programas (openSSL, FTP), etc.\\
 
-Dada la importancia de esta herramienta, existe ya desde los comienzos de la computación. Existen, para diversos sistemas operativos, para diversos hardware, y con diferente funcionalidad. Suelen incorporar características tales como control de procesos, redirección de entrada/salida, listado y lectura de ficheros, protección, comunicaciones y un lenguaje de órdenes para escribir programas por lotes o (scripts o guiones).\\
+Dada la importancia de esta herramienta, existe ya desde los comienzos de la computación. Existen, para diversos sistemas operativos, para diversos hardware, y con diferente funcionalidad. Suelen incorporar características tales como control de procesos, redirección de entrada/salida, listado y lectura de ficheros, protección, comunicaciones y un lenguaje de órdenes para escribir programas por lotes(scripts o guiones).\\
 
 Su contraparte es la interfaz gráfica de usuario que ofrece una estética mejorada a costa de mayor consumo de recursos computacionales, una mayor vulnerabilidad por complejidad y, en general, una reducción en la funcionalidad ofrecida.\\
 

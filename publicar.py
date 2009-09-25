@@ -27,7 +27,7 @@ import xml.dom.minidom
 try:
     from git import *
 except:
-    print "Error: al importar git, Instla git antes de utilizar la aplicacion"
+    print "Error: al importar git, Instala git antes de utilizar la aplicacion"
     sys.exit(1)
     
 codigo_hook = '''#!/usr/bin/env python
