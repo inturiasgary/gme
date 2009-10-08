@@ -22,11 +22,11 @@ msgstr ""
 
 #: announcements/models.py:50
 msgid "title"
-msgstr ""
+msgstr "titulo"
 
 #: announcements/models.py:51
 msgid "content"
-msgstr ""
+msgstr "contenido"
 
 #: announcements/models.py:52
 msgid "creator"

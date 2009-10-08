@@ -13,6 +13,11 @@ body {
 a, a:visited {
     color: #13C;
 }
+
+h1, h2, h3 {
+	color: #3a227d;
+}
+
 img {
     border: 0;
 }
@@ -89,13 +94,24 @@ input[type="text"], input[type="password"], textarea {
 }
 #tabhead .logo {
     height: 80px;
-    padding-left: 5px;
+    padding-left: 100px;
     padding-top: 0;
 }
 #tabhead .logo img {
+    position: relative;
     width: 190px;
     height: 79px;
 }
+
+#tabhead .logo_image img {
+    position: absolute;
+    width:  127px;
+    height: 127px;
+    padding-left: 5px;
+    float: left;
+    margin: 0;
+}
+
 #tabhead .login {
     position: absolute;
     top: 6px;
@@ -454,6 +470,7 @@ background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
 }
 .derecho-microblog{
 float: right;
+width: 30em;
 padding: 10px 10px;
 border-bottom: 5px solid #dddddd ;
 border-top: 5px solid #dddddd ; 

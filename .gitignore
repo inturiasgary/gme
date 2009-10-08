@@ -3,6 +3,7 @@
 *.db
 *.aux
 *.tex~
+*.html~
 *.log
 *.tex.backup
 *.pdf

@@ -10,6 +10,9 @@
 <div class="left-form">
     {% blocktrans %}
         <p><b>GME</b> Bienvenidos al sistema de notificacion de commit de repositorios con git</p>
+        Aqui usted podra, compartir las notificaciones con los usuario de esta red, como asi tambien podrá notificar de manera
+        privada las acciones que realiza dentro de un repositorio hacia su equipo de desarrollo, controlar sus tareas asignadas
+        , publicar mensajes breves.
     {% endblocktrans %}
     
     {% if user.is_authenticated %}
@@ -21,6 +24,12 @@
 </div>
 
 <div class="right-form">
-    <h1>Ultimos Repositorios creados </h1>
+    <h1>Noticias </h1>
+    {% if repos %}
+    hay repos
+        {% for a in repos %}
+            {{ a.nombre }}
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

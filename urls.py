@@ -1,13 +1,15 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.conf import settings
+from django.template import Context
 from django.views.generic.simple import direct_to_template
 import os 
+from repositorio.models import Repositorio
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # XML-RPC
-     url(r'^$', direct_to_template, {"template":"homepage.html"}, name="home"), #muestra directamente el template
+     url(r'^$', direct_to_template, {"template":"homepage.html"},name="home"), #muestra directamente el template
      url(r'^xml_rpc_srv/', 'gme.xmlrpc.rpc_handler'),  #escuchador para xml-rpc
      url(r'^admin/', include(admin.site.urls)),
      url(r'^cuenta/', include('cuenta.urls')), # adicciona la aplicacion cuenta
@@ -24,4 +26,3 @@ if settings.DEBUG:
                             (r'^site_media/(?P<path>.*)$','django.views.static.serve',
                              {'document_root': os.path.join(os.path.dirname(__file__), 'site_media')}),
                             )
-
