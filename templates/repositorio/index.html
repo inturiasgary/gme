@@ -6,7 +6,7 @@
 
 {% endblock meta %}
 
-{% block body %}{{ block.super }}
+{% block body %}
 
 {% if user.is_authenticated %}
     {% include "repositorio/form_search.html"%}
@@ -15,16 +15,16 @@
     
     {% include "repositorio/repositorios_mios.html" %}
     
-    <h1>Repositorios donde participo</h1>
+    <p><h1>{% trans "Another repositories" %}</h1></p>
     
     {% include "repositorio/repositorios_participo.html" %}
     
-    <h1>Repositorios por participar(Pendientes)</h1>
+    <p><h1>{% trans "Repositories pending still" %}</h1></p>
     
     {% include "repositorio/repositorios_participar.html" %}
 
 {% else %}
-    {% trans "No estas logeado" %}
+    <p><span class="warning">{% trans "Warning" %}</span>{% trans "No estas logeado" %}</p>
 {% endif %}
-{% endblock body %}
+{% endblock %}
 

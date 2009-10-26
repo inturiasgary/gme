@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from random import random
-import hashlib as sha
+from django.utils.hashcompat import sha_constructor
+#import hashlib as sha
 
 from django.conf import settings
 from django.db import models, IntegrityError
@@ -84,8 +85,8 @@ class EmailConfirmationManager(models.Manager):
             return email_address
     
     def send_confirmation(self, email_address):
-        salt = sha.new(str(random())).hexdigest()[:5]
-        confirmation_key = sha.new(salt + email_address.email).hexdigest()
+        salt = sha_constructor(str(random())).hexdigest()[:5]
+        confirmation_key = sha_constructor(salt + email_address.email).hexdigest()
         current_site = Site.objects.get_current()
         activate_url = u"http://%s%s" % (
             unicode(current_site.domain),

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load pagination_tags %}
-<div class="entradas">
+<div class="entrada">
     {% if repositorios_participo.count %}
     <h2>{% trans "Los repos." %}</h2>
 
@@ -24,6 +24,6 @@
         {% paginate %}
     </div>
     {% else %}
-    <p>{% trans "Aun no ingresaste a ningun repo." %}</p>
+    <p><span class="warning">{% trans "Warning" %}:</span>{% trans " Aun no ingresaste como miembro a ningun repositorio secundario." %}</p>
     {% endif %}
 </div>

@@ -1,0 +1,15 @@
+go http://localhost:8000/
+showlinks
+follow "Ingresar"
+showforms
+submit None
+setlocal u gary
+setlocal p gary
+fv 1 username "${u}"
+fv 1 password "${p}"
+submit
+code 200
+showlinks
+show_cookies
+follow "Cerrar Sesion"
+showlinks

@@ -1,0 +1,10 @@
+go http://localhost:8000/
+follow Registrarse
+setglobal us "pruebaUser"
+setglobal pa "pruebaUser"
+submit None
+fv 1 nombreUsuario "${us}"
+fv 1 password1 "${pa}"
+fv 1 password2 "${pa}"
+submit
+showlinks

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load pagination_tags %}
-<div class="entradas">
+<div class="entrada">
     {% if repositorios_mios.count %}
     <p><h1>{% trans "My Repositories." %}</h1></p>
     <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
@@ -20,6 +20,6 @@
         {% paginate %}
     </div>
     {% else %}
-    <p>{% trans "Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
+    <p><span class="warning">{% trans "Warning" %}:</span>{% trans " Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
     {% endif %}
 </div>

@@ -94,6 +94,13 @@ resistencia:
  \item Los gerentes no querrán dejar tranquilo al equipo durante los Sprints.
 \end{itemize}
 
+\section{BASE DE DATOS DEL SISTEMA WEB MICROBLOG}
+Para el almacenamiento de informacion en el sistema web microblog se opto por realizarlo con el sistema de gestion de base de datos Sqlite version 3.
+Sqlite no es un proceso independiente con el que el programa principal se comunica. en lugar de eso, la biblioteca SQLite se enlaza con el programa
+pasando a ser parte integral del mismo.
+es ideal para trabajar con Volumenes medianos o pequeños de informacion, de manera agil y eficiente. Aunque sus diseñadores aducen que es posible manejar bases de datos
+de 2 terabytes sin mayores inconvenientes\footnote{En el libro Pruebas de Sqlite en un sistema linux, pagina 3}.
+
 \section{SEGURIDAD}
 
 Hoy en día la internet puede ser un lugar de miedo, podemos ver virus expandirse con una velocidad impresionante;enjambres de computadoras comprometidas manejadas como arma; una carrera de armamentos de nunca acabar contra los spammers \footnote{Los spammers (individuos o empresas que envían spam) utilizan diversas técnicas para conseguir las largas listas de direcciones de correo que necesitan para su actividad, generalmente a través de robots o programas automáticos que recorren internet en busca de direcciones.}; y muchos informes de hurtos de identidad diariamente de sitios Web hackeados.\\
@@ -255,5 +262,17 @@ Pruebas de cliente usando Test Client
 Permite que el usuario componga peticiones GET y POST, y obtiene la respuesta que el servidor dio a esas peticiones. Los objetos de la respuesta del servidor se anotan con los detalles de los contextos y de las plantillas que fueron rendidos durante el proceso en que se realiza la petición.
 
 para la realización de estas pruebas se hizo el uso se Selenium 
+
+\subsubsection{PRUEBAS FUNCIONALES WEB EN EL SISTEMA MICROBLOG}
+Para la realizacion de puebas de funcionalidad web en el sistema microblog, se utilizo la herramienta Twill\footnote{twill es un lenguaje simple para la realizacion de pruebas y navegacion Web.}
+El uso de esta herramienta se presento con la necesidad de realizar una automatizacion de pruebas, ya que una de sus principales caracteristicas es el de permitir la facil
+automatizacion de muchas de las interacciones web cliente-servidor, y proveer facilidades de extension para el trato de necesidades complejas requeridas en el transcurso de la evolucion del
+desarrollo del sistema.
+
+para poder realizar las respectivas pruebas se instalaron las librerias:
+
+- sqlite3
+- build-essential
+- python-pysqlite2
 
 %\end{document}

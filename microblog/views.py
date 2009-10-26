@@ -77,6 +77,7 @@ def buscar_amigo(request):
             if usuarios_encontrados.count() == 1:
                 return HttpResponseRedirect(usuarios_encontrados[0].get_absolute_url())
             else:
+                #aqui esta mal
                 return HttpResponseRedirect(request.path)
         
     else:

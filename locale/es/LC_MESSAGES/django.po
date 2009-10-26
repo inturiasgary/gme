@@ -232,54 +232,55 @@ msgstr "Invitacion Recivida"
 
 #: friends/management.py:9
 msgid "you have received an invitation"
-msgstr ""
+msgstr "Reciviste una invitacion"
 
 #: friends/management.py:10
 msgid "Invitation Sent"
-msgstr ""
+msgstr "Invitacion Enviada"
 
 #: friends/management.py:10
 msgid "you have sent an invitation"
-msgstr ""
+msgstr "Enviaste una invitacion"
 
 #: friends/management.py:11
 msgid "Acceptance Received"
-msgstr ""
+msgstr "Aprovación Recivida"
 
 #: friends/management.py:11
 msgid "an invitation you sent has been accepted"
-msgstr ""
+msgstr "una invitacion que enviaste ha sido aceptada"
 
 #: friends/management.py:12
 msgid "Acceptance Sent"
-msgstr ""
+msgstr "Aprovación Enviada"
 
 #: friends/management.py:12
 msgid "you have accepted an invitation you received"
-msgstr ""
+msgstr "Aceptaste una invitacion que reciviste"
 
 #: friends/management.py:13
 msgid "Other Connection"
-msgstr ""
+msgstr "Otra Conexión"
 
 #: friends/management.py:13
 msgid "one of your friends has a new connection"
-msgstr ""
+msgstr "Uno de tus amigos tiene una nueva conexión"
 
 #: friends/management.py:14
 msgid "Join Invitation Accepted"
-msgstr ""
+msgstr "Invitación Aceptada"
 
 #: friends/management.py:14
 msgid "an invitation you sent to join this site has been accepted"
-msgstr ""
+msgstr "una invitación que enviaste ha sido aceptada"
 
 #: friends/templates/notification/friends_accept/notice.html:2
 #, python-format
 msgid ""
 "<a href=\"%(user_url)s\">%(invitation_user)s</a> has accepted your friend "
 "request."
-msgstr ""
+msgstr "<a href=\"%(user_url)s">%(invitation_user)s</a> a aceptado tu amistad "
+"request."
 
 #: friends/templates/notification/friends_accept_sent/notice.html:2
 #, python-format

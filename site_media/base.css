@@ -14,6 +14,10 @@ a, a:visited {
     color: #13C;
 }
 
+a img{
+    border: 0;
+}
+
 h1, h2, h3 {
 	color: #3a227d;
 }
@@ -103,13 +107,15 @@ input[type="text"], input[type="password"], textarea {
     height: 79px;
 }
 
-#tabhead .logo_image img {
+#tabhead .logo_image a img{
+    display: block;
     position: absolute;
     width:  127px;
-    height: 127px;
-    padding-left: 5px;
+    height: 90px;
+    padding-top: 20px;
+    padding-left: 10px;
     float: left;
-    margin: 0;
+    border: 0 none;
 }
 
 #tabhead .login {
@@ -465,13 +471,13 @@ table#tasktable tr.row2 {
     background-color: #B6F3D5;
 }
 .entradas{
-width:500px;
+
+float: left;
+padding 1em 50em 1em 1em;
 background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
 }
 .derecho-microblog{
-float: right;
-width: 30em;
-padding: 10px 10px;
+float: left;
 border-bottom: 5px solid #dddddd ;
 border-top: 5px solid #dddddd ; 
 }

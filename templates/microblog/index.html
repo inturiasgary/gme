@@ -2,19 +2,15 @@
 
 {% load i18n %}
 
-{% block meta %}{{ block.super }}
-
-{% endblock meta %}
-
 {% block body %}
 {% if user.is_authenticated %}
 
-<div class="entradas">
+    <div class="entradas">
 
-    <h1><img src="/site_media/PNG/Chat 2.png" >Microblog global</h1>
+    <img src="/site_media/PNG/Chat 2.png" ><h1>Microblog global</h1>
     
     <div class="enviar_mensaje">
-	{% include "microblog/adicionar_entrada_form.html" %}
+	    {% include "microblog/adicionar_entrada_form.html" %}
     </div>
     
     {% if entradas.count %}
@@ -23,31 +19,37 @@
 	<div>
 	    {% for entrada in entradas %}
 	    <div class="entrada" id="entrada_{{ entrada.id }}">
-		<cite>
-		    <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
-			hace
-			{{ entrada.fecha|timesince }}
-			:            
-		</cite>
-		
-		<div class="rbroundbox">
-		<div class="rbtop"><div></div></div>
-		    <div class="rbcontent">
-			<p>{{ entrada.contenido|linebreaksbr|urlize }}</p>
-		    </div><!-- /rbcontent -->
-		<div class="rbbot"><div></div></div>
-	</div><!-- /rbroundbox -->
+		    <cite>
+		        <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
+			        hace
+			    {{ entrada.fecha|timesince }}
+			    :
+		    </cite>
+		    <div class="rbroundbox">
+		        <div class="rbtop">
+                    		<div>
+                    		</div>
+                	</div>
+		        <div class="rbcontent">
+			        <p>{{ entrada.contenido|linebreaksbr|urlize }}</p>
+		        </div><!-- /rbcontent -->
+	            	<div class="rbbot">
+                    		<div>
+                    		</div>
+                    	</div>
+	
+            	    </div><!-- /rbroundbox -->
+            </div>
 
+	       {% comment %}
+	           <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
+                   <ul class="recipientes">
+                        {% for recipiente in entrada.recipientes.all %}
+		              <li><a href="{{ recipiente.get_absolute_url }}">{{ recipiente }}</a></li>
+                        {% endfor %}
+                    </ul>
+	       {% endcomment %}
 
-	{% comment %}
-	    <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
-            <ul class="recipientes">
-                {% for recipiente in entrada.recipientes.all %}
-		    <li><a href="{{ recipiente.get_absolute_url }}">{{ recipiente }}</a></li>
-                {% endfor %}
-            </ul>
-		{% endcomment %}
-        </div>
         {% endfor %}
     </div>
     {% else %}
@@ -55,11 +57,11 @@
     {% endif %}
 </div>
 
-<div class="derecho-microblog">
-    Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
-</div>
+    <div class="derecho-microblog">
+        Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
+    </div>
 
-<div class="conexiones">
+    <div class="conexiones">
     {% if conexiones.count %}
     <h2>Conexiones</h2>
 
@@ -72,7 +74,7 @@
     {% include "microblog/conectar_amigo_form.html" %}
 </div>
 {% else %}
-{% trans "No estas logeado" %}
+    {% trans "No estas logeado" %}
 {% endif %}
-{% endblock body %}
+{% endblock %}
 

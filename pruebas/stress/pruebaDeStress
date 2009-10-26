@@ -1,0 +1,1 @@
+run "import xmlrpclib;POST_URL = 'http://localhost:8000/xml_rpc_srv/';rpc_srv = xmlrpclib.ServerProxy(POST_URL);result = rpc_srv.publicarCommit('repop','gary','gary','Prueba publicacion');print result;"

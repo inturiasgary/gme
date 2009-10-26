@@ -1,0 +1,12 @@
+go http://localhost:8000
+follow Ingresar
+submit None
+fv 1 username gary
+fv 1 password gary
+submit
+follow Microblog
+fv 1 contenido "Prueba publicacion"
+submit enviar
+code 200
+follow "Cerrar Sesion"
+showlinks
