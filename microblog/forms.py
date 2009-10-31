@@ -33,10 +33,15 @@ class FormEncontrarAmigo(forms.Form):
         nombre = self.cleaned_data['nombre']
         email  = self.cleaned_data['email']
         
-        q = User.objects.filter(username__icontains=nombre) | User.objects.filter(first_name__icontains=nombre) | User.objects.filter(last_name__icontains=nombre) | User.objects.filter(email=email)
+        if email:
+            q = User.objects.filter(username__icontains=nombre) | User.objects.filter(first_name__icontains=nombre) | User.objects.filter(last_name__icontains=nombre) | User.objects.filter(email=email)
+            q=q.order_by('username')
+        else:
+            q = User.objects.filter(username__icontains=nombre) | User.objects.filter(first_name__icontains=nombre) | User.objects.filter(last_name__icontains=nombre)
+            q=q.order_by('username')
         username_exacto = q.filter(username__iexact=nombre)
         
         if username_exacto.count() == 1:
             return username_exacto
         
-        return q.distinct()
+        return q

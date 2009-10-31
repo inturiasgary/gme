@@ -215,5 +215,4 @@ def repo_miembros(request, repositorio_nombre):
     return render_to_response('repositorio/miembros_list.html',
                               locals(),
                               context_instance = RequestContext(request),
-                              )
-    
+                              )    

@@ -2,91 +2,85 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>
-		{% if site_name %}{{ site_name }} : {% endif %}{% block head_title %}{% endblock %}
-    </title>
-	
-    <script type="text/javascript" src="/site_media/jquery.js"></script>
-    <link rel="stylesheet" href="/site_media/base.css" />
-    <link rel="stylesheet" href="/site_media/tabs.css" />
-        
-    <script type="text/javascript">
-	function countChars(idElement){
-	    max_chars	    = 140;
-	    counter	    = document.getElementById(idElement);
-	    field	    = document.getElementById('id_contenido').value;  
-	    field_length    = field.length
-	    remaining_chars = max_chars-field_length;
-	    
-	    if(remaining_chars<0){
-		$('#enviar').attr('disabled','-1')
-	    }
-	    else{
-		$('#enviar').removeAttr('disabled')
-	    }
-		 
-	    if(remaining_chars<=19){
-		counter.style.color="#d40d12";
-	    }
-	    else{
-		counter.style.color="#999999";
-	    }
-		 
-	    // Actualiza el contador
-		counter.innerHTML = remaining_chars;
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>
+			{% if site_name %}{{ site_name }} : {% endif %}{% block head_title %}{% endblock %}
+		</title>
+		<script type="text/javascript" src="/site_media/jquery.js"></script>
+		<link rel="stylesheet" href="/site_media/base.css" />
+		<link rel="stylesheet" href="/site_media/tabs.css" />
+		<script type="text/javascript">
+			function countChars(idElement){
+				max_chars	    = 140;
+				counter	    = document.getElementById(idElement);
+				field	    = document.getElementById('id_contenido').value;  
+				field_length    = field.length
+				remaining_chars = max_chars-field_length;
+				
+				if(remaining_chars<0){
+				$('#enviar').attr('disabled','-1')
+				}
+				else{
+				$('#enviar').removeAttr('disabled')
+				}
+				 
+				if(remaining_chars<=19){
+				counter.style.color="#d40d12";
+				}
+				else{
+				counter.style.color="#999999";
+				}
+				 
+				// Actualiza el contador
+				counter.innerHTML = remaining_chars;
 			}
-    </script>
+		</script>
+		{% block extra_head %}
+		{% endblock %}
 		
-        
-    {% block extra_head %}
-	    
-    {% endblock %}
-    
-    <!-- [if IE]><style>
-	div {
-	    zoom: 1; /* trigger hasLayout */
-	}
-	</style></[endif] -->
-    <!-- Definicion de los estilos en la pagina -->
-    
-    {% if LANGUAGE_BIDI %}
-	<style type="text/css" media="screen">
-	    div.right_panel { float: left; }
-	</style>
-    {% endif %}
-        
-</head>
+		<!-- [if IE]><style>
+		div {
+			zoom: 1; /* trigger hasLayout */
+		}
+		</style></[endif] -->
+		<!-- Definicion de los estilos en la pagina -->
+		
+		{% if LANGUAGE_BIDI %}
+			<style type="text/css" media="screen">
+				div.right_panel { float: left; }
+			</style>
+		{% endif %}
+			
+	</head>
 
-<body>    
-    <div id="tabhead">
-	<div class="logo_image" dir="ltr">{% block logo_image %}{% endblock %}</div>
-        <div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
+	<body>    
+		<div id="tabhead">
+			<div class="logo_image" dir="ltr">{% block logo_image %}{% endblock %}</div>
+			<div class="logo" dir="ltr">{% block logo_link_image %}{% endblock %}</div>
+			<div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
+			<div class="tabs" {% block tab_id %}{% endblock %}>{% block tabs %}{% endblock %}</div>
+			<div class="right_tab" {% block rtab_id %}{% endblock %}>{% block rigth_tab %}{% endblock %}</div>
+		</div>
 	
-        <div class="login">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}<div style="text-align: right;"></div></div>
-        <div class="tabs" {% block tab_id %}{% endblock %}>{% block tabs %}{% endblock %}</div>
-        <div class="right_tab" {% block rtab_id %}{% endblock %}>{% block rigth_tab %}{% endblock %}</div>
-    </div>
-	
-    <!-- menu pequeño interactivo -->
-    
-    <div id="subnav" class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>
-        <div id="body">
-            <!-- Publica los mensajes de notificacion al cliente -->            
-            {% if messages %}
-                    <ul id="messages">
-                        {% for message in messages %}
-                        <li id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false    ;"><small>{% trans "ocultar" %}</small></a> {{ message }}</li>
-                        {% endfor %}
-                    </ul>
-            {% endif %}
-	{% block body %}
-	{% endblock %}
-    </div>
-    
-    <div id="footer">{% block footer %}{% endblock %}</div>
-    {% block extra_body %}
-    {% endblock %}
-</body>
+		<!-- menu pequeño interactivo -->
+		
+		<div id="subnav" class="clearfix">{% block subnav %}&nbsp;{% endblock %}</div>
+		<div id="body">
+			<!-- Publica los mensajes de notificacion al cliente -->            
+			{% if messages %}
+				<ul id="messages">
+					{% for message in messages %}
+						<li id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false    ;"><small>{% trans "ocultar" %}</small></a> {{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			{% block body %}
+			{% endblock %}
+		</div>
+		
+		<div id="footer">{% block footer %}{% endblock %}</div>
+		{% block extra_body %}
+		{% endblock %}
+	</body>
 </html>

@@ -471,15 +471,16 @@ table#tasktable tr.row2 {
     background-color: #B6F3D5;
 }
 .entradas{
-
-float: left;
-padding 1em 50em 1em 1em;
-background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
+	float: left;
+	padding: 5px;
+	background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
 }
-.derecho-microblog{
-float: left;
-border-bottom: 5px solid #dddddd ;
-border-top: 5px solid #dddddd ; 
+
+div .derecho-microblog{
+	float:left;
+	margin: 0 0 0 -20em;
+	border-bottom: 5px solid #dddddd ;
+	border-top: 5px solid #dddddd ; 
 }
 
 /* para establecer las cajas de los commits y comentarios */
