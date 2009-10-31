@@ -1,0 +1,31 @@
+{% extends "microblog/base.html" %}
+
+{% load i18n microblog_utils %}
+
+{% block title %}{{ usuario_actual }}{{ block.super }}{% endblock title %}
+
+{% block body %}{{ block.super }}
+    {% if usuarios_encontrados %}
+            {% if user.is_authenticated %}
+                <h1>{% trans "Search Results:" %}</h1>
+                <ul>
+                {% for usuario in usuarios_encontrados %}
+                    <p><li>{{ usuario.username }}</li>
+                    
+                    {% if user|tiene_conexion:usuario %}
+                        {% trans "Tu ya estas conectado con este usuario" %}
+                    {% else %}
+                        <a href="{{ MICROBLOG_URL_BASE }}c/adicionar/{{ usuario.username }}/">{% trans "Conectar como amigo" %}</a>
+                    {% endif %}
+                    </p>
+                    
+                {% endfor %}    
+                </ul>                        
+            {% else %}
+        
+                <p>No hay elementos encontrados</p>
+        
+            {% endif %}
+    {% endif %}
+
+{% endblock %}
