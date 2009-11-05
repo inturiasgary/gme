@@ -2,65 +2,67 @@
 
 {% load i18n %}
 
+{% block head_title %}Microblog{% endblock %}
+
 {% block body %}
-	{% if user.is_authenticated %}
-		<div class="entradas">
-			<img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
-			<div class="enviar_mensaje">
-				{% include "microblog/adicionar_entrada_form.html" %}
-			</div>
-			{% if entradas.count %}
-				<h2>{% trans "Mensajes recientes:" %}</h2>
-				{% for entrada in entradas %}
-					<div class="entrada" id="entrada_{{ entrada.id }}">
-						<cite>
-							<a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
-							hace
-							{{ entrada.fecha|timesince }}
-							:
-						</cite>
-						<div class="rbroundbox">
-							<div class="rbtop">
-								<div>
-								</div>
-							</div>
-							<div class="rbcontent">
-								<p>{{ entrada.contenido|linebreaksbr|urlize }}</p>
-							</div><!-- /rbcontent -->
-							<div class="rbbot">
-								<div>
-								</div>
-							</div>
-						</div><!-- /rbroundbox -->
-					</div>
-					{% comment %}
-						<a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
-							<ul class="recipientes">
-								{% for recipiente in entrada.recipientes.all %}
-									<li><a href="{{ recipiente.get_absolute_url }}">{{ recipiente }}</a></li>
-								{% endfor %}
-							</ul>
-					{% endcomment %}
-				{% endfor %}
-			{% else %}
-					<p>{% trans "Aun no tienes ningun mensaje." %}</p>
-			{% endif %}
-		</div>
-		<div class="derecho-microblog">
-			<div class="conexiones">
-				{% if conexiones.count %}
-					<h2>Conexiones</h2>
-					{% include "microblog/lista_conexiones.html" %}
-				{% else %}
-					<h2>Conexiones</h2>
-					<p>{% trans "Aun no tienes conectados" %}</p>
-				{% endif %}
-				{% include "microblog/conectar_amigo_form.html" %}
-					Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
-			</div>		
-		</div>
-		
-	{% else %}
-		{% trans "No estas logeado" %}
-	{% endif %}
+    {% if user.is_authenticated %}
+        <div id="entradas">
+            <img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
+            <div class="enviar_mensaje">
+                {% include "microblog/adicionar_entrada_form.html" %}
+            </div>
+            {% if entradas.count %}
+                <h2>{% trans "Mensajes recientes:" %}</h2>
+                {% for entrada in entradas %}
+                    <div class="entrada" id="entrada_{{ entrada.id }}">
+                        <cite>
+                            <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
+                            hace
+                            {{ entrada.fecha|timesince }}
+                            :
+                        </cite>
+                        <div class="rbroundbox">
+                            <div class="rbtop">
+                                <div>
+                                </div>
+                            </div>
+                            <div class="rbcontent">
+                                <p>{{ entrada.contenido|linebreaksbr|urlize }}</p>
+                            </div><!-- /rbcontent -->
+                            <div class="rbbot">
+                                <div>
+                                </div>
+                            </div>
+                        </div><!-- /rbroundbox -->
+                    </div>
+                    {% comment %}
+                        <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
+                            <ul class="recipientes">
+                                {% for recipiente in entrada.recipientes.all %}
+                                    <li><a href="{{ recipiente.get_absolute_url }}">{{ recipiente }}</a></li>
+                                {% endfor %}
+                            </ul>
+                    {% endcomment %}
+                {% endfor %}
+            {% else %}
+                <p>{% trans "Aun no tienes ningun mensaje." %}</p>
+            {% endif %}
+        </div>
+        <div id="derecho-microblog">
+            <div class="conexiones">
+                {% if conexiones.count %}
+                    <h2>Conexiones</h2>
+                    {% include "microblog/lista_conexiones.html" %}
+                {% else %}
+                    <h2>Conexiones</h2>
+                    <p>{% trans "Aun no tienes conectados" %}</p>
+                {% endif %}
+                {% include "microblog/conectar_amigo_form.html" %}
+                    Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
+            </div>		
+        </div>
+
+    {% else %}
+        {% trans "No estas logeado" %}
+    {% endif %}
 {% endblock %}

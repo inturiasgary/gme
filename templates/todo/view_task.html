@@ -2,8 +2,8 @@
 
 {% load i18n %}
 
-{% block title %}{% trans "Task" %}: {{ task.title }}{% endblock %}
-
+{% block title %}{% trans "Task" %}: {% endblock %}
+{% block head_title %}{% trans "Task" %}-->{{ task }}{% endblock %}
 {% block body %}
 
 <script type="text/javascript">
