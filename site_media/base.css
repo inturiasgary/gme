@@ -470,13 +470,13 @@ table#tasktable tr.row1 {
 table#tasktable tr.row2 {
     background-color: #B6F3D5;
 }
-#entradas{
+div.entries{
 	float: left;
 	padding: 0 25em 4em 3em;
 	background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
 }
 
-#derecho-microblog{
+div.right-microblog{
 	float: left;
 	width: 20em; 
 	margin: 9em 0 0 -20em;

@@ -2,24 +2,24 @@
 {% load pagination_tags %}
 <div class="entrada">
     {% if repositorios_mios.count %}
-    <p><h1>{% trans "My Repositories." %}</h1></p>
-    <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
-
-    <div>
-        {% autopaginate repositorios_mios 10 %}
-        {% for repositorio_mio in repositorios_mios %}
-        <div class="entrada" id="entrada_{{ entrada.id }}">
-            <a href="{{ repositorio_mio.get_absolute_url }}">{{ repositorio_mio.nombre }}</a>
-            @
-            <a href="{{ repositorio_mio.fecha }}">{{ repositorio_mio.fecha|date:"d/m/Y" }}</a>
-            {% ifequal repositorio_mio.activo 0 %}
-                <br/>Nota: Repositorio inactivo.
-            {% endifequal %}
+        <p><h1>{% trans "My Repositories." %}</h1></p>
+        <a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a>
+    
+        <div>
+            {% autopaginate repositorios_mios 10 %}
+                {% for repositorio_mio in repositorios_mios %}
+                    <div class="entrada" id="entrada_{{ entrada.id }}">
+                        <a href="{{ repositorio_mio.get_absolute_url }}">{{ repositorio_mio.nombre }}</a>
+                        @
+                        <a href="{{ repositorio_mio.fecha }}">{{ repositorio_mio.fecha|date:"d/m/Y" }}</a>
+                        {% ifequal repositorio_mio.activo 0 %}
+                            <br/>Nota: Repositorio inactivo.
+                        {% endifequal %}
+                    </div>
+                {% endfor %}
+            {% paginate %}
         </div>
-        {% endfor %}
-        {% paginate %}
-    </div>
     {% else %}
-    <p><span class="warning">{% trans "Warning" %}:</span>{% trans " Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
+        <p><span class="warning">{% trans "Warning" %}:</span>{% trans " Aun no creaste ningun repositorio. " %}<a href="{% url rep_adicionar %}">{% trans "Crear Repositorio "%}</a></p>
     {% endif %}
 </div>

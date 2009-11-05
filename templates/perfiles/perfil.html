@@ -11,13 +11,22 @@
     </div>
     
     <h1>{% blocktrans %}<img src="/site_media/PNG/Tag Add.png" >Perfil de {{ other_user }}{% endblocktrans %}</h1>
-    
-    <div class="profile_info">
-        {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}
-        {% if other_user.get_profile.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_profile.comentario }}</p>{% endif %}
-        {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}
-        {% if other_user.get_profile.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_profile.sitioWeb }}">{{ other_user.get_profile.sitioWeb }}</a></p>{% endif %}
-    </div>
+    <fieldset>
+        <legend>{% trans "Information"%}</legend>
+        {% if other_user.get_profile.nombre %}
+            <div class="profile_info">
+                {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}
+                {% if other_user.get_profile.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_profile.comentario }}</p>{% endif %}
+                {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}
+                {% if other_user.get_profile.email %}<p><b>{% trans "Email" %}</b>: {{ other_user.get_profile.email }}</p>{% endif %}
+                {% if other_user.get_profile.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_profile.sitioWeb }}">{{ other_user.get_profile.sitioWeb }}</a></p>{% endif %}
+            </div>
+        {% else %}
+            <div class="profile_info">
+                <p><span class="warning">{% trans "Warning" %}:</span>{% trans " No hay informacion en el perfil. " %}</p>
+            </div>
+        {% endif %}
+    </fieldset>
     
     
     {% if user.is_authenticated %}

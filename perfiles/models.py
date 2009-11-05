@@ -9,11 +9,12 @@ from utils import uploads
 
 class Perfil(models.Model):
 
-    user       = models.ForeignKey(User, unique=True, verbose_name=_('user'))
-    nombre     = models.CharField(_('Name'), max_length=50, null=True, blank=True)
-    comentario = models.TextField(_('Comment'), null=True, blank=True)
-    ubicacion  = models.CharField(_('Address'), max_length=40, null=True, blank=True)
-    sitioWeb   = models.URLField(_('Web Site'), null=True, blank=True, verify_exists=False)
+    user        = models.OneToOneField(User, unique=True, verbose_name=_('user'))
+    nombre      = models.CharField(_('Name'), max_length=50, null=True, blank=True)
+    comentario  = models.TextField(_('Comment'), null=True, blank=True)
+    ubicacion   = models.CharField(_('Address'), max_length=40, null=True, blank=True)
+    email       = models.EmailField(_('Email'))
+    sitioWeb    = models.URLField(_('Web Site'), null=True, blank=True, verify_exists=False)
     
     def __unicode__(self):
         return self.user.username

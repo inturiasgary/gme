@@ -6,7 +6,7 @@
 
 {% block body %}
     {% if user.is_authenticated %}
-        <div id="entradas">
+        <div class="entries">
             <img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
             <div class="enviar_mensaje">
                 {% include "microblog/adicionar_entrada_form.html" %}
@@ -16,7 +16,7 @@
                 {% for entrada in entradas %}
                     <div class="entrada" id="entrada_{{ entrada.id }}">
                         <cite>
-                            <a href="{{ entrada.user.get_absolute_url }}">{{ entrada.user }}</a>
+                            <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
                             hace
                             {{ entrada.fecha|timesince }}
                             :
@@ -48,7 +48,7 @@
                 <p>{% trans "Aun no tienes ningun mensaje." %}</p>
             {% endif %}
         </div>
-        <div id="derecho-microblog">
+        <div class="right-microblog">
             <div class="conexiones">
                 {% if conexiones.count %}
                     <h2>Conexiones</h2>

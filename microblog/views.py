@@ -77,7 +77,6 @@ def buscar_amigo(request):
             if usuarios_encontrados.count() == 1:
                 return HttpResponseRedirect(usuarios_encontrados[0].get_absolute_url())
             elif usuarios_encontrados.count() >1:
-                #aqui esta mal
                 return render_to_response('microblog/detalles_usuarios.html',
                                           locals(),
                                           context_instance = RequestContext(request))

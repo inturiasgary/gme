@@ -11,20 +11,22 @@
                 <ul>
                 {% for usuario in usuarios_encontrados %}
                     <p><li>{{ usuario.username }}</li>
-                    
                     {% if user|tiene_conexion:usuario %}
                         {% trans "Tu ya estas conectado con este usuario" %}
                     {% else %}
-                        <a href="{{ MICROBLOG_URL_BASE }}c/adicionar/{{ usuario.username }}/">{% trans "Conectar como amigo" %}</a>
+                        {% ifequal user usuario %}
+                            {% trans "Este eres tu" %}
+                        {% else %}
+                            <a href="{{ MICROBLOG_URL_BASE }}c/adicionar/{{ usuario.username }}/">{% trans "Conectar como amigo" %}</a>
+                        {% endifequal %}
                     {% endif %}
                     </p>
                     
                 {% endfor %}    
                 </ul>                        
             {% else %}
-        
                 <p>No hay elementos encontrados</p>
-        
+
             {% endif %}
     {% endif %}
 
