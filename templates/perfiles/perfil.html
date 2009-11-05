@@ -34,7 +34,9 @@
                                 <li>{{ other_user.email }}</li>
                             </ul>
                         {% else %}
-                            {% trans "No tiene emails registrados" %}
+                            <ul>                            
+                                <li>{% trans "No tiene emails registrados" %}</li>
+                            </ul>
                         {% endif %}
                     {% endif %}
                 {% if other_user.get_profile.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_profile.sitioWeb }}">{{ other_user.get_profile.sitioWeb }}</a></p>{% endif %}
