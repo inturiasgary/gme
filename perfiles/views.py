@@ -19,6 +19,7 @@ def perfiles(request, template_name="perfiles/perfiles.html"):
 
 def perfil(request, username, template_name="perfiles/perfil.html"):
     other_user = get_object_or_404(User, username=username)
+    email_addresses = other_user.emailaddress_set.all()
     if request.user.is_authenticated():
         # is_friend = Friendship.objects.are_friends(request.user, other_user)
         # other_friends = Friendship.objects.friends_for_user(other_user)
@@ -85,6 +86,7 @@ def perfil(request, username, template_name="perfiles/perfil.html"):
         "is_me": is_me,
 #        "is_friend": is_friend,
         "other_user": other_user,
+        "email_addresses": email_addresses,
 #        "other_friends": other_friends,
 #        "invite_form": invite_form,
 #        "previous_invitations_to": previous_invitations_to,

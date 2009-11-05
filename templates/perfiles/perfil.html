@@ -17,8 +17,26 @@
             <div class="profile_info">
                 {% if other_user.get_profile.nombre %}<p><b>{% trans "Nombre" %}</b>: {{ other_user.get_profile.nombre }}</p>{% endif %}
                 {% if other_user.get_profile.comentario %}<p><b>{% trans "Comentario" %}</b>: {{ other_user.get_profile.comentario }}</p>{% endif %}
-                {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}
-                {% if other_user.get_profile.email %}<p><b>{% trans "Email" %}</b>: {{ other_user.get_profile.email }}</p>{% endif %}
+                {% if other_user.get_profile.ubicacion %}<p><b>{% trans "Ubicacion" %}</b>: {{ other_user.get_profile.ubicacion }}</p>{% endif %}                
+                <p><b>{% trans "Email" %}</b>:<p>                
+                    {% if email_addresses %}
+                        {% for email in email_addresses %}
+                            {% ifequal other_user.email email.email %}
+                            {% else %}
+                                <ul>
+                                    <li>{{ email.email }}</li>
+                                </ul>
+                            {% endifequal %}
+                        {% endfor %}
+                    {% else %}
+                        {% if other_user.email %}
+                            <ul>                            
+                                <li>{{ other_user.email }}</li>
+                            </ul>
+                        {% else %}
+                            {% trans "No tiene emails registrados" %}
+                        {% endif %}
+                    {% endif %}
                 {% if other_user.get_profile.sitioWeb %}<p><b>{% trans "sitioWeb" %}</b>: <a href="{{ other_user.get_profile.sitioWeb }}">{{ other_user.get_profile.sitioWeb }}</a></p>{% endif %}
             </div>
         {% else %}
