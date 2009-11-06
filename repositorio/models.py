@@ -1,8 +1,22 @@
 from datetime import datetime
 from django.db import models
 import app_settings
+from django.db.models import Count
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+
+class DefaultRepositorioManager(models.Manager):
+    def get_query_set(self):
+        return super(DefaultRepositorioManager, self).get_query_set()
+    
+class RepositorioManager(models.Manager):
+    
+    def get_query_set(self):
+        return super(RepositorioManager, self).get_query_set()
+    def numero_miembros_activo(self):
+        return self.get_query_set().values('nombre').annotate(miembros_activos=Count('pk')).filter(miembro__activo=True)
+    def numero_miembros_pendientes(self):
+        return self.get_query_set().values('nombre').annotate(miembros_pendientes=Count('pk')).filter(miembro__activo=False)
 
 class Repositorio(models.Model):
     
@@ -14,6 +28,8 @@ class Repositorio(models.Model):
     emailAdmin   = models.EmailField()
     miembros     = models.ManyToManyField(User, through="Miembro")
     activo       = models.BooleanField(_("activo"), default=True)
+    objects      = DefaultRepositorioManager()
+    miem         = RepositorioManager()
     
     def get_absolute_url(self):
         return '%sdetalle/%s/'%(app_settings.REPOSITORY_URL_BASE, self.nombre)

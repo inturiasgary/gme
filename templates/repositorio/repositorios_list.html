@@ -1,12 +1,10 @@
 {% load i18n %}
 
 {% block body %}
-
     {% load pagination_tags %}
         <div class="entradas">
+            <p><h1>{% trans "Resultados de Busqueda." %}</h1></p>
             {% if repositorios_encontrados.count %}
-                <p><h1>{% trans "Resultados de Busqueda." %}</h1></p>
-            
                 <div>
                     {% autopaginate repositorios_encontrados 10 %}
                     {% for repositorio_encontrado in repositorios_encontrados %}
@@ -21,8 +19,8 @@
                     {% endfor %}
                     {% paginate %}
                 </div>
-                {% else %}
-                    No se encontraron repositorios.
+            {% else %}
+                <p><span class="warning">{% trans "Warning" %}:</span>{% trans " No se encontraron repositorios." %}</p>
             {% endif %}
         </div>
 {% endblock %}

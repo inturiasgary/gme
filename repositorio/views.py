@@ -1,4 +1,5 @@
 from repositorio.models import *
+from django.db.models import Count
 import app_settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -13,9 +14,14 @@ from models import Miembro
 def index(request):
     REPOSITORY_URL_BASE    = app_settings.REPOSITORY_URL_BASE
     form_buscar            = SearchForm()
-    repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
-    repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
-    repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
+    #repositorios_mios      = Repositorio.objects.annotate(num_miembros=Count('miembros')).filter(miembros=request.user, miembro__creador=True)
+    repositorios            = Repositorio.objects.filter(miembros=request.user)
+    repositorios_mios       = repositorios.filter(miembro__creador=True)
+    repositorios_participo  = repositorios.filter(miembro__creador=False)
+    repositorios_pendiente  = repositorios.filter(miembro__creador=False, miembro__activo=False)
+    #repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
+    #repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
+    #repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
         
     return render_to_response("repositorio/index.html",
                            locals(),
