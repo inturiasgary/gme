@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 DIR_ACTUAL = os.path.dirname(__file__)
@@ -113,3 +114,6 @@ EMAIL_HOST_USER = 'inturiasgary@gmail.com'
 EMAIL_HOST_PASSWORD = 'iomegasys123'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+#LANGUAGES
+LANGUAGES = (('en-us',u'English'),('es-es',u'Español'))
