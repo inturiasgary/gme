@@ -12,17 +12,11 @@ from models import Miembro
 
 @login_required
 def index(request):
-    REPOSITORY_URL_BASE    = app_settings.REPOSITORY_URL_BASE
-    form_buscar            = SearchForm()
-    #repositorios_mios      = Repositorio.objects.annotate(num_miembros=Count('miembros')).filter(miembros=request.user, miembro__creador=True)
-    repositorios            = Repositorio.objects.filter(miembros=request.user)
-    repositorios_mios       = repositorios.filter(miembro__creador=True)
-    repositorios_participo  = repositorios.filter(miembro__creador=False)
-    repositorios_pendiente  = repositorios.filter(miembro__creador=False, miembro__activo=False)
-    #repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
-    #repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
-    #repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
-        
+    REPOSITORY_URL_BASE     = app_settings.REPOSITORY_URL_BASE
+    form_buscar             = SearchForm()
+    repositorios_mios       = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
+    repositorios_participo  = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
+    repositorios_pendiente  = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
     return render_to_response("repositorio/index.html",
                            locals(),
                            context_instance=RequestContext(request),
@@ -35,7 +29,6 @@ def editar_repositorio(request):
         form = FormRepositorio(data=request.POST)
     
         if form.is_valid():
-            print "entra a valid"
             repositorio      = form.save(False)
             repositorio.user = request.user
             repositorio.save()
@@ -44,7 +37,6 @@ def editar_repositorio(request):
             #request.user.message_set.create(message=_("Repositorio creado exitosamente"))
             return HttpResponseRedirect('/repositorio/repo/')
         else:
-            print "entra despues"
             #form = FormRepositorio(data=request.POST)
             context = RequestContext(request)
             return render_to_response('repositorio/editar_repositorio.html',
@@ -107,9 +99,7 @@ def delete_repositorio(request):
         repo.delete()
         request.user.message_set.create(message="Repository was deleted succesfully.")
         return HttpResponseRedirect('/repositorio/repo/')
-        #repositorios_mios      = Repositorio.objects.filter(miembros=request.user, miembro__creador=True)
-        #repositorios_participo = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=True)
-        #repositorios_pendiente = Repositorio.objects.filter(miembros=request.user, miembro__creador=False, miembro__activo=False)
+
         
     return render_to_response("repositorio/index.html",
                            locals(),

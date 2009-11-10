@@ -1,15 +1,15 @@
 {% extends "repositorio/base.html" %}
 {% load i18n %}
-{% block body %}{{ block.super }}
-<div id="basic-form" class="left-form">
-<fieldset>
-{% if editar_nombre %}<legend>{% trans "Edit Repository" %}</legend>{% else %}<legend>{% trans "Create Repository" %}</legend>{% endif %}
-<form method="post">
-    <table>
-        {{ form }}
-        <tr><th>&nbsp;</th><td><input type="submit" value="{% trans "Guardar" %}"/></td></tr>
-    </table>
-</form>
-</fieldset>
-</div>
-{% endblock body %}
+{% block body %}
+	<div id="basic-form" class="left-form">
+		<fieldset>
+			{% if editar_nombre %}<legend>{% trans "Edit Repository" %}</legend>{% else %}<legend>{% trans "Create Repository" %}</legend>{% endif %}
+			<form method="post">
+    			<table>
+        			{{ form }}
+        			<tr><th>&nbsp;</th><td><input type="submit" value="{% trans "Guardar" %}"/></td></tr>
+    			</table>
+			</form>
+		</fieldset>
+	</div>
+{% endblock %}

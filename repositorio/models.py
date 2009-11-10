@@ -10,11 +10,12 @@ class DefaultRepositorioManager(models.Manager):
         return super(DefaultRepositorioManager, self).get_query_set()
     
 class RepositorioManager(models.Manager):
-    
+    ''' Fucnion para facilitar el conteo de usuario activos y pendientes en cada repositorio'''
     def get_query_set(self):
         return super(RepositorioManager, self).get_query_set()
     def numero_miembros_activo(self):
-        return self.get_query_set().values('nombre').annotate(miembros_activos=Count('pk')).filter(miembro__activo=True)
+        result = self.get_query_set().values('nombre').annotate(miembros_activos=Count('pk')).filter(miembro__activo=True)
+        return result.annotate(miembros_pendientes=Count('pk')).filter(miembro__activo=False)
     def numero_miembros_pendientes(self):
         return self.get_query_set().values('nombre').annotate(miembros_pendientes=Count('pk')).filter(miembro__activo=False)
 

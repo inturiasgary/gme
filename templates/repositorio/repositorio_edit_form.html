@@ -1,10 +1,16 @@
 {% extends "repositorio/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Edit Repository" %}{% endblock %}
+
 {% block body %}
-<h2> Edit Repository </h2>
-<form action="{% url edit_repositorio %}" method="post">
-<table>
-{{ form }}
-<tr><th><input type="hidden" name="repositorio" value="{{ repositorio }}"/><input type="submit" value="{{ value }}" name="do"/> </th></tr>
-</table>
-</form>
+	<fieldset><legend>Edit Repository</legend>
+		<form action="{% url edit_repositorio %}" method="post">
+			<table>
+				{{ form }}
+				<tr><th><input type="hidden" name="repositorio" value="{{ repositorio }}"/><input type="submit" value="{{ value }}" name="do"/> </th></tr>
+			</table>
+		</form>
+	</fieldset>
 {% endblock %}
