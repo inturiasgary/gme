@@ -57,7 +57,7 @@ def repo(request, nombre=None):
         miembro_creador   = Miembro.objects.get(repositorio=repositorio, creador=True)
         repositorio_form  = FormRepositorio(instance=repositorio)
         try:
-            miembro           = Miembro.objects.get(usuario=request.user, repositorio=repositorio)
+            miembro       = Miembro.objects.get(usuario=request.user, repositorio=repositorio)
         except:
             is_me = False
             miembro_activo = False

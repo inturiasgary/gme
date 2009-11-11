@@ -473,7 +473,7 @@ table#tasktable tr.row2 {
 div.entries{
 	float: left;
 	padding: 0 25em 4em 3em;
-	background: #ffffff url(watermark_bg.gif) no-repeat 90px 120px;
+	background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
 }
 
 div.right-microblog{

@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}Informacion Repositorio{% endblock %}
+{% block head_title %}{% trans "Repository Information" %}{% endblock %}
 
 {% block subnav %}
     {% if user.is_authenticated %}
@@ -17,47 +17,46 @@
 {% endblock %}
 
 {% block body %}
-<h1>Repositorio: {{ repositorio.nombre }}</h1>
-<p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
+	<h1>Repositorio: {{ repositorio.nombre }}</h1>
+	<p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
 
-{% if repositorio %}
-    <div class="repositorio_info">
-    <fieldset id="repositorio_info" style="display: none;">
-        <legend>{% trans "Repository information" %}</legend>
-        <table>
-            <tr>
-                <td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
-            </tr>
-            <tr>
-                <td width="100px">{% trans "Admin:" %}</td> <td><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></td>
-            </tr>
-            <tr>
-                <td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
-            </tr>
-            <tr>
-                <td width="100px">{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
-            </tr>
-            <tr>
-                <td width="100px">{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
-            </tr>
-            <tr>
-                <td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
-            </tr>
-        </table>
-	{% ifequal is_me 1 %}
-        <table>
-        <tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
-        </table>    
-    {% endifequal %}
-    </fieldset>
-</div>
-{% else %}
-{% endif %}
-{% comment %}Identificacion del repositorio:{{ repositorio.id }}{% endcomment %}
-    
+	{% if repositorio %}
+    	<div class="repositorio_info">
+    		<fieldset id="repositorio_info" style="display: none;">
+        		<legend>{% trans "Repository information" %}</legend>
+        		<table>
+            		<tr>
+                		<td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
+            		</tr>
+            		<tr>
+                		<td width="100px">{% trans "Admin:" %}</td> <td><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></td>
+            		</tr>
+            		<tr>
+                		<td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
+            		</tr>
+            		<tr>
+                		<td width="100px">{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
+            		</tr>
+            		<tr>
+               			<td width="100px">{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
+            		</tr>
+            		<tr>
+                		<td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
+            		</tr>
+        		</table>
+				{% ifequal is_me 1 %}
+        			<table>
+        				<tr>
+						<td>
+						<form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
+       				</table>    
+    			{% endifequal %}
+    		</fieldset>
+		</div>
+	{% endif %}
     
     {% ifequal miembro_activo "peticion" %}
-        <p>nota: Se encuentra en peticion, Aun no puedes publicar commits.</p>
+        <p>{% trans "nota: Se encuentra en peticion, Aun no puedes publicar commits." %}</p>
     {% else %}
         {% ifequal miembro_activo 0 %}
             <table><tr><td><form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="activarme"></form></td></tr></table>
@@ -71,11 +70,7 @@
     Resaltar esto
     {% endifequal %}{% endcomment %}
         <p><li><cite>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
-            <ul>
-                
-            
-        
-        
+        <ul> 
         <div class="rbroundbox">
 	    <div class="rbtop"><div></div></div>
 		<div class="rbcontent">
