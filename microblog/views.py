@@ -11,6 +11,7 @@ from django.utils.translation import ugettext as _
 from models import Entrada, Conexion, CONEXION_ESPERANDO, CONEXION_BLOQUEADA, CONEXION_ACEPTADA
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from perfiles.models import Perfil
 
 from forms import FormEntrada, FormEncontrarAmigo, FormConexion
 
@@ -21,8 +22,9 @@ def index(request):
     form_conectar = FormEncontrarAmigo()
     
     if request.user.is_authenticated():
-        entradas   = request.user.entradas_recibidos.all()[:app_settings.MICROBLOG_ENTRIES_LIMIT]
-        conexiones = request.user.conexiones_desde.all()
+        entradas     = request.user.entradas_recibidos.all()[:app_settings.MICROBLOG_ENTRIES_LIMIT]
+        conexiones   = request.user.conexiones_desde.all()
+        latest_users = Perfil.objects.order_by('-date_created')[:10]
         conexiones_mostrar_acciones = True
         
     return render_to_response(

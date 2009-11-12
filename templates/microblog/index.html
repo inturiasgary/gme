@@ -10,7 +10,7 @@
             <img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
             <div class="enviar_mensaje">
                 {% include "microblog/adicionar_entrada_form.html" %}
-            </div>
+            </div><br><br><br>
             {% if entradas.count %}
                 <h2>{% trans "Mensajes recientes:" %}</h2>
                 {% for entrada in entradas %}
@@ -57,9 +57,18 @@
                 {% endif %}
                 {% include "microblog/conectar_amigo_form.html" %}
                     Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
+					{% if latest_users %}
+						<p>
+						<h2>{% trans "Ultimos usuarios registrados"%}</h2>
+						<ul>
+						{% for usuario in latest_users %}
+							<li><a href="{% url detalle_perfil usuario.user.username %}">{{ usuario.user.username }}</a></li>
+						{% endfor %}
+						</ul>
+						</p>
+					{% endif %}
             </div>		
         </div>
-
     {% else %}
         {% trans "No estas logeado" %}
     {% endif %}

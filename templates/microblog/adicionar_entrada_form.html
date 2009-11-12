@@ -5,5 +5,7 @@
 <form action="{{ MICROBLOG_URL_BASE }}e/adicionar/" method="post">
     <h2><span id="counter_number" class="counter">140</span></h2>
         {{ form_entrada.contenido }}
-    <input type="submit" id="enviar" value="{% trans "Enviar" %}"/>
+	<div id ="basic-form">
+    	<input type="submit" id="enviar" class="button" value="{% trans "Enviar" %}"/>
+	</div>
 </form>
