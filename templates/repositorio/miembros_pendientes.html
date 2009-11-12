@@ -1,6 +1,6 @@
 {% ifequal is_me  1 %}
     <form action="{% url edit_repositorio %}" method="POST">
-        <table>
+        <table id="tasktable">
             <tr>
                 <th>Usuarios</th>
                 <th>Fecha peticion</th>
@@ -8,7 +8,7 @@
             </tr>
             {% for miembro in miembros %}
                     {% ifequal miembro.activo 0 %}
-                        <tr>    
+                        <tr class="{% cycle 'row1' 'row2' %}">    
                             <td><a href="{% url detalle_perfil miembro.usuario.username %}">{{ miembro.usuario.username }}</a></td>
                             <td>{{ miembro.fecha_ingreso|date:"d/m/Y" }}</td>
                             <td>{% ifequal miembro.creador 1 %}Creador{%else%}<input type="checkbox" name="add_miembro" value="{{ miembro.id }}" id="add_miembro_{{ miembro.id }}">{% endifequal %}</td>
@@ -20,14 +20,14 @@
     </form>
     
 {% else %}
-    <table>
+    <table id="tasktable">
         <tr>
             <th>Usuarios</th>
             <th>Fecha peticion</th>
         </tr>
             {% for miembro in miembros %}
                 {% ifequal miembro.activo 0 %}
-                    <tr>
+                    <tr class="{% cycle 'row1' 'row2' %}">
                         <td><a href="{% url detalle_perfil miembro.usuario.username %}">{{ miembro.usuario.username }}</a></td>
                         <td>{{ miembro.fecha_ingreso|date:"d/m/Y" }}</td>
                     </tr>

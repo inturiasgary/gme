@@ -511,3 +511,17 @@ font-style: italic;
 .imagen_portada{
  text-align: center;
 }
+div.legal{
+ text-align: center;
+}
+div.right-form  {
+	margin-bottom:0.8em;
+	margin-top:0.6em;
+	line-height: 1.4em;
+}
+div.right-form  p{
+     margin-bottom:0.8em;
+     margin-top:0.6em;
+     line-height: 1.4em;
+}
+
