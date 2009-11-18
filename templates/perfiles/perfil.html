@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% blocktrans %}Perfil de {{ other_user }}{% endblocktrans %}{% endblock %}
+{% block head_title %}{% trans "Perfil de " %} {{ other_user }} {% endblock %}
 
 {% block body %}
     
@@ -47,7 +47,6 @@
             </div>
         {% endif %}
     </fieldset>
-    
     
     {% if user.is_authenticated %}
         {% if is_me %}

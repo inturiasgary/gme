@@ -33,7 +33,9 @@
     </div>
     <div class="right-form"><cite>
     	{% blocktrans %}
-			Para acceder al sistema es necesario que estes registrado previamente. en caso de perdida o extravio de contraseña, puede usar la opcion {% endblocktrans %} <a href="{% url cuenta.views.password_reset %}">{% trans "Restablecer Contraseña." %}</a><p>{% blocktrans %}Cualquier consulta o sugerencia, contacte al administrador {% endblocktrans %}<a href="mailto:inturiasgary@gmail.com">{% trans "Admin."%}</a></p>
+		Para acceder al sistema es necesario que estes registrado previamente. en caso de perdida o extravio de contraseña, puede usar la opcion 
+		{% endblocktrans %} 
+		<a href="{% url cuenta.views.password_reset %}">{% trans "Restablecer Contraseña." %}</a><p>{% blocktrans %}Cualquier consulta o sugerencia, contacte al administrador {% endblocktrans %}<a href="mailto:inturiasgary@gmail.com">{% trans "Admin."%}</a></p>
 
 		</cite>
     </div>
@@ -41,6 +43,6 @@
 
 {% block extra_body %}
 <script>
-    $("#id_userlame").focus();
+    $("#id_username").focus();
 </script>
 {% endblock %}

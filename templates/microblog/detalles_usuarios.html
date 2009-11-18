@@ -4,7 +4,7 @@
 
 {% block title %}{{ usuario_actual }}{{ block.super }}{% endblock title %}
 
-{% block body %}{{ block.super }}
+{% block body %}
     {% if usuarios_encontrados %}
             {% if user.is_authenticated %}
                 <h1>{% trans "Search Results:" %}</h1>

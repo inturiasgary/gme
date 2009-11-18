@@ -367,13 +367,13 @@ div.notice_settings h2 {
 /* end hide from ie5-mac */
 
 
-dl.what_next {
+dl {
     margin: 2em;
 }
-dl.what_next dt {
+dl dt {
     font-size: 120%;
 }
-dl.what_next dd {
+dl dd {
     margin: 0 0 1em 0;
     font-style: italic;
 }

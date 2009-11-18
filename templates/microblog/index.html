@@ -11,13 +11,14 @@
             <div class="enviar_mensaje">
                 {% include "microblog/adicionar_entrada_form.html" %}
             </div><br><br><br>
+			
             {% if entradas.count %}
                 <h2>{% trans "Mensajes recientes:" %}</h2>
                 {% for entrada in entradas %}
                     <div class="entrada" id="entrada_{{ entrada.id }}">
                         <cite>
                             <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
-                            hace
+                            {% trans "hace" %}
                             {{ entrada.fecha|timesince }}
                             :
                         </cite>

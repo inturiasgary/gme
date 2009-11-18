@@ -11,12 +11,15 @@
 <div class="imagen_portada">
 	<img src="/site_media/collaborative.jpg" alt="Collaborative"/>
 </div>
+
 <div class="welcome">
     {% blocktrans %}
 	<h1>Bienvenido</h1>
         <p><b>GME</b> Bienvenidos al sistema de notificación de commits de repositorios versionados con el sistema de control de versiones git.</p>
+	{% endblocktrans %}
 <img src="/site_media/informacion.png" alt="Información" />
 <p>
+	{% blocktrans %}       
         Las facilidades que le brinda el sistema son:
 		<ul>
 			<li>publicar ¿que esta haciendo?, en el microblog global.</li>
@@ -26,7 +29,6 @@
 			<li>Realizar lista de tareas, y asignarlas a su equipo de desarrollo.</li>
 			<li>Realizar consultas y actualizar su estado de manera rápida.</li>
 		</ul>
-	
     {% endblocktrans %}
 	<p><span class="warning">{% trans "Warning" %}:</span>{% trans " Para poder interactuar mediante el interprete de comandos de tu sistema y el sistema Web microblog, necesitas configurar el siguiente programa. " %}<a href="/site_media/publicar.py">{% trans "GmeClient "%}</a></p>
 	<p>{% blocktrans %}El siguiente paso, es crear un enlace simbólico para que funcione el programa, hay varias formas de realizar esto, Una de las mas convenientes, en Linux, Mac OSX u otros sistemas como Unix seria de la siguiente forma:{% endblocktrans %}

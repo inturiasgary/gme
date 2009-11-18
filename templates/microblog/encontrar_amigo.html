@@ -2,11 +2,13 @@
 
 {% load i18n %}
 
-{% block content %}{{ block.super }}
-<h1>{% trans "Find users" %}</h1>
+{% block head_title %}{% trans "Buscar otros usuarios" %}{% endblock %}
+
+{% block body %}{{ block.super }}
+
 
 <div class="box">
-    <h2>{% trans "Encontrar otros" %}</h2>
+    <h2>{% trans "Search Result" %}</h2>
     <form>
         <table class="form">
             {{ form }}
@@ -19,8 +21,8 @@
 <div class="users">
     <h2>{% trans "Found other" %}</h2>
 
-    {% with found_users as users %}
-    {% include "microblog/lista_usuarios.html" %}
+    {% with usuarios_encontrados as usuarios %}
+        {% include "microblog/lista_usuarios.html" %}
     {% endwith %}
 </div>
 {% else %}
@@ -29,4 +31,4 @@
 </p>
 {% endif %}
 
-{% endblock content %}
+{% endblock %}

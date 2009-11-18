@@ -20,7 +20,7 @@ DATABASE_PORT = ''
 
 TIME_ZONE = 'America/La_Paz'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 SITE_ID = 1
 
@@ -68,7 +68,6 @@ TEMPLATE_CONTEXT_PROCESSORS =(
     "cuenta.context_processors.cuenta",
     "misc.context_processors.contact_email", #para que utilizern los email
     "misc.context_processors.site_name",
-    
     "notification.context_processors.notification",
 )
 
@@ -116,4 +115,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 #LANGUAGES
-LANGUAGES = (('en-us',u'English'),('es-es',u'Español'))
+LANGUAGES = (('es-es',u'Español'),('en-us',u'English'))

@@ -7,31 +7,31 @@
 {% block body %}
     <div class="clearfix padtop">
         <div id="basic-form">
-        <fieldset>
-            <legend>{% trans "Register" %}</legend>
-            
-            {% if user.is_authenticated %}
-                <p>{% trans "You already logged." %}</p>
-            {% else %}
-                <p>{% trans "Do you have account?" %} <a href="{% url acct_login %}">{% trans "Sign In" %}</a>!</p>
+            <fieldset>
+                <legend>{% trans "Sign Up" %}</legend>
                 
-                <form class="signupform" id="signup_form" method="post" action="{% url acct_registro %}">
-                    <table width="300px">
-                        {{ form.as_table }}
-                        <tr><td></td><td><input type="submit" value="{% trans "Sign Up &raquo;" %}" class="button" /></td></tr>
-                    </table>
-                </form>
-                
-                {% url terms as terms_url %}
-                {% url privacy as privacy_url %}
-                <div class="right-form">
-                    <p>{% blocktrans %}Haciendo click en "Registrarse", indicas que leiste y estas de acuerdo con  <a href="{{ terms_url }}">Terminos de uso</a> and <a href="{{ privacy_url }}">Privacy Policy</a>.{% endblocktrans %}</p>
+                {% if user.is_authenticated %}
+                    <p>{% trans "You already logged." %}</p>
+                {% else %}
+                    <p>{% trans "Do you have account?" %} <a href="{% url acct_login %}">{% trans "Sign In" %}</a>!</p>
                     
-                    <p>{% blocktrans %}Si tienes algun problema con la creacion de tu cuenta, contactanos <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.{% endblocktrans %}</p>
+                    <form class="signupform" id="signup_form" method="post" action="{% url acct_registro %}">
+                        <table width="300px">
+                            {{ form.as_table }}
+                            <tr><td></td><td><input type="submit" value="{% trans "Sign Up &raquo;" %}" class="button" /></td></tr>
+                        </table>
+                    </form>
                     
-                </div>
-            {% endif %}
-        </fieldset>
+                    {% url terms as terms_url %}
+                    {% url privacy as privacy_url %}
+                    <div class="right-form">
+                        <p>{% blocktrans %}Haciendo click en "Registrarse", indicas que leiste y estas de acuerdo con los <a href="{{ terms_url }}">Terminos de uso</a> y <a href="{{ privacy_url }}">Privacy Policy</a>.{% endblocktrans %}</p>
+                        
+                        <p>{% blocktrans %}Si tienes algun problema con la creacion de tu cuenta, contactanos <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.{% endblocktrans %}</p>
+                        
+                    </div>
+                {% endif %}
+            </fieldset>
         </div>
     </div>
 {% endblock %}

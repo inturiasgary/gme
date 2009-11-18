@@ -82,7 +82,6 @@ def buscar_amigo(request):
                 return render_to_response('microblog/detalles_usuarios.html',
                                           locals(),
                                           context_instance = RequestContext(request))
-        
     else:
         form = FormEncontrarAmigo()
         
