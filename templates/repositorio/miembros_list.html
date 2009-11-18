@@ -1,12 +1,14 @@
 {% extends "repositorio/base.html" %}
 {% load i18n %}
 {% block body %}
-    <p><h1>Repositorio: {{ repositorio_nombre }}</h1></p>
-
-    <h1>Miembros participantes</h1>
-    {% include "repositorio/miembros_participantes.html" %}
+    <fieldset>    
+        <legend>Repositorio: {{ repositorio_nombre }}</legend>
     
-    <h1>Peticiones</h1>
-    {% include "repositorio/miembros_pendientes.html" %}
+        <h1>Miembros participantes</h1>
+        {% include "repositorio/miembros_participantes.html" %}
+        
+        <h1>Peticiones</h1>
+        {% include "repositorio/miembros_pendientes.html" %}
+    </fieldset>
     
 {% endblock %}
