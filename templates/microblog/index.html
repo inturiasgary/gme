@@ -27,7 +27,7 @@
                                 <div></div>
                             </div>
                             <div class="rbcontent">
-                                <p>{{ entrada.contenido|truncatewords:"140"|linebreaksbr|urlize }}</p>
+                                <p>{{ entrada.contenido|striptags|truncatewords:"140"|linebreaksbr|urlize }}</p>
                             </div><!-- /rbcontent -->
                             <div class="rbbot">
                                 <div></div>
@@ -57,7 +57,9 @@
                     <p>{% trans "Aun no tienes conectados" %}</p>
                 {% endif %}
                 {% include "microblog/conectar_amigo_form.html" %}
-                    Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti.
+				<br><br><br>				
+				<p>{% trans  "Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti." %}				
+				</p>				
 					{% if latest_users %}
 						<p>
 						<h2>{% trans "Ultimos usuarios registrados"%}</h2>

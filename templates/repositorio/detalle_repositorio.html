@@ -24,26 +24,22 @@
     	<div class="repositorio_info">
     		<fieldset id="repositorio_info" style="display: none;">
         		<legend>{% trans "Repository information" %}</legend>
+				<dl>
         		<table>
-            		<tr>
-                		<td width="100px">{% trans "Name:" %}</td> <td>{{ repositorio.nombre }}</td>
-            		</tr>
-            		<tr>
-                		<td width="100px">{% trans "Admin:" %}</td> <td><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></td>
-            		</tr>
-            		<tr>
-                		<td width="100px">{% trans "Description:" %}</td> <td>{{ repositorio.descripcion }}</td>
-            		</tr>
-            		<tr>
-                		<td width="100px">{% trans "Created:" %}</td> <td>{{ repositorio.fecha }}</td>
-            		</tr>
-            		<tr>
-               			<td width="100px">{% trans "Web Link:" %}</td> <td>{{ repositorio.direccionWeb }}</td>
-            		</tr>
-            		<tr>
-                		<td width="100px">{% trans "Administrator email:" %}</td> <td>{{ repositorio.emailAdmin }}</td>
-            		</tr>
-        		</table>
+            		
+                		<dt width="100px">{% trans "Name:" %}</dt> <dd>{{ repositorio.nombre }}</dd>
+            		
+                		<dt width="100px">{% trans "Admin:" %}</dt> <dd><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></dd>
+            		
+            		
+                		<dt width="100px">{% trans "Description:" %}</dt> <dd>{{ repositorio.descripcion }}</dd>
+            		
+                		<dt width="100px">{% trans "Created:" %}</dt> <dd>{{ repositorio.fecha|date:"d M Y" }}</dd>
+            		
+               			<dt width="100px">{% trans "Web Link:" %}</dt> <dd>{{ repositorio.direccionWeb|urlize }}</dd>
+				
+                		<dt width="100px">{% trans "Administrator email:" %}</dt> <dd>{{ repositorio.emailAdmin }}</dd>
+				<dl>
 				{% ifequal is_me 1 %}
         			<table>
         				<tr>
@@ -74,7 +70,7 @@
         <div class="rbroundbox">
 	    <div class="rbtop"><div></div></div>
 		<div class="rbcontent">
-		<p>{{ commit.descripcion }}
+		<p>{{ commit.descripcion|striptags|linebreaksbr|urlize }}
 			</p>
 		</div><!-- /rbcontent -->
 	    <div class="rbbot"><div></div></div>

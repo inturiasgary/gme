@@ -1,3 +1,5 @@
+''' Tags usados para verificar las conecciones entre los usuarios
+'''
 from django import template
 
 from microblog.models import Conexion

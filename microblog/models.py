@@ -77,6 +77,7 @@ def entrada_post_save(sender, instance, signal, *args, **kwargs):
     if not kwargs.get('created'):
         return
 
+
     # Se adiciona el usuario a si mismo a la lista de recipientes
     instance.recipientes.add(instance.user)
 
@@ -99,11 +100,3 @@ def conexion_post_save(sender, instance, signal, *args, **kwargs):
     Conexion.objects.get_or_create(amigo=instance.user, user=instance.amigo)
 
 signals.post_save.connect(conexion_post_save, sender=Conexion)
-
-# MicroblogUserProfile
-
-#def user_post_save(sender, instance, signal, *args, **kwargs):
-    #up = MicroblogUserProfile.objects.get_or_create(usuario=instance)
-
-#signals.post_save.connect(usuario_post_save, sender=User)
-

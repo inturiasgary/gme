@@ -8,15 +8,15 @@ from timezones.fields import TimeZoneField  #para utilizar campos de zona horari
 
 class Cuenta(models.Model):
     
-    user = models.ForeignKey(User, unique=True, verbose_name=_('Username'))
-    timezone = TimeZoneField(_('Timezone'))
-    language = models.CharField(_('Language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
+    user        = models.ForeignKey(User, unique=True, verbose_name=_('Username'))
+    timezone    = TimeZoneField(_('Timezone'))
+    language    = models.CharField(_('Language'), max_length=10, choices=settings.LANGUAGES, default=settings.LANGUAGE_CODE)
     
     def __unicode__(self):
         return self.user.username
 
 def create_Cuenta(sender, instance=None, **kwargs): #asocia al usuario creado, con la cuenta
-    ''' Creamos una cuenta automaticamente para cada usuario creado '''
+    ''' Realiza la creacion de una cuenta para cada usuario nuevo registrado '''
     if instance is None:
         return
     cuenta, created = Cuenta.objects.get_or_create(user=instance)

@@ -5,9 +5,9 @@ from cuenta.models import Cuenta
 class LocaleMiddleware(object):
     """
     Este es un simple middleware que pasa un request y decide
-    que objeton traducido va a instalar en el actual hilo context
+    que objeto traducido va a determinar en el actual hilo context
     dependiendo de la cuenta de usuario. esto permite
-    a las paginas traducirse de forma dinamica al lenguaje 
+    a las paginas traducirse de forma automatica al lenguaje 
     seleccionado por el usuario
     """
     def get_language_for_user(self, request):

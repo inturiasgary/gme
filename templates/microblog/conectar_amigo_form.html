@@ -4,5 +4,7 @@
 
 <form action="{{ MICROBLOG_URL_BASE }}c/buscar/ " method="get">
     {% trans "Nombre" %}: {{ form_conectar.nombre }}
-    <input type="submit" value="{% trans "Encontrar" %}"/>
+        <div id="basic-form">    
+            <input type="submit" class="button1" value="{% trans "Encontrar" %}"/>
+        </div>
 </form>

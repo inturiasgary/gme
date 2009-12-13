@@ -9,8 +9,8 @@
         {% for repositorio_pendiente in repositorios_pendiente %}
         <div class="entrada" id="entrada_{{ entrada.id }}">
             <a href="{{ repositorio_pendiente.get_absolute_url }}">{{ repositorio_pendiente.nombre }}</a>
-            @
-            <a href="{{ repositorio_pendiente.fecha }}">{{ repositorio_pendiente.fecha }}</a>
+            {% trans "Creado" %}
+            {{ repositorio_pendiente.fecha|date:"d M Y" }}
             :
 
             <p>
