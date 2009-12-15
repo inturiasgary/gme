@@ -1,42 +1,40 @@
-%Tamaño y tipo de documento que queremos escribir.
-\documentclass[letterpaper, 12pt,double,graphicx,caption,rotating]{report}
+\documentclass[letterpaper, 12pt, double, oneside]{Thesis}
+\usepackage[activeacute,spanish]{babel}
+\usepackage[utf8]{inputenc}
+% Include any extra LaTeX packages required
+\usepackage[square, numbers, comma, sort&compress]{natbib}
+\usepackage{verbatim}% Needed for the "comment" environment to make LaTeX comments
+\usepackage{vector}
+\hypersetup{urlcolor=black, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-%Paquetes para el idioma, las tildes, etc.
-\usepackage{longtable}
-\usepackage[activeacute,spanish]{babel}
-\usepackage[letterpaper]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{multirow}
-\usepackage{multicol}
-\usepackage{anysize}
+%\usepackage[pdftex]{graphicx} % PDFLaTeX
 
-\usepackage[pdftex]{graphicx} % PDFLaTeX
-\DeclareGraphicsExtensions{.png,.pdf,.jpg}
-
-\marginsize{3.1cm}{2cm}{1.7cm}{1.5cm}
-\renewcommand{\baselinestretch}{1.5}
-
-
-\newtheorem{proc}{Procedimiento}
-
-% Salto de línea tras título de secciones \paragraph
-\makeatletter % necesario para que reconozca a '@' como carácter normal
-\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}{-3.25ex \@plus
--1ex \@minus -.2ex}{1.5ex \@plus .2ex}{\normalfont\normalsize\bfseries}}
-\makeatother % necesario para que restablezca '@' como carácter especial
-
-%Abrimos el bloque para escribir el documento.
 \begin{document}
-%Generamos un indice de los contenidos
+\frontmatter
 \include{001-Caratula-Caratula}
+
+
 \include{002-Dedicatoria-Dedicatoria}
+
 \include{003-Agradecimientos-Agradecimientos}
+
 \include{004-FichaResumen-FichaResumen}
-\newpage
-\tableofcontents
-\newpage
-\listoftables
+
+%% ----------------------------------------------------------------
+\lhead{\emph{Contents}}  % Set the left side page header to "Contents"
+\tableofcontents  % Write out the Table of Contents
+
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Figures}}  % Set the left side page header to "List if Figures"
+\listoffigures  % Write out the List of Figures
+
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Tables}}  % Set the left side page header to "List of Tables"
+\listoftables  % Write out the List of Tables
+
+\mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
+
 \include{cap1}
 \include{cap2}
 \include{cap3}
@@ -45,6 +43,6 @@
 \include{cap6}
 
 %adicionamos la bibliografia
+\backmatter
 \include{bibliografia}
 \end{document}
-%Cerramos el bloque para escribir el documento.
