@@ -155,6 +155,7 @@
 \UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
                 {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
                 {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
+
 \department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
                 {Department or School Name}}
                 {Department or School Name}}

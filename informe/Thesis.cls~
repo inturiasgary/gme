@@ -155,6 +155,14 @@
 \UNIVERSITY  {\texorpdfstring{\href{University Web Site URL Here (include http://)}
                 {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
                 {UNIVERSITY NAME (IN BLOCK CAPITALS)}}
+
+\begin{figure}(0,0)
+\put(0,0){\includegraphics[width=0.45/textwidth]{./imagenes/umss.jpg}}
+\end{figure}
+\begin{figure}(0,0)
+\put(380,40){\includegraphics[width=0.45/textwidth]{./imagenes/fcyt.jpg}}
+\end{figure}
+
 \department  {\texorpdfstring{\href{Department or School Web Site URL Here (include http://)}
                 {Department or School Name}}
                 {Department or School Name}}
@@ -198,7 +206,7 @@
       \vfill
       {\LARGE por \par}
       \smallskip
-      {\LARGE asdfa \par}
+      {\LARGE \authornames \par}
       \vfill
       {\large A thesis submitted in partial fulfillment for the \par}
       {\large degree of Doctor of Philosophy \par}

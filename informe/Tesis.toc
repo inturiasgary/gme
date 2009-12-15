@@ -12,60 +12,60 @@
 \contentsline {subsection}{\numberline {1.5.1}PLANIFICACI\IeC {\'O}N POR FASES}{4}{subsection.17}
 \contentsline {subsection}{\numberline {1.5.2}CALENDARIO DEL PROYECTO}{4}{subsection.18}
 \contentsline {subsubsection}{\numberline {1.5.2.1}ACTIVIDADES}{4}{subsubsection.19}
-\contentsline {chapter}{\numberline {2}MARCO TE\IeC {\'O}RICO}{5}{chapter.21}
-\contentsline {section}{\numberline {2.1}DEFINICIONES B\IeC {\'A}SICAS}{5}{section.22}
-\contentsline {subsection}{\numberline {2.1.1}EL PROCESO DE DESARROLLO DE SOFTWARE}{5}{subsection.23}
-\contentsline {subsection}{\numberline {2.1.2}GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}{6}{subsection.25}
-\contentsline {subsection}{\numberline {2.1.3}FRAMEWORK DE DESARROLLO}{7}{subsection.26}
-\contentsline {subsubsection}{\numberline {2.1.3.1}VENTAJAS EN LA UTILIZACI\IeC {\'O}N DE FRAMEWORKS}{7}{subsubsection.27}
-\contentsline {subsubsection}{\numberline {2.1.3.2}DIFICULTADES CON LOS FRAMEWORKS}{8}{subsubsection.28}
-\contentsline {subsubsection}{\numberline {2.1.3.3}FRAMEWORK WEB}{8}{subsubsection.29}
-\contentsline {paragraph}{\numberline {2.1.3.3.1}TIPOS DE FRAMEWORK WEB}{8}{paragraph.30}
-\contentsline {subsubsection}{\numberline {2.1.3.4}ARQUITECTURA MVC}{9}{subsubsection.31}
-\contentsline {subsection}{\numberline {2.1.4}SISTEMA DE CONTROL DE VERSIONES}{11}{subsection.33}
-\contentsline {subsubsection}{\numberline {2.1.4.1}CLASIFICACI\IeC {\'O}N}{13}{subsubsection.34}
-\contentsline {subsection}{\numberline {2.1.5}MICROBLOG}{14}{subsection.36}
-\contentsline {subsection}{\numberline {2.1.6}SERVICIOS WEB}{14}{subsection.37}
-\contentsline {subsection}{\numberline {2.1.7}WEB API}{15}{subsection.38}
-\contentsline {subsection}{\numberline {2.1.8}LINEA DE COMANDOS}{16}{subsection.39}
-\contentsline {chapter}{\numberline {3}HERRAMIENTAS PARA EL DESARROLLO DE SOFTWARE}{18}{chapter.41}
-\contentsline {section}{\numberline {3.1}INTRODUCCION}{18}{section.42}
-\contentsline {section}{\numberline {3.2}LENGUAJE DE PROGRAMACION PYTHON}{18}{section.43}
-\contentsline {subsection}{\numberline {3.2.1}FRAMEWORK WEB DJANGO}{18}{subsection.44}
-\contentsline {subsection}{\numberline {3.2.2}GIT}{19}{subsection.45}
-\contentsline {subsubsection}{\numberline {3.2.2.1}MODELO DE OBJETOS GIT}{19}{subsubsection.46}
-\contentsline {paragraph}{\numberline {3.2.2.1.1}TIPOS DE OBJETOS}{20}{paragraph.47}
-\contentsline {subsubsection}{\numberline {3.2.2.2}HOOKS(GANCHOS)}{20}{subsubsection.48}
-\contentsline {subsection}{\numberline {3.2.3}XML RPC}{20}{subsection.49}
-\contentsline {subsubsection}{\numberline {3.2.3.1}XML-RPC contra. Otros protocolos}{20}{subsubsection.50}
-\contentsline {chapter}{\numberline {4}DESARROLLO DEL PROYECTO}{23}{chapter.52}
-\contentsline {section}{\numberline {4.1}METODOLOG\IeC {\'I}A DE DESARROLLO}{23}{section.53}
-\contentsline {subsection}{\numberline {4.1.1}SCRUM}{23}{subsection.55}
-\contentsline {section}{\numberline {4.2}BASE DE DATOS DEL SISTEMA WEB MICROBLOG}{26}{section.56}
-\contentsline {section}{\numberline {4.3}SEGURIDAD}{27}{section.58}
-\contentsline {subsection}{\numberline {4.3.1}INYECCI\IeC {\'O}N SQL}{27}{subsection.60}
-\contentsline {subsection}{\numberline {4.3.2}XSS}{28}{subsection.63}
-\contentsline {subsection}{\numberline {4.3.3}CSRF}{29}{subsection.64}
-\contentsline {subsection}{\numberline {4.3.4}FORZAMIENTO DE SESION/SECUESTRO (HIJACKING)}{29}{subsection.65}
-\contentsline {subsection}{\numberline {4.3.5}INYECCI\IeC {\'O}N DE CABECERAS DE EMAIL}{30}{subsection.66}
-\contentsline {subsection}{\numberline {4.3.6}DIRECTORIO TRAVERSAL}{31}{subsection.67}
-\contentsline {subsection}{\numberline {4.3.7}EXPOSICI\IeC {\'O}N DE MENSAJES DE ERRORES}{31}{subsection.68}
-\contentsline {section}{\numberline {4.4}PRUEBAS}{32}{section.69}
-\contentsline {subsection}{\numberline {4.4.1}REALIZANDO PRUEBAS}{32}{subsection.70}
-\contentsline {subsubsection}{\numberline {4.4.1.1}PRUEBAS FUNCIONALES WEB EN EL SISTEMA MICROBLOG}{33}{subsubsection.71}
-\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{34}{chapter.73}
-\contentsline {section}{\numberline {5.1}CONCLUSIONES}{34}{section.74}
-\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{34}{section.75}
-\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{35}{chapter.76}
-\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{35}{section.77}
-\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{35}{subsection.78}
-\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{35}{subsubsection.79}
-\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{35}{subsubsection.80}
-\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{35}{subsection.81}
-\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{36}{subsubsection.82}
-\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{36}{paragraph.83}
-\contentsline {subparagraph}{Debian/Ubuntu}{36}{section*.84}
-\contentsline {subparagraph}{Windows}{37}{section*.85}
-\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACI\IeC {\'O}N DE GIT}{37}{paragraph.86}
-\contentsline {paragraph}{\numberline {6.1.2.1.3}INSTALACI\IeC {\'O}N DE LA LIBRERIA GITPYTHON}{38}{paragraph.87}
-\contentsline {chapter}{Bibliograf\'{\i }a}{39}{dummy.88}
+\contentsline {chapter}{\numberline {2}MARCO TE\IeC {\'O}RICO}{5}{chapter.20}
+\contentsline {section}{\numberline {2.1}DEFINICIONES B\IeC {\'A}SICAS}{5}{section.21}
+\contentsline {subsection}{\numberline {2.1.1}EL PROCESO DE DESARROLLO DE SOFTWARE}{5}{subsection.22}
+\contentsline {subsection}{\numberline {2.1.2}GRUPOS DE TRABAJO EN EL DESARROLLO DE SOFTWARE}{6}{subsection.24}
+\contentsline {subsection}{\numberline {2.1.3}FRAMEWORK DE DESARROLLO}{7}{subsection.25}
+\contentsline {subsubsection}{\numberline {2.1.3.1}VENTAJAS EN LA UTILIZACI\IeC {\'O}N DE FRAMEWORKS}{8}{subsubsection.26}
+\contentsline {subsubsection}{\numberline {2.1.3.2}DIFICULTADES CON LOS FRAMEWORKS}{8}{subsubsection.27}
+\contentsline {subsubsection}{\numberline {2.1.3.3}FRAMEWORK WEB}{8}{subsubsection.28}
+\contentsline {paragraph}{\numberline {2.1.3.3.1}TIPOS DE FRAMEWORK WEB}{9}{paragraph.29}
+\contentsline {subsubsection}{\numberline {2.1.3.4}ARQUITECTURA MVC}{9}{subsubsection.30}
+\contentsline {subsection}{\numberline {2.1.4}SISTEMA DE CONTROL DE VERSIONES}{12}{subsection.32}
+\contentsline {subsubsection}{\numberline {2.1.4.1}CLASIFICACI\IeC {\'O}N}{13}{subsubsection.33}
+\contentsline {subsection}{\numberline {2.1.5}MICROBLOG}{14}{subsection.35}
+\contentsline {subsection}{\numberline {2.1.6}SERVICIOS WEB}{14}{subsection.36}
+\contentsline {subsection}{\numberline {2.1.7}WEB API}{15}{subsection.37}
+\contentsline {subsection}{\numberline {2.1.8}LINEA DE COMANDOS}{16}{subsection.38}
+\contentsline {chapter}{\numberline {3}HERRAMIENTAS PARA EL DESARROLLO DE SOFTWARE}{18}{chapter.40}
+\contentsline {section}{\numberline {3.1}INTRODUCCION}{18}{section.41}
+\contentsline {section}{\numberline {3.2}LENGUAJE DE PROGRAMACION PYTHON}{18}{section.42}
+\contentsline {subsection}{\numberline {3.2.1}FRAMEWORK WEB DJANGO}{18}{subsection.43}
+\contentsline {subsection}{\numberline {3.2.2}GIT}{19}{subsection.44}
+\contentsline {subsubsection}{\numberline {3.2.2.1}MODELO DE OBJETOS GIT}{19}{subsubsection.45}
+\contentsline {paragraph}{\numberline {3.2.2.1.1}TIPOS DE OBJETOS}{20}{paragraph.46}
+\contentsline {subsubsection}{\numberline {3.2.2.2}HOOKS(GANCHOS)}{20}{subsubsection.47}
+\contentsline {subsection}{\numberline {3.2.3}XML RPC}{20}{subsection.48}
+\contentsline {subsubsection}{\numberline {3.2.3.1}XML-RPC contra. Otros protocolos}{20}{subsubsection.49}
+\contentsline {chapter}{\numberline {4}DESARROLLO DEL PROYECTO}{23}{chapter.51}
+\contentsline {section}{\numberline {4.1}METODOLOG\IeC {\'I}A DE DESARROLLO}{23}{section.52}
+\contentsline {subsection}{\numberline {4.1.1}SCRUM}{23}{subsection.54}
+\contentsline {section}{\numberline {4.2}BASE DE DATOS DEL SISTEMA WEB MICROBLOG}{26}{section.55}
+\contentsline {section}{\numberline {4.3}SEGURIDAD}{27}{section.57}
+\contentsline {subsection}{\numberline {4.3.1}INYECCI\IeC {\'O}N SQL}{27}{subsection.59}
+\contentsline {subsection}{\numberline {4.3.2}XSS}{28}{subsection.62}
+\contentsline {subsection}{\numberline {4.3.3}CSRF}{29}{subsection.63}
+\contentsline {subsection}{\numberline {4.3.4}FORZAMIENTO DE SESION/SECUESTRO (HIJACKING)}{30}{subsection.64}
+\contentsline {subsection}{\numberline {4.3.5}INYECCI\IeC {\'O}N DE CABECERAS DE EMAIL}{31}{subsection.65}
+\contentsline {subsection}{\numberline {4.3.6}DIRECTORIO TRAVERSAL}{31}{subsection.66}
+\contentsline {subsection}{\numberline {4.3.7}EXPOSICI\IeC {\'O}N DE MENSAJES DE ERRORES}{31}{subsection.67}
+\contentsline {section}{\numberline {4.4}PRUEBAS}{32}{section.68}
+\contentsline {subsection}{\numberline {4.4.1}REALIZANDO PRUEBAS}{33}{subsection.69}
+\contentsline {subsubsection}{\numberline {4.4.1.1}PRUEBAS FUNCIONALES WEB EN EL SISTEMA MICROBLOG}{33}{subsubsection.70}
+\contentsline {chapter}{\numberline {5}CONCLUSIONES Y RECOMENDACIONES}{34}{chapter.72}
+\contentsline {section}{\numberline {5.1}CONCLUSIONES}{34}{section.73}
+\contentsline {section}{\numberline {5.2}RECOMENDACIONES}{34}{section.74}
+\contentsline {chapter}{\numberline {6}AP\IeC {\'E}NDICE}{35}{chapter.75}
+\contentsline {section}{\numberline {6.1}DOCUMENTACI\IeC {\'O}N}{35}{section.76}
+\contentsline {subsection}{\numberline {6.1.1}MANUAL DE USUARIO}{35}{subsection.77}
+\contentsline {subsubsection}{\numberline {6.1.1.1}INTRODUCCI\IeC {\'O}N}{35}{subsubsection.78}
+\contentsline {subsubsection}{\numberline {6.1.1.2}ENTRADA AL SISTEMA}{35}{subsubsection.79}
+\contentsline {subsection}{\numberline {6.1.2}MANUAL T\IeC {\'E}CNICO}{35}{subsection.80}
+\contentsline {subsubsection}{\numberline {6.1.2.1}PREPARACI\IeC {\'O}N DEL SISTEMA DE CONTROL DE VERSIONES}{36}{subsubsection.81}
+\contentsline {paragraph}{\numberline {6.1.2.1.1}INSTALACI\IeC {\'O}N DE GIT}{36}{paragraph.82}
+\contentsline {subparagraph}{Debian/Ubuntu}{36}{section*.83}
+\contentsline {subparagraph}{Windows}{37}{section*.84}
+\contentsline {paragraph}{\numberline {6.1.2.1.2}CONFIGURACI\IeC {\'O}N DE GIT}{37}{paragraph.85}
+\contentsline {paragraph}{\numberline {6.1.2.1.3}INSTALACI\IeC {\'O}N DE LA LIBRERIA GITPYTHON}{38}{paragraph.86}
+\contentsline {chapter}{Bibliograf\'{\i }a}{39}{dummy.87}
