@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
 from templatetags import microblog_utils
-import app_settings
 from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template.loader  import get_template
@@ -12,8 +11,8 @@ from models import Entrada, Conexion, CONEXION_ESPERANDO, CONEXION_BLOQUEADA, CO
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from perfiles.models import Perfil
-
 from forms import FormEntrada, FormEncontrarAmigo, FormConexion
+import app_settings
 
 def index(request):
     MICROBLOG_URL_BASE = app_settings.MICROBLOG_URL_BASE

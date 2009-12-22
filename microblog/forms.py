@@ -12,12 +12,12 @@ class FormEntrada(forms.ModelForm):
         model  = Entrada
         fields = ('contenido',)
     
-    #def clean_contenido(self):
-        #contenido = self.cleaned_data['contenido']
-        #if len(contenido)>140:
-            #raise forms.ValidationError(_('Solo puedes escribir hasta 140 caracteres.'))
-        #else:
-            #return contenido
+    def clean_contenido(self):
+        contenido = self.cleaned_data['contenido']
+        if len(contenido)>140:
+            raise forms.ValidationError(_('Solo puedes escribir hasta 140 caracteres.'))
+        else:
+            return contenido
         
 class FormConexion(forms.ModelForm):
     username = forms.CharField(widget=forms.HiddenInput)

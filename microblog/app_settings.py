@@ -1,7 +1,7 @@
 from django.conf import settings
 
 MICROBLOG_URL_BASE = getattr(settings, 'MICROBLOG_URL_BASE', '/microblog/')
-MICROBLOG_ENTRIES_LIMIT = getattr(settings, 'MICROBLOG_ENTRIES_LIMIT', 10)
+MICROBLOG_ENTRIES_LIMIT = getattr(settings, 'MICROBLOG_ENTRIES_LIMIT', 15)
 MICROBLOG_FEEDS_MAX_ITEMS = getattr(settings, 'MICROBLOG_FEEDS_MAX_ITEMS', 20)
 
 MICROBLOG_MESSENGERS_ENABLED = getattr(settings, 'MICROBLOG_MESSENGERS_ENABLED', False)

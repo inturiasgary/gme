@@ -1,14 +1,13 @@
 body {
     background-color: #FFF;
     margin: 0;
-}
-html, body {
-    height: 100%;
-}
-body {
-    color: #333;
+	color: #333;
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 10pt;
+}
+
+html, body {
+    height: 100%;
 }
 a, a:visited {
     color: #13C;
@@ -42,8 +41,24 @@ td {
 #body {
     clear: both;
     margin: 0 auto;
-    padding: 10px;
-    width: 800px;
+    padding: 2em;
+    width: 60em;
+}
+div#entries{
+	float: left;
+	width:40em;
+	padding:0;
+	background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
+}
+
+div#right-microblog{
+	float: left;
+	width: 14em; 
+	margin:0 2em;
+	padding:0 1em;
+	float:left;
+	border-bottom: 5px solid #dddddd ;
+	border-top: 5px solid #dddddd ; 
 }
 #footer {
     color: #999; /* footer text colour */
@@ -67,6 +82,7 @@ td {
     padding: 0;
     margin: 0;
 }
+.clear{ clear:both;}
 h1 {
     margin: 0;
 }
@@ -438,19 +454,6 @@ p.what_next {
     margin-top: 20px;
     cursor: pointer;
 }
-#basic-form .button1{
-	width:125px;
-    height:31px;
-    text-align:center;
-    line-height:20px;
-    color:#FFFFFF;
-    font-size:11px;
-    font-weight:bold;
-    border: 0 transparent;
-    background: url(button.png) no-repeat;
-   
-    
-}
 
 /* Fieldsets */
 fieldset { padding: 20px; margin: 0 0 1.5em 0; border: 2px solid #ddd; }
@@ -483,19 +486,6 @@ table#tasktable tr.row1 {
 table#tasktable tr.row2 {
     background-color: #B6F3D5;
 }
-div.entries{
-	float: left;
-	padding: 0 25em 4em 3em;
-	background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
-}
-
-div.right-microblog{
-	float: left;
-	width: 20em; 
-	margin: 9em 0 0 -20em;
-	border-bottom: 5px solid #dddddd ;
-	border-top: 5px solid #dddddd ; 
-}
 
 /* para establecer las cajas de los commits y comentarios */
 .rbroundbox { background: url(nt.gif) repeat; }
@@ -527,6 +517,7 @@ font-style: italic;
 div.legal{
  text-align: center;
 }
+
 div.right-form  {
 	margin-bottom:0.8em;
 	margin-top:0.6em;
@@ -537,4 +528,21 @@ div.right-form  p{
      margin-top:0.6em;
      line-height: 1.4em;
 }
+#add-form .button{
+	clear:both;
+    width:125px;
+    height:31px;
+    text-align:center;
+    line-height:20px;
+    color:#FFFFFF;
+    font-size:11px;
+    font-weight:bold;
+    border: 0 transparent;
+    background: url(button.png) no-repeat;
+    margin-top: 20px;
+    cursor: pointer;
 
+}
+.entrada_contenido {
+	overflow:hidden;
+}

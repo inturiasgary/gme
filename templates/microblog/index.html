@@ -1,20 +1,19 @@
 {% extends "microblog/base.html" %}
-
 {% load i18n %}
-
+{% load pagination_tags %}
 {% block head_title %}Microblog{% endblock %}
-
 {% block body %}
     {% if user.is_authenticated %}
-        <div class="entries">
+        <div id="entries">
             <img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
             <div class="enviar_mensaje">
                 {% include "microblog/adicionar_entrada_form.html" %}
-            </div><br><br><br>
+			</div>
 			
             {% if entradas.count %}
                 <h2>{% trans "Mensajes recientes:" %}</h2>
-                {% for entrada in entradas %}
+                {% autopaginate entradas 10 %}
+				{% for entrada in entradas %}
                     <div class="entrada" id="entrada_{{ entrada.id }}">
                         <cite>
                             <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
@@ -27,7 +26,7 @@
                                 <div></div>
                             </div>
                             <div class="rbcontent">
-                                <p>{{ entrada.contenido|striptags|truncatewords:"140"|linebreaksbr|urlize }}</p>
+                                <p class="entrada_contenido">{{ entrada.contenido|striptags|truncatewords:"140"|linebreaksbr|urlize }}</p>
                             </div><!-- /rbcontent -->
                             <div class="rbbot">
                                 <div></div>
@@ -43,22 +42,23 @@
                             </ul>
                     {% endcomment %}
                 {% endfor %}
+				{% paginate %}
             {% else %}
                 <p>{% trans "Aun no tienes ningun mensaje." %}</p>
             {% endif %}
         </div>
-        <div class="right-microblog">
+		
+        <div id="right-microblog">
             <div class="conexiones">
+				<h2>Conexiones</h2>
                 {% if conexiones.count %}
-                    <h2>Conexiones</h2>
                     {% include "microblog/lista_conexiones.html" %}
                 {% else %}
-                    <h2>Conexiones</h2>
                     <p>{% trans "Aun no tienes conectados" %}</p>
                 {% endif %}
-                {% include "microblog/conectar_amigo_form.html" %}
-				<br><br><br>				
-				<p>{% trans  "Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti." %}				
+			</div>
+                {% include "microblog/conectar_amigo_form.html" %}				
+				<p class="clear">{% trans  "Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti." %}				
 				</p>				
 					{% if latest_users %}
 						<p>
@@ -69,10 +69,10 @@
 						{% endfor %}
 						</ul>
 						</p>
-					{% endif %}
-            </div>		
+					{% endif %}		
         </div>
     {% else %}
         {% trans "No estas logeado" %}
     {% endif %}
+
 {% endblock %}

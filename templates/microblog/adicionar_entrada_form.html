@@ -2,10 +2,10 @@
 
 <h2>{% trans "Enviar un mensaje" %}</h2>
 
-<form action="{{ MICROBLOG_URL_BASE }}e/adicionar/" method="post">
-    <h2><span id="counter_number" class="counter">140</span></h2>
-        {{ form_entrada.contenido }}
-	<div id ="basic-form">
-    	<input type="submit" id="enviar" class="button" value="{% trans "Enviar" %}"/>
-	</div>
-</form>
+<div id ="add-form">
+	<form action="{{ MICROBLOG_URL_BASE }}e/adicionar/" method="post">
+		<h2><span id="counter_number" class="counter">140</span></h2>
+		{{ form_entrada.contenido }}
+    	<p><input type="submit" id="enviar" class="button" value="{% trans "Enviar" %}"/></p>
+	</form>
+</div>

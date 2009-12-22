@@ -2,9 +2,10 @@
 
 <h2>{% trans "Encontrar un amigo" %}</h2>
 
-<form action="{{ MICROBLOG_URL_BASE }}c/buscar/ " method="get">
-    {% trans "Nombre" %}: {{ form_conectar.nombre }}
-        <div id="basic-form">    
-            <input type="submit" class="button1" value="{% trans "Encontrar" %}"/>
-        </div>
-</form>
+<div id="basic-form">
+    <form action="{{ MICROBLOG_URL_BASE }}c/buscar/ " method="get">
+        <p>{% trans "Nombre" %}:</p>
+        {{ form_conectar.nombre }}
+        <input type="submit" class="button" value="{% trans "Encontrar" %}"/>
+    </form>
+</div>
