@@ -142,7 +142,7 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
         if verificar_password(usuario, password):
             if verificar_pertenece(usuario, nombre_repo):
                 try:
-                    Mensaje.objects.create(usuario=usuario, repositorio= repo, descripcion=descripcion, tipo=MENSAJE_COMMIT)
+                    Mensaje.objects.create(usuario=usuario, repositorio= repo, descripcion=descripcion, tipo='c')
                     return _("Operacion efectuada correctamente.")
                 except:
                     return _("Error en la creacion del commit")
