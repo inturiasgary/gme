@@ -5,15 +5,14 @@
 {% block body %}
     {% if user.is_authenticated %}
         <div id="entries">
-            <img src="/site_media/PNG/Chat 2.png" /><h1>Microblog global</h1>
+            <img src="/site_media/png/Chat 2.png" /><h1>Microblog global</h1>
             <div class="enviar_mensaje">
                 {% include "microblog/adicionar_entrada_form.html" %}
-			</div>
-			
+            </div>
             {% if entradas.count %}
                 <h2>{% trans "Mensajes recientes:" %}</h2>
                 {% autopaginate entradas 10 %}
-				{% for entrada in entradas %}
+                {% for entrada in entradas %}
                     <div class="entrada" id="entrada_{{ entrada.id }}">
                         <cite>
                             <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
@@ -32,6 +31,7 @@
                                 <div></div>
                             </div>
                         </div><!-- /rbroundbox -->
+                        
                     </div>
                     {% comment %}
                         <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
@@ -42,37 +42,37 @@
                             </ul>
                     {% endcomment %}
                 {% endfor %}
-				{% paginate %}
+            {% paginate %}
             {% else %}
                 <p>{% trans "Aun no tienes ningun mensaje." %}</p>
             {% endif %}
         </div>
-		
         <div id="right-microblog">
             <div class="conexiones">
-				<h2>Conexiones</h2>
+                <h2>Conexiones</h2>
                 {% if conexiones.count %}
                     {% include "microblog/lista_conexiones.html" %}
                 {% else %}
                     <p>{% trans "Aun no tienes conectados" %}</p>
                 {% endif %}
-			</div>
-                {% include "microblog/conectar_amigo_form.html" %}				
-				<p class="clear">{% trans  "Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti." %}				
-				</p>				
-					{% if latest_users %}
-						<p>
-						<h2>{% trans "Ultimos usuarios registrados"%}</h2>
-						<ul>
-						{% for usuario in latest_users %}
-							<li><a href="{% url detalle_perfil usuario.user.username %}">{{ usuario.user.username }}</a></li>
-						{% endfor %}
-						</ul>
-						</p>
-					{% endif %}		
+            </div>
+            <div id="asic-form">
+                {% include "microblog/conectar_amigo_form.html" %}
+            </div>
+            <p class="clear"><span class="warning">{% trans "warning:" %} </span>{% trans  "Las publicaciones realizadas en este microblog, seran vistas por todos tus amigos conectados previamente autorizados por ti." %}				
+            </p>
+            {% if latest_users %}
+                <p>
+                    <h2>{% trans "Ultimos usuarios registrados"%}</h2>
+                    <ul>
+                        {% for usuario in latest_users %}
+                            <li><a href="{% url detalle_perfil usuario.user.username %}">{{ usuario.user.username }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </p>
+        {% endif %}
         </div>
     {% else %}
         {% trans "No estas logeado" %}
     {% endif %}
-
 {% endblock %}

@@ -1,11 +1,7 @@
 {% load i18n %}
-
-<h2>{% trans "Encontrar un amigo" %}</h2>
-
-<div id="basic-form">
+	<h2>{% trans "Encontrar un amigo" %}</h2>
     <form action="{{ MICROBLOG_URL_BASE }}c/buscar/ " method="get">
-        <p>{% trans "Nombre" %}:</p>
+        {% trans "Nombre" %}:
         {{ form_conectar.nombre }}
         <input type="submit" class="button" value="{% trans "Encontrar" %}"/>
     </form>
-</div>

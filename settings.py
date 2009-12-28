@@ -56,7 +56,6 @@ ROOT_URLCONF = 'gme.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(DIR_ACTUAL,'templates'),
-    
 )
 
 TEMPLATE_CONTEXT_PROCESSORS =(

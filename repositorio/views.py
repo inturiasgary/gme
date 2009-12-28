@@ -1,4 +1,4 @@
-from repositorio.models import *
+from repositorio.models import Repositorio, Miembro, Mensaje
 from django.db.models import Count
 import app_settings
 from django.shortcuts import render_to_response, get_object_or_404
@@ -62,7 +62,7 @@ def repo(request, nombre=None):
             is_me = False
             miembro_activo = False
         else:
-            commits           = Commit.objects.order_by('-fecha').filter(repositorio=repositorio)
+            commits = Mensaje.objects.order_by('-fecha').filter(repositorio=repositorio)
             if (miembro.creador == True and miembro.activo == True):
                 estado = "Es creador y esta activo"
                 is_me = True
@@ -80,8 +80,8 @@ def repo(request, nombre=None):
         'repositorio/detalle_repositorio.html',
         locals(),
         context_instance=RequestContext(request),
-    )
-        
+)
+
 @login_required
 def repo_save_page(request, repositorio_name):
     repositorio = get_object_or_404(Repositorio, nombre=repositorio_name) 

@@ -17,40 +17,31 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Repositorio: {{ repositorio.nombre }}</h1>
-	<p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
-
-	{% if repositorio %}
-    	<div class="repositorio_info">
-    		<fieldset id="repositorio_info" style="display: none;">
-        		<legend>{% trans "Repository information" %}</legend>
-				<dl>
-        		<table>
-            		
-                		<dt width="100px">{% trans "Name:" %}</dt> <dd>{{ repositorio.nombre }}</dd>
-            		
-                		<dt width="100px">{% trans "Admin:" %}</dt> <dd><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></dd>
-            		
-            		
-                		<dt width="100px">{% trans "Description:" %}</dt> <dd>{{ repositorio.descripcion }}</dd>
-            		
-                		<dt width="100px">{% trans "Created:" %}</dt> <dd>{{ repositorio.fecha|date:"d M Y" }}</dd>
-            		
-               			<dt width="100px">{% trans "Web Link:" %}</dt> <dd>{{ repositorio.direccionWeb|urlize }}</dd>
-				
-                		<dt width="100px">{% trans "Administrator email:" %}</dt> <dd>{{ repositorio.emailAdmin }}</dd>
-				<dl>
-				{% ifequal is_me 1 %}
-        			<table>
-        				<tr>
-						<td>
-						<form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
-       				</table>    
-    			{% endifequal %}
-    		</fieldset>
-		</div>
-	{% endif %}
-    
+    <h1>Repositorio: {{ repositorio.nombre }}</h1>
+    <p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
+    {% if repositorio %}
+        <div class="repositorio_info">
+            <fieldset id="repositorio_info" style="display: none;">
+                <legend>{% trans "Repository information" %}</legend>
+                <dl>
+                <table>
+                    <dt width="100px">{% trans "Name:" %}</dt> <dd>{{ repositorio.nombre }}</dd>
+                    <dt width="100px">{% trans "Admin:" %}</dt> <dd><a href="{% url detalle_perfil miembro_creador.usuario.username %}">{{ miembro_creador.usuario.username }}</a></dd>
+                    <dt width="100px">{% trans "Description:" %}</dt> <dd>{{ repositorio.descripcion }}</dd>
+                    <dt width="100px">{% trans "Created:" %}</dt> <dd>{{ repositorio.fecha|date:"d M Y" }}</dd>
+                    <dt width="100px">{% trans "Web Link:" %}</dt> <dd>{{ repositorio.direccionWeb|urlize }}</dd>
+                    <dt width="100px">{% trans "Administrator email:" %}</dt> <dd>{{ repositorio.emailAdmin }}</dd>
+                <dl>
+                {% ifequal is_me 1 %}
+                    <table>
+                        <tr>
+                        <td>
+                            <form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
+                    </table>    
+                {% endifequal %}
+            </fieldset>
+        </div>
+    {% endif %}    
     {% ifequal miembro_activo "peticion" %}
         <p>{% trans "nota: Se encuentra en peticion, Aun no puedes publicar commits." %}</p>
     {% else %}
@@ -62,26 +53,26 @@
 <h1>Commits Realizados:</h1>    
 {% if commits %}
     {% for commit in commits %}
-    {% comment %}{% ifequal commit.usuario.username request.user.username %}
-    Resaltar esto
-    {% endifequal %}{% endcomment %}
-        <p><li><cite>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
-        <ul> 
-        <div class="rbroundbox">
-	    <div class="rbtop"><div></div></div>
-		<div class="rbcontent">
-		<p>{{ commit.descripcion|striptags|linebreaksbr|urlize }}
-			</p>
-		</div><!-- /rbcontent -->
-	    <div class="rbbot"><div></div></div>
-	    </div><!-- /rbroundbox -->
-	    
-	    </ul>
-	    </li></p>
-	    
+        {% comment %}{% ifequal commit.usuario.username request.user.username %}
+            Resaltar esto
+        {% endifequal %}{% endcomment %}
+        <p>
+            <ul><cite>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
+            <li> 
+                <div class="rbroundbox{{ commit.tipo }}">
+                    <div class="rbtop{{ commit.tipo }}"><div></div></div>
+                        <div class="rbcontent{{ commit.tipo }}">
+                            <p>{{ commit.descripcion|striptags|linebreaksbr|urlize }}
+                            </p>
+                        </div><!-- /rbcontent -->
+                    <div class="rbbot{{ commit.tipo }}"><div></div></div>
+                </div><!-- /rbroundbox -->
+            </li>
+        </ul>
+        </p>
     {% endfor %}
 {% else %}
-<h3>No se encontraron acciones realizadas.</h3>
+    <h3>No se encontraron acciones realizadas.</h3>
 {% endif %}
     
 {% endblock %}

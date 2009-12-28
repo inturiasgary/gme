@@ -1,7 +1,7 @@
 body {
     background-color: #FFF;
     margin: 0;
-	color: #333;
+    color: #333;
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 10pt;
 }
@@ -18,7 +18,7 @@ a img{
 }
 
 h1, h2, h3 {
-	color: #3a227d;
+    color: #3a227d;
 }
 
 img {
@@ -45,20 +45,20 @@ td {
     width: 60em;
 }
 div#entries{
-	float: left;
-	width:40em;
-	padding:0;
-	background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
+float: left;
+width:40em;
+padding:0;
+background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
 }
 
 div#right-microblog{
-	float: left;
-	width: 14em; 
-	margin:0 2em;
-	padding:0 1em;
-	float:left;
-	border-bottom: 5px solid #dddddd ;
-	border-top: 5px solid #dddddd ; 
+float: left;
+width: 14em; 
+margin:2em 2em;
+padding:0 1em;
+float:left;
+border-bottom: 5px solid #dddddd ;
+border-top: 5px solid #dddddd ; 
 }
 #footer {
     color: #999; /* footer text colour */
@@ -82,7 +82,10 @@ div#right-microblog{
     padding: 0;
     margin: 0;
 }
-.clear{ clear:both;}
+.clear{ 
+    margin: 2em 0;
+    clear:both;
+}
 h1 {
     margin: 0;
 }
@@ -488,11 +491,23 @@ table#tasktable tr.row2 {
 }
 
 /* para establecer las cajas de los commits y comentarios */
-.rbroundbox { background: url(nt.gif) repeat; }
-.rbtop div { background: url(tl.gif) no-repeat top left; }
-.rbtop { background: url(tr.gif) no-repeat top right; }
-.rbbot div { background: url(bl.gif) no-repeat bottom left; }
-.rbbot { background: url(br.gif) no-repeat bottom right; }
+.rbroundboxr { background: url(png/nt.gif) repeat; }
+.rbtopr div { background: url(png/tl.gif) no-repeat top left; }
+.rbtopr { background: url(png/tr.gif) no-repeat top right; }
+.rbbotr div { background: url(png/bl.gif) no-repeat bottom left; }
+.rbbotr { background: url(png/br.gif) no-repeat bottom right; }
+
+.rbroundboxc { background: url(png/nt1.png) repeat; }
+.rbtopc div { background: url(png/tl1.png) no-repeat top left; }
+.rbtopc { background: url(png/tr1.png) no-repeat top right; }
+.rbbotc div { background: url(png/bl1.png) no-repeat bottom left; }
+.rbbotc { background: url(png/br1.png) no-repeat bottom right; }
+
+.rbroundboxs { background: url(png/nt2.png) repeat; }
+.rbtops div { background: url(png/tl2.png) no-repeat top left; }
+.rbtops { background: url(png/tr2.png) no-repeat top right; }
+.rbbots div { background: url(png/bl2.png) no-repeat bottom left; }
+.rbbots { background: url(png/br2.png) no-repeat bottom right; }
 
 /* altura y ancho. */
 .rbtop div, .rbtop, .rbbot div, .rbbot {
@@ -519,9 +534,9 @@ div.legal{
 }
 
 div.right-form  {
-	margin-bottom:0.8em;
-	margin-top:0.6em;
-	line-height: 1.4em;
+    margin-bottom:0.8em;
+    margin-top:0.6em;
+    line-height: 1.4em;
 }
 div.right-form  p{
      margin-bottom:0.8em;
@@ -529,7 +544,7 @@ div.right-form  p{
      line-height: 1.4em;
 }
 #add-form .button{
-	clear:both;
+    clear:both;
     width:125px;
     height:31px;
     text-align:center;
@@ -544,5 +559,5 @@ div.right-form  p{
 
 }
 .entrada_contenido {
-	overflow:hidden;
+    overflow:hidden;
 }

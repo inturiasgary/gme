@@ -15,7 +15,7 @@ from django.db import IntegrityError
 from django.utils.translation import ugettext as _
 import datetime
 
-from repositorio.models import Miembro, Repositorio, Commit
+from repositorio.models import Miembro, Repositorio, Mensaje
 
 @login_required
 def list_lists(request):
@@ -182,7 +182,7 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
         if form.is_valid():
             # primero se graba la tarea para luego editarla
             new_task = form.save()
-            commit = Commit.objects.create(usuario=new_task.assigned_to , repositorio=repositorio, descripcion='Nueva Tarea: %s - %s'%(new_task.title, new_task.note))
+            commit = Mensaje.objects.create(usuario=new_task.assigned_to , repositorio=repositorio, descripcion='Nueva Tarea: %s - %s'%(new_task.title, new_task.note))
 
             # Envio de email alerta solo si el checkbos es seleccionado y el asignado no es el mismo que el que esta creando        
             if "notify" in request.POST :
