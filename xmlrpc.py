@@ -3,7 +3,6 @@ from django.http import HttpResponse, HttpResponseServerError
 from django.contrib.auth.models import User
 from repositorio.models import Repositorio, Mensaje, Miembro, MENSAJE_COMMIT 
 from microblog.models import Entrada
-from django.utils.translation import ugettext_lazy as _
 from xml.dom.minidom import Document #para crear el contenido en xml
 import sys
 
@@ -75,11 +74,11 @@ def publicarEntrada(usuario, password, contenido):
         usuario = User.objects.get(username=usuario)
         if usuario.check_password(password):
             e = Entrada.objects.create(user=usuario, contenido=contenido)
-            return _("Operacion efectuada correctamente.")
+            return "Operacion efectuada correctamente."
         else:
-            return _("Nombre de usuario o password incorrecto.")
+            return "Nombre de usuario o password incorrecto."
     except:
-        return _("Nombre de usuario no registrado.")
+        return "Nombre de usuario no registrado."
 
 def estadosRepo(usuario, password, repositorio):
     ''' visualiza los anuncios publicados en un determinado repositorio, parametros que recibe:(usuario, password, repositorio)'''
@@ -105,9 +104,9 @@ def estadosRepo(usuario, password, repositorio):
                 main.appendChild(mensaje)
             return doc.toprettyxml(indent="  ")
         else:
-            return _('Repositorio no existente o usuario no pertenece.')
+            return 'Repositorio no existente o usuario no pertenece.'
     else:
-        return _('nombre de usuario opassword incorrecta.')
+        return 'nombre de usuario opassword incorrecta.'
         
 def todoRepo(usuario, password, repositorio):
     """ Permite visualizar las tareas incompletas de un determinado repositorio,parametros que recibe: (usuario, password, repositorio)"""
@@ -132,24 +131,26 @@ def todoRepo(usuario, password, repositorio):
                     tar.appendChild(hacerHasta)
                 return doc.toprettyxml(indent="  ")
             else:
-                return _("no pertenece al repositorio o no esta activo.")
+                return "no pertenece al repositorio o no esta activo."
         else:
-            return _("El usuario no esta registrado en el sistema")
+            return "El usuario no esta registrado en el sistema"
     except:
-        return _("Problemas")
+        return "Problemas"
 
 def publicarCommit(nombre_repo, usuario, password, descripcion):
         if verificar_password(usuario, password):
             if verificar_pertenece(usuario, nombre_repo):
+                usuario = User.objects.get(username=usuario)
+                repositorio = Repositorio.objects.get(nombre=nombre_repo)
                 try:
-                    Mensaje.objects.create(usuario=usuario, repositorio= repo, descripcion=descripcion, tipo='c')
-                    return _("Operacion efectuada correctamente.")
+                    Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
+                    return "Operacion efectuada correctamente."
                 except:
-                    return _("Error en la creacion del commit")
+                    return "Error en la creacion del commit"
             else:
-                return _("Nombre de usuario no pertenece al repositorio.")
+                return "Nombre de usuario no pertenece al repositorio."
         else:
-            return _("Nombre de usuario o password incorrecto.")
+            return "Nombre de usuario o password incorrecto."
 
 #registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC
 dispatcher.register_function(crearRepositorio,'crearRepositorio')
