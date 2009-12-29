@@ -490,24 +490,51 @@ table#tasktable tr.row2 {
     background-color: #B6F3D5;
 }
 
-/* para establecer las cajas de los commits y comentarios */
-.rbroundboxr { background: url(png/nt.gif) repeat; }
-.rbtopr div { background: url(png/tl.gif) no-repeat top left; }
-.rbtopr { background: url(png/tr.gif) no-repeat top right; }
-.rbbotr div { background: url(png/bl.gif) no-repeat bottom left; }
-.rbbotr { background: url(png/br.gif) no-repeat bottom right; }
 
-.rbroundboxc { background: url(png/nt1.png) repeat; }
-.rbtopc div { background: url(png/tl1.png) no-repeat top left; }
-.rbtopc { background: url(png/tr1.png) no-repeat top right; }
-.rbbotc div { background: url(png/bl1.png) no-repeat bottom left; }
-.rbbotc { background: url(png/br1.png) no-repeat bottom right; }
 
-.rbroundboxs { background: url(png/nt2.png) repeat; }
-.rbtops div { background: url(png/tl2.png) no-repeat top left; }
-.rbtops { background: url(png/tr2.png) no-repeat top right; }
-.rbbots div { background: url(png/bl2.png) no-repeat bottom left; }
-.rbbots { background: url(png/br2.png) no-repeat bottom right; }
+
+#caja {
+width: 500px; /*ANCHO TOTAL DE LA CAJA*/
+color: #990000; /*COLOR DEL TEXTO*/
+text-align:left;
+margin:0px auto;
+}
+
+.redondeador {
+height: 1px;
+overflow: hidden;
+background-color: #cccccc; /* COLOR DE LA CAJA MENSAJES DE REPOSITORIO */
+}
+
+.redondeadoc {
+height: 1px;
+overflow: hidden;
+background-color: #E5FF99; /* COLOR DE LA CAJA MENSAJES DE COMMIT */
+}
+
+.redondeados {
+height: 1px;
+overflow: hidden;
+background-color: #D8FFCC; /* COLOR DE LA CAJA MENSAJES SIMPLES */
+}
+
+
+/* LAS LINEAS PARA FORMAR LA PARTE REDONDEADA */
+.r1 { margin: 0 12px;}
+.r2 { margin: 0 9px;}
+.r3 { margin: 0 7px;}
+.r4 { margin: 0 6px;}
+.r5 { margin: 0 5px;}
+.r6 { margin: 0 4px;}
+.r7 { margin: 0 3px;}
+.r8 { margin: 0 2px; height: 2px;}
+.r9 { margin: 0 1px; height: 3px; }
+
+.contenido {
+height: auto;
+padding: 0 15px;
+}
+
 
 /* altura y ancho. */
 .rbtop div, .rbtop, .rbbot div, .rbbot {
@@ -560,4 +587,14 @@ div.right-form  p{
 }
 .entrada_contenido {
     overflow:hidden;
+}
+
+.date h3{
+    color: #666666;
+    font-size: 0.9em;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size-adjust: none;
+    margin: 2px;
+    padding: 0;
+    text-transform: uppercase;
 }

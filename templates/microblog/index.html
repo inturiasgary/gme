@@ -13,6 +13,9 @@
                 <h2>{% trans "Mensajes recientes:" %}</h2>
                 {% autopaginate entradas 10 %}
                 {% for entrada in entradas %}
+                    {% ifchanged %}
+                        <li class="date"><h3>{{entrada.fecha|date:"l, j F Y"}}</h3></li>
+                    {% endifchanged %}
                     <div class="entrada" id="entrada_{{ entrada.id }}">
                         <cite>
                             <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
@@ -20,18 +23,27 @@
                             {{ entrada.fecha|timesince }}
                             :
                         </cite>
-                        <div class="rbroundbox">
-                            <div class="rbtop">
-                                <div></div>
-                            </div>
-                            <div class="rbcontent">
-                                <p class="entrada_contenido">{{ entrada.contenido|striptags|truncatewords:"140"|linebreaksbr|urlize }}</p>
-                            </div><!-- /rbcontent -->
-                            <div class="rbbot">
-                                <div></div>
-                            </div>
-                        </div><!-- /rbroundbox -->
-                        
+                        <div id="caja">
+                        <div class="redondeadoc r1"></div>
+                        <div class="redondeadoc r2"></div>
+                        <div class="redondeadoc r3"></div>
+                        <div class="redondeadoc r4"></div>
+                        <div class="redondeadoc r5"></div>
+                        <div class="redondeadoc r6"></div>
+                        <div class="redondeadoc r7"></div>
+                        <div class="redondeadoc r8"></div>
+                        <div class="redondeadoc r9"></div>
+                        <div class="redondeadoc contenido">{{ entrada.contenido|striptags|truncatewords:"140"|linebreaksbr|urlize }}</div>
+                        <div class="redondeadoc r9"></div>
+                        <div class="redondeadoc r8"></div>
+                        <div class="redondeadoc r7"></div>
+                        <div class="redondeadoc r6"></div>
+                        <div class="redondeadoc r5"></div>
+                        <div class="redondeadoc r4"></div>
+                        <div class="redondeadoc r3"></div>
+                        <div class="redondeadoc r2"></div>
+                        <div class="redondeadoc r1"></div>
+                        </div>
                     </div>
                     {% comment %}
                         <a class="mostrar_recipientes" href="#entrada_{{ entrada.id }}">[{% trans "recipientes" %}]</a>            
