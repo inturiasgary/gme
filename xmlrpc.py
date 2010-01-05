@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 from django.http import HttpResponse, HttpResponseServerError
 from django.contrib.auth.models import User
@@ -86,9 +88,7 @@ def estadosRepo(usuario, password, repositorio):
         if verificar_pertenece(usuario, repositorio):
             '''extraemos la lista de publicaciones en el repositorio '''
             lista_commits = Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio)
-            #lista_commits = serializers.serialize("xml", Commit.objects.filter(repositorio__nombre=repositorio), 
-            #fields=('usuario','fecha', 'descripcion'))
-            oc = Document()
+            doc = Document()
             commit = doc.createElement('Commits')
             doc.appendChild(commit)
             main = doc.createElement('autores')
@@ -102,12 +102,12 @@ def estadosRepo(usuario, password, repositorio):
                 men = doc.createTextNode(lista_commit.descripcion)
                 mensaje.appendChild(men)
                 main.appendChild(mensaje)
-            return doc.toprettyxml(indent="  ")
+            return doc.toprettyxml(indent='   ') 
         else:
             return 'Repositorio no existente o usuario no pertenece.'
     else:
-        return 'nombre de usuario opassword incorrecta.'
-        
+        return 'nombre de usuario o password incorrecta.'
+
 def todoRepo(usuario, password, repositorio):
     """ Permite visualizar las tareas incompletas de un determinado repositorio,parametros que recibe: (usuario, password, repositorio)"""
     try:
@@ -144,7 +144,7 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
                 repositorio = Repositorio.objects.get(nombre=nombre_repo)
                 try:
                     Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
-                    return "Operacion efectuada correctamente."
+                    return "Operacion efectuada correctamente, se publico al sistema web."
                 except:
                     return "Error en la creacion del commit"
             else:

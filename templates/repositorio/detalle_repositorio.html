@@ -1,4 +1,4 @@
-{% extends "repositorio/base.html" %}
+{% extends "microblog/base.html" %}
 
 {% load i18n %}
 
@@ -17,6 +17,7 @@
 {% endblock %}
 
 {% block body %}
+<div id="entries">
     <h1>Repositorio: {{ repositorio.nombre }}</h1>
     <p><a href="#" onclick="$('#repositorio_info').toggle(); return false;"><img src="/site_media/masInfo.jpeg" >{% trans "Information" %}</a></p>
     {% if repositorio %}
@@ -50,44 +51,50 @@
         {% endifequal %}
     {% endifequal %}
 
-<h1>Commits Realizados:</h1>    
+<h1>{% trans "Acciones Realizadas en el repositorio" %}:</h1>    
 {% if commits %}
-
-{% for commit in commits %}
-    <div class="entrada">
-        <cite>Commit realizado por {{ commit.usuario.username }} hace  {{ commit.fecha|timesince }}</cite>
-        <cite>
-            <a href="{% url detalle_perfil user.username %}">{{ entrada.user }}</a>
-                {% trans "hace" %}
-                {{ entrada.fecha|timesince }}
-            :
-        </cite>
-                        <div id="caja">
-                        <div class="redondeado{{ commit.tipo }} r1"></div>
-                        <div class="redondeado{{ commit.tipo }} r2"></div>
-                        <div class="redondeado{{ commit.tipo }} r3"></div>
-                        <div class="redondeado{{ commit.tipo }} r4"></div>
-                        <div class="redondeado{{ commit.tipo }} r5"></div>
-                        <div class="redondeado{{ commit.tipo }} r6"></div>
-                        <div class="redondeado{{ commit.tipo }} r7"></div>
-                        <div class="redondeado{{ commit.tipo }} r8"></div>
-                        <div class="redondeado{{ commit.tipo }} r9"></div>
-                        <div class="redondeado{{ commit.tipo }} contenido">{{ commit.descripcion|striptags|truncatewords:"140"|linebreaksbr|urlize }}</div>
-                        <div class="redondeado{{ commit.tipo }} r9"></div>
-                        <div class="redondeado{{ commit.tipo }} r8"></div>
-                        <div class="redondeado{{ commit.tipo }} r7"></div>
-                        <div class="redondeado{{ commit.tipo }} r6"></div>
-                        <div class="redondeado{{ commit.tipo }} r5"></div>
-                        <div class="redondeado{{ commit.tipo }} r4"></div>
-                        <div class="redondeado{{ commit.tipo }} r3"></div>
-                        <div class="redondeado{{ commit.tipo }} r2"></div>
-                        <div class="redondeado{{ commit.tipo }} r1"></div>
-                        </div>
-                    </div>
-{% endfor %}
+    {% for commit in commits %}
+        {% ifchanged %}
+            <div class="date">{{commit.fecha|date:"l, j F Y"}}</div>
+        {% endifchanged %}
+        <div class="stream">
+            <cite>Commit realizado por <a href="{% url detalle_perfil user.username %}">{{ commit.usuario.username }}</a> hace  {{ commit.fecha|timesince }}</cite>
+            <div id="caja">
+                <div class="redondeado{{ commit.tipo }} r1"></div>
+                <div class="redondeado{{ commit.tipo }} r2"></div>
+                <div class="redondeado{{ commit.tipo }} r3"></div>
+                <div class="redondeado{{ commit.tipo }} r4"></div>
+                <div class="redondeado{{ commit.tipo }} r5"></div>
+                <div class="redondeado{{ commit.tipo }} r6"></div>
+                <div class="redondeado{{ commit.tipo }} r7"></div>
+                <div class="redondeado{{ commit.tipo }} r8"></div>
+                <div class="redondeado{{ commit.tipo }} r9"></div>
+                <div class="redondeado{{ commit.tipo }} contenido">{{ commit.descripcion|striptags|truncatewords:"140"|linebreaksbr|urlize }}</div>
+                <div class="redondeado{{ commit.tipo }} r9"></div>
+                <div class="redondeado{{ commit.tipo }} r8"></div>
+                <div class="redondeado{{ commit.tipo }} r7"></div>
+                <div class="redondeado{{ commit.tipo }} r6"></div>
+                <div class="redondeado{{ commit.tipo }} r5"></div>
+                <div class="redondeado{{ commit.tipo }} r4"></div>
+                <div class="redondeado{{ commit.tipo }} r3"></div>
+                <div class="redondeado{{ commit.tipo }} r2"></div>
+                <div class="redondeado{{ commit.tipo }} r1"></div>
+            </div>
+        </div>
+    {% endfor %}
 {% else %}
     <h3>No se encontraron acciones realizadas.</h3>
 {% endif %}
+</div>
+
+<div id="rigth-repositorio">
+    <div id="cod-colores">
+        {% trans "Codigo de colores" %}:
+        <div id="colorc">Acciones en repositorio</div>
+        <div id="colorr">Acciones en sistema web</div>
+        <div id="colors">Anuncios publicados</div>
+    </div>
+</div>
     
 {% endblock %}
 {% block extra_body %}

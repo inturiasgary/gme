@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#-*- coding: utf-8 -*-
 '''publicar es un CLI simple para la publicacion de estados al microblog GME global.
 
 Uso: publicar comando [opciones]
@@ -149,20 +150,14 @@ def main(argv,comando):
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
             result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
             ''' para analizar el contenido de resultado y recorrido ''' 
-            try:
-                
-                xmldoc = xml.dom.minidom.parseString(result)
-                print result
-                for n in  xmldoc.childNodes :
-                    print n.tagName
-                    for contacto in n.childNodes:
-                        for registro in contacto.childNodes:
-                            if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
-                                print "%s :%s"%(registro.nodeName,registro.firstChild.data)
-                print '---'
-            except:
-                print result
-                print "No se recibieron notificaciones."
+            xmldoc = xml.dom.minidom.parseString(result)
+            print xmldoc
+            for n in  xmldoc.childNodes :
+                print n.tagName
+                for contacto in n.childNodes:
+                    for registro in contacto.childNodes:
+                        if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
+                            print "%s :%s"%(registro.nodeName, registro.firstChild.data)
                             
             if result == None:
                 print 'Problemas con la peticion de acciones al repsoitorio'

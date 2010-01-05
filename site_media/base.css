@@ -9,57 +9,83 @@ body {
 html, body {
     height: 100%;
 }
+
 a, a:visited {
     color: #13C;
 }
 
-a img{
+a img {
     border: 0;
 }
 
 h1, h2, h3 {
     color: #3a227d;
+
 }
 
 img {
     border: 0;
 }
+
 dt {
     font-weight: bold;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
     border: 0;
     font-size: inherit;
 }
+
 td {
     margin: 0;
     border: 0;
     padding: 0;
 }
+
 #body {
     clear: both;
     margin: 0 auto;
     padding: 2em;
     width: 60em;
 }
-div#entries{
-float: left;
-width:40em;
-padding:0;
-background: #ffffff url(watermark_bg.gif) no-repeat 90px 200px;
+
+div#entries {
+    float: left;
+    width: 40em;
+    padding: 0;
 }
 
-div#right-microblog{
-float: left;
-width: 14em; 
-margin:2em 2em;
-padding:0 1em;
-float:left;
-border-bottom: 5px solid #dddddd ;
-border-top: 5px solid #dddddd ; 
+div#right-microblog {
+    float: left;
+    width: 14em; 
+    margin:2em 2em;
+    padding:0 1em;
+    float:left;
+    border-bottom: 5px solid #dddddd ;
+    border-top: 5px solid #dddddd ; 
 }
+
+div#rigth-repositorio {
+    float: left;
+    width: 14em;
+    margin: 2em 2em;
+    padding: 0 1em;
+    float: left;
+    border-bottom: 5px solid #ddddd;
+    border-top: 5px solid #dddddd;
+}
+
+div#cod-colores {
+    margin: 2em 0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+#enviar_mensaje {
+    background: #ffffff url(watermark_bg.gif) no-repeat 2.5em -9em;
+}
+
 #footer {
     color: #999; /* footer text colour */
     margin: 50px auto;
@@ -67,35 +93,44 @@ border-top: 5px solid #dddddd ;
     clear: both;
     width: 800px;
 }
+
 #footer a, #footer a:visited {
     color: #444; /* footer link colour */
 }
+
 #footer a:hover {
     color: #777; /* footer link hover colour */
 }
+
 #site_wide_announcements {
     background: yellow;
     padding: 10px;
     text-align: center;
 }
+
 #site_wide_announcements ul {
     padding: 0;
     margin: 0;
 }
+
 .clear{ 
     margin: 2em 0;
     clear:both;
 }
+
 h1 {
     margin: 0;
 }
+
 form th {
     text-align : left;
 }
+
 form.signup input[type="submit"], form.login input[type="submit"] {
     margin: 20px 0;
     font-size: 14pt;
 }
+
 input[type="text"], input[type="password"], textarea {
     padding: 3px;
     margin: 3px;
@@ -105,28 +140,30 @@ input[type="text"], input[type="password"], textarea {
     font-size: 12pt;
     background: #F3F3F3 url('/site_media/form-shadow.png') left top repeat-x;
 }
+
 .clearboth {
     clear: both;
 }
-
 
 #tabhead {
     background: #035 url('/site_media/heading.png') left top repeat-x;
     border-bottom: 1px solid #000; /* tab border */
     position: relative;
 }
+
 #tabhead .logo {
     height: 80px;
     padding-left: 100px;
     padding-top: 0;
 }
+
 #tabhead .logo img {
     position: relative;
     width: 190px;
     height: 79px;
 }
 
-#tabhead .logo_image a img{
+#tabhead .logo_image a img {
     display: block;
     position: absolute;
     width:  127px;
@@ -204,8 +241,7 @@ div.unseen_notice {
     background: #DFC;
     border-bottom: 1px solid #CCC;
 }
-h2.notice_date,
-{
+h2.notice_date {
     font-size: 12pt;
     color: #666;
     border-bottom: 1px solid #999;
@@ -518,6 +554,23 @@ overflow: hidden;
 background-color: #D8FFCC; /* COLOR DE LA CAJA MENSAJES SIMPLES */
 }
 
+#colorc, #colors, #colorr{
+    padding: 0 0 0 0.4em;
+    margin: 1em 0;
+    border-left: 2em solid;
+}
+
+#colorc{
+    border-left-color:  #cccccc;
+}
+
+#colors{
+    border-left-color: #D8FFCC;
+}
+
+#colorr{
+    border-left-color: #E5FF99;
+}
 
 /* LAS LINEAS PARA FORMAR LA PARTE REDONDEADA */
 .r1 { margin: 0 12px;}
@@ -566,9 +619,9 @@ div.right-form  {
     line-height: 1.4em;
 }
 div.right-form  p{
-     margin-bottom:0.8em;
-     margin-top:0.6em;
-     line-height: 1.4em;
+    margin-bottom:0.8em;
+    margin-top:0.6em;
+    line-height: 1.4em;
 }
 #add-form .button{
     clear:both;
@@ -589,12 +642,25 @@ div.right-form  p{
     overflow:hidden;
 }
 
-.date h3{
+#entries .date {
     color: #666666;
-    font-size: 0.9em;
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
-    font-size-adjust: none;
-    margin: 2px;
-    padding: 0;
+    font-size: 1em;
+    margin: 1em 0;
     text-transform: uppercase;
 }
+
+.stream cite{
+    margin: 1em 0;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+}
+
+/* Image in Text Box 
+#id_nombre {
+    background:#FFFFFF url(search.png) no-repeat 4px 4px;
+    padding:4px 4px 4px 22px;
+    border:1px solid #CCCCCC;
+    width:230px;
+    height:18px;
+}
+*/
