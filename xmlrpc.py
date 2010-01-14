@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseServerError
 from django.contrib.auth.models import User
 from repositorio.models import Repositorio, Mensaje, Miembro, MENSAJE_COMMIT 
 from microblog.models import Entrada
-from xml.dom.minidom import Document #para crear el contenido en xml
+from todo.models import Item
 import sys
 
 #Verificamos la version de python instalada para la creacion del dispatcher
@@ -43,6 +43,7 @@ def rpc_handler(request):
     return response
 
 def verificar_password(usuario, password):
+    '''Verifica la autentucidad del usuario en el sistema'''
     try:
         usuario = User.objects.get(username=usuario)
         if usuario.check_password(password):
@@ -53,6 +54,7 @@ def verificar_password(usuario, password):
         return False
 
 def verificar_pertenece(usuario, repositorio):
+    '''Verifica si es miembro o no del determinado repositorio'''
     try:
         miembro = Miembro.objects.filter(repositorio__nombre=repositorio, usuario__username = usuario, activo=True)
         if miembro:
@@ -62,9 +64,9 @@ def verificar_pertenece(usuario, repositorio):
     except:
         return False
 
+#TODO esta funcion aun incompleta
 def crearRepositorio(usuario, nombre,descripcion,direccionWeb,emailAdmin):
     '''Permite la creacion de forma remota de repositorios'''
-    #TODO Completar la esta funcion
     usuario = User.objects.get(username=usuario)
     repositorio = Repositorio.objects.create(nombre=nombre,descripcion=descripcion,direccionWeb=direccionWeb,emailAdmin=emailAdmin)
     miembro = Miembro.objects.create(usuario=usuario,repositorio=repositorio, creador=True, activo=True)
@@ -73,10 +75,10 @@ def crearRepositorio(usuario, nombre,descripcion,direccionWeb,emailAdmin):
 def publicarEntrada(usuario, password, contenido):
     '''Permite publicar un anuncio en el microblog global, parametros que recibe: (usuario, password, contenido)'''
     try:
-        usuario = User.objects.get(username=usuario)
-        if usuario.check_password(password):
+        if verificar_password(usuario, password):
+            usuario = User.objects.get(username=usuario)
             e = Entrada.objects.create(user=usuario, contenido=contenido)
-            return "Operacion efectuada correctamente."
+            return ("Operacion efectuada, Se publicó correctamente.")
         else:
             return "Nombre de usuario o password incorrecto."
     except:
@@ -87,73 +89,46 @@ def estadosRepo(usuario, password, repositorio):
     if verificar_password(usuario, password):
         if verificar_pertenece(usuario, repositorio):
             '''extraemos la lista de publicaciones en el repositorio '''
-            lista_commits = Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio)
-            doc = Document()
-            commit = doc.createElement('Commits')
-            doc.appendChild(commit)
-            main = doc.createElement('autores')
-            commit.appendChild(main)
-            for lista_commit in lista_commits:
-                creador = doc.createElement('autor')
-                main.appendChild(creador)
-                ptext = doc.createTextNode(lista_commit.usuario.username)
-                creador.appendChild(ptext)
-                mensaje = doc.createElement('mensaje')
-                men = doc.createTextNode(lista_commit.descripcion)
-                mensaje.appendChild(men)
-                main.appendChild(mensaje)
-            return doc.toprettyxml(indent='   ') 
+            lista_commits = list(Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio).values('usuario__username','descripcion'))
+            if len(lista_commits)==0:
+                return "No hay anuncios en el repositorio"
+            return lista_commits
         else:
-            return 'Repositorio no existente o usuario no pertenece.'
+            return 'Error: Usuario no es miembro del repositorio, o repositorio no existente.'
     else:
-        return 'nombre de usuario o password incorrecta.'
+        return 'Error: Nombre de usuario o password incorrecta.'
 
 def todoRepo(usuario, password, repositorio):
-    """ Permite visualizar las tareas incompletas de un determinado repositorio,parametros que recibe: (usuario, password, repositorio)"""
+    """ Permite visualizar la lista de tareas incompletas de un determinado repositorio, parametros que recibe: (usuario, password, repositorio)"""
     try:
-        ''' permite visualizar los estados en el repositorio correspondiente '''
         if verificar_password(usuario, password):
             if verificar_pertenece(usuario, repositorio):
-                lista_tareas = Item.objects.filter(assigned_to__username=usuario, completed=False, list__grupo__nombre=repositorio)
-                doc = Document()
-                todo = doc.createElement('ToDo')
-                doc.appendChild(todo)
-                tar = doc.createElement('tarea')
-                todo.appendChild(tar)
-                for tarea in lista_tareas:
-                    titulo = doc.createElement('titulo')
-                    tar.appendChild(titulo)
-                    ptext = doc.createTextNode(tarea.title)
-                    titulo.appendChild(ptext)
-                    hacerHasta = doc.createElement('HacerHasta')
-                    men = doc.createTextNode('%s/%s/%s'%(tarea.due_date.day , tarea.due_date.month, tarea.due_date.year))
-                    hacerHasta.appendChild(men)
-                    tar.appendChild(hacerHasta)
-                return doc.toprettyxml(indent="  ")
+                lista_tareas = list(Item.objects.filter(assigned_to__username=usuario, completed=False, list__grupo__nombre=repositorio).values('title','assigned_to__username'))
+                return lista_tareas 
             else:
-                return "no pertenece al repositorio o no esta activo."
+                return "Error: Usuario no pertenece al repositorio o no esta activo."
         else:
-            return "El usuario no esta registrado en el sistema"
+            return "Error: El usuario no esta registrado en el sistema"
     except:
-        return "Problemas"
+        return "Error: Problemas"
 
 def publicarCommit(nombre_repo, usuario, password, descripcion):
-        if verificar_password(usuario, password):
-            if verificar_pertenece(usuario, nombre_repo):
-                usuario = User.objects.get(username=usuario)
-                repositorio = Repositorio.objects.get(nombre=nombre_repo)
-                try:
-                    Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
-                    return "Operacion efectuada correctamente, se publico al sistema web."
-                except:
-                    return "Error en la creacion del commit"
-            else:
-                return "Nombre de usuario no pertenece al repositorio."
+    if verificar_password(usuario, password):
+        if verificar_pertenece(usuario, nombre_repo):
+            usuario = User.objects.get(username=usuario)
+            repositorio = Repositorio.objects.get(nombre=nombre_repo)
+            try:
+                Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
+                return "Operacion efectuada correctamente, se publico al sistema web."
+            except:
+                return "Error en la creacion del commit"
         else:
-            return "Nombre de usuario o password incorrecto."
+            return "Nombre de usuario no pertenece al repositorio."
+    else:
+        return "Nombre de usuario o password incorrecto."
 
 #registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC
-dispatcher.register_function(crearRepositorio,'crearRepositorio')
+#dispatcher.register_function(crearRepositorio,'crearRepositorio')
 dispatcher.register_function(publicarEntrada,'publicarEntrada')
 dispatcher.register_function(publicarCommit,'publicarCommit')
 dispatcher.register_function(estadosRepo, 'estadosRepo')
