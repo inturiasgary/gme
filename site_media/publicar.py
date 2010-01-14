@@ -6,10 +6,10 @@ Uso: publicar comando [opciones]
 
 Comando:
 
- actualizar    Actualiza tu mensaje de estado en el sistema microblog global
- estados       Muestra todos los 10 estados ultimos publicados de tus amigos
- iniciar       Crea los correspondientes hooks para publicaciones de repositorios automaticos
- todo          Permite realizar la visualizacion de la lista todo de forma general o de un repositorio indicado
+ iniciar       Crea los correspondientes hooks para permitir la comunicacion del repositorio con el sistema Web.
+ actualizar    Actualiza tu mensaje de estado en el sistema microblog Web global.
+ estados       Muestra los 10 ultimos anuncios publicados en un determinado repositorio.
+ todo          Muestra la lista de tareas para realizar de un repositorio indicado.
  
 Opciones:
 
@@ -22,16 +22,16 @@ import sys, os
 import getopt
 import xmlrpclib
 from getpass import getpass
-import xml.dom.minidom
-
+from datetime import datetime
 
 try:
     from git import *
 except:
     print "Error: al importar git, Instala git antes de utilizar la aplicacion"
     sys.exit(1)
-    
+
 codigo_hook = '''#!/usr/bin/env python
+#-*- coding: utf-8 -*-
 import sys
 import urllib, urllib2
 import re
@@ -89,11 +89,10 @@ def recuperarCommit(pathrepo):
 def enviar_commit(repositorio, username, password, commit):
     try:
         rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-        #print "%s %s %s %s"%(repositorio, username, password, commit)
         result  = rpc_srv.publicarCommit(repositorio, username, password, commit)
         print result
     except:
-        print "No se notifico al sistema el commit"
+        print "Error: No hay conexión con el sistema Web, commit no publicado."
 
 if __name__ == '__main__':
     cargarConfiguracion()
@@ -138,9 +137,12 @@ def main(argv,comando):
             if not(httpconf['auth'].get('password',None)):
                 httpconf['auth']['password']=getpass('Password:')
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-            result  = rpc_srv.publicarEntrada(httpconf['auth']['usuario'],httpconf['auth']['password'],httpconf['mensaje'])
-            print result
-            
+            try:
+                result  = rpc_srv.publicarEntrada(httpconf['auth']['usuario'],httpconf['auth']['password'],httpconf['mensaje'])
+                print result
+            except:
+                print "Error: No hay conexión al sistema microblog"
+
         if comando == 'estados':
             ''' Realizar la visualizacion de estados por repositorio '''
             if not(httpconf['auth'].get('usuario',None)):
@@ -148,48 +150,35 @@ def main(argv,comando):
             if not(httpconf['auth'].get('password',None)):
                 httpconf['auth']['password']=getpass('Password:')
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-            result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
-            ''' para analizar el contenido de resultado y recorrido ''' 
-            xmldoc = xml.dom.minidom.parseString(result)
-            print xmldoc
-            for n in  xmldoc.childNodes :
-                print n.tagName
-                for contacto in n.childNodes:
-                    for registro in contacto.childNodes:
-                        if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
-                            print "%s :%s"%(registro.nodeName, registro.firstChild.data)
-                            
-            if result == None:
-                print 'Problemas con la peticion de acciones al repsoitorio'
+            try:
+                result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
+                if isinstance(result, list):
+                    for dato in result:
+                        print "usuario: %s, mensaje: %s"%(dato['usuario__username'], dato['descripcion'])
+                else:
+                    print result
+            except:
+                print "Error: No hay conexión al sistema microblog"
 
         if comando == 'todo':
-            ''' Realizar la visualizacion de todo , en general o por repositorio'''
-            ''' Realizar la visualizacion de estados por repositorio '''
+            ''' Realizar la visualizacion de todo , en general o por repositorio
+            Realizar la visualizacion de estados por repositorio '''
             if not(httpconf['auth'].get('usuario',None)):
                 httpconf['auth']['usuario']=raw_input('Nombre de usuario:')
             if not(httpconf['auth'].get('password',None)):
                 httpconf['auth']['password']=getpass('Password:')
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-            result = rpc_srv.todoRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
-            ''' para analizar el contenido de resultado y recorrido ''' 
             try:
-                xmldoc = xml.dom.minidom.parseString(result)
-            
-                for n in  xmldoc.childNodes :
-                    print n.tagName
-                    for contacto in n.childNodes:
-                        for registro in contacto.childNodes:
-                            if registro.nodeType == xml.dom.minidom.Node.ELEMENT_NODE:
-                                print "%s :%s"%(registro.nodeName,registro.firstChild.data)
-                print '---'
+                result = rpc_srv.todoRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
+                if isinstance(result, list):
+                    print "Usuario %s Tiene %d tareas incompletas:"%((httpconf['auth']['usuario']),len(result))
+                    for dato in result:
+                        print '- %s, asignado por -> %s'%(dato['title'],dato['assigned_to__username'])
+                else:
+                    print result
             except:
-                print result
-                print "No se recibieron notificaciones."
+                print "Error: No hay conexión al sistema microblog"
                             
-            if result == None:
-                print 'Problemas con la peticion de acciones al repsoitorio'
-
-
         if  comando == 'iniciar':
             configurar()
     else:
@@ -199,23 +188,25 @@ def main(argv,comando):
 def configurar():
     '''metodo que verifica si el actual directorio ya esta configurado, caso contrario escribe el script
        configura y otorga el privilegio de ejecutable'''
-    if Repo(DIR_ACTUAL):
+    try: 
+        Repo(DIR_ACTUAL)
         print 'directorio actual con repositorio'
-    else:
-        print 'directorio actual sin repo'
-    post_commit = open(DIR_ACTUAL+'/.git/hooks/post-commit','wb')
-    config = open(DIR_ACTUAL+'/.git/hooks/config.gme','wb')
-    post_commit.write(codigo_hook)
-    usuario = raw_input('Nombre de usuario para usar el repositorio:')
-    password = getpass('Password de acceso al sistema:')
-    config.write('{\n"repositorio":"%s",\n'%os.path.split(DIR_ACTUAL)[1])
-    config.write('"username":"%s",\n'%usuario)
-    config.write('"password":"%s",\n'%password)
-    config.write('"pathrepo":"%s"\n}'%DIR_ACTUAL)
-    dio = os.system('chmod +x %s/.git/hooks/post-commit'%DIR_ACTUAL)
-    post_commit.close()
-    config.close()
-    print 'Se escribio el archivo de configuracion config.gme'
+        post_commit = open(DIR_ACTUAL+'/.git/hooks/post-commit','wb')
+        config = open(DIR_ACTUAL+'/.git/hooks/config.gme','wb')
+        post_commit.write(codigo_hook)
+        usuario = raw_input('Nombre de usuario para usar el repositorio:')
+        password = getpass('Password de acceso al sistema:')
+        config.write('{\n"repositorio":"%s",\n'%os.path.split(DIR_ACTUAL)[1])
+        config.write('"username":"%s",\n'%usuario)
+        config.write('"password":"%s",\n'%password)
+        config.write('"pathrepo":"%s"\n}'%DIR_ACTUAL)
+        dio = os.system('chmod +x %s/.git/hooks/post-commit'%DIR_ACTUAL)
+        post_commit.close()
+        config.close()
+        print 'Note: Se escribió el archivo de configuración correctamente'
+        
+    except:
+        print 'Error: Directorio actual no es un directorio versionado con GIT.'
     
 if __name__ == '__main__':
     if len(sys.argv) == 1:
