@@ -112,13 +112,13 @@ def todoRepo(usuario, password, repositorio):
     except:
         return "Error: Problemas"
 
-def publicarCommit(nombre_repo, usuario, password, descripcion):
+def publicarCommit(nombre_repo, usuario, password, descripcion, tipo):
     if verificar_password(usuario, password):
         if verificar_pertenece(usuario, nombre_repo):
             usuario = User.objects.get(username=usuario)
             repositorio = Repositorio.objects.get(nombre=nombre_repo)
             try:
-                Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
+                Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo=tipo)
                 return "Operación efectuada correctamente, se publicó al sistema web."
             except:
                 return "Error: Commit no creado en sistema."

@@ -76,7 +76,7 @@ def cargarConfiguracion():
             httpconf['password']=cfg['password']
             httpconf['pathrepo']=cfg['pathrepo']
             commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
-            enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
+            enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit, tipo='r')
         except:
             print "Error: Archivo de configuración dañado, ejecute: Publicar iniciar"
 
@@ -88,10 +88,10 @@ def recuperarCommit(pathrepo):
     name = commit.committer.name
     return mensaje_commit
     
-def enviar_commit(repositorio, username, password, commit):
+def enviar_commit(repositorio, username, password, commit, tipo):
     rpc_srv = xmlrpclib.ServerProxy(POST_URL)
     try:
-        result  = rpc_srv.publicarCommit(repositorio, username, password, commit)
+        result  = rpc_srv.publicarCommit(repositorio, username, password, commit, tipo)
         print result
     except:
         print "Error: No hay conexión con el sistema Web, commit no publicado."
