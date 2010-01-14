@@ -6,13 +6,13 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 MENSAJE_REPOSITORIO = 'r' 
-MENSAJE_COMMIT      = 'c'
-MENSAJE_SIMPLE      = 's'
+MENSAJE_SISTEMA     = 's'
+MENSAJE_COMUN       = 'c'
 
 MENSAJE_CHOICES=(
     (MENSAJE_REPOSITORIO,_('Repositorio')),
-    (MENSAJE_COMMIT,_('Commit')),
-    (MENSAJE_SIMPLE,_('Simple')),
+    (MENSAJE_SISTEMA,_('Sistema')),
+    (MENSAJE_COMUN,_('Comun')),
 )
 
 class DefaultRepositorioManager(models.Manager):
@@ -82,7 +82,7 @@ class Mensaje(models.Model):
     usuario     = models.ForeignKey(User)
     repositorio = models.ForeignKey(Repositorio)
     fecha       = models.DateTimeField(default=datetime.now)
-    tipo        = models.CharField(max_length=1, default=MENSAJE_SIMPLE, choices = MENSAJE_CHOICES)
+    tipo        = models.CharField(max_length=1, default=MENSAJE_COMUN, choices = MENSAJE_CHOICES)
     descripcion = models.CharField(max_length=140)
 
     def __unicode__(self):
