@@ -32,7 +32,8 @@
                     <dt width="100px">{% trans "Created:" %}</dt> <dd>{{ repositorio.fecha|date:"d M Y" }}</dd>
                     <dt width="100px">{% trans "Web Link:" %}</dt> <dd>{{ repositorio.direccionWeb|urlize }}</dd>
                     <dt width="100px">{% trans "Administrator email:" %}</dt> <dd>{{ repositorio.emailAdmin }}</dd>
-                <dl>
+                </table>
+                </dl>
                 {% ifequal is_me 1 %}
                     <table>
                         <tr>
