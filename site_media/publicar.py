@@ -54,7 +54,6 @@ httpconf['repositorio'] = {}
 httpconf['username'] = {}
 httpconf['password'] = {}
 httpconf['pathrepo'] = {}
-    
 try:
     from git import *
 except:
@@ -79,7 +78,7 @@ def cargarConfiguracion():
             commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
             enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
         except:
-            Print "Error: Archivo de configuración dañado, ejecute: Publicar iniciar"
+            print "Error: Archivo de configuración dañado, ejecute: Publicar iniciar"
 
 def recuperarCommit(pathrepo):
 
