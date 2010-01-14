@@ -119,7 +119,7 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
             repositorio = Repositorio.objects.get(nombre=nombre_repo)
             try:
                 Mensaje.objects.create(usuario=usuario, repositorio= repositorio, descripcion=descripcion, tipo='c')
-                return "Operacion efectuada correctamente, se publico al sistema web."
+                return "Operación efectuada correctamente, se publicó al sistema web."
             except:
                 return "Error: Commit no creado en sistema."
         else:
