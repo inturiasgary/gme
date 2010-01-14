@@ -3,7 +3,7 @@
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 from django.http import HttpResponse, HttpResponseServerError
 from django.contrib.auth.models import User
-from repositorio.models import Repositorio, Mensaje, Miembro, MENSAJE_COMMIT 
+from repositorio.models import Repositorio, Mensaje, Miembro
 from microblog.models import Entrada
 from todo.models import Item
 import sys
