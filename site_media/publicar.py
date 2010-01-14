@@ -67,16 +67,19 @@ def cargarConfiguracion():
     except IOError, e:
         print >> sys.stderr,"No se encuentra el archivo de configuración:%s"%e
     else:
-        json_lines = f.read()
-        f.close()
-        cfg =simplejson.loads(json_lines)
-        #recuperamos la informacion del archivo de configuracio
-        httpconf['repositorio']=cfg['repositorio']
-        httpconf['username']=cfg['username']
-        httpconf['password']=cfg['password']
-        httpconf['pathrepo']=cfg['pathrepo']
-        commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
-        enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
+        try:
+            json_lines = f.read()
+            f.close()
+            cfg =simplejson.loads(json_lines)
+            #recuperamos la informacion del archivo de configuracio
+            httpconf['repositorio']=cfg['repositorio']
+            httpconf['username']=cfg['username']
+            httpconf['password']=cfg['password']
+            httpconf['pathrepo']=cfg['pathrepo']
+            commit = recuperarCommit(pathrepo=httpconf['pathrepo'])
+            enviar_commit(httpconf['repositorio'], httpconf['username'],httpconf['password'], commit)
+        except:
+            Print "Error: Archivo de configuración dañado, ejecute: Publicar iniciar"
 
 def recuperarCommit(pathrepo):
 
@@ -87,8 +90,8 @@ def recuperarCommit(pathrepo):
     return mensaje_commit
     
 def enviar_commit(repositorio, username, password, commit):
+    rpc_srv = xmlrpclib.ServerProxy(POST_URL)
     try:
-        rpc_srv = xmlrpclib.ServerProxy(POST_URL)
         result  = rpc_srv.publicarCommit(repositorio, username, password, commit)
         print result
     except:
