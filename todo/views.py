@@ -65,7 +65,7 @@ def list_lists(request):
 def del_list(request,repo_id, list_id,list_slug): #aumentado repo id
 
     """
-    Elmina una lista.
+    Elmina una lista y sus items que lo comprenden.
     """
     list = get_object_or_404(List, id=list_id)
     if list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
@@ -81,9 +81,10 @@ def del_list(request,repo_id, list_id,list_slug): #aumentado repo id
             del_item.delete()
 
         # elimina la lista
+        descripcion = "Lista %s eliminada del repositorio %s"%(list.name, list.grupo)
+        Mensaje.objects.create(usuario=request.user, repositorio= list.grupo, descripcion=descripcion, tipo='r')
         del_list = List.objects.get(id=list.id)
         del_list.delete()
-
         # cantidad de listas eliminadas
         list_killed = 1
 
@@ -145,10 +146,16 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
     # elimina cualquier item
     if request.POST.getlist('del_task'):
         deleted_items = request.POST.getlist('del_task')
+        list_to_delete = []
         for thisitem in deleted_items:
             p = Item.objects.get(id=thisitem)
+            list_to_delete.append(p.title)
             p.delete()
             request.user.message_set.create(message=_("Item \"%s\" deleted.") % p.title )
+        descripcion=_("Tareas Eliminadas:\n")
+        for item in list_to_delete:
+            descripcion+='%s.\n'%item
+        Mensaje.objects.create(usuario=request.user, repositorio=repositorio, descripcion=descripcion, tipo="s")
 
     # elimina items completados
     if request.POST.getlist('del_completed_task'):
@@ -182,13 +189,11 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
         if form.is_valid():
             # primero se graba la tarea para luego editarla
             new_task = form.save()
-            commit = Mensaje.objects.create(usuario=new_task.assigned_to , repositorio=repositorio, descripcion='Nueva Tarea: %s - %s'%(new_task.title, new_task.note))
-
+            Mensaje.objects.create(usuario=new_task.assigned_to , repositorio=repositorio, descripcion='Nueva Tarea: %s - %s'%(new_task.title, new_task.note), tipo="s")
             # Envio de email alerta solo si el checkbos es seleccionado y el asignado no es el mismo que el que esta creando        
             if "notify" in request.POST :
                 if new_task.assigned_to != request.user :
                     current_site = Site.objects.get_current() # Necesario para acoplamiento de la plantilla en el email
-
                     # enviar email
                     email_subject = render_to_string("todo/email/assigned_subject.txt", { 'task': new_task })                    
                     email_body = render_to_string("todo/email/assigned_body.txt", { 'task': new_task, 'site': current_site, })
@@ -196,10 +201,8 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
                         send_mail(email_subject, email_body, new_task.created_by.email, [new_task.assigned_to.email], fail_silently=False)
                     except:
                         request.user.message_set.create(message=_("Task saved but mail not sent. Contact your administrator.") )
-
             request.user.message_set.create(message=_("New task \"%s\" has been added.") % new_task.title )
             return HttpResponseRedirect(request.path)
-
     else:
         if list_slug != "mine" : # No permitimos el agregar de una tarea en la vista mia
             form = AddItemForm(list, initial={
@@ -283,5 +286,3 @@ def reorder_tasks(request):
     # All views must return an httpresponse of some kind ... without this we get 
     # error 500s in the log even though things look peachy in the browser.    
     return HttpResponse(status=201)
-
-
