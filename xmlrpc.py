@@ -78,11 +78,11 @@ def publicarEntrada(usuario, password, contenido):
         if verificar_password(usuario, password):
             usuario = User.objects.get(username=usuario)
             e = Entrada.objects.create(user=usuario, contenido=contenido)
-            return ("Operacion efectuada, Se publicó correctamente.")
+            return ("Nota: Operación efectuada, Se publicó correctamente.")
         else:
-            return "Nombre de usuario o password incorrecto."
+            return "Error: Nombre de usuario o contraseña incorrecta."
     except:
-        return "Nombre de usuario no registrado."
+        return "Error: Nombre de usuario no registrado."
 
 def estadosRepo(usuario, password, repositorio):
     ''' visualiza los anuncios publicados en un determinado repositorio, parametros que recibe:(usuario, password, repositorio)'''
@@ -91,12 +91,12 @@ def estadosRepo(usuario, password, repositorio):
             '''extraemos la lista de publicaciones en el repositorio '''
             lista_commits = list(Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio).values('usuario__username','descripcion'))
             if len(lista_commits)==0:
-                return "No hay anuncios en el repositorio"
+                return "Nota: No hay anuncios en el repositorio."
             return lista_commits
         else:
-            return 'Error: Usuario no es miembro del repositorio, o repositorio no existente.'
+            return 'Error: Usuario no es miembro del repositorio, o repositorio no existe.'
     else:
-        return 'Error: Nombre de usuario o password incorrecta.'
+        return 'Error: Nombre de usuario o contraseña incorrecta.'
 
 def todoRepo(usuario, password, repositorio):
     """ Permite visualizar la lista de tareas incompletas de un determinado repositorio, parametros que recibe: (usuario, password, repositorio)"""
@@ -125,7 +125,7 @@ def publicarCommit(nombre_repo, usuario, password, descripcion):
         else:
             return "Nombre de usuario no pertenece al repositorio."
     else:
-        return "Nombre de usuario o password incorrecto."
+        return "Nombre de usuario o contraseña incorrecta."
 
 #registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC
 #dispatcher.register_function(crearRepositorio,'crearRepositorio')
