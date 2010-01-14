@@ -58,14 +58,14 @@ httpconf['pathrepo'] = {}
 try:
     from git import *
 except:
-    print "Error: al importar git, Instala git antes de utilizar la aplicacion"
+    print "Error: Al importar módulo git, Instala el modulo antes de utilizar la aplicación"
     sys.exit(1)
 
 def cargarConfiguracion():
     try:
         f=open(os.getcwd()+'/.git/hooks/config.gme')
     except IOError, e:
-        print >> sys.stderr,"No se encuentra el archivo de configuracion:%s"%e
+        print >> sys.stderr,"No se encuentra el archivo de configuración:%s"%e
     else:
         json_lines = f.read()
         f.close()
