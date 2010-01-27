@@ -10,7 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # XML-RPC
      url(r'^$', direct_to_template, {"template":"homepage.html"},name="home"), #muestra directamente el template
-     url(r'^xml_rpc_srv/', 'gme.xmlrpc.rpc_handler'),  #escuchador para xml-rpc
+     url(r'^xml_rpc_srv/', 'gme.xmlrpc.rpc_handler', name="xmlrpc"),  #escuchador para xml-rpc
      url(r'^admin/', include(admin.site.urls)),
      url(r'^cuenta/', include('cuenta.urls')), # adicciona la aplicacion cuenta
      url(r'^about/', include('about.urls')),

@@ -2,23 +2,29 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Que de nuevo?" %}{% endblock %}
+{% block head_title %}{% trans "Bienvenido" %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans "Que de nuevo?" %}</h1>
+    <h1>{% trans "Bienvenido"%}</h1>
     
     {% if user.is_authenticated %}
-        <p>{% trans "Aqui hay algunas explicaciones sobre como utilizar este sistema:" %}</p>
+        <p>{% trans "Algunas operaciones que puede realizar en el sistema son:" %}</p>
         
         <dl class="what_next">
-            <dt><a href="{% url acct_email %}">{% trans "verifica tu direccion email." %}</a></dt>
-            <dd>{% trans "tu puedes recibir notificaciones, reiniciar tu contraseña and so people can find you more easily." %}</dd>
+            <dt><a href="{% url acct_email %}">{% trans "Verifica tu dirección email." %}</a></dt>
+            <dd>{% trans "Para poder recibir notificaciones, reiniciar tu contraseña."%}</dd>
             
             <dt><a href="{% url detalle_perfil user %}">{% trans "Completa tu perfil." %}</a></dt>
             <dd>{% trans "completa tu perfil y da a conocer acerca de ti." %}</dd>
             
             <dt><a href="{% url mic_index %}">{% trans "Microblog." %}</a></dt>
-            <dd>{% trans "Averigua que estan haciendo tus amigos." %}</dd>
+            <dd>{% trans "Entérate de las actividades de tus amigos." %}</dd>
+
+            <dt><a href="{% url todo-lists %}">{% trans "List de tareas."%}</a></dt>
+            <dd>{% trans "Crea y modifica la lista de tareas en tus repositorios."%}</dd>
+
+            <dt><a href="{% url xmlrpc %}">{% trans "API" %}</a></dt>
+            <dd>{% trans "Entérate de las funciones ofrecidas mediante Xml-rpc."%}</dd>
         </dl>
         {% else %}
             {% url acct_registro as registro_url %}

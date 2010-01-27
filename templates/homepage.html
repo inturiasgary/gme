@@ -22,11 +22,11 @@
 	{% blocktrans %}       
         Las facilidades que le brinda el sistema son:
 		<ul>
-			<li>publicar ¿que esta haciendo?, en el microblog global.</li>
 			<li>Conocer nuevas personas.</li>
 			<li>Crear una cuenta para integrar las notificaciones de los commits realizados en sus repositorios.</li>
-			<li>Administrar los integrantes dentro de cada repositorio.</li>
-			<li>Realizar lista de tareas, y asignarlas a su equipo de desarrollo.</li>
+			<li>publicar ¿que esta haciendo?, en el microblog global y en el dedicado para repositorios.</li>
+			<li>Administrar los integrantes dentro de cada equipo de desarrollo en sus repositorios.</li>
+			<li>Realizar lista de tareas, y asignarlas a los integrantes de su equipo de desarrollo.</li>
 			<li>Realizar consultas y actualizar su estado de manera rápida.</li>
 		</ul>
     {% endblocktrans %}
@@ -42,7 +42,7 @@
     {% else %}
         {% url acct_registro as registro_url %}
         {% url acct_login as login_url %}
-        <p>{% blocktrans %}Puedes registrarte en <a href="{{ registro_url }}">Registrate</a> y <a href="{{ login_url }}">Ingresa</a> para utilizar este sitio. {% endblocktrans %}</p>
+        <p>{% blocktrans %}Puedes registrarte en <a href="{{ registro_url }}">Registrate</a> e <a href="{{ login_url }}">Ingresa</a> para utilizar las herramientas de este sitio. {% endblocktrans %}</p>
     {% endif %}
 </div>
 

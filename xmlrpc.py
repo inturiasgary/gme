@@ -29,8 +29,7 @@ def rpc_handler(request):
     else:
         #TODO Realizar descripcion del servicio
         response.write("<b>Servicio XML-RPC ofrecido por el sistema web GME.</b><br>")
-        response.write("Metodos disponibles mediante XML-RPC!<br>")
-        response.write("Los siguientes metodos estan disponibles:<ul>")
+        response.write("Metodos disponibles mediante XML-RPC!<br><ul>")
         methods = dispatcher.system_listMethods()
         for method in methods:
             sig = dispatcher.system_methodSignature(method)
@@ -43,7 +42,7 @@ def rpc_handler(request):
     return response
 
 def verificar_password(usuario, password):
-    '''Verifica la autentucidad del usuario en el sistema'''
+    '''Verifica la autenticidad del usuario en el sistema'''
     try:
         usuario = User.objects.get(username=usuario)
         if usuario.check_password(password):
@@ -54,7 +53,7 @@ def verificar_password(usuario, password):
         return False
 
 def verificar_pertenece(usuario, repositorio):
-    '''Verifica si es miembro o no del determinado repositorio'''
+    '''verificar_pertenece(usuario, repositorio)<p>Permite verificar si un usuario es miembro activo de un repositorio dado.</p><p>Parámetros:</p><p><ul><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>repositorio: nombre del repositorio con el cual esta registrado en el sistema.</li></ul></p>'''
     try:
         miembro = Miembro.objects.filter(repositorio__nombre=repositorio, usuario__username = usuario, activo=True)
         if miembro:
@@ -72,24 +71,35 @@ def crearRepositorio(usuario, nombre,descripcion,direccionWeb,emailAdmin):
     miembro = Miembro.objects.create(usuario=usuario,repositorio=repositorio, creador=True, activo=True)
     return True
 
-def publicarEntrada(usuario, password, contenido):
-    '''Permite publicar un anuncio en el microblog global, parametros que recibe: (usuario, password, contenido)'''
+def publicarAnuncio(usuario, password, contenido):
+    '''publicarAnuncio(usuario, password, contenido)<p>Permite publicar un anuncio en el microblog global.</p><p>Parámetros:</p><p><ul><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>password: contraseña con el cual esta registrado en el sistema.</li><li>contenido: El contenido texto de un comentario.</li></ul></p>'''
     try:
         if verificar_password(usuario, password):
             usuario = User.objects.get(username=usuario)
-            e = Entrada.objects.create(user=usuario, contenido=contenido)
+            Entrada.objects.create(user=usuario, contenido=contenido)
             return ("Nota: Operación efectuada, Se publicó correctamente.")
         else:
             return "Error: Nombre de usuario o contraseña incorrecta."
     except:
         return "Error: Nombre de usuario no registrado."
 
-def estadosRepo(usuario, password, repositorio):
-    ''' visualiza los anuncios publicados en un determinado repositorio, parametros que recibe:(usuario, password, repositorio)'''
+def anunciosMicro(usuario, password):
+    '''anunciosMicro(usuario, password)<p>Retorna una lista de los ultimos diez anuncios publicados en el microblog global.</p><p>Parámetros:</p><p><ul><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>password: contraseña con el cual esta registrado en el sistema.</li></ul></p>'''
+    if verificar_password(usuario, password):
+        lista_entrada = list(Entrada.objects.order_by('-fecha').filter(recipientes__username=usuario).values('user__username', 'contenido')[:10])
+        if len(lista_entrada)==0:
+            return "Nota: No hay lista de publicaciones en el microblog global."
+        else:
+            return lista_entrada
+    else:
+        return 'Error: Nombre de usuario o contraseña incorrecta.' 
+
+def anunciosRepo(usuario, password, repositorio):
+    '''anunciosRepo(usuario, password, repositorio)<p>Retorna una lista de los ultimos diez anuncios publicados en el repositorio dado.</p><p>Parámetros:</p><p><ul><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>password: contraseña con el cual esta registrado en el sistema.</li><li>repositorio: nombre del repositorio con el cual esta registrado en el sistema</li></ul></p>'''
     if verificar_password(usuario, password):
         if verificar_pertenece(usuario, repositorio):
             '''extraemos la lista de publicaciones en el repositorio '''
-            lista_commits = list(Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio).values('usuario__username','descripcion'))
+            lista_commits = list(Mensaje.objects.order_by('-fecha').filter(repositorio__nombre=repositorio).values('usuario__username','descripcion')[:10])
             if len(lista_commits)==0:
                 return "Nota: No hay anuncios en el repositorio."
             return lista_commits
@@ -99,11 +109,11 @@ def estadosRepo(usuario, password, repositorio):
         return 'Error: Nombre de usuario o contraseña incorrecta.'
 
 def todoRepo(usuario, password, repositorio):
-    """ Permite visualizar la lista de tareas incompletas de un determinado repositorio, parametros que recibe: (usuario, password, repositorio)"""
+    '''todoRepo(usuario, password, repositorio)<p>Retorna la lista de tareas incompletas asignadas a un usuario en el repositorio dado.</p><p>Parámetros:</p><p><ul><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>password: contraseña con el cual esta registrado en el sistema.</li><li>repositorio: nombre del repositorio con el cual esta registrado en el sistema.</li></ul></p>'''
     try:
         if verificar_password(usuario, password):
             if verificar_pertenece(usuario, repositorio):
-                lista_tareas = list(Item.objects.filter(assigned_to__username=usuario, completed=False, list__grupo__nombre=repositorio).values('title','assigned_to__username'))
+                lista_tareas = list(Item.objects.filter(assigned_to__username=usuario, completed=False, list__grupo__nombre=repositorio).values('title'))
                 return lista_tareas 
             else:
                 return "Error: Usuario no pertenece al repositorio o no esta activo."
@@ -113,6 +123,8 @@ def todoRepo(usuario, password, repositorio):
         return "Error: Problemas"
 
 def publicarCommit(nombre_repo, usuario, password, descripcion, tipo):
+    '''publicarCommit(nombre_repo, usuario, password, descripcion, tipo)<p>Permite publicar un anuncio en el microblog de repositorios, tipo determina la categoría de anuncio a mostrar.</p><p>Parámetros:</p><p><ul><li>nombre_repo: nombre del repositorio con el cual esta registrado en el sistema.</li><li>usuario: nombre de usuario con el que esta registrado en el sistema.</li><li>password: contraseña con el cual esta registrado en el sistema.</li><li>descripcion: El contenido texto de un comentario, detalla la descripción de la publicación.</li><li>tipo: especifica que tipo de anuncio se  publicará, opciones: r internas del repositorio, s anuncios efectuados en el sistema, c anuncio común.</li></ul></p>'''
+
     if verificar_password(usuario, password):
         if verificar_pertenece(usuario, nombre_repo):
             usuario = User.objects.get(username=usuario)
@@ -129,7 +141,9 @@ def publicarCommit(nombre_repo, usuario, password, descripcion, tipo):
 
 #registracion de metodos que pueden ser llamados mediante el protocolo XML-RPC
 #dispatcher.register_function(crearRepositorio,'crearRepositorio')
-dispatcher.register_function(publicarEntrada,'publicarEntrada')
+dispatcher.register_function(publicarAnuncio,'publicarAnuncio')
 dispatcher.register_function(publicarCommit,'publicarCommit')
-dispatcher.register_function(estadosRepo, 'estadosRepo')
+dispatcher.register_function(anunciosRepo, 'anunciosRepo')
 dispatcher.register_function(todoRepo, 'todoRepo')
+dispatcher.register_function(verificar_pertenece, 'verificar_pertenece')
+dispatcher.register_function(anunciosMicro, 'anunciosMicro')

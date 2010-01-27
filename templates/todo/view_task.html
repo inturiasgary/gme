@@ -43,7 +43,7 @@ $(document).ready(function() {
     <p>
         <strong>{% trans "Assigned to" %}:</strong> {{ task.assigned_to.username }} <br />
         <strong>{% trans "Created by" %}:</strong> {{ task.created_by.username }} <br />
-        <strong>{% trans "Due date" %}:</strong>  {{ task.due_date }}<br />
+        <strong>{% trans "Due date" %}:</strong>  {{ task.due_date|date:"D d M Y" }}<br />
         <strong>{% trans "Completed" %}:</strong> {{ form.completed }}<br />
     </p>
     
@@ -69,9 +69,7 @@ $(document).ready(function() {
         <td>Due:</td>
         <td>{{ form.due_date }}  </td>
     </tr>
-    
 
-    
     <tr>    
         <td valign="top">Note:</td>
         <td>{{ form.note }}  </td>

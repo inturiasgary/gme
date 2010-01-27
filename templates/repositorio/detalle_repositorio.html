@@ -2,6 +2,8 @@
 
 {% load i18n %}
 
+{% load pagination_tags %}
+
 {% block head_title %}{% trans "Repository Information" %}{% endblock %}
 
 {% block subnav %}
@@ -37,9 +39,11 @@
                 {% ifequal is_me 1 %}
                     <table>
                         <tr>
-                        <td>
-                            <form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form></td></tr>          
-                    </table>    
+                            <td>
+                                <form method="post" action="{% url edit_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" name="do" value="edit"></form></td><td><form method="post" action="{% url delete_repositorio %}"><input type="hidden" name="repositorio" value="{{ repositorio.id }}"><input type="submit" value="delete"></form>
+                            </td>
+                        </tr>
+                    </table>
                 {% endifequal %}
             </fieldset>
         </div>
@@ -54,6 +58,7 @@
 
 <h1>{% trans "Acciones Realizadas en el repositorio" %}:</h1>    
 {% if commits %}
+    {% autopaginate commits 10 %}
     {% for commit in commits %}
         {% ifchanged %}
             <div class="date">{{commit.fecha|date:"l, j F Y"}}</div>
@@ -83,6 +88,7 @@
             </div>
         </div>
     {% endfor %}
+    {% paginate %}
 {% else %}
     <h3>No se encontraron acciones realizadas.</h3>
 {% endif %}
@@ -91,9 +97,9 @@
 <div id="rigth-repositorio">
     <div id="cod-colores">
         {% trans "Codigo de colores" %}:
-        <div id="colorc">Acciones en repositorio</div>
-        <div id="colorr">Acciones en sistema web</div>
-        <div id="colors">Anuncios publicados</div>
+        <div id="colors">Acciones en sistema web</div>
+        <div id="colorr">Acciones en repositorio</div>
+        <div id="colorc">Anuncios publicados</div>
     </div>
 </div>
     

@@ -13,21 +13,18 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.utils.translation import ugettext as _
-import datetime
-
 from repositorio.models import Miembro, Repositorio, Mensaje
+import datetime
 
 @login_required
 def list_lists(request):
-
     """
     vista principal - muestra la lista y se pueden adicionar.
+    El concepto de grupos es el utilizado en para repositorios.
     """
-    # El concepto de repositorios es lo mismo que grupos.
     group_count = request.user.repositorio_set.filter(miembro__activo=True).count()
     if group_count == 0:
         request.user.message_set.create(message=_("You don't appear belong to any repository. Enter at least to one."))
-
     # Muestra la lista de repositorios donde el usuario es miembro
     # Solo muestra la lista de usuarios que son miembros del repositorio.
     # el administrador puede ver todos los usuarios
@@ -35,84 +32,70 @@ def list_lists(request):
         list_list = List.objects.all().order_by('name')
     else:
         list_list = List.objects.filter(grupo__in=request.user.repositorio_set.filter(miembro__activo=True)).order_by('name')
-
     # Cuenta todos
     list_count = list_list.count()
-
     # el administrador puede ver todas las listas
     if request.user.is_staff :
-        item_count = Item.objects.filter(completed=0).count()        
+        item_count = Item.objects.filter(completed=0).count()
     else:
         item_count = Item.objects.filter(completed=0).filter(list__grupo__in=request.user.repositorio_set.filter(miembro__activo=True)).count()
-
-
     if request.POST:    
         form = AddListForm(request.user,request.POST)
         if form.is_valid():
             try:
+                repositorio = Repositorio.objects.get(id=request.POST['grupo'])
+                descripcion = (_("Nueva lista -> %s")%request.POST['name'])
+                Mensaje.objects.create(usuario=request.user, repositorio=repositorio, descripcion=descripcion, tipo='s')
                 form.save()
                 request.user.message_set.create(message=_("A new list has been created."))
                 return HttpResponseRedirect(request.path)
             except IntegrityError:
                 request.user.message_set.create(message=_("There was a problem saving the new list. Most likely a list with the same name in the same group already exists."))
-
     else:
         form = AddListForm(request.user)
-        
     return render_to_response('todo/list_lists.html', locals(), context_instance=RequestContext(request))  
 
 @login_required
 def del_list(request,repo_id, list_id,list_slug): #aumentado repo id
-
     """
     Elmina una lista y sus items que lo comprenden.
     """
     list = get_object_or_404(List, id=list_id)
     if list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
-
         can_del = 1
-
     list = get_object_or_404(List, slug=list_slug)
-
     # Si la confirmacion se da, se elimina todos los items de la lista y la lista
     if request.method == 'POST':
         del_items = Item.objects.filter(list=list.id)
         for del_item in del_items:
             del_item.delete()
-
         # elimina la lista
-        descripcion = "Lista %s eliminada del repositorio %s"%(list.name, list.grupo)
-        Mensaje.objects.create(usuario=request.user, repositorio= list.grupo, descripcion=descripcion, tipo='r')
+        descripcion = "Lista eliminada -> %s"%(list.name)
+        Mensaje.objects.create(usuario=request.user, repositorio= list.grupo, descripcion=descripcion, tipo='s')
         del_list = List.objects.get(id=list.id)
         del_list.delete()
         # cantidad de listas eliminadas
         list_killed = 1
-
     else:
         item_count_done = Item.objects.filter(list=list.id,completed=1).count()
         item_count_undone = Item.objects.filter(list=list.id,completed=0).count()
         item_count_total = Item.objects.filter(list=list.id).count()    
-
     return render_to_response('todo/del_list.html', locals(), context_instance=RequestContext(request))
-
 
 @login_required
 def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
-
     """
     Muestra y administra los items de una lista
     """
     repositorio = get_object_or_404(Repositorio, id=repo_id)
     # Para verificar la seguridad de ingreso a una lista.
     if list_slug == "mine" :
-        
         auth_ok =1
         if repositorio in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
             can_del = 1
     else: 
         list = get_object_or_404(List, slug=list_slug)
         listid = list.id    
-
         # verifica si el usuario actual es miembro del repositorio
         if list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
             auth_ok = 1   # El usuario es autorizado para el ingreso a  la lista
@@ -120,8 +103,6 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
                 can_del = 1
         else: # no se autoriza su ingreso
             request.user.message_set.create(message=_("You do not have permission to view/edit this list."))
-        
-
     if request.POST.getlist('mark_done'):
         done_items = request.POST.getlist('mark_done')
         # Iteracion a traves del arreglo de utems realizados y actualiza en el modelo
@@ -129,10 +110,10 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
             p = Item.objects.get(id=thisitem)
             p.completed = 1
             p.completed_date = datetime.datetime.now()
+            descripcion = (_("Tarea Completada -> %s")%p.title)
+            Mensaje.objects.create(usuario=request.user, repositorio= repositorio, descripcion=descripcion, tipo='s')
             p.save()
             request.user.message_set.create(message=_("Item \"%s\" marked complete.") % p.title )
-
-
         # establece de nuevo como item no realizado
     if request.POST.getlist('undo_completed_task'):
         undone_items = request.POST.getlist('undo_completed_task')
@@ -141,8 +122,6 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
             p.completed = 0
             p.save()
             request.user.message_set.create(message=_("Previously completed task \"%s\" marked incomplete.") % p.title)	        
-
-
     # elimina cualquier item
     if request.POST.getlist('del_task'):
         deleted_items = request.POST.getlist('del_task')
@@ -152,9 +131,9 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
             list_to_delete.append(p.title)
             p.delete()
             request.user.message_set.create(message=_("Item \"%s\" deleted.") % p.title )
-        descripcion=_("Tareas Eliminadas:\n")
+        descripcion=_("Tareas Eliminadas->\n")
         for item in list_to_delete:
-            descripcion+='%s.\n'%item
+            descripcion+=('%s.\n'%item)
         Mensaje.objects.create(usuario=request.user, repositorio=repositorio, descripcion=descripcion, tipo="s")
 
     # elimina items completados
@@ -164,12 +143,8 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
             p = Item.objects.get(id=thisitem)
             p.delete()
             request.user.message_set.create(message=_("Deleted previously completed item \"%s\".")  % p.title)
-
-
     thedate = datetime.datetime.now()
     created_date = "%s-%s-%s" % (thedate.year, thedate.month, thedate.day)
-
-
     # Obtiene la lista de items de la lista dado el ID, filtra los items asignados al usuario
     if list_slug == "mine":
         task_list = Item.objects.filter(assigned_to=request.user, completed=0, list__grupo__id = repo_id )
@@ -178,14 +153,11 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
         usuario_actual = request.user.username
         task_list = Item.objects.filter(list=list.id, completed=0, list__grupo__id = repo_id )
         completed_list = Item.objects.filter(list=list.id, completed=1, list__grupo__id = repo_id)
-
-
     if request.POST.getlist('add_task') :
         form = AddItemForm(list, request.POST,initial={
             'assigned_to':request.user.id,
             'priority':999,
         })
-
         if form.is_valid():
             # primero se graba la tarea para luego editarla
             new_task = form.save()
@@ -209,7 +181,6 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
                 'assigned_to':request.user.id,
                 'priority':999,
             } )
-
     #solo adicionado el try
     #try:
         #Controlamos que el usario sea el administrador del repositorio, caso contrario no podra borrar la tarea
@@ -219,29 +190,23 @@ def view_list(request,repo_id=0, list_id=0,list_slug='',view_completed=0):
         #list_slug = "notmine"
     return render_to_response('todo/view_list.html', locals(), context_instance=RequestContext(request))
 
-
 @login_required
 def view_task(request,task_id):
-
     """
     vista para detalles de tareas. Permite la edicion de las tareas.
     """
-
     task = get_object_or_404(Item, pk=task_id)
     comment_list = Comment.objects.filter(task=task_id)
-
     # antes de adicionar cualquier cosa, hace seguro el acceso a usuario con permiso para ver estos items.
     # determina el repositorio al que pertenece esta tarea, verfica si el usuario actual es miembro del repositorio.
     if task.list.grupo in request.user.repositorio_set.all() or request.user.is_staff:
         if task.list.grupo in Repositorio.objects.filter(miembros=request.user, miembro__creador=True, miembro__activo=True):
             can_del = 1
-
         auth_ok = 1
         if request.POST:
             form = EditItemForm(request.POST,instance=task)
             if form.is_valid():
                 form.save()
-
                     # Also save submitted comment, if non-empty
                 if request.POST['comment-body']:
                     c = Comment(
@@ -250,30 +215,23 @@ def view_task(request,task_id):
                         body=request.POST['comment-body'],
                     )
                     c.save()
-
                 request.user.message_set.create(message=_("The task has been edited."))
                 return HttpResponseRedirect(reverse('todo-incomplete_tasks', args=[task.list.grupo.id, task.list.id, task.list.slug]))
-
         else:
             form = EditItemForm(instance=task)
             thedate = task.due_date
     else:
         request.user.message_set.create(message=_("You do not have permission to view/edit this task."))
-
     return render_to_response('todo/view_task.html', locals(), context_instance=RequestContext(request))
-
-
 
 @login_required
 def reorder_tasks(request):
     """
     Handle task re-ordering (priorities) from JQuery drag/drop in view_list.html
     """
-
     newtasklist = request.POST.getlist('tasktable[]')
     # First item in received list is always empty - remove it
     del newtasklist[0]
-
     # Items arrive in order, so all we need to do is increment up from one, saving
     # "i" as the new priority for the current object.
     i = 1
@@ -282,7 +240,6 @@ def reorder_tasks(request):
         newitem.priority = i
         newitem.save()
         i = i + 1
-
     # All views must return an httpresponse of some kind ... without this we get 
     # error 500s in the log even though things look peachy in the browser.    
     return HttpResponse(status=201)

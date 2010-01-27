@@ -8,7 +8,7 @@ Comando:
 
  iniciar       Crea los correspondientes hooks para permitir la comunicacion del repositorio con el sistema Web.
  actualizar    Actualiza tu mensaje de estado en el sistema microblog Web global.
- estados       Muestra los 10 ultimos anuncios publicados en un determinado repositorio.
+ anuncios      Muestra los 10 ultimos anuncios publicados en un determinado repositorio.
  todo          Muestra la lista de tareas para realizar de un repositorio indicado.
  
 Opciones:
@@ -27,7 +27,7 @@ from datetime import datetime
 try:
     from git import *
 except:
-    print "Error: al importar git, Instala git antes de utilizar la aplicacion"
+    print "Error: al importar git, Instala git antes de utilizar la aplicación"
     sys.exit(1)
 
 codigo_hook = '''#!/usr/bin/env python
@@ -117,7 +117,7 @@ def main(argv,comando):
     password = ''
     
     try:
-        opts, args = getopt.getopt(argv,"hu:p:s:m:r:",["ayuda","usuario=","password=","mensaje=","repo="])
+        opts, args = getopt.getopt(argv,"hu:p:m:r:",["ayuda","usuario=","password=","mensaje=","repo="])
     except getopt.GetoptError:
         uso()
         sys.exit(2)
@@ -138,12 +138,21 @@ def main(argv,comando):
                 httpconf['auth']['usuario']=raw_input('Nombre de usuario:')
             if not(httpconf['auth'].get('password',None)):
                 httpconf['auth']['password']=getpass('Password:')
+            if not(httpconf['mensaje']):
+                httpconf['mensaje']=raw_input('Mensaje a publicar:')
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
-            try:
-                result  = rpc_srv.publicarEntrada(httpconf['auth']['usuario'],httpconf['auth']['password'],httpconf['mensaje'])
-                print result
-            except:
-                print "Error: No hay conexión al sistema microblog"
+            if httpconf['mensaje'].split():
+                if httpconf['repositorio']:
+                    result  = rpc_srv.publicarCommit(httpconf['repositorio'], httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['mensaje'], 'c')
+                    print result
+                else:
+                    try:
+                        result  = rpc_srv.publicarAnuncio(httpconf['auth']['usuario'],httpconf['auth']['password'],httpconf['mensaje'])
+                        print result
+                    except:
+                        print "Error: No hay conexión al sistema microblog"
+            else:
+                print "Error: No se puede publicar mensajes sin contenido"
 
         if comando == 'estados':
             ''' Realizar la visualizacion de estados por repositorio '''
@@ -153,10 +162,10 @@ def main(argv,comando):
                 httpconf['auth']['password']=getpass('Password:')
             rpc_srv = xmlrpclib.ServerProxy(POST_URL)
             try:
-                result = rpc_srv.estadosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
+                result = rpc_srv.anunciosRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
                 if isinstance(result, list):
                     for dato in result:
-                        print "usuario: %s, mensaje: %s"%(dato['usuario__username'], dato['descripcion'])
+                        print "- usuario: %s, mensaje: %s"%(dato['usuario__username'], dato['descripcion'])
                 else:
                     print result
             except:
@@ -173,9 +182,9 @@ def main(argv,comando):
             try:
                 result = rpc_srv.todoRepo(httpconf['auth']['usuario'],httpconf['auth']['password'], httpconf['repositorio'])
                 if isinstance(result, list):
-                    print "Usuario %s Tiene %d tareas incompletas:"%((httpconf['auth']['usuario']),len(result))
+                    print "Usuario %s Tiene %d tareas incompletas en %s:"%((httpconf['auth']['usuario']),len(result),httpconf['repositorio'])
                     for dato in result:
-                        print '- %s, asignado por -> %s'%(dato['title'],dato['assigned_to__username'])
+                        print '- %s'%(dato['title'])
                 else:
                     print result
             except:
@@ -205,7 +214,7 @@ def configurar():
         dio = os.system('chmod +x %s/.git/hooks/post-commit'%DIR_ACTUAL)
         post_commit.close()
         config.close()
-        print 'Note: Se escribió el archivo de configuración correctamente'
+        print 'Nota: Se escribió el archivo de configuración correctamente'
         
     except:
         print 'Error: Directorio actual no es un directorio versionado con GIT.'

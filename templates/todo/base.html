@@ -2,7 +2,21 @@
 
 {% load i18n %}
 
+{% block rtab_id %}id="microblog_tab" {% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url mic_index %} ">{% trans "Global" %}</a></li>
+            <li><a href="{% url repo_index %} ">{% trans "Repositorios" %}</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
+           
 {% block head_title %}{% trans "To Do" %}{% endblock %}
+
 
 {% block extra_head %}
 <!-- CSS and JavaScript for django-todo -->

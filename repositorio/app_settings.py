@@ -1,7 +1,7 @@
 from django.conf import settings
 
 REPOSITORY_URL_BASE = getattr(settings, 'REPOSITORY_URL_BASE', '/repositorio/')
-REPOSITORY_ENTRIES_LIMIT = getattr(settings, 'REPOSITORY_ENTRIES_LIMIT', 10)
+REPOSITORY_ENTRIES_LIMIT = getattr(settings, 'REPOSITORY_ENTRIES_LIMIT', 60)
 MICROBLOG_FEEDS_MAX_ITEMS = getattr(settings, 'MICROBLOG_FEEDS_MAX_ITEMS', 20)
 
 MICROBLOG_MESSENGERS_ENABLED = getattr(settings, 'MICROBLOG_MESSENGERS_ENABLED', False)

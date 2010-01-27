@@ -52,6 +52,7 @@ def editar_repositorio(request):
 
 @login_required
 def repo(request, nombre=None):
+    REPOSITORY_ENTRIES_LIMIT = app_settings.REPOSITORY_ENTRIES_LIMIT
     if nombre:
         repositorio       = get_object_or_404(Repositorio, nombre=nombre)
         miembro_creador   = Miembro.objects.get(repositorio=repositorio, creador=True)
@@ -62,7 +63,7 @@ def repo(request, nombre=None):
             is_me = False
             miembro_activo = False
         else:
-            commits = Mensaje.objects.order_by('-fecha').filter(repositorio=repositorio)
+            commits = Mensaje.objects.order_by('-fecha').filter(repositorio=repositorio)[:REPOSITORY_ENTRIES_LIMIT]
             if (miembro.creador == True and miembro.activo == True):
                 estado = "Es creador y esta activo"
                 is_me = True

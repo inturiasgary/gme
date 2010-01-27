@@ -12,24 +12,20 @@ class List(models.Model):
     name        = models.CharField(max_length=60, verbose_name=_("Name"))
     slug        = models.SlugField(max_length=60, editable=False)
     grupo       = models.ForeignKey(Repositorio)
-    
     def save(self):
         if not self.id:
             # remplazo de los espacios por guiones
             self.slug = (self.name).lower().replace(' ','-')
-            
             # para remover caracteres no alfanumericos, usando re (modulo de expresiones regulares)
             # si termina con doble guien, corta.
             import re
             self.slug = re.sub(r"[^A-Za-z0-9\-]", "", self.slug).replace('--','-')
-
             super(List, self).save()
 
     def __unicode__(self):
         return self.name
-        
     class Meta:
-        ordering = ["name"]        
+        ordering = ["name"]
         verbose_name_plural = "Lists"
         
         # Prevee que se creen en un repositorio dos listas o mas con el mismo nombre
